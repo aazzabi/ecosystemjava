@@ -63,22 +63,21 @@ public class LoginController implements Initializable {
                 System.out.println("5deeeem");
                 if (us.login(u).getRoles().contains("ROLE_ADMIN")) {
                      Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/ReparateurMainSc.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
+                    dialogStage = (Stage) node.getScene().getWindow();
+                    dialogStage.close();
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/ReparateurMainSc.fxml")));
+                    dialogStage.setScene(scene);
+                    dialogStage.show();
                 } else {
                    Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/user.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
+                    dialogStage = (Stage) node.getScene().getWindow();
+                    dialogStage.close();
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/user.fxml")));
+                    dialogStage.setScene(scene);
+                    dialogStage.show();
                 }
 
             }
-
         }
     }
 

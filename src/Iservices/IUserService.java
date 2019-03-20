@@ -19,7 +19,7 @@ public interface IUserService {
      
      public  boolean testMotDePasse(String motDePasseGUI, String motDePasseBD);
      
-     public List<Utilisateur> getTtUtilisateur();
+     public List<Utilisateur> getUtilisateur();
 
      
      

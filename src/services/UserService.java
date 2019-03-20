@@ -69,7 +69,7 @@ public class UserService {
         return (password_verified);
     }
 
-    public static List<Utilisateur> getTtUtilisateur() {
+    public static List<Utilisateur> getUtilisateur() {
         List<Utilisateur> list = new ArrayList<Utilisateur>();
         Connection cn = ConnectionBase.getInstance().getCnx();
         PreparedStatement pt;
