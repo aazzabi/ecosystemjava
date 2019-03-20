@@ -6,6 +6,8 @@
 package ecosystemjava;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -18,11 +20,11 @@ import utils.ConnectionBase;
 public class Ecosystemjava extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception{
         ConnectionBase cnx = ConnectionBase.getInstance();
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root, 300, 250);
-        primaryStage.setTitle("Hello World!");
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
