@@ -36,6 +36,6 @@
          </image>
       </ImageView>
       <Text layoutX="57.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous n'avez pas encore un compte ? " />
-      <Button fx:id="inscrire" layoutX="124.0" layoutY="373.0" mnemonicParsing="false" onAction="#inscrire" text="S'inscrire" />
+      <Button fx:id="inscrire" layoutX="124.0" layoutY="373.0" mnemonicParsing="false" onAction="#goToInscription" text="S'inscrire" />
    </children>
 </AnchorPane>

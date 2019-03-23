@@ -83,7 +83,8 @@ public class LoginController implements Initializable {
         }
     }
     
-    void inscrire(ActionEvent event) throws SQLException, IOException, Exception {
+    @FXML
+    void goToInscription(ActionEvent event) throws SQLException, IOException, Exception {
         Node node = (Node)event.getSource();
         dialogStage = (Stage) node.getScene().getWindow();
         dialogStage.close();
