@@ -21,6 +21,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.UserService;
 
@@ -36,6 +38,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private PasswordField txt_password;
+    
+    @FXML
+    private Button inscrire;
 
     Stage dialogStage = new Stage();
     Scene scene;
@@ -58,24 +63,33 @@ public class LoginController implements Initializable {
             if (us.login(u) != null && us.testMotDePasse(txt_password.getText(),u.getPassword())) {
                 System.out.println("5deeeem");
                 if (us.login(u).getRoles().contains("ROLE_ADMIN")) {
-                     Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/mainadminscreen.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
+                    Node node = (Node)event.getSource();
+                    dialogStage = (Stage) node.getScene().getWindow();
+                    dialogStage.close();
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/mainadminscreen.fxml")));
+                    dialogStage.setScene(scene);
+                    dialogStage.show();
                 } else {
-                   Node node = (Node)event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/mainadminscreen.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
+                    Node node = (Node)event.getSource();
+                    dialogStage = (Stage) node.getScene().getWindow();
+                    dialogStage.close();
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/mainadminscreen.fxml")));
+                    dialogStage.setScene(scene);
+                    dialogStage.show();
                 }
 
             }
 
         }
+    }
+    
+    void inscrire(ActionEvent event) throws SQLException, IOException, Exception {
+        Node node = (Node)event.getSource();
+        dialogStage = (Stage) node.getScene().getWindow();
+        dialogStage.close();
+        scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/inscription.fxml")));
+        dialogStage.setScene(scene);
+        dialogStage.show();   
     }
 
     public static void infoBox(String infoMessage, String headerText, String title) {
