@@ -5,11 +5,13 @@
  */
 package ecosystemjava;
 
+import entities.Categorie_Evts;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import services.Categorie_EvtsService;
 import utils.ConnectionBase;
 
 
@@ -40,7 +42,12 @@ public class Launcher extends Application {
       
     }
     public static void main(String[] args) {
+        
+       /* Categorie_Evts c=new Categorie_Evts("java","java");
+        Categorie_EvtsService cs=new  Categorie_EvtsService();
+        cs.addCategorie_Evts(c);*/
         launch(args);
+        
     }
 
 }

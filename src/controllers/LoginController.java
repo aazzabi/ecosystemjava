@@ -21,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import services.UserService;
 
@@ -39,6 +40,8 @@ public class LoginController implements Initializable {
 
     Stage dialogStage = new Stage();
     Scene scene;
+    @FXML
+    private AnchorPane Username;
 
     @FXML
     void connexionUtilisateur(ActionEvent event) throws SQLException, IOException, Exception {

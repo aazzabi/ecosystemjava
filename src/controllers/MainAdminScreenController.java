@@ -118,7 +118,7 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
         try {
 
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/gui/ReparateurMainSc.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(src));
             root.getChildren().setAll(pane);
         } catch (IOException ex) {
             Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);

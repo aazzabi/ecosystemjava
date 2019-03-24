@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Categorie_EvtsController">
+   <children>
+      <TextField fx:id="textlibelle" layoutX="113.0" layoutY="40.0" />
+      <TextField fx:id="textbut" layoutX="390.0" layoutY="39.0" />
+      <Text layoutX="28.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libellé:" />
+      <Text layoutX="327.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="But:" />
+      <Button fx:id="ajouter" layoutX="645.0" layoutY="40.0" mnemonicParsing="false" text="Ajouter" />
+      <TableView fx:id="catsTable" layoutX="240.0" layoutY="203.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="libCol" prefWidth="75.0" text="Libelle" />
+          <TableColumn fx:id="butCol" prefWidth="75.0" text="But" />
+        </columns>
+      </TableView>
+      <Button fx:id="refresh" layoutX="577.0" layoutY="485.0" mnemonicParsing="false" text="Rafraichir" />
+   </children>
+</AnchorPane>
