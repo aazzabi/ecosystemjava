@@ -93,13 +93,6 @@ public class LoginController implements Initializable {
         dialogStage.show();   
     }
 
-    public static void infoBox(String infoMessage, String headerText, String title) {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setContentText(infoMessage);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.showAndWait();
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
