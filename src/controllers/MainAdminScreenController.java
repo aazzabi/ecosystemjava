@@ -34,6 +34,9 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
     @FXML
     private AnchorPane root;
+    
+    @FXML
+    private AnchorPane root1;
 
     @FXML
     private JFXHamburger hamburger;
@@ -118,8 +121,8 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
         try {
 
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/gui/ReparateurMainSc.fxml"));
-            root.getChildren().setAll(pane);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(src));
+            root1.getChildren().setAll(pane);
         } catch (IOException ex) {
             Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }

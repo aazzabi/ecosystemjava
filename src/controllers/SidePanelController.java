@@ -47,6 +47,25 @@ public class SidePanelController implements Initializable {
             case "Announce":
                 callback.update("");
                 break;
+             case "Réparation":
+                callback.update("");
+                break;
+             case "Evenement":
+                callback.update("");
+                break;
+             case "Recyclage":
+                callback.update("");
+                break;
+             case "Forum":
+                callback.update("");
+                break;
+             case "Signalisation":
+                callback.update("");
+                break;
+             case "Utilisateur":
+                callback.update("");
+                break;
+            
          
         }
     }
