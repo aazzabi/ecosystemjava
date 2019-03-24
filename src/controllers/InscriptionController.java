@@ -104,13 +104,16 @@ public class InscriptionController implements Initializable {
     void addUser(ActionEvent event) throws SQLException, IOException, Exception {
         Utilisateur u = new Utilisateur();
         
-        u.setNom(nomReparateur.getText());
-        u.setPrenom(prenomReparateur.getText());
-        u.setEmail(emailReparateur.getText());
-        u.setEmailCanonical(emailReparateur.getText());
-        u.setUsername(pseudoReparateur.getText());
-        u.setUsernameCanonical(pseudoReparateur.getText());
-        u.setPhoto(photoReparateur.getText());
+        u.setNom(nomUser.getText());
+        u.setPrenom(prenomUser.getText());
+        u.setEmail(emailUser.getText());
+        u.setEmailCanonical(emailUser.getText());
+        u.setUsername(pseudoUser.getText());
+        u.setUsernameCanonical(pseudoUser.getText());
+        u.setPhoto(photoUser.getText());
+        u.setRue(rueUser.getText());
+        u.setVille(villeUser.getText());
+        u.setNumtel(telephoneUser.getText());
         u.setNomPropriete(nomProprieteUser.getText());
         u.setPassword(mdpUser.getText());
         u.setEnabled(true);
@@ -124,20 +127,19 @@ public class InscriptionController implements Initializable {
     @FXML
     void addReparateur(ActionEvent event) throws SQLException, IOException, Exception {
         Reparateur r = new Reparateur();
-        r.setNom(nomUser.getText());
-        r.setPrenom(prenomUser.getText());
-        r.setEmail(emailUser.getText());
-        r.setEmailCanonical(emailUser.getText());
-        r.setNumerotel(numTelReparateur.getText());
-        r.setNumerofix(numFixeReparateur.getText());
-        r.setUsername(pseudoUser.getText());
-        r.setUsernameCanonical(pseudoUser.getText());
+        r.setNom(nomReparateur.getText());
+        r.setPrenom(prenomReparateur.getText());
+        r.setEmail(emailReparateur.getText());
+        r.setEmailCanonical(emailReparateur.getText());
+        r.setPhoto(photoReparateur.getText());r.setUsername(pseudoReparateur.getText());
+        r.setUsernameCanonical(pseudoReparateur.getText());
+        r.setNumerotel(Integer.parseInt(numTelReparateur.getText()));
+        r.setNumerofix(Integer.parseInt(numFixeReparateur.getText()));
         r.setAdresse(adresseReparateur.getText());
-        r.setPhoto(photoUser.getText());
-        r.setPassword(mdpReparateur.getText());
         r.setSpecialite(specialiteReparateur.getText());
         r.setDescription(descriptionReparateur.getText());
         r.setHoraire(horaireTravailReparateur.getText());
+        r.setPassword(mdpReparateur.getText());
         r.setEnabled(true);
         r.setDiscr("reparateur");
         r.setRoles("a:1:{i:0;s:15:\"ROLE_REPARATEUR\";}");
