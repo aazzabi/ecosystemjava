@@ -27,7 +27,7 @@ public class Launcher extends Application {
         {
          ConnectionBase cnx = ConnectionBase.getInstance();
         
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/annonceAdmin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
