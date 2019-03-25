@@ -12,8 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.ConnectionBase;
 
 /**
@@ -56,8 +59,20 @@ public class Categorie_EvtsService implements ICategorie_EvtsService {
 
     @Override
     public void updateCategorie_Evts(Categorie_Evts c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
+         String req = "update categorie_evts set libelle='" +c.getLibelle()+"' ,but='"+c.getBut()+"' where id = '" +c.getId()+"';  ";
+       try{
+     
+           st=cn.createStatement();
+           st.executeUpdate(req);
+           
+       }catch(SQLException e)
+       {
+           System.out.println("erreur");
+       }
     }
+    
+ 
 
     @Override
     public List<Categorie_Evts> getAll() {

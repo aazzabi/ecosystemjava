@@ -20,6 +20,10 @@
           <TableColumn fx:id="butCol" prefWidth="242.0" text="But" />
         </columns>
       </TableView>
-      <Button fx:id="supprimer" layoutX="447.0" layoutY="504.0" mnemonicParsing="false" text="Supprimer" visible="false" onAction="#supprimerCat" />
+      <Button fx:id="supprimer" layoutX="641.0" layoutY="193.0" mnemonicParsing="false" onAction="#supprimerCat" text="Supprimer" />
+      <Button fx:id="modifier" layoutX="640.0" layoutY="271.0" mnemonicParsing="false" onAction="#modifierCat" prefHeight="31.0" prefWidth="89.0" text="modifier" />
+      <Button fx:id="annuler" layoutX="244.0" layoutY="502.0" mnemonicParsing="false" onAction="#annulerModif" text="AnnulerModif" />
+      <Button fx:id="valider" layoutX="450.0" layoutY="502.0" mnemonicParsing="false" onAction="#validerModif" text="ValiderModif" />
+    
    </children>
 </AnchorPane>

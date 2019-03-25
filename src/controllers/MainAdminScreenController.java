@@ -34,6 +34,9 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
     @FXML
     private AnchorPane root;
+    
+    @FXML
+    private AnchorPane root1;
 
     @FXML
     private JFXHamburger hamburger;
@@ -46,7 +49,7 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
         if (!Launcher.isSplashLoaded) {
             loadSplashScreen();
         }
-
+        
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/SidePanel.fxml"));
             VBox box = loader.load();
@@ -107,7 +110,6 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
                     Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-
         } catch (IOException ex) {
             Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -115,15 +117,12 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
     @Override
     public void update(String src) {
-
         try {
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource(src));
-            root.getChildren().setAll(pane);
+            root1.getChildren().setAll(pane);
         } catch (IOException ex) {
             Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
 }

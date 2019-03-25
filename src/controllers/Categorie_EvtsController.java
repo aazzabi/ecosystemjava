@@ -39,6 +39,12 @@ public class Categorie_EvtsController implements Initializable {
     private Button ajouter;
     @FXML
     private Button supprimer;
+     @FXML
+    private Button annuler;
+      @FXML
+    private Button valider;
+     @FXML
+    private Button modifier;
     @FXML 
     private TableView<Categorie_Evts> catsTable;
     @FXML
@@ -57,6 +63,10 @@ public class Categorie_EvtsController implements Initializable {
 
         //ObservableList<Categorie_Evts> list_cats =catsTable.getItems();
   
+      supprimer.setVisible(false);
+      modifier.setVisible(false);
+      annuler.setVisible(false);
+      valider.setVisible(false); 
            afficher();
     
 } 
@@ -108,11 +118,58 @@ public class Categorie_EvtsController implements Initializable {
      
      }
      
+     @FXML
+     private void modifierCat(ActionEvent event)
+     {
+         textlibelle.setText(catsTable.getSelectionModel().getSelectedItem().getLibelle());
+         textbut.setText(catsTable.getSelectionModel().getSelectedItem().getBut());
+         valider.setVisible(true);
+         annuler.setVisible(true);
+         ajouter.setVisible(false);
+         
+     
+     }
+     
+     @FXML
+     private void validerModif(ActionEvent event)
+     {
+      if (!catsTable.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("modification d'une catégorie d'event");
+            alert.setHeaderText("Etes-vous sur de vouloir la modifier ?  "
+                    + catsTable.getSelectionModel().getSelectedItem().getLibelle() + "?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Categorie_EvtsService cs =new Categorie_EvtsService();
+                //System.out.println(catsTable.getSelectionModel().getSelectedItem().getLibelle());
+                //cs.updateCategorie_Evts(catsTable.getSelectionModel().getSelectedItem().getId());
+                Categorie_Evts c=new Categorie_Evts(catsTable.getSelectionModel().getSelectedItem().getId(),textlibelle.getText(),textbut.getText());
+                cs.updateCategorie_Evts(c);
+               // SendMail.sendmail("amine.mraihi@esprit.tn",
+                  //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
+                afficher();
+            }
+        }
+     
+         
+     }
+     
+     @FXML
+     private void annulerModif(ActionEvent event)
+     {
+     
+         textlibelle.setText("");
+         textbut.setText("");
+         valider.setVisible(false);
+         annuler.setVisible(false);
+         ajouter.setVisible(true);
+     }
      
       @FXML
     private void options(MouseEvent event)
     {
       supprimer.setVisible(true);
+      modifier.setVisible(true);
     
     }
 

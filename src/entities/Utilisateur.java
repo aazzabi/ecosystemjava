@@ -55,8 +55,10 @@ public class Utilisateur {
     private String ville;
     
     private String numtel;
+    
+    private String nomPropriete;
 
-    public Utilisateur(String username, String usernameCanonical, String email, String emailCanonical, String password, String nom, String prenom) {
+    public Utilisateur(String username, String usernameCanonical, String email, String emailCanonical, String password, String nom, String prenom, String nomPropriete) {
         this.username = username;
         this.usernameCanonical = usernameCanonical;
         this.email = email;
@@ -64,6 +66,7 @@ public class Utilisateur {
         this.password = password;
         this.nom = nom;
         this.prenom = prenom;
+        this.nomPropriete = nomPropriete;
     }
 
 
@@ -237,6 +240,14 @@ public class Utilisateur {
 
     public void setNumtel(String numtel) {
         this.numtel = numtel;
+    }
+
+    public String getNomPropriete() {
+        return nomPropriete;
+    }
+
+    public void setNomPropriete(String nomPropriete) {
+        this.nomPropriete = nomPropriete;
     }
 
 }
