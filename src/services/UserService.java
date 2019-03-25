@@ -55,7 +55,6 @@ public class UserService {
             
             status = pt.executeUpdate();
             System.out.println("succée");
-            cn.close();
         } catch (SQLException e) {
 
             e.printStackTrace();
