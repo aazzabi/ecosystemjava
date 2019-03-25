@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import services.Categorie_EvtsService;
 
 /**
@@ -37,7 +38,7 @@ public class Categorie_EvtsController implements Initializable {
     @FXML
     private Button ajouter;
     @FXML
-    private Button refresh;
+    private Button supprimer;
     @FXML 
     private TableView<Categorie_Evts> catsTable;
     @FXML
@@ -54,15 +55,26 @@ public class Categorie_EvtsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-     ajouter.setOnAction(e->{
-       
-     if (!textlibelle.getText().equals("") && !textbut.getText().equals("")
+        //ObservableList<Categorie_Evts> list_cats =catsTable.getItems();
+  
+           afficher();
+    
+} 
+    @FXML
+     private void ajouterCat(ActionEvent event)
+     {
+      if (!textlibelle.getText().equals("") && !textbut.getText().equals("")
                 ) {
          Categorie_EvtsService cs =new Categorie_EvtsService();
          Categorie_Evts c=new Categorie_Evts(textlibelle.getText(),textbut.getText());
          cs.addCategorie_Evts(c);
+         
+         textlibelle.setText("");
+         textbut.setText("");
             
          afficher();
+         
+         
 
         } else {
          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -70,14 +82,44 @@ public class Categorie_EvtsController implements Initializable {
          alert.setHeaderText("il ya des champs vides");
          Optional<ButtonType> result = alert.showAndWait();
         }
-         });
+        
          afficher();
-} 
+     }
      
+     @FXML
+     private void supprimerCat(ActionEvent event)
+     {
+         if (!catsTable.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("suppression d'une catégorie d'event");
+            alert.setHeaderText("Etes-vous sur de vouloir la supprimer ?  "
+                    + catsTable.getSelectionModel().getSelectedItem().getLibelle() + "?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Categorie_EvtsService cs =new Categorie_EvtsService();
+                System.out.println(catsTable.getSelectionModel().getSelectedItem().getLibelle());
+                cs.deleteCategorie_Evts(catsTable.getSelectionModel().getSelectedItem().getId());
+               // SendMail.sendmail("amine.mraihi@esprit.tn",
+                  //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
+                afficher();
+            }
+        }
+     
+     
+     }
+     
+     
+      @FXML
+    private void options(MouseEvent event)
+    {
+      supprimer.setVisible(true);
+    
+    }
 
     void afficher()
          {
-             list_cats = FXCollections.observableArrayList(cs.getAll());
+           list_cats = FXCollections.observableArrayList(cs.getAll());
+           
         libCol.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         libCol.cellFactoryProperty();
         

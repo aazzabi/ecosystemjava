@@ -9,17 +9,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Categorie_EvtsController">
    <children>
-      <TextField fx:id="textlibelle" layoutX="113.0" layoutY="40.0" />
-      <TextField fx:id="textbut" layoutX="390.0" layoutY="39.0" />
-      <Text layoutX="28.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libellé:" />
-      <Text layoutX="327.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="But:" />
-      <Button fx:id="ajouter" layoutX="645.0" layoutY="40.0" mnemonicParsing="false" text="Ajouter" />
-      <TableView fx:id="catsTable" layoutX="240.0" layoutY="203.0" prefHeight="200.0" prefWidth="200.0">
+      <TextField fx:id="textlibelle" layoutX="89.0" layoutY="440.0" promptText="Entrez un libelle.." />
+      <TextField fx:id="textbut" layoutX="376.0" layoutY="440.0" promptText="à but..?" />
+      <Text layoutX="25.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libellé:" />
+      <Text layoutX="337.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="But:" />
+      <Button fx:id="ajouter" layoutX="616.0" layoutY="440.0" mnemonicParsing="false" onAction="#ajouterCat" text="Ajouter" />
+      <TableView fx:id="catsTable" layoutX="110.0" layoutY="24.0" onMouseClicked="#options" prefHeight="369.0" prefWidth="504.0">
         <columns>
-          <TableColumn fx:id="libCol" prefWidth="75.0" text="Libelle" />
-          <TableColumn fx:id="butCol" prefWidth="75.0" text="But" />
+          <TableColumn fx:id="libCol" prefWidth="261.0" resizable="false" text="Libelle" />
+          <TableColumn fx:id="butCol" prefWidth="242.0" text="But" />
         </columns>
       </TableView>
-      <Button fx:id="refresh" layoutX="577.0" layoutY="485.0" mnemonicParsing="false" text="Rafraichir" />
+      <Button fx:id="supprimer" layoutX="447.0" layoutY="504.0" mnemonicParsing="false" text="Supprimer" visible="false" onAction="#supprimerCat" />
    </children>
 </AnchorPane>

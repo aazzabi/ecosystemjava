@@ -15,7 +15,7 @@ import java.util.List;
 public interface ICategorie_EvtsService {
     
     public void addCategorie_Evts(Categorie_Evts c);
-    public void deleteCategorie_Evts(Categorie_Evts c);
+    public void deleteCategorie_Evts(int id);
     public void updateCategorie_Evts(Categorie_Evts c);
    public List<Categorie_Evts> getAll();
     

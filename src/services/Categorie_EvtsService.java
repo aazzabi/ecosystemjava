@@ -42,8 +42,16 @@ public class Categorie_EvtsService implements ICategorie_EvtsService {
     }
 
     @Override
-    public void deleteCategorie_Evts(Categorie_Evts c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteCategorie_Evts(int id) {
+       String req = "delete from categorie_evts where id =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = cn.prepareStatement(req);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
