@@ -7,7 +7,7 @@ package entities;
 
 /**
  *
- * @author imene
+ * @author weepey
  */
 public class Participant {
     public enum StatutP{organisateur,invité,participant};

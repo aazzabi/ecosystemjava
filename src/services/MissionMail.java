@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author imene
+ * @author weepey
  */
 public class MissionMail {
     

@@ -20,7 +20,7 @@ import utils.ConnectionBase;
 
 /**
  *
- * @author imene
+ * @author weepey
  */
 public class InvitationMissionService {
     

@@ -7,7 +7,7 @@ package entities;
 
 /**
  *
- * @author imene
+ * @author weepey
  */
 public class InvitationMission {
     private int idIviteur ; 

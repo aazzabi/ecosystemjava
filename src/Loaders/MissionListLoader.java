@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Hiro
+ * @author weepey
  */
 public class MissionListLoader extends Application {
 

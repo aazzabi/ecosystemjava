@@ -7,7 +7,7 @@ package entities;
 
 /**
  *
- * @author imene
+ * @author weepey
  */
 public class Position {
      private int id;
