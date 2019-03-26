@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #242629;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FeedbacksSpaceController">
+    <stylesheets>
+        <URL value="@Styling.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="img_apprec" fitHeight="39.0" fitWidth="43.0" layoutX="456.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img_signal" fitHeight="39.0" fitWidth="43.0" layoutX="207.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="valid_btn" layoutX="211.0" layoutY="321.0" mnemonicParsing="false" onAction="#submitFeed" prefHeight="39.0" prefWidth="203.0" stylesheets="@Styling.css" text="Je partage mon avis ! " />
+      <TextArea fx:id="feedArea" layoutX="82.0" layoutY="199.0" prefHeight="111.0" prefWidth="461.0" promptText="Mettez votre commentaire ici ..." styleClass="postsVbox" stylesheets="@Styling.css" />
+      <Label layoutX="164.0" layoutY="67.0" prefHeight="39.0" prefWidth="298.0" text="Donnez votre avis ! " textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="30.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="signal_box" layoutX="132.0" layoutY="163.0" mnemonicParsing="false" text="signal" textFill="#fff3f3" />
+      <RadioButton fx:id="apprec_box" layoutX="327.0" layoutY="163.0" mnemonicParsing="false" text="appreciation" textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,25 @@
+/*
+ * Empty Stylesheet file.
+ */
+* {
+   -fx-secondary: #d7a9a9;
+   -fx-primarytext: #b2b2b2;
+}
+
+.loginText {
+   -fx-prompt-text-fill: #b2b2b2;
+   -jfx-focus-color: #d7a9a9;
+   -jfx-unfocus-color: #b2b2b2;
+}
+
+.loginLabel {
+   -fx-text-fill: #d7a9a9;
+}
+
+.loginBtn {
+   -fx-rippler-fill: -fx-secondary;
+   -fx-text-fill: -fx-primarytext;
+   -fx-border-color: -fx-primarytext;
+   -fx-border-radius: 20px;
+   -fx-background-radius: 20px;
+}

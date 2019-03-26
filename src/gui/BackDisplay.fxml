@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="globalStackPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BackDisplayController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="globalPane" prefHeight="692.0" prefWidth="1107.0" style="-fx-background-color: #242629;" styleClass="mainFxmlClass">
+          <stylesheets>
+              <URL value="@backdisplay.css" />
+          </stylesheets>
+         <children>
+            <AnchorPane layoutX="7.0" layoutY="-1.0" prefHeight="134.0" prefWidth="1206.0">
+               <effect>
+                  <Blend />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="-2.0" layoutY="114.0" prefHeight="578.0" prefWidth="166.0" />
+            <AnchorPane layoutX="164.0" layoutY="133.0" onMouseClicked="#HideFeeds" prefHeight="558.0" prefWidth="1048.0" style="-fx-background-color: #acacac;">
+               <children>
+                  <AnchorPane fx:id="paneFeedApp" layoutX="452.0" layoutY="133.0" prefHeight="256.0" prefWidth="366.0" />
+                  <JFXListView fx:id="eventList" layoutX="50.0" layoutY="163.0" prefHeight="500.0" prefWidth="650.0" />
+                  <Text layoutX="25.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mission Admin Board" textAlignment="CENTER" wrappingWidth="430.13671875">
+                     <font>
+                        <Font name="Times New Roman" size="41.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Text>
+                  <AnchorPane layoutX="834.0" layoutY="14.0" prefHeight="152.0" prefWidth="200.0" style="-fx-background-color: #bbbbbb;">
+                     <children>
+                        <JFXButton buttonType="RAISED" defaultButton="true" layoutX="11.0" layoutY="14.0" onAction="#showStat" prefHeight="58.0" prefWidth="178.0" ripplerFill="#210909" text="Statistique">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" defaultButton="true" layoutX="11.0" layoutY="72.0" onAction="#crudCatgorie" prefHeight="58.0" prefWidth="178.0" ripplerFill="#210909" text="Categories">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <effect>
+                        <Reflection topOpacity="0.27" />
+                     </effect>
+                  </AnchorPane>
+                  <JFXScrollPane fx:id="scrollePaneEvent" layoutX="25.0" layoutY="165.0" prefHeight="458.0" prefWidth="404.0" />
+                  <Text fx:id="textent" layoutX="46.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Missions" textAlignment="CENTER" wrappingWidth="382.0000108424574">
+                     <font>
+                        <Font name="Times New Roman" size="24.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Text>
+                  <AnchorPane layoutX="468.0" layoutY="163.0" prefHeight="208.0" prefWidth="340.0">
+                     <children>
+                        <ScrollPane fx:id="scrolDetail" hbarPolicy="NEVER" layoutX="-7.0" layoutY="-3.0" prefHeight="208.0" prefWidth="347.0" vbarPolicy="NEVER">
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                           <content>
+                              <GridPane fx:id="gridDetails" prefHeight="207.0" prefWidth="345.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="468.0" layoutY="432.0" prefHeight="208.0" prefWidth="340.0">
+                     <children>
+                        <ScrollPane fx:id="scrolDetailS" hbarPolicy="NEVER" layoutX="-7.0" layoutY="-3.0" prefHeight="208.0" prefWidth="347.0" vbarPolicy="NEVER">
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                           <content>
+                              <GridPane fx:id="gridDetailsS" prefHeight="207.0" prefWidth="345.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="paneResume" layoutX="834.0" layoutY="429.0" prefHeight="208.0" prefWidth="200.0" style="-fx-background-color: #bbbbbb;">
+                     <effect>
+                        <Reflection fraction="0.35" />
+                     </effect>
+                     <children>
+                        <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Résumé:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="13.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d&quot;appréciation : " />
+                        <Text layoutX="13.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de signalisation :" />
+                        <Text fx:id="nbrApp" layoutX="151.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.13671875">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="nbrSig" fill="#ff2828" layoutX="153.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.13671875">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="paneFeedSignal" layoutX="452.0" layoutY="419.0" prefHeight="227.0" prefWidth="366.0" />
+                  <AnchorPane fx:id="PaneStp" layoutX="437.0" layoutY="150.0" prefHeight="493.0" prefWidth="604.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

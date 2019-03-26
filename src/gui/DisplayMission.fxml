@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="692.0" prefWidth="1107.0" style="-fx-background-color: #242629;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DisplayEventController">
+   <children>
+      <BorderPane prefHeight="692.0" prefWidth="1107.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="65.0" prefWidth="1107.0" BorderPane.alignment="CENTER" />
+         </top>
+         <left>
+            <AnchorPane prefHeight="627.0" prefWidth="61.0" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="168.0" prefWidth="1047.0">
+                     <children>
+                        <JFXButton onAction="#DisplayAllEvents" prefHeight="46.0" prefWidth="168.0" style="-fx-background-color: #b2b2b2;" text="Afficher tout les missions" textFill="#9e2525">
+                           <HBox.margin>
+                              <Insets left="800.0" top="90.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <ScrollPane fx:id="scrollPaneEvent" layoutY="206.0" prefHeight="421.0" prefWidth="1023.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
