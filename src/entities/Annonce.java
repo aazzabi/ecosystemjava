@@ -64,18 +64,18 @@ public class Annonce  {
         this.user_id = user_id;
     }
 
-    public Annonce(String titre, String description,Double prix, String region, String etat, String photo,int likes, int views, int categorie_id, int user_id) {
+    public Annonce(String titre, String description,Double prix, String region, String photo, int categorie_id, int user_id) {
         this.titre = titre;
         this.description = description;
         this.date_creation = Date.valueOf(LocalDate.now());
         this.date_update = Date.valueOf(LocalDate.now());
         this.prix = prix;
         this.region = region;
-        this.etat = etat;
+        this.etat = "Disponible";
         this.photo = photo;
         this.photo_updated_at =Date.valueOf(LocalDate.now());
-        this.likes = likes;
-        this.views = views;
+        this.likes = 0;
+        this.views = 0;
         this.categorie_id = categorie_id;
         this.user_id = user_id;
     }

@@ -19,11 +19,11 @@ public class Session {
         idUser = currentUserID;
     }
 
-    public static int getCurrentSession() throws Exception {
+    public static int getCurrentSession() {
         if (idUser != -1) {
             return idUser;
         } else {
-            throw new Exception("Session has not started yet!");
+           return 0;
         }
     }
 

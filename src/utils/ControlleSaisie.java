@@ -8,6 +8,7 @@ package utils;
 import static controllers.InscriptionController.valideEmail;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import static tray.notification.NotificationType.ERROR;
@@ -27,6 +28,17 @@ public class ControlleSaisie {
             return true; 
         } else {
             txtField.setStyle("-fx-border-color: none ; -fx-border-width: 0px ; -fx-border-radius: 4;");
+            return false; 
+        }
+    }
+    public static boolean estVideCombo(ComboBox comboField, String nomField){
+        if(comboField.getSelectionModel().getSelectedItem()==null  ){
+            comboField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ; -fx-border-radius: 4;");
+            TrayNotification tray = new TrayNotification("Erreur", "Précisez votre "+ nomField , ERROR);
+            tray.showAndDismiss(Duration.millis(2000));
+            return true; 
+        } else {
+            comboField.setStyle("-fx-border-color: none ; -fx-border-width: 0px ; -fx-border-radius: 4;");
             return false; 
         }
     }

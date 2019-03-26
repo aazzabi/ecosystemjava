@@ -76,7 +76,7 @@ public class CategorieAnnonceService implements ICategorieAnnonceService{
 
     @Override
     public List<Categorie_Annonce> getall() {
-         String req = "select * from annonce";
+         String req = "select * from categorie_annonce";
         try {
             pt = cn.prepareStatement(req);
             rs = pt.executeQuery();

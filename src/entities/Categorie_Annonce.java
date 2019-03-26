@@ -45,7 +45,7 @@ public class Categorie_Annonce {
 
     @Override
     public String toString() {
-        return "Categorie_Annonce{" + "id=" + id + ", libelle=" + libelle + '}';
+        return libelle;
     }
     
     
