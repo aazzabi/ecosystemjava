@@ -7,6 +7,7 @@ package controllers;
 
 import entities.Reparateur;
 import entities.Utilisateur;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,6 +25,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import services.UserService;
@@ -32,6 +35,7 @@ import tray.notification.TrayNotification;
 import static tray.notification.NotificationType.ERROR;
 import static tray.notification.NotificationType.SUCCESS;
 import utils.ControlleSaisie;
+import utils.copyImages;
 
 /**
  * FXML Controller class
@@ -46,8 +50,6 @@ public class InscriptionController implements Initializable {
     private TextField prenomUser;
     @FXML
     private TextField emailUser;
-    @FXML
-    private TextField photoUser;
     @FXML
     private TextField pseudoUser;
     @FXML
@@ -72,7 +74,6 @@ public class InscriptionController implements Initializable {
     private TextField prenomReparateur;
     @FXML
     private TextField emailReparateur;
-    @FXML
     private TextField photoReparateur;
     @FXML
     private TextField pseudoReparateur;
@@ -104,6 +105,19 @@ public class InscriptionController implements Initializable {
     private static Pattern pattern = Pattern.compile(EMAIL_PATTERN);
     
     @FXML
+    private Button btnPhotoUser;
+    @FXML
+    private Text txtPhotoUser;
+    
+    private String absolutePathPhotoUser;
+    @FXML
+    private Button btnPhotoReparateur;
+    @FXML
+    private Text txtPhotoReparateur;
+    private String absolutePathPhotoReparateur;
+
+    
+    @FXML
     void goToLogin(ActionEvent event) throws SQLException, IOException, Exception {
         Node node = (Node)event.getSource();
         dialogStage = (Stage) node.getScene().getWindow();
@@ -113,6 +127,41 @@ public class InscriptionController implements Initializable {
         dialogStage.show();   
     }
     
+    @FXML
+    private void photoUserChooser(ActionEvent event){
+    FileChooser fileChooser = new FileChooser();
+         fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+         );
+        btnPhotoUser.setOnAction(e-> {
+            File choix = fileChooser.showOpenDialog(null);
+            if (choix != null) {
+                System.out.println(choix.getAbsolutePath());
+                absolutePathPhotoUser = choix.getAbsolutePath();
+                txtPhotoUser.setText(choix.getName());
+             } else {
+                System.out.println("Image introuvable");
+            }
+        });
+    }
+    @FXML
+    private void photoReparateurChooser(ActionEvent event){
+    FileChooser fileChooser = new FileChooser();
+         fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+         );
+        btnPhotoReparateur.setOnAction(e-> {
+            File choix = fileChooser.showOpenDialog(null);
+            if (choix != null) {
+                System.out.println(choix.getAbsolutePath());
+                absolutePathPhotoReparateur = choix.getAbsolutePath();
+                txtPhotoReparateur.setText(choix.getName());
+             } else {
+                System.out.println("Image introuvable");
+            }
+        });
+    }
+    
     @FXML 
     void addUser(ActionEvent event) throws SQLException, IOException, Exception {
     if ( !(ControlleSaisie.estVide(nomUser, "nom")) 
@@ -120,6 +169,7 @@ public class InscriptionController implements Initializable {
             && !(ControlleSaisie.estVide(emailUser, "email"))
             && !(ControlleSaisie.estVide(pseudoUser, "pseudo"))  
             && !(ControlleSaisie.estVide(telephoneUser, " téléphone ")) 
+            && !(txtPhotoUser.getText().equals(""))
             && !(ControlleSaisie.estVide(mdpUser, "mot de passe")) 
             && !(ControlleSaisie.estVide(confirmationMdpUser, "confirmation mdp")) 
             && !(ControlleSaisie.sontConforme( mdpUser, "mot de passe", confirmationMdpUser, "confirmation de mot de passe "))
@@ -133,7 +183,7 @@ public class InscriptionController implements Initializable {
             u.setEmailCanonical(emailUser.getText());
             u.setUsername(pseudoUser.getText());
             u.setUsernameCanonical(pseudoUser.getText());
-            u.setPhoto(photoUser.getText());
+            u.setPhoto(txtPhotoUser.getText());
             u.setRue(rueUser.getText());
             u.setVille(villeUser.getText());
             u.setNumtel(telephoneUser.getText());
@@ -142,7 +192,10 @@ public class InscriptionController implements Initializable {
             u.setEnabled(true);
             u.setDiscr("user");
             u.setRoles("a:0:{}");
-
+            
+            copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\ecosystemjava\\src\\res\\upload\\user\\");
+            copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\");
+            
             UserService.Inscription(u);
 
             TrayNotification tray = new TrayNotification("succès", "Réparateur ajouté", SUCCESS);
@@ -158,6 +211,7 @@ public class InscriptionController implements Initializable {
         && !(ControlleSaisie.estVide(pseudoReparateur, "pseudo")) 
         && !(ControlleSaisie.estVide(numTelReparateur, "téléphone")) 
         && !(ControlleSaisie.estVide(numFixeReparateur, "téléphone fixe")) 
+        && !(txtPhotoReparateur.getText().equals(""))
         && !(ControlleSaisie.estVide(specialiteReparateur, " specialité ")) 
         && !(ControlleSaisie.estVide(mdpReparateur, "mot de passe")) 
         && !(ControlleSaisie.estVide(confirmationMdpReparateur, "confirmation mdp"))
@@ -170,7 +224,8 @@ public class InscriptionController implements Initializable {
         r.setPrenom(prenomReparateur.getText());
         r.setEmail(emailReparateur.getText());
         r.setEmailCanonical(emailReparateur.getText());
-        r.setPhoto(photoReparateur.getText());r.setUsername(pseudoReparateur.getText());
+        r.setUsername(pseudoReparateur.getText());
+        r.setPhoto(txtPhotoReparateur.getText());
         r.setUsernameCanonical(pseudoReparateur.getText());
         r.setNumerotel(Integer.parseInt(numTelReparateur.getText()));
         r.setNumerofix(Integer.parseInt(numFixeReparateur.getText()));
@@ -183,6 +238,9 @@ public class InscriptionController implements Initializable {
         r.setDiscr("reparateur");
         r.setRoles("a:1:{i:0;s:15:\"ROLE_REPARATEUR\";}");
         
+        copyImages.deplacerVers(txtPhotoReparateur, absolutePathPhotoReparateur,"C:\\ecosystemjava\\src\\res\\upload\\user\\");
+        copyImages.deplacerVers(txtPhotoReparateur, absolutePathPhotoReparateur,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\");
+            
         UserService.InscriptionReparateur(r);
 
         TrayNotification tray = new TrayNotification("succès", "Réparateur ajouté", SUCCESS);
