@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author elgho
+ * @author weepey
  */
 public class MissionDetailsLoader extends Application{
 

@@ -7,7 +7,7 @@ package entities;
 
 /**
  *
- * @author imene
+ * @author weepey
  */
 public class FeedBack {
      private String type_avis; 
