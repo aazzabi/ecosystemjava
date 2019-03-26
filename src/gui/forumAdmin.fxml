@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<!--<AnchorPane id="AnchorPane" prefHeight="1003.0" prefWidth="1717.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ForumAdminController">
+    <stylesheets>
+        <URL value="@reparateurmainsc.css" />
+    </stylesheets>-->
+<AnchorPane id="AnchorPane" prefHeight="1003.0" prefWidth="1717.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ForumAdminController">
+      <TabPane layoutX="31.0" layoutY="66.0" prefHeight="904.0" prefWidth="1649.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="66.0">
+        <tabs>
+          <Tab text="Liste des publications">
+               <content>
+                  <TableView fx:id="tableListePublication">
+                    <columns>
+                      <TableColumn fx:id="idPublication" prefWidth="40.0" text="ID" />
+                      <TableColumn fx:id="datePublication" prefWidth="110.20000457763672" text="Date" />
+                      <TableColumn fx:id="titrePublication" prefWidth="267.199951171875" text="Titre" />
+                      <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="759.2001037597656" text="Description" />
+                      <TableColumn fx:id="etatPublication" prefWidth="139.2000732421875" text="Etat" />
+                      <TableColumn fx:id="categoriePublication" prefWidth="84.0" text="Catégorie" />
+                      <TableColumn fx:id="creeParPublication" prefWidth="245.60002441406255" text="Crée par" />
+                    </columns>
+                    <sortOrder>
+                        <fx:reference source="idPublication" />
+                        <fx:reference source="datePublication" />
+                        <fx:reference source="etatPublication" />
+                        <fx:reference source="creeParPublication" />
+                    </sortOrder>
+                  </TableView>
+               </content></Tab>
+          <Tab text="Listes des catégories" />
+        </tabs>
+      </TabPane>
+   <!--</children>-->
+</AnchorPane>
