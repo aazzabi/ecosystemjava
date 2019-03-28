@@ -6,8 +6,8 @@
 package entities;
 
 import java.util.ArrayList;
-import java.util.Date;
-import services.sessionService;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -26,8 +26,8 @@ public class PublicationForum {
 
     public PublicationForum() {  
         this.etat = "publié";
-        this.createdBy = sessionService.getCurrentSession();
-        this.createdAt = new Date();
+        this.createdBy = Session.getCurrentSession();
+        this.createdAt = Date.valueOf(LocalDate.now());
         this.nbrVues = 0;
         this.commentaires = new ArrayList();
     }

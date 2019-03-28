@@ -34,7 +34,7 @@ public class PublicationForumService {
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
                 PublicationForum p = new PublicationForum();
-                
+               
                 p.setId(rs.getInt("id"));
                 p.setTitre(rs.getString("titre"));
                 p.setDescription(rs.getString("description"));
@@ -52,5 +52,41 @@ public class PublicationForumService {
             System.err.println(ex.getMessage());
         }
         return pList;
+    }
+    
+    public static void deletePublication(int p)
+    {
+        String requete = "DELETE FROM publication_forum WHERE id=?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        try 
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setInt(1, p);
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("deleted"+ p);
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }  
+    }
+    
+    public static void archiverPublication(int p)
+    {
+        String requete = "UPDATE publication_forum SET etat= 'publié' WHERE id=?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        try 
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setInt(1, p);
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("archivé"+ p);
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }  
     }
 }

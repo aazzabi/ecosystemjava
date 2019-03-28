@@ -3,18 +3,11 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="995.0" prefWidth="1730.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainAdminScreenController">
     <children>
       <AnchorPane fx:id="root1" prefHeight="995.0" prefWidth="1730.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" prefHeight="995.0" prefWidth="241.0" visible="false" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="24.0" prefWidth="33.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" prefHeight="995.0" prefWidth="241.0" visible="false" />
       <JFXHamburger fx:id="hamburger" layoutX="1686.0" layoutY="14.0" />
     </children>
 </AnchorPane>

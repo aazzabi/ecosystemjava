@@ -6,6 +6,7 @@
 package controllers;
 
 import entities.PublicationForum;
+import entities.CategoriePub;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import services.CategoriePubService;
 import services.PublicationForumService;
 
 /**
@@ -46,20 +48,41 @@ public class ForumAdminController implements Initializable {
     private TableColumn<PublicationForum, Integer> creeParPublication;
     
     ObservableList<PublicationForum> obl = FXCollections.observableArrayList();
+    
+    
+    @FXML
+    private TableView<CategoriePub> tableListeCategorie;
+    @FXML
+    private TableColumn<CategoriePub, Integer> idCategorie;
+    @FXML
+    private TableColumn<CategoriePub, String> libelleCategorie;
+    @FXML
+    private TableColumn<CategoriePub, String> descriptionCategorie;
+    @FXML
+    private TableColumn<CategoriePub, String> domaineCategorie;
+    @FXML
+    private TableColumn<CategoriePub, Integer> nbrPublicationCategorie;
+    ObservableList<CategoriePub> obCateg = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        afficherAllPublications();
+        afficherAllCategories();
+    }  
+    
+    public void afficherAllPublications(){
         ArrayList<PublicationForum> le = (ArrayList<PublicationForum>) PublicationForumService.getAllPublications();
+
         for(PublicationForum e:le)
         {
             obl.add(e);
-        }
-                
+        }  
+        
         idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
-        datePublication.setCellValueFactory(new PropertyValueFactory<>("pub_created_at"));
+        datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
         titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
         etatPublication.setCellValueFactory(new PropertyValueFactory<>("etat"));
@@ -68,22 +91,53 @@ public class ForumAdminController implements Initializable {
         
         tableListePublication.setItems(obl);
         tableListePublication.setEditable(true);
-
-    }    
+    }
     
     
-//    @FXML
-//    private void supprimerevenement(ActionEvent event) {
-//        
-//        int id = table.getSelectionModel().getSelectedItem().getId();
-//        int index = table.getSelectionModel().getSelectedIndex(); 
-//        Evenement e = new Evenement();
-//        e.setId(id);
-//        service.serviceDeleteEvenement(e);
-//        
-//        table.getItems().remove(index);
-//    }
+    public void afficherAllCategories(){
+        ArrayList<CategoriePub> lc = (ArrayList<CategoriePub>) CategoriePubService.getAllCategoriePub();
+        for(CategoriePub c:lc)
+        {
+            obCateg.add(c);
+        }
+        idCategorie.setCellValueFactory(new PropertyValueFactory<>("id"));
+        libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
+        descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
+        domaineCategorie.setCellValueFactory(new PropertyValueFactory<>("domaine"));
+        nbrPublicationCategorie.setCellValueFactory(new PropertyValueFactory<>("nbPublication"));
 
+        tableListeCategorie.setItems(obCateg);
+        tableListeCategorie.setEditable(true);
+    }
+    
+    
+    @FXML
+    private void supprimerPublication(ActionEvent event) {
+        
+        int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
+        System.out.println(id);
+        int index = tableListePublication.getSelectionModel().getSelectedIndex(); 
+        PublicationForumService.deletePublication(id);
+        
+        tableListePublication.getItems().remove(index);
+    }
+    
+    @FXML
+    private void archiverPublication(ActionEvent event) {
+        int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
+        System.out.println(id);
+        int index = tableListePublication.getSelectionModel().getSelectedIndex(); 
+        PublicationForumService.archiverPublication(id);
+        
+        clearTable(tableListePublication);
+        afficherAllPublications();
+    }
+    
+    public void clearTable(TableView table) {
+       for ( int i = 0; i< table.getItems().size(); i++) {
+            table.getItems().clear();
+        } 
+    }
 
 //    public void onEditChanged(TableColumn.CellEditEvent<Evenement, String> event) {
 //        PublicationForum p = tableListePublication.getSelectionModel().getSelectedItem();
@@ -94,7 +148,7 @@ public class ForumAdminController implements Initializable {
 //    }
 
 
-   
+//    <TableColumn fx:id="col_adresse" onEditCommit="#onEditChanged3" prefWidth="70.0" text="adresse" />
 //    public void onEditChanged3(TableColumn.CellEditEvent<PublicationForum, String> event) {
 //        PublicationForum p = tableListePublication.getSelectionModel().getSelectedItem();
 //        e.setAdresse(event.getNewValue());
