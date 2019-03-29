@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/ecosystemjava/src/gui/ImageshowAnn.fxml</file>
-            <file>file:/C:/ecosystemjava/src/controllers/LoginController.java</file>
-            <file>file:/C:/ecosystemjava/src/services/CategorieAnnonceService.java</file>
-            <file>file:/C:/ecosystemjava/src/controllers/ImageshowAnnController.java</file>
+            <file>file:/C:/ecosystemjava/src/services/AnnonceService.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/AnnonceAdminController.java</file>
         </group>
     </open-files>

@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import services.AnnonceService;
 import utils.ConnectionBase;
 
 
@@ -32,7 +33,6 @@ public class Launcher extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-           
         }
         catch (Exception exp){
             exp.printStackTrace();

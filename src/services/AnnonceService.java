@@ -98,8 +98,8 @@ public class AnnonceService implements IAnnonceService {
     }
 
     @Override
-    public List<Annonce> getall() {
-           String req = "select * from annonce";
+        public List<Annonce> getall() {
+           String req = "SELECT a.* , c.libelle , Concat(u.nom,\" \",u.prenom) from annonce a, categorie_annonce c, user u WHERE a.categorie_id = c.id AND a.user_id= u.id";
         try {
             pt = cn.prepareStatement(req);
             rs = pt.executeQuery();
@@ -120,6 +120,8 @@ public class AnnonceService implements IAnnonceService {
                a.setPhoto_updated_at(rs.getDate(12));
                a.setLikes(rs.getInt(13));
                a.setViews(rs.getInt(14));
+               a.setLib(rs.getString(15));
+               a.setNomPrenom(rs.getString(16));
                annonces.add(a);   
             }
              System.out.println("affichage etablie");

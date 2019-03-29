@@ -151,6 +151,10 @@ public class AnnonceAdminController implements Initializable {
     private Button btn_likes;
     @FXML
     private Button btn_dislike;
+    @FXML
+    private TableColumn<Annonce, String> Cat_lib;
+    @FXML
+    private TableColumn<Annonce, String> user_lib;
 
     /**
      * Initializes the controller class.
@@ -171,6 +175,8 @@ public class AnnonceAdminController implements Initializable {
         photo.setCellValueFactory(new PropertyValueFactory<>("photo"));
         likes.setCellValueFactory(new PropertyValueFactory<>("likes"));
         views.setCellValueFactory(new PropertyValueFactory<>("views"));
+        Cat_lib.setCellValueFactory(new PropertyValueFactory<>("lib"));
+        user_lib.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
 
     }
 
@@ -297,7 +303,7 @@ public class AnnonceAdminController implements Initializable {
                     cmb_cat.getValue().getId(),
                     Session.getCurrentSession());
             copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-            copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+            copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
             annonceService.add(a);
 
         }
@@ -386,7 +392,7 @@ public class AnnonceAdminController implements Initializable {
         cmb_region.setValue(ListeAnnonce.getSelectionModel().getSelectedItem().getRegion());
         Categorie_Annonce a = categorieAnnonceService.displayByName(ListeAnnonce.getSelectionModel().getSelectedItem().getCategorie_id());
         cmb_cat.setValue(a);
-        img = new Image("file:/C:/ecosystemjava/src/res/Annonce/photo/" + txtAnnoncephoto.getText());
+        img = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + txtAnnoncephoto.getText());
         img_photo.setImage(img);
     }
     private void showCat()

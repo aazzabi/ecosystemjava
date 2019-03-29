@@ -43,7 +43,10 @@ public class Annonce  {
     private int categorie_id;
     
     private int user_id;
-
+    
+    private String lib ;
+    
+    private String nomPrenom;
     public Annonce() {
     }
 
@@ -79,6 +82,7 @@ public class Annonce  {
         this.categorie_id = categorie_id;
         this.user_id = user_id;
     }
+    
 
     public Annonce(String titre, String description, Double prix, String region, String photo, int categorie_id) {
         this.titre = titre;
@@ -201,10 +205,31 @@ public class Annonce  {
         this.user_id = user_id;
     }
 
+    public String getLib() {
+        return lib;
+    }
+
+    public void setLib(String lib) {
+        this.lib = lib;
+    }
+
+    public String getNomPrenom() {
+        return nomPrenom;
+    }
+
+    public void setNomPrenom(String nomPrenom) {
+        this.nomPrenom = nomPrenom;
+    }
+
     @Override
     public String toString() {
-        return "Annonce{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", date_creation=" + date_creation + ", date_update=" + date_update + ", prix=" + prix + ", region=" + region + ", etat=" + etat + ", photo=" + photo + ", photo_updated_at=" + photo_updated_at + ", likes=" + likes + ", views=" + views + ", categorie_id=" + categorie_id + ", user_id=" + user_id + '}';
+        return "Annonce{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", date_creation=" + date_creation + ", date_update=" + date_update + ", prix=" + prix + ", region=" + region + ", etat=" + etat + ", photo=" + photo + ", photo_updated_at=" + photo_updated_at + ", likes=" + likes + ", views=" + views + ", categorie_id=" + categorie_id + ", user_id=" + user_id + ", lib=" + lib + ", nomPrenom=" + nomPrenom + '}';
     }
+
+
+    
+
+  
     
     
 }
