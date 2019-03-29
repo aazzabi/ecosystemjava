@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import static tray.notification.NotificationType.ERROR;
 import tray.notification.TrayNotification;
@@ -21,6 +22,17 @@ import tray.notification.TrayNotification;
 public class ControlleSaisie {
     
     public static boolean estVide(TextField txtField, String nomField){
+        if(txtField.getText().equals("")){
+            txtField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ; -fx-border-radius: 4;");
+            TrayNotification tray = new TrayNotification("Erreur", "Précisez votre "+ nomField , ERROR);
+            tray.showAndDismiss(Duration.millis(2000));
+            return true; 
+        } else {
+            txtField.setStyle("-fx-border-color: none ; -fx-border-width: 0px ; -fx-border-radius: 4;");
+            return false; 
+        }
+    }
+    public static boolean estVidePhoto(Text txtField, String nomField){
         if(txtField.getText().equals("")){
             txtField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ; -fx-border-radius: 4;");
             TrayNotification tray = new TrayNotification("Erreur", "Précisez votre "+ nomField , ERROR);

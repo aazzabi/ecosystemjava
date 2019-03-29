@@ -74,18 +74,16 @@ public class AnnonceService implements IAnnonceService {
     @Override
     public boolean update(Annonce a, int id) {
         try {
-            String req = "update annonce SET categorie_id=?,user_id=?,titre=?, description =?,date_update =?,prix=?, region=?, etat=?,photo=?,photo_updated_at=? WHERE id=" + id;
+            String req = "update annonce SET categorie_id=?,titre=?, description =?,date_update =?,prix=?, region=?, photo=?,photo_updated_at=? WHERE id=" + id;
             pt = cn.prepareStatement(req);
             pt.setInt(1, a.getCategorie_id());
-            pt.setInt(2, a.getUser_id());
-            pt.setString(3, a.getTitre());
-            pt.setString(4, a.getDescription());
-            pt.setDate(5, Date.valueOf(LocalDate.now()));
-            pt.setDouble(6, a.getPrix());
-            pt.setString(7, a.getRegion());
-            pt.setString(8, a.getEtat());
-            pt.setString(9, a.getPhoto());
-            pt.setDate(10, Date.valueOf(LocalDate.now()));
+            pt.setString(2, a.getTitre());
+            pt.setString(3, a.getDescription());
+            pt.setDate(4, Date.valueOf(LocalDate.now()));
+            pt.setDouble(5, a.getPrix());
+            pt.setString(6, a.getRegion());
+            pt.setString(7, a.getPhoto());
+            pt.setDate(8, Date.valueOf(LocalDate.now()));
            if(pt.executeUpdate()>0)
            {
                System.out.println("update avce sucée");
