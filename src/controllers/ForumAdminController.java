@@ -14,14 +14,17 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import services.CategoriePubService;
 import services.PublicationForumService;
 import services.UserService;
@@ -79,6 +82,19 @@ public class ForumAdminController implements Initializable {
     @FXML
     private TextField txtRechercheCategorie;
     
+    @FXML
+    private Button btnDeleteCategorie;
+    @FXML
+    private Button btnViderFormulaireCategorie;
+    @FXML
+    private Button btnAddCategorie;
+    @FXML
+    private Button btnShowCategorie;
+    @FXML
+    private Button btnSupprimerPublication;
+    @FXML
+    private Button btnArchiverPublication;
+    
     /**
      * Initializes the controller class.
      */
@@ -86,6 +102,29 @@ public class ForumAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         afficherAllPublications();
         afficherAllCategories();
+        btnDeleteCategorie.setDisable(true);
+        btnViderFormulaireCategorie.setDisable(true);
+        btnShowCategorie.setDisable(true);
+        
+        btnSupprimerPublication.setDisable(true);
+        btnArchiverPublication.setDisable(true);
+        
+        tableListeCategorie.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btnDeleteCategorie.setDisable(false);
+                btnViderFormulaireCategorie.setDisable(false);
+                btnShowCategorie.setDisable(false);        
+            }
+        });
+        
+        tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btnArchiverPublication.setDisable(false);
+                btnSupprimerPublication.setDisable(false);
+            }
+        });
     }  
     
     public void afficherAllPublications(){
@@ -154,25 +193,6 @@ public class ForumAdminController implements Initializable {
         } 
     }
 
-//    public void onEditChanged(TableColumn.CellEditEvent<Evenement, String> event) {
-//        PublicationForum p = tableListePublication.getSelectionModel().getSelectedItem();
-//        p.setTitre(event.getNewValue());
-//        p.setId(PublicationForum.getSelectionModel().getSelectedItem().getId());
-//        EvenementDAO.updateEvenement(e);
-//        System.out.println(event.getNewValue());
-//    }
-
-
-//    <TableColumn fx:id="col_adresse" onEditCommit="#onEditChanged3" prefWidth="70.0" text="adresse" />
-//    public void onEditChanged3(TableColumn.CellEditEvent<PublicationForum, String> event) {
-//        PublicationForum p = tableListePublication.getSelectionModel().getSelectedItem();
-//        e.setAdresse(event.getNewValue());
-//        e.setId(PublicationForum.getSelectionModel().getSelectedItem().getId());
-//
-//        EvenementDAO.updateEvenement(e);
-//        System.out.println(event.getNewValue());
-//    }
-
     @FXML
     private void btnViderFormulaireCategorie(ActionEvent event) {
         txtLibelleCategorie.clear();
@@ -229,5 +249,47 @@ public class ForumAdminController implements Initializable {
         tableListeCategorie.setEditable(true);
         
     }
+
+
+    @FXML
+    private void btnShowCategorie(ActionEvent event) {
+    }
+
+    @FXML
+    private void enableButtons(MouseEvent event) {
+        
+    }
+
+    @FXML
+    private void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
+        CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
+        int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+        c.setLibelle(event.getNewValue());
+        c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
+        System.out.println(c);
+ 
+        CategoriePubService.updateCategorie(c);
+//        CategoriePubService.update(id, "libelle", c.getLibelle());
+        System.out.println(event.getNewValue());
+    }
     
+    @FXML
+    private void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
+        int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+        CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
+        c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
+
+        CategoriePubService.update(id, "description",event.getNewValue());
+        System.out.println(event.getNewValue());
+    }
+    
+    @FXML
+    private void onEditChangedDomaine(TableColumn.CellEditEvent<CategoriePub, String> event) {
+        int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+        CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
+        c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
+        CategoriePubService.update(id, "domaine",event.getNewValue());
+        System.out.println(event.getNewValue());
+    }
+
 }

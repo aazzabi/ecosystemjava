@@ -65,8 +65,6 @@ public class CategoriePubService {
             pst.setString(3, c.getDomaine());
            
             pst.executeUpdate();
-            
-            pst.close();
         }
         catch (SQLException ex)
         {
@@ -82,7 +80,6 @@ public class CategoriePubService {
             PreparedStatement pst = cn.prepareStatement(requete);
             pst.setInt(1, id);
             pst.executeUpdate();
-            pst.close();
         }
         catch (SQLException ex) 
         {
@@ -121,5 +118,40 @@ public class CategoriePubService {
             System.err.println(ex.getMessage());
         }
         return pList;
+    }
+
+    public static void update(int id , String colonne, String newValue) {
+        String requete = "UPDATE categorie_pub SET ?= '?' WHERE id=?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        try 
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setString(1, colonne);
+            pst.setString(2, newValue);
+            pst.setInt(3, id);
+            pst.executeUpdate();
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }  
+    }
+
+    public static void updateCategorie(CategoriePub c) {
+        int id = c.getId();
+        String requete = "UPDATE `categorie_pub` SET `libelle`=?,`description`=?,`domaine`=? WHERE `id`=?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        try 
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setString(1, c.getLibelle());
+            pst.setString(2, c.getDescription());
+            pst.setString(3, c.getDomaine());
+            pst.executeUpdate();
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }  
     }
 }

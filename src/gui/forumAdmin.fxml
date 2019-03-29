@@ -44,12 +44,12 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="878.0" prefWidth="175.0">
                                  <children>
-                                    <Button layoutX="33.0" layoutY="28.0" mnemonicParsing="false" onAction="#supprimerPublication" prefHeight="67.0" prefWidth="154.0" text="SUPPRIMER">
+                                    <Button fx:id="btnSupprimerPublication" layoutX="33.0" layoutY="28.0" mnemonicParsing="false" onAction="#supprimerPublication" prefHeight="67.0" prefWidth="154.0" text="SUPPRIMER">
                                        <font>
                                           <Font size="22.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="33.0" layoutY="132.0" mnemonicParsing="false" onAction="#archiverPublication" prefHeight="67.0" prefWidth="154.0" text="ARCHIVER">
+                                    <Button fx:id="btnArchiverPublication" layoutX="33.0" layoutY="132.0" mnemonicParsing="false" onAction="#archiverPublication" prefHeight="67.0" prefWidth="154.0" text="ARCHIVER">
                                        <font>
                                           <Font size="22.0" />
                                        </font>
@@ -70,12 +70,12 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <TableView fx:id="tableListeCategorie" prefHeight="864.0" prefWidth="1212.0">
+                                    <TableView fx:id="tableListeCategorie" editable="true" onMouseClicked="#enableButtons" prefHeight="864.0" prefWidth="1212.0">
                                        <columns>
                                           <TableColumn fx:id="idCategorie" prefWidth="70.399962246418" text="ID" />
-                                          <TableColumn fx:id="libelleCategorie" prefWidth="216.00000762939453" text="Libellé" />
-                                          <TableColumn fx:id="descriptionCategorie" prefWidth="592.7999572753906" text="Description" />
-                                          <TableColumn fx:id="domaineCategorie" prefWidth="250.39996337890625" text="Domaine" />
+                                          <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="216.00000762939453" text="Libellé" />
+                                          <TableColumn fx:id="descriptionCategorie" onEditCommit="#onEditChangedDescription" prefWidth="592.7999572753906" text="Description" />
+                                          <TableColumn fx:id="domaineCategorie" onEditCommit="#onEditChangedDomaine" prefWidth="250.39996337890625" text="Domaine" />
                                           <TableColumn fx:id="nbrPublicationCategorie" prefWidth="83.2000732421875" text="nb pub" />
                                        </columns>
                                     </TableView>
@@ -83,7 +83,7 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="868.0" prefWidth="462.0">
                                  <children>
-                                    <Button layoutX="171.0" layoutY="726.0" mnemonicParsing="false" onAction="#btnDeleteCategorie" prefHeight="58.0" prefWidth="149.0" text="SUPPRIMER">
+                                    <Button fx:id="btnDeleteCategorie" layoutX="63.0" layoutY="738.0" mnemonicParsing="false" onAction="#btnDeleteCategorie" prefHeight="58.0" prefWidth="149.0" text="SUPPRIMER">
                                        <font>
                                           <Font name="System Bold" size="21.0" />
                                        </font>
@@ -120,12 +120,12 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Button layoutX="32.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnViderFormulaireCategorie" prefHeight="58.0" prefWidth="159.0" text="VIDER">
+                                                <Button fx:id="btnViderFormulaireCategorie" layoutX="32.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnViderFormulaireCategorie" prefHeight="58.0" prefWidth="159.0" text="VIDER">
                                                    <font>
                                                       <Font name="System Bold" size="21.0" />
                                                    </font>
                                                 </Button>
-                                                <Button layoutX="244.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnAddCategorie" prefHeight="58.0" prefWidth="177.0" text="AJOUTER">
+                                                <Button fx:id="btnAddCategorie" layoutX="244.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnAddCategorie" prefHeight="58.0" prefWidth="177.0" text="AJOUTER">
                                                    <font>
                                                       <Font name="System Bold" size="21.0" />
                                                    </font>
@@ -134,6 +134,11 @@
                                           </AnchorPane>
                                       </items>
                                     </SplitPane>
+                                    <Button fx:id="btnShowCategorie" layoutX="261.0" layoutY="738.0" mnemonicParsing="false" onAction="#btnShowCategorie" prefHeight="58.0" prefWidth="149.0" text="AFFICHER">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Button>
                                  </children></AnchorPane>
                           </items>
                         </SplitPane>
