@@ -18,10 +18,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyEvent;
 import services.CategoriePubService;
 import services.PublicationForumService;
+import services.UserService;
+import static tray.notification.NotificationType.SUCCESS;
+import tray.notification.TrayNotification;
+import utils.ControlleSaisie;
 
 /**
  * FXML Controller class
@@ -63,7 +69,16 @@ public class ForumAdminController implements Initializable {
     @FXML
     private TableColumn<CategoriePub, Integer> nbrPublicationCategorie;
     ObservableList<CategoriePub> obCateg = FXCollections.observableArrayList();
-
+    
+    @FXML
+    private TextField txtLibelleCategorie;
+    @FXML
+    private TextField txtDescriptionCategorie;
+    @FXML
+    private TextField txtDomaineCategorie;
+    @FXML
+    private TextField txtRechercheCategorie;
+    
     /**
      * Initializes the controller class.
      */
@@ -157,5 +172,62 @@ public class ForumAdminController implements Initializable {
 //        EvenementDAO.updateEvenement(e);
 //        System.out.println(event.getNewValue());
 //    }
+
+    @FXML
+    private void btnViderFormulaireCategorie(ActionEvent event) {
+        txtLibelleCategorie.clear();
+        txtDescriptionCategorie.clear();
+        txtDomaineCategorie.clear();
+    }
+
+    @FXML
+    private void btnDeleteCategorie(ActionEvent event) {
+        int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+        int index = tableListeCategorie.getSelectionModel().getSelectedIndex(); 
+        CategoriePubService.delete(id);
+        
+        clearTable(tableListeCategorie);
+        afficherAllCategories();
+    }
+
+    @FXML
+    private void btnAddCategorie(ActionEvent event) {
+        if ( !(ControlleSaisie.estVide(txtLibelleCategorie, "nom")) 
+            && !(ControlleSaisie.estVide(txtDescriptionCategorie, "prenom")) 
+            && !(ControlleSaisie.estVide(txtDomaineCategorie, "prenom")) ){
+            CategoriePub c = new CategoriePub();
+
+            c.setLibelle(txtLibelleCategorie.getText());
+            c.setDescription(txtDescriptionCategorie.getText());
+            c.setDomaine(txtDomaineCategorie.getText());
+            
+            CategoriePubService.add(c);
+            clearTable(tableListeCategorie);
+            afficherAllCategories();
+
+            
+            TrayNotification tray = new TrayNotification("succès", "Catégorie ajoutée", SUCCESS);
+            tray.showAndWait();
+        }
+    }
+
+    @FXML
+    private void rechercherCategorie(KeyEvent event) {
+        clearTable(tableListeCategorie);
+        ArrayList<CategoriePub> lc = (ArrayList<CategoriePub>) CategoriePubService.rechercheKeyWord(txtRechercheCategorie.getText());
+        for(CategoriePub c:lc)
+        {
+            obCateg.add(c);
+        }
+        idCategorie.setCellValueFactory(new PropertyValueFactory<>("id"));
+        libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
+        descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
+        domaineCategorie.setCellValueFactory(new PropertyValueFactory<>("domaine"));
+        nbrPublicationCategorie.setCellValueFactory(new PropertyValueFactory<>("nbPublication"));
+
+        tableListeCategorie.setItems(obCateg);
+        tableListeCategorie.setEditable(true);
+        
+    }
     
 }
