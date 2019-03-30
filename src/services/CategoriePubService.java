@@ -53,6 +53,32 @@ public class CategoriePubService {
         return pList;
     }
 
+    public static CategoriePub getCategorieById(int id) {
+        String requete = "SELECT c.*, (SELECT COUNT(id) AS nb_pub FROM publication_forum p WHERE p.categorie_id=c.id) as nbPublication  From categorie_pub c where c.id=?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        CategoriePub c = new CategoriePub();
+
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                c.setId(rs.getInt("c.id"));
+                c.setLibelle(rs.getString("c.libelle"));
+                c.setDescription(rs.getString("c.description"));
+                c.setDomaine(rs.getString("c.domaine"));
+                c.setNbPublication(rs.getInt("nbPublication"));
+                c.toString();
+            }
+        }
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+        return c;
+    }
+
     public static void add(CategoriePub c) {
         String requete = "INSERT INTO categorie_pub(`libelle`, `description`, `domaine`) VALUES (?, ?, ?)";
         Connection cn = ConnectionBase.getInstance().getCnx();

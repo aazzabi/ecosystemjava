@@ -72,6 +72,8 @@ public class CategoriePub {
         this.nbPublication = nbPublication;
     }
 
-    
-    
+    @Override
+    public String toString() {
+        return "CategoriePub{" + "id=" + id + ", libelle=" + libelle + ", description=" + description + ", domaine=" + domaine + ", nbPublication=" + nbPublication + '}';
+    }
 }

@@ -70,7 +70,7 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <TableView fx:id="tableListeCategorie" editable="true" onMouseClicked="#enableButtons" prefHeight="864.0" prefWidth="1212.0">
+                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="864.0" prefWidth="1212.0">
                                        <columns>
                                           <TableColumn fx:id="idCategorie" prefWidth="70.399962246418" text="ID" />
                                           <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="216.00000762939453" text="Libellé" />

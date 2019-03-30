@@ -7,6 +7,7 @@ package controllers;
 
 import entities.PublicationForum;
 import entities.CategoriePub;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,8 +17,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -25,11 +30,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import services.CategoriePubService;
 import services.PublicationForumService;
 import services.UserService;
 import static tray.notification.NotificationType.SUCCESS;
 import tray.notification.TrayNotification;
+import utils.ConnectionBase;
 import utils.ControlleSaisie;
 
 /**
@@ -253,11 +261,54 @@ public class ForumAdminController implements Initializable {
 
     @FXML
     private void btnShowCategorie(ActionEvent event) {
+        try
+        {
+            int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+            CategoriePub cat = CategoriePubService.getCategorieById(id);
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/gui/showCategoriePublication.fxml"));
+            try {
+                Loader.load();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            ShowCategoriePublicationController c = Loader.getController();
+            c.afficherCategorie(cat);
+            Parent p = Loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(p));
+            stage.show();
+            event.consume();
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+        }
     }
-
+    
     @FXML
-    private void enableButtons(MouseEvent event) {
-        
+    private void btnShowPublication(ActionEvent event) {
+        try
+        {
+            int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+            CategoriePub cat = CategoriePubService.getCategorieById(id);
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/gui/showPublication.fxml"));
+            try {
+                Loader.load();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            ShowCategoriePublicationController c = Loader.getController();
+            c.afficherCategorie(cat);
+            Parent p = Loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(p));
+            stage.show();
+            event.consume();
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+        }
     }
 
     @FXML
@@ -269,7 +320,6 @@ public class ForumAdminController implements Initializable {
         System.out.println(c);
  
         CategoriePubService.updateCategorie(c);
-//        CategoriePubService.update(id, "libelle", c.getLibelle());
         System.out.println(event.getNewValue());
     }
     
@@ -290,6 +340,12 @@ public class ForumAdminController implements Initializable {
         c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
         CategoriePubService.update(id, "domaine",event.getNewValue());
         System.out.println(event.getNewValue());
+    }
+
+    private static class primaryStage {
+
+        public primaryStage() {
+        }
     }
 
 }
