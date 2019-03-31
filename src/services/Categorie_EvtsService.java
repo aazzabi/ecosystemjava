@@ -93,6 +93,23 @@ public class Categorie_EvtsService implements ICategorie_EvtsService {
         }
         return cats;
     }
-    
+   
+    private ResultSet rs;  
+   
+     public Categorie_Evts findById(int id_categorie)throws SQLException{ 
+        {
+            Categorie_Evts a = new Categorie_Evts();
+            String requete="select * from categorie_evts where id ='"+id_categorie+"';";
+           pst=cn.prepareStatement(requete);
+           rs=pst.executeQuery(requete); 
+            while(rs.next())
+            {
+                a=new Categorie_Evts(rs.getInt(1), rs.getString(2));
+            }
+            
+           return a;   
+        }
     
 }
+}
+     

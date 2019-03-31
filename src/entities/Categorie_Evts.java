@@ -27,6 +27,13 @@ public class Categorie_Evts {
    this.but = but;
     }
 
+    public Categorie_Evts(int id, String libelle) {
+        this.id = id;
+        this.libelle = libelle;
+    }
+   
+   
+
     public Categorie_Evts() {
     }
 
@@ -57,7 +64,7 @@ public class Categorie_Evts {
 
     @Override
     public String toString() {
-        return "Categorie_Evts{" + "id=" + id + ", libelle=" + libelle + ", but=" + but + '}';
+        return ""+libelle+"";
     }
     
     

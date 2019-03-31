@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -45,12 +46,17 @@ public class Categorie_EvtsController implements Initializable {
     private Button valider;
      @FXML
     private Button modifier;
+      @FXML
+    private Button ajout;
     @FXML 
     private TableView<Categorie_Evts> catsTable;
     @FXML
     private TableColumn<Categorie_Evts, String> libCol; 
     @FXML
     private TableColumn<Categorie_Evts, String> butCol;
+    @FXML
+    private TabPane tabpane;
+    
     
     private ObservableList<Categorie_Evts> list_cats = FXCollections.observableArrayList();
     Categorie_Evts c=new Categorie_Evts();
@@ -70,6 +76,14 @@ public class Categorie_EvtsController implements Initializable {
            afficher();
     
 } 
+    
+    @FXML
+    private void switchtab(ActionEvent event)
+    {
+    
+        tabpane.getSelectionModel().select(1);
+    
+    }
     @FXML
      private void ajouterCat(ActionEvent event)
      {
@@ -81,7 +95,7 @@ public class Categorie_EvtsController implements Initializable {
          
          textlibelle.setText("");
          textbut.setText("");
-            
+         tabpane.getSelectionModel().select(0);
          afficher();
          
          
@@ -121,6 +135,7 @@ public class Categorie_EvtsController implements Initializable {
      @FXML
      private void modifierCat(ActionEvent event)
      {
+         tabpane.getSelectionModel().select(1);
          textlibelle.setText(catsTable.getSelectionModel().getSelectedItem().getLibelle());
          textbut.setText(catsTable.getSelectionModel().getSelectedItem().getBut());
          valider.setVisible(true);
@@ -147,6 +162,12 @@ public class Categorie_EvtsController implements Initializable {
                 cs.updateCategorie_Evts(c);
                // SendMail.sendmail("amine.mraihi@esprit.tn",
                   //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
+                  textlibelle.setText("");
+                  textbut.setText("");
+                   annuler.setVisible(false);
+                   valider.setVisible(false); 
+                   ajouter.setVisible(true);
+                  tabpane.getSelectionModel().select(0);
                 afficher();
             }
         }
@@ -162,12 +183,14 @@ public class Categorie_EvtsController implements Initializable {
          textbut.setText("");
          valider.setVisible(false);
          annuler.setVisible(false);
-         ajouter.setVisible(true);
+         tabpane.getSelectionModel().select(0);
+        // ajouter.setVisible(true);
      }
      
       @FXML
     private void options(MouseEvent event)
     {
+        
       supprimer.setVisible(true);
       modifier.setVisible(true);
     
