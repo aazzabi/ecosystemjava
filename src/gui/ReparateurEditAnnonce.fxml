@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="561.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReparateurEditAnnonceController">
+    <stylesheets>
+        <URL value="@reparateureditannonce.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="a_image" fitHeight="327.0" fitWidth="242.0" layoutX="14.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
+      <Pane layoutX="266.0" layoutY="58.0" prefHeight="435.0" prefWidth="289.0" style="-fx-border-style: solid; -fx-border-radius: 8;">
+         <children>
+            <Pane layoutY="67.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="127.0" text="Description" />
+                  <JFXTextField fx:id="a_desc" layoutX="127.0" layoutY="18.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="127.0" text="Titre" />
+                  <JFXTextField fx:id="a_titre" layoutX="127.0" layoutY="18.0" promptText="Titre" />
+               </children>
+            </Pane>
+            <Pane layoutY="142.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="127.0" text="Catégorie" />
+                  <JFXComboBox fx:id="a_cat" layoutX="127.0" layoutY="18.0" prefHeight="25.0" prefWidth="135.0" />
+               </children>
+            </Pane>
+            <Pane layoutY="214.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="127.0" text="Photo" />
+               </children>
+            </Pane>
+            <Pane layoutY="285.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="91.0" text="Réparateur " />
+                  <JFXComboBox fx:id="a_rep" layoutX="126.0" layoutY="18.0" prefHeight="25.0" prefWidth="135.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="374.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutY="18.0" prefHeight="25.0" prefWidth="91.0" text="Meilleure offre :" />
+                  <JFXTextField fx:id="a_prix" layoutX="113.0" layoutY="18.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="32.0" layoutY="390.0">
+         <children>
+            <Label fx:id="a_id" prefHeight="25.0" prefWidth="127.0" text="Id :" />
+            <Label fx:id="a_datepub" layoutY="25.0" prefHeight="25.0" prefWidth="127.0" text="Date publication :" />
+            <Label fx:id="a_user" layoutY="50.0" prefHeight="25.0" prefWidth="127.0" text="Ajouté par :" />
+         </children>
+      </Pane>
+      <Label layoutX="168.0" layoutY="14.0" prefHeight="38.0" prefWidth="242.0" text="Modification d'une annonce" textAlignment="CENTER" textFill="#ee0606">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="309.0" layoutY="504.0">
+         <children>
+            <JFXButton prefHeight="25.0" prefWidth="91.0" ripplerFill="#f21111" text="Annuler " textFill="#da0909">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="112.0" onAction="#confirmer" prefHeight="25.0" prefWidth="91.0" text="Confirmer" textFill="#0e19eb">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -35,6 +35,9 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
     @FXML
     private AnchorPane root;
     
+        @FXML
+    private AnchorPane menu;
+    
     @FXML
     private AnchorPane root1;
 
@@ -42,7 +45,7 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
     private JFXHamburger hamburger;
 
     @FXML
-    private JFXDrawer drawer;
+    private  JFXDrawer drawer;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,6 +68,11 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
             transition.setRate(transition.getRate() * -1);
             transition.play();
+           
+            
+            
+            
+            
             if (drawer.visibleProperty().getValue() == false) {
                 drawer.setVisible(true);
             } else {
@@ -128,5 +136,6 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
         }
 
     }
+  
 
 }
