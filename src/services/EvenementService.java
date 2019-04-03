@@ -62,13 +62,32 @@ public class EvenementService implements IEvenementService{
 
     @Override
     public void deleteEvent(int id) {
-       
+         String req = "delete from evenement where id =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = cn.prepareStatement(req);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     
     @Override
     public void updateEvent(Evenement e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); 
+        String req = "update evenement set lieu='" +e.getLieu()+"' ,date='"+dateFormat.format(e.getDate()) +"' ,categorie='"+e.getId_categorie()+"' ,titre='"+e.getTitre()+"' ,description='"+e.getDescription()+"' where id = '" +e.getId()+"';  ";
+       try{
+     
+           st=cn.createStatement();
+           st.executeUpdate(req);
+           
+       }catch(SQLException ex)
+       {
+           System.out.println("erreur");
+       }
     }
 
     @Override
@@ -81,7 +100,7 @@ public class EvenementService implements IEvenementService{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Evenement e= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+                Evenement e= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
                 cats.add(e); 
             }
         } catch (SQLException ex) {
@@ -95,7 +114,7 @@ public class EvenementService implements IEvenementService{
               List<Evenement> cats = new ArrayList<>();
         String req = null;
          try {
-             req = "select * from evenement where created_by_id='" +Session.getCurrentSession()+"'; ";
+             req = "select * from evenement where created_by_id='2'; ";
          } catch (Exception ex) {
              Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -105,7 +124,7 @@ public class EvenementService implements IEvenementService{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Evenement e= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+                Evenement e= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
                 cats.add(e); 
             }
         } catch (SQLException ex) {
@@ -113,6 +132,8 @@ public class EvenementService implements IEvenementService{
         }
         return cats;
     }
+    
+    
     
     
 }

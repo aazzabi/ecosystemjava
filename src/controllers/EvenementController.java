@@ -42,6 +42,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import services.Categorie_EvtsService;
 import services.EvenementService;
 
@@ -84,10 +85,18 @@ public class EvenementController implements Initializable {
      private TextField titretext;
      @FXML
      private TextArea descriptiontext;
-      @FXML
+     @FXML
      private Button ajouter;
+     @FXML
+     private Button modifier;
+     @FXML
+     private Button supprimer;
       @FXML
      private Button ajout;
+      @FXML
+     private Button valider;
+      @FXML
+     private Button annuler;
       @FXML
      private Hyperlink myEvents;
       @FXML
@@ -138,6 +147,9 @@ public class EvenementController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(EvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        modifier.setVisible(false);
+         supprimer.setVisible(false);
+        
     }
     
     void afficher()
@@ -146,7 +158,7 @@ public class EvenementController implements Initializable {
               
            list_event = FXCollections.observableArrayList(es.getAll());
            
-           
+            
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         id.cellFactoryProperty();
         
@@ -262,6 +274,112 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
         creator.cellFactoryProperty();
        
         events.setItems(list_myEvents);
+        myEvents.setVisible(false);
          
+     }
+      @FXML
+    private void options(MouseEvent event)
+    {
+        if (!myEvents.isVisible())
+        {
+            modifier.setVisible(true);
+            supprimer.setVisible(true);}
+    }
+     @FXML
+     private void supprimerEvent(ActionEvent event)
+     {
+         if (!events.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("suppression d'un event");
+            alert.setHeaderText("Etes-vous sur de vouloir le supprimer ?  "
+                    + events.getSelectionModel().getSelectedItem().getTitre() + "?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                EvenementService es =new EvenementService(); 
+                System.out.println(events.getSelectionModel().getSelectedItem().getTitre());
+                es.deleteEvent(events.getSelectionModel().getSelectedItem().getId());
+               // SendMail.sendmail("amine.mraihi@esprit.tn",
+                  //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
+                afficher2();
+            }
+        }
+     
+     
+     }
+     
+     @FXML
+     private void modifierEvent(ActionEvent event)
+     {
+         tabpane.getSelectionModel().select(1);
+         titretext.setText(events.getSelectionModel().getSelectedItem().getTitre());
+         lieutext.setText(events.getSelectionModel().getSelectedItem().getLieu());
+       //datepicker.setDate();
+       categoriebox.getSelectionModel().select(-1);
+       categoriebox_id.getSelectionModel().select(-1);
+       do{
+           categoriebox.getSelectionModel().selectNext();
+           categoriebox_id.getSelectionModel().selectNext();
+         
+      }
+       while((int)categoriebox_id.getValue()!=events.getSelectionModel().getSelectedItem().getCategorie().getId());
+        categoriebox.getSelectionModel().selectNext();
+           categoriebox_id.getSelectionModel().selectNext();
+         descriptiontext.setText(events.getSelectionModel().getSelectedItem().getDescription());
+         valider.setVisible(true);
+         annuler.setVisible(true);
+         ajouter.setVisible(false);
+         
+     }
+     
+     @FXML
+     private void validerModif(ActionEvent event)
+     {
+
+      if (!events.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("modification d'un event");
+            alert.setHeaderText("Etes-vous sur de vouloir le modifier ?  "
+                    + events.getSelectionModel().getSelectedItem().getTitre() + "?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                EvenementService es =new EvenementService();
+                    System.out.println("aaaaaaaaaaaaaaaaaaaaaa");
+
+           int i = (int)categoriebox_id.getValue();
+
+       LocalDate localDate = datepicker.getValue();
+       Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+       Date date = Date.from(instant);
+         
+         Evenement e=new Evenement(events.getSelectionModel().getSelectedItem().getId(),lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date);
+
+         es.updateEvent(e);
+         lieutext.setText("");
+         titretext.setText("");
+         descriptiontext.setText("");   
+         categoriebox_id.getSelectionModel().select(0);
+         categoriebox.getSelectionModel().select(0);
+         afficher2();
+                 
+                   annuler.setVisible(false);
+                   valider.setVisible(false); 
+                   ajouter.setVisible(true);
+                  tabpane.getSelectionModel().select(0);
+                afficher2();
+            }
+        }
+}
+     
+     @FXML
+     private void annulerModif(ActionEvent event)
+     {
+     
+         lieutext.setText("");
+         titretext.setText("");
+         descriptiontext.setText("");   
+         categoriebox_id.getSelectionModel().select(0);
+         categoriebox.getSelectionModel().select(0);
+         afficher2();
+         tabpane.getSelectionModel().select(0);
      }
 }
