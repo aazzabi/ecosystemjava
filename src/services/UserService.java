@@ -66,10 +66,7 @@ public class UserService {
         int workload = 13;
         int status = 0;
         int statusRep = 0;
-<<<<<<< HEAD
-=======
         int statusGetLastId = 0;
->>>>>>> 407862265146bec5a9462c5345df3971e42d6914
 
         PreparedStatement pt, ptRep;
         String sql = "INSERT INTO user(username, username_canonical, email, email_canonical, enabled, password, roles, nom, prenom, photo, photo_updated_at, discr ) "
@@ -88,31 +85,6 @@ public class UserService {
             pt.setString(4,r.getEmail());
             pt.setInt(5,1);
             String mdp = BCrypt.hashpw(r.getPassword(), BCrypt.gensalt(workload));
-<<<<<<< HEAD
-            pt.setString(6, mdp.replaceFirst("2a", "2y"));
-            pt.setString(7, "a:1:{i:0;s:15:\"ROLE_REPARATEUR\";}");
-            pt.setString(8, r.getNom());
-            pt.setString(9, r.getPrenom());
-            pt.setString(10, r.getPhoto());
-            pt.setDate(11, java.sql.Date.valueOf(java.time.LocalDate.now()));
-            pt.setString(12, r.getVille());
-            pt.setString(13, r.getRue());
-            pt.setString(14, r.getNomPropriete());
-            pt.setString(15, r.getNumtel());
-            pt.setString(16, r.getDiscr());
-
-            ptRep = cn.prepareStatement(sqlRep);
-            ptRep.setString(1, r.getAdresse());
-            ptRep.setString(2, r.getNumerotel());
-            ptRep.setString(3, r.getNumerofix());
-            ptRep.setString(4, r.getSpecialite());
-            ptRep.setString(5, r.getHoraire());
-            ptRep.setString(6, r.getType());
-            ptRep.setString(7, r.getDescription());
-
-            status = pt.executeUpdate();
-            System.out.println("succée part 1");
-=======
             pt.setString(6,mdp.replaceFirst("2a", "2y"));
             pt.setString(7,"a:1:{i:0;s:15:\"ROLE_REPARATEUR\";}");
             pt.setString(8,r.getNom());
@@ -137,7 +109,6 @@ public class UserService {
             ptRep.setString(7,"reparateur");
             ptRep.setString(8,r.getDescription());
            
->>>>>>> 407862265146bec5a9462c5345df3971e42d6914
             statusRep = ptRep.executeUpdate();
             System.out.println("succée part 2");
         } catch (SQLException e) {
@@ -203,7 +174,6 @@ public class UserService {
         }
         return null;
     }
-<<<<<<< HEAD
 
     public static  Integer getIdRep(String nom) {
 
@@ -222,8 +192,6 @@ public class UserService {
         }
         return null;
     }
-
-=======
     
     public int getLastId(){
         int id = 0;
@@ -240,5 +208,4 @@ public class UserService {
         } 
         return id;
     }
->>>>>>> 407862265146bec5a9462c5345df3971e42d6914
 }

@@ -132,9 +132,4 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
             Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-<<<<<<< HEAD
-  
-
-=======
->>>>>>> 407862265146bec5a9462c5345df3971e42d6914
 }
