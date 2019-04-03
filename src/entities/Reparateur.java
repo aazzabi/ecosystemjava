@@ -12,8 +12,8 @@ package entities;
 public class Reparateur extends Utilisateur {
  
     private String adresse ;
-    private String numerofix;
-    private String numerotel;
+    private int numerofix;
+    private int numerotel;
     private String specialite;
     private String horaire;
     private String type;
@@ -26,7 +26,7 @@ public class Reparateur extends Utilisateur {
     public Reparateur() {
     }
 
-    public Reparateur(String username, String usernameCanonical, String email, String emailCanonical, String password, String nom, String prenom, String nomPropriete, String adresse, String numerofix, String numerotel, String specialite, String horaire, String type, String description) {
+    public Reparateur(String username, String usernameCanonical, String email, String emailCanonical, String password, String nom, String prenom, String nomPropriete, String adresse, int numerofix, int numerotel, String specialite, String horaire, String type, String description) {
         super(username, usernameCanonical, email, emailCanonical, password, nom, prenom, nomPropriete);
         this.adresse = adresse;
         this.numerofix = numerofix;
@@ -45,19 +45,19 @@ public class Reparateur extends Utilisateur {
         this.adresse = adresse;
     }
 
-    public String getNumerofix() {
+    public int getNumerofix() {
         return numerofix;
     }
 
-    public void setNumerofix(String numerofix) {
+    public void setNumerofix(int numerofix) {
         this.numerofix = numerofix;
     }
 
-    public String getNumerotel() {
+    public int getNumerotel() {
         return numerotel;
     }
 
-    public void setNumerotel(String numerotel) {
+    public void setNumerotel(int numerotel) {
         this.numerotel = numerotel;
     }
 
@@ -91,6 +91,12 @@ public class Reparateur extends Utilisateur {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        super.toString();
+        return "Reparateur{" + "adresse=" + adresse + ", numerofix=" + numerofix + ", numerotel=" + numerotel + ", specialite=" + specialite + ", horaire=" + horaire + ", type=" + type + ", description=" + description + '}';
     }
     
     

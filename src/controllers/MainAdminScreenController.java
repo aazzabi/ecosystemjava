@@ -52,7 +52,7 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
         if (!Launcher.isSplashLoaded) {
             loadSplashScreen();
         }
-
+        
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/SidePanel.fxml"));
             VBox box = loader.load();
@@ -118,7 +118,6 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
                     Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-
         } catch (IOException ex) {
             Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -126,16 +125,16 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
     @Override
     public void update(String src) {
-
         try {
-
             AnchorPane pane = FXMLLoader.load(getClass().getResource(src));
             root1.getChildren().setAll(pane);
         } catch (IOException ex) {
             Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 407862265146bec5a9462c5345df3971e42d6914
 }

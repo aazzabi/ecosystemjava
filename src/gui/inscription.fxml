@@ -40,7 +40,6 @@
                         <TextField fx:id="nomUser" layoutX="60.0" layoutY="13.0" prefHeight="26.0" prefWidth="434.0" />
                         <TextField fx:id="prenomUser" layoutX="72.0" layoutY="47.0" prefHeight="26.0" prefWidth="422.0" />
                         <TextField fx:id="emailUser" layoutX="59.0" layoutY="86.0" prefHeight="26.0" prefWidth="435.0" />
-                        <TextField fx:id="photoUser" layoutX="62.0" layoutY="125.0" prefHeight="26.0" prefWidth="432.0" />
                         <TextField fx:id="pseudoUser" layoutX="71.0" layoutY="163.0" prefHeight="26.0" prefWidth="423.0" />
                         <TextField fx:id="nomProprieteUser" layoutX="127.0" layoutY="203.0" prefHeight="26.0" prefWidth="369.0" />
                         <TextField fx:id="rueUser" layoutX="53.0" layoutY="243.0" prefHeight="26.0" prefWidth="441.0" />
@@ -58,6 +57,12 @@
                               <Font name="Bell MT" size="18.0" />
                            </font>
                         </Button>
+                        <Button fx:id="btnPhotoUser" layoutX="72.0" layoutY="126.0" mnemonicParsing="false" onAction="#photoUserChooser" prefHeight="26.0" prefWidth="148.0" text="Choisir un fichier" />
+                        <Text fx:id="txtPhotoUser" layoutX="236.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
             </content>
@@ -80,12 +85,13 @@
                         <TextField fx:id="nomReparateur" layoutX="60.0" layoutY="13.0" prefHeight="26.0" prefWidth="434.0" />
                         <TextField fx:id="prenomReparateur" layoutX="72.0" layoutY="47.0" prefHeight="26.0" prefWidth="422.0" />
                         <TextField fx:id="emailReparateur" layoutX="59.0" layoutY="86.0" prefHeight="26.0" prefWidth="435.0" />
-                        <TextField fx:id="photoReparateur" layoutX="62.0" layoutY="125.0" prefHeight="26.0" prefWidth="432.0" />
                         <TextField fx:id="pseudoReparateur" layoutX="71.0" layoutY="163.0" prefHeight="26.0" prefWidth="423.0" />
                         <TextField fx:id="adresseReparateur" layoutX="79.0" layoutY="203.0" prefHeight="26.0" prefWidth="418.0" />
                         <TextField fx:id="numTelReparateur" layoutX="90.0" layoutY="243.0" prefHeight="26.0" prefWidth="405.0" />
                         <TextField fx:id="numFixeReparateur" layoutX="97.0" layoutY="283.0" prefHeight="26.0" prefWidth="396.0" />
                         <TextField fx:id="specialiteReparateur" layoutX="98.0" layoutY="323.0" prefHeight="26.0" prefWidth="396.0" />
+                        <TextField fx:id="descriptionReparateur" layoutX="100.0" layoutY="364.0" prefHeight="26.0" prefWidth="396.0" />
+                        <TextField fx:id="horaireTravailReparateur" layoutX="150.0" layoutY="404.0" prefHeight="26.0" prefWidth="346.0" />
                         <PasswordField fx:id="mdpReparateur" layoutX="114.0" layoutY="443.0" prefHeight="26.0" prefWidth="379.0" />
                         <PasswordField fx:id="confirmationMdpReparateur" layoutX="204.0" layoutY="481.0" prefHeight="26.0" prefWidth="290.0" />
                         <Button fx:id="btnAddReparateur" layoutX="127.0" layoutY="533.0" mnemonicParsing="false" onAction="#addReparateur" prefHeight="31.0" prefWidth="120.0" text="Confirmer">
@@ -98,10 +104,14 @@
                               <Font name="Bell MT" size="18.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="descriptionReparateur" layoutX="100.0" layoutY="364.0" prefHeight="26.0" prefWidth="396.0" />
-                        <TextField fx:id="horaireTravailReparateur" layoutX="150.0" layoutY="404.0" prefHeight="26.0" prefWidth="346.0" />
                         <Text layoutX="11.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descirption : " />
                         <Text layoutX="10.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horaire de travail :" />
+                        <Button fx:id="btnPhotoReparateur" layoutX="65.0" layoutY="124.0" mnemonicParsing="false" onAction="#photoReparateurChooser" prefHeight="26.0" prefWidth="162.0" text="Choisir une photo" />
+                        <Text fx:id="txtPhotoReparateur" layoutX="236.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="247.19998168945312">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                </content>
