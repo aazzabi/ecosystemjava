@@ -11,26 +11,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="1003.0" prefWidth="1717.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ForumAdminController">
-      <children>
-      <TabPane layoutX="12.0" layoutY="95.0" prefHeight="898.0" prefWidth="1687.0" tabClosingPolicy="UNAVAILABLE">
+<AnchorPane id="AnchorPane" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ForumAdminController">
+      <children>   
+      <TabPane layoutX="12.0" layoutY="95.0" prefHeight="760" prefWidth="1367.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="PUBLICATION">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <SplitPane dividerPositions="0.8769322235434007" layoutX="3.0" layoutY="-1.0" prefHeight="880.0" prefWidth="1684.0">
+                        <SplitPane dividerPositions="0.8424153166421208" layoutX="3.0" layoutY="-1.0" prefHeight="728.0" prefWidth="1360.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="878.0" prefWidth="1494.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="725.0" prefWidth="1142.0">
                                  <children>
-                                    <TableView fx:id="tableListePublication" prefHeight="870.0" prefWidth="1470.0">
+                                    <TableView fx:id="tableListePublication" prefHeight="658.0" prefWidth="1145.0">
                                        <columns>
-                                          <TableColumn fx:id="datePublication" prefWidth="88.79998016357422" text="Date" />
-                                          <TableColumn fx:id="titrePublication" prefWidth="244.800048828125" text="Titre" />
-                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="747.2000122070312" text="Description" />
-                                          <TableColumn fx:id="etatPublication" prefWidth="112.0" text="Etat" />
-                                          <TableColumn fx:id="categoriePublication" prefWidth="166.4000244140625" text="Catégorie" />
-                                          <TableColumn fx:id="creeParPublication" prefWidth="111.199951171875" text="Crée par" />
+                                          <TableColumn fx:id="datePublication" prefWidth="68.00000077486038" text="Date" />
+                                          <TableColumn fx:id="titrePublication" prefWidth="224.0" text="Titre" />
+                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="520.800048828125" text="Description" />
+                                          <TableColumn fx:id="etatPublication" prefWidth="105.5999755859375" text="Etat" />
+                                          <TableColumn fx:id="categoriePublication" prefWidth="119.9998779296875" text="Catégorie" />
+                                          <TableColumn fx:id="creeParPublication" prefWidth="107.2000732421875" text="Crée par" />
                                        </columns>
                                        <sortOrder>
                                           <TableColumn fx:id="idPublication" prefWidth="40.0" text="ID" />
@@ -41,7 +41,7 @@
                                     </TableView>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="878.0" prefWidth="175.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="878.0" prefWidth="214.0">
                                  <children>
                                     <Button fx:id="btnShowPublication" layoutX="33.0" layoutY="28.0" mnemonicParsing="false" onAction="#showPublication" prefHeight="67.0" prefWidth="154.0" text="AFFICHER">
                                        <font>
@@ -65,76 +65,76 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <SplitPane dividerPositions="0.716733632710943" prefHeight="870.0" prefWidth="1687.0">
+                        <SplitPane dividerPositions="0.7264645875837947" prefHeight="723.0" prefWidth="1374.0">
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="864.0" prefWidth="1212.0">
+                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="717.0" prefWidth="1007.0">
                                        <columns>
-                                          <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="261.6000183224678" text="Libellé" />
-                                          <TableColumn fx:id="descriptionCategorie" onEditCommit="#onEditChangedDescription" prefWidth="636.0" text="Description" />
-                                          <TableColumn fx:id="domaineCategorie" onEditCommit="#onEditChangedDomaine" prefWidth="215.99993896484375" text="Domaine" />
-                                          <TableColumn fx:id="nbrPublicationCategorie" prefWidth="96.7999267578125" text="nb pub" />
+                                          <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="193.59991437196732" text="Libellé" />
+                                          <TableColumn fx:id="descriptionCategorie" onEditCommit="#onEditChangedDescription" prefWidth="568.7999267578125" text="Description" />
+                                          <TableColumn fx:id="domaineCategorie" onEditCommit="#onEditChangedDomaine" prefWidth="139.2000732421875" text="Domaine" />
+                                          <TableColumn fx:id="nbrPublicationCategorie" prefWidth="93.60009765625" text="nb pub" />
                                        </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="868.0" prefWidth="462.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="722.0" prefWidth="322.0">
                                  <children>
-                                    <Button fx:id="btnDeleteCategorie" layoutX="63.0" layoutY="738.0" mnemonicParsing="false" onAction="#btnDeleteCategorie" prefHeight="58.0" prefWidth="149.0" text="SUPPRIMER">
-                                       <font>
-                                          <Font name="System Bold" size="21.0" />
-                                       </font>
-                                    </Button>
-                                    <SplitPane dividerPositions="0.21386430678466076" orientation="VERTICAL" prefHeight="680.0" prefWidth="478.0">
+                                    <SplitPane dividerPositions="0.18498942917547567" orientation="VERTICAL" prefHeight="540.0" prefWidth="542.0">
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="449.0">
                                              <children>
-                                                <TextField fx:id="txtRechercheCategorie" layoutX="46.0" layoutY="52.0" onKeyPressed="#rechercherCategorie" onKeyReleased="#rechercherCategorie" prefHeight="42.0" prefWidth="310.0" />
-                                                <Text layoutX="45.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher :">
+                                                <TextField fx:id="txtRechercheCategorie" layoutX="27.0" layoutY="44.0" onKeyPressed="#rechercherCategorie" onKeyReleased="#rechercherCategorie" prefHeight="38.0" prefWidth="312.0" />
+                                                <Text layoutX="26.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher :">
                                                    <font>
-                                                      <Font size="22.0" />
+                                                      <Font size="14.0" />
                                                    </font>
                                                 </Text>
                                              </children>
                                           </AnchorPane>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="477.0">
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="411.0" prefWidth="541.0">
                                              <children>
-                                                <TextField fx:id="txtLibelleCategorie" layoutX="138.0" layoutY="64.0" prefHeight="39.0" prefWidth="310.0" />
-                                                <Text layoutX="14.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle :" wrappingWidth="78.2181396484375">
+                                                <TextField fx:id="txtLibelleCategorie" layoutX="23.0" layoutY="62.0" prefHeight="39.0" prefWidth="310.0" />
+                                                <Text layoutX="22.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle :" wrappingWidth="78.2181396484375">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="txtDescriptionCategorie" layoutX="138.0" layoutY="144.0" prefHeight="80.0" prefWidth="310.0" />
-                                                <Text layoutX="14.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" wrappingWidth="115.551513671875">
+                                                <TextField fx:id="txtDescriptionCategorie" layoutX="20.0" layoutY="152.0" prefHeight="80.0" prefWidth="310.0" />
+                                                <Text layoutX="19.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" wrappingWidth="115.551513671875">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="txtDomaineCategorie" layoutX="138.0" layoutY="265.0" prefHeight="39.0" prefWidth="310.0" />
-                                                <Text layoutX="14.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domaine :" wrappingWidth="98.48486328125">
+                                                <TextField fx:id="txtDomaineCategorie" layoutX="21.0" layoutY="276.0" prefHeight="39.0" prefWidth="310.0" />
+                                                <Text layoutX="18.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domaine :" wrappingWidth="98.48486328125">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Button fx:id="btnViderFormulaireCategorie" layoutX="32.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnViderFormulaireCategorie" prefHeight="58.0" prefWidth="159.0" text="VIDER">
+                                                <Button fx:id="btnViderFormulaireCategorie" layoutX="26.0" layoutY="343.0" mnemonicParsing="false" onAction="#btnViderFormulaireCategorie" prefHeight="36.0" prefWidth="119.0" text="VIDER">
                                                    <font>
-                                                      <Font name="System Bold" size="21.0" />
+                                                      <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
-                                                <Button fx:id="btnAddCategorie" layoutX="244.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnAddCategorie" prefHeight="58.0" prefWidth="177.0" text="AJOUTER">
+                                                <Button fx:id="btnAddCategorie" layoutX="194.0" layoutY="344.0" mnemonicParsing="false" onAction="#btnAddCategorie" prefHeight="38.0" prefWidth="106.0" text="AJOUTER">
                                                    <font>
-                                                      <Font name="System Bold" size="21.0" />
+                                                      <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
                                              </children>
                                           </AnchorPane>
                                       </items>
                                     </SplitPane>
-                                    <Button fx:id="btnShowCategorie" layoutX="261.0" layoutY="738.0" mnemonicParsing="false" onAction="#btnShowCategorie" prefHeight="58.0" prefWidth="149.0" text="AFFICHER">
+                                    <Button fx:id="btnShowCategorie" layoutX="196.0" layoutY="588.0" mnemonicParsing="false" onAction="#btnShowCategorie" prefHeight="22.0" prefWidth="135.0" text="AFFICHER">
                                        <font>
-                                          <Font name="System Bold" size="21.0" />
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="btnDeleteCategorie" layoutX="27.0" layoutY="586.0" mnemonicParsing="false" onAction="#btnDeleteCategorie" prefHeight="34.0" prefWidth="146.0" text="SUPPRIMER">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Button>
                                  </children></AnchorPane>

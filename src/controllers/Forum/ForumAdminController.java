@@ -253,7 +253,7 @@ public class ForumAdminController implements Initializable {
             int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
             CategoriePub cat = CategoriePubService.getCategorieById(id);
             FXMLLoader Loader = new FXMLLoader();
-            Loader.setLocation(getClass().getResource("/gui/showCategoriePublication.fxml"));
+            Loader.setLocation(getClass().getResource("/gui/forum/showCategoriePublication.fxml"));
             try {
                 Loader.load();
             } catch (IOException e) {
@@ -279,7 +279,7 @@ public class ForumAdminController implements Initializable {
             int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
             PublicationForum pub = PublicationForumService.getPublicationById(id);
             FXMLLoader Loader = new FXMLLoader();
-            Loader.setLocation(getClass().getResource("/gui/showPublication.fxml"));
+            Loader.setLocation(getClass().getResource("/gui/forum/showPublication.fxml"));
             try {
                 Loader.load();
             } catch (IOException e) {
