@@ -19,4 +19,11 @@ public class Notification {
         alert.setTitle(title);
         alert.showAndWait();
     }
+    
+    public static void errorBox(String infoMessage, String title) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.showAndWait();
+    }
 }
