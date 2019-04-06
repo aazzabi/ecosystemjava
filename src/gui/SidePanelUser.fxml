@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="855.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePanelController">
+<VBox prefHeight="855.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePanelUserController">
    <children>
-      <ImageView fitHeight="144.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="226.0" fitWidth="502.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/logoeco.png" />
          </image>
       </ImageView>
+      <HBox prefHeight="26.0" prefWidth="504.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="412.0" text="Utilisateur :" />
+            <JFXButton alignment="CENTER" prefHeight="25.0" prefWidth="140.0" text="Déconnexion" textAlignment="CENTER" textFill="#fc0d0d">
+               <font>
+                  <Font name="Georgia" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
       <JFXButton fx:id="b11" buttonType="RAISED" onAction="#navigate" prefHeight="114.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Acceuil" textAlignment="CENTER">
          <font>
             <Font size="23.0" />
@@ -36,21 +48,6 @@
          </font>
       </JFXButton>
       <JFXButton fx:id="b311" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Forum">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="b3111" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Commandes&amp;Livraisons">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="b312" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Signalisation">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="b313" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Utilisateur">
          <font>
             <Font size="23.0" />
          </font>

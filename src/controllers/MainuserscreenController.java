@@ -30,7 +30,7 @@ import ecosystemjava.Launcher;
  *
  * @author actar
  */
-public class MainAdminScreenController implements Initializable, ChangeCallback {
+public class MainuserscreenController implements Initializable, ChangeCallback {
 
     @FXML
     private AnchorPane root;
@@ -49,19 +49,19 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         System.out.println("Screen ADMIN");
+        System.out.println("Screen Utilisateur");
         if (!Launcher.isSplashLoaded) {
             loadSplashScreen();
         }
         
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/SidePanel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/SidePanelUser.fxml"));
             VBox box = loader.load();
-            SidePanelController controller = loader.getController();
+            SidePanelUserController controller = loader.getController();
             controller.setCallback((ChangeCallback) this);
             drawer.setSidePane(box);
         } catch (IOException ex) {
-            Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainuserscreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
@@ -90,7 +90,7 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
     private void loadSplashScreen() {
         try {
-            System.err.println("SPLASH admin");
+            System.err.println("SPLASH USER");
             Launcher.isSplashLoaded = true;
 
             StackPane pane = FXMLLoader.load(getClass().getResource(("/gui/Splash.fxml")));
@@ -114,14 +114,14 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
             fadeOut.setOnFinished((e) -> {
                 try {
-                    AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/gui/mainadminscreen.fxml")));
+                    AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/gui/mainuserscreen.fxml")));
                     root.getChildren().setAll(parentContent);
                 } catch (IOException ex) {
-                    Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MainuserscreenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
         } catch (IOException ex) {
-            Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainuserscreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -131,7 +131,7 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
             AnchorPane pane = FXMLLoader.load(getClass().getResource(src));
             root1.getChildren().setAll(pane);
         } catch (IOException ex) {
-            Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainuserscreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

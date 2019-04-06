@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reparateur.ReparateurMainScController">
+    <stylesheets>
+        <URL value="@reparateurmainsc.css" />
+    </stylesheets>
+   <children>
+      <JFXTabPane layoutY="-1.0" prefHeight="1360" prefWidth="760">
+         <tabs>
+            <Tab text="Announce de réparation">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableviewan" editable="true" layoutX="10.0" layoutY="53.0" prefHeight="400" prefWidth="400">
+                          <columns>
+                            <TableColumn fx:id="a_col_img" prefWidth="127.0" text="Image" />
+                            <TableColumn fx:id="a_col_id" prefWidth="129.0" text="Id" />
+                              <TableColumn fx:id="a_col_titre" prefWidth="129.0" text="Titre" />
+                              <TableColumn fx:id="a_col_desc" prefWidth="130.0" text="Description" />
+                              <TableColumn fx:id="a_col_cat" prefWidth="132.0" text="Catégorie" />
+                              <TableColumn fx:id="a_col_date" prefWidth="149.0" text="Date publication" />
+                              <TableColumn fx:id="a_col_user" prefWidth="147.0" text="Utilisateur" />
+                              <TableColumn fx:id="a_col_rep" minWidth="0.0" prefWidth="133.0" text="Réparateur" />
+                              <TableColumn fx:id="a_col_prix" editable="false" prefWidth="296.0" text="Dernier prix proposé" />
+                          </columns>
+                        </TableView>
+                        <JFXButton layoutX="1400.0" layoutY="96.0" onAction="#edit" prefHeight="80.0" prefWidth="256.0" ripplerFill="#da1616" text="Modifier">
+                           <font>
+                              <Font name="Georgia Bold" size="28.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="1410.0" layoutY="224.0" onAction="#supprimer" prefHeight="76.0" prefWidth="254.0" ripplerFill="#da1616" text="Supprimer">
+                           <font>
+                              <Font name="Georgia Bold" size="28.0" />
+                           </font>
+                        </JFXButton>
+                        <Label layoutX="501.0" layoutY="22.0" text="Recherche :" />
+                        <JFXButton layoutX="100" layoutY="324.0" prefHeight="83.0" prefWidth="296.0" text="Exporter En PDF">
+                           <font>
+                              <Font name="Georgia Bold" size="28.0" />
+                           </font>
+                        </JFXButton>
+                        <VBox layoutX="19.0" layoutY="681.0" prefHeight="265.0" prefWidth="356.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="56.0" prefWidth="360.0" text="Pourcentage des réparateur pro" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="246.0" styleClass="round-box">
+                                 <children>
+                                    <ProgressIndicator minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="358.0" progress="0.46" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <JFXTextField fx:id="search" layoutX="591.0" layoutY="19.0" prefHeight="26.0" prefWidth="196.0" />
+                        <VBox layoutX="523.0" layoutY="684.0" prefHeight="265.0" prefWidth="389.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="56.0" prefWidth="390.0" text="Pourcentage de réparation effectué" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="246.0" styleClass="round-box">
+                                 <children>
+                                    <ProgressIndicator minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="393.0" progress="0.46" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="1084.0" layoutY="684.0" prefHeight="265.0" prefWidth="271.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="56.0" prefWidth="296.0" text="Nombre des announce poster" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="246.0" styleClass="round-box">
+                                 <children>
+                                    <ProgressIndicator minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="276.0" progress="0.46" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Les réparations en cours">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Demande de compte professionel">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="945.0" prefWidth="1662.0" />
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>

@@ -5,7 +5,7 @@
  */
 package services;
 
-import entities.Reparateur;
+import entities.reparateur.Reparateur;
 import entities.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,7 +52,7 @@ public class UserService {
             pt.setString(14, u.getNomPropriete());
             pt.setString(15, u.getNumtel());
             pt.setString(16, u.getDiscr());
-            
+
             status = pt.executeUpdate();
             System.out.println("succée");
         } catch (SQLException e) {
@@ -154,8 +154,6 @@ public class UserService {
         return list;
     }
 
-    
-    
     public Utilisateur login(Utilisateur u) {
 
         try {
@@ -170,6 +168,24 @@ public class UserService {
                 u.setPassword(rs.getString("password"));
                 u.setId(rs.getInt(1));
                 return u;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static  Integer getIdRep(String nom) {
+
+        try {
+            Connection cn = ConnectionBase.getInstance().getCnx();
+            String loginQry = "SELECT * FROM user WHERE nom = ? ";
+            PreparedStatement ste = cn.prepareStatement(loginQry);
+            ste.setString(1, nom);
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()) {
+            int id = rs.getInt("id");
+             return id;
             }
         } catch (SQLException e) {
             e.printStackTrace();
