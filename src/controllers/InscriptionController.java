@@ -144,6 +144,8 @@ public class InscriptionController implements Initializable {
             }
         });
     }
+    // hedhi fonction mta3 l boutton , fiha l recuperation mta3 l fichier , w ena 3amel appart champ txtPhotoUser, 3amel un autre champ esmou absolutePathPhotoUser bech n recuperii le champ kemel ( nest7a9ou fel copie )
+    // donc fel base de donées n sob l txtPhotoUser fhamtni ? l absolutepath winou fel mehouch ma7tout fel FXML , ena zedtou l fou9 , amma ma3andouch position, string 3adi  , parametre simple ;) behi w l dossier upload win
     @FXML
     private void photoReparateurChooser(ActionEvent event){
     FileChooser fileChooser = new FileChooser();
@@ -193,6 +195,7 @@ public class InscriptionController implements Initializable {
             u.setDiscr("user");
             u.setRoles("a:0:{}");
             
+            //ena na5dem 3la dossier www/wamp/ enoutou peut etre wamp64 donc chouf badel selon l dossier ey ama famech dossier upload houni yetkayed fihN, yesn3ou ki yabda mafamech mech mochkol tkt :p okeythnxx  :* pas de quoi , nkhalik tjareb hedhi ba3ed ken famma haja on rreprend okiii
             copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\ecosystemjava\\src\\res\\upload\\user\\");
             copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\");
             

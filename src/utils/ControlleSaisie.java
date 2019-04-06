@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import static tray.notification.NotificationType.ERROR;
 import tray.notification.TrayNotification;
-
+ 
 /**
  *
  * @author arafe

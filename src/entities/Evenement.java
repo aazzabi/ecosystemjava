@@ -105,13 +105,14 @@ public class Evenement {
         this.nbvues = nbvues;
     }
 
-    public Evenement(int id, String lieu, int id_categorie, String titre, String description, Date date) {
+    public Evenement(int id, String lieu, int id_categorie, String titre, String description, Date date,String cover) {
         this.id = id;
         this.lieu = lieu;
         this.date = date;
         this.id_categorie = id_categorie;
         this.titre = titre;
         this.description = description;
+        this.cover=cover;
     }
     
 
@@ -137,7 +138,17 @@ public class Evenement {
         this.nbvues = nbvues;
         this.date=date;
     }
-    
+   
+
+    public Evenement(String lieu, int id_categorie, String titre, String description, Date date, String cover) {
+        this.lieu = lieu;
+        this.date = date;
+        this.id_categorie = id_categorie;
+        this.titre = titre;
+        this.description = description;
+        this.cover = cover;
+    }
+
     
     
     public int getId() {

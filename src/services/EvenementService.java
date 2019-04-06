@@ -42,7 +42,7 @@ public class EvenementService implements IEvenementService{
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); 
        //Date d=new Date();
          try {
-             request = "INSERT INTO evenement ( created_by_id,lieu,date,categorie,titre, description) VALUES ( '"+Session.getCurrentSession()+"','"+e.getLieu()+"','"+dateFormat.format(e.getDate()) +"','"+e.getId_categorie()+"' ,'"+e.getTitre()+"', '"+e.getDescription()+"');";
+             request = "INSERT INTO evenement ( created_by_id,lieu,date,categorie,titre, description,cover,cover_updated_at) VALUES ( '"+Session.getCurrentSession()+"','"+e.getLieu()+"','"+dateFormat.format(e.getDate()) +"','"+e.getId_categorie()+"' ,'"+e.getTitre()+"', '"+e.getDescription()+"' ,'"+e.getCover()+"','"+java.sql.Date.valueOf(java.time.LocalDate.now())+"');";
              //  req = "insert into evenement (created_by_id,lieu,categorie,titre,description) values (2,'"+e.getLieu()+"',"+e.getId_categorie()+",'"+ e.getTitre()+"','"+ e.getDescription()+"');";
          } catch (Exception ex) {
              Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,7 +78,7 @@ public class EvenementService implements IEvenementService{
     public void updateEvent(Evenement e) {
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); 
-        String req = "update evenement set lieu='" +e.getLieu()+"' ,date='"+dateFormat.format(e.getDate()) +"' ,categorie='"+e.getId_categorie()+"' ,titre='"+e.getTitre()+"' ,description='"+e.getDescription()+"' where id = '" +e.getId()+"';  ";
+        String req = "update evenement set lieu='" +e.getLieu()+"' ,date='"+dateFormat.format(e.getDate()) +"' ,categorie='"+e.getId_categorie()+"' ,titre='"+e.getTitre()+"' ,description='"+e.getDescription()+"' ,cover='"+e.getCover()+"' ,cover_updated_at='"+java.sql.Date.valueOf(java.time.LocalDate.now())+"' where id = '" +e.getId()+"';  ";
        try{
      
            st=cn.createStatement();
@@ -133,7 +133,7 @@ public class EvenementService implements IEvenementService{
         return cats;
     }
     
-    // donner son experience a la cloture de l'/ QR code si event lucratif../stat sur categorie d'event/mail au participants si un event modifié 
+    // donner son experience a la cloture de l'event/ QR code si event lucratif../stat sur categorie d'event/mail au participants si un event modifié 
     //lieu avec maps +controle saisie date
     
     

@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTextField;
 import entities.Categorie_Evts;
 import entities.Evenement;
 import entities.Session;
+import java.io.File;
 import static java.lang.System.in;
 import java.net.URL;
 import java.time.Instant;
@@ -43,8 +44,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import services.Categorie_EvtsService;
 import services.EvenementService;
+import utils.copyImages;
 
 /**
  * FXML Controller class
@@ -105,6 +109,11 @@ public class EvenementController implements Initializable {
      private JFXButton search;
       @FXML
      private JFXTextField searchbar;
+      @FXML
+      private Text txtPhoto;
+      @FXML
+      private Button btnPhoto;
+      private String absolutePathPhoto;
     
      
       
@@ -210,8 +219,10 @@ public class EvenementController implements Initializable {
 Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
 Date date = Date.from(instant);
 System.out.println(localDate + "\n" + instant + "\n" + date);
-         Evenement c=new Evenement(lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date);
-         
+         Evenement c=new Evenement(lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date,txtPhoto.getText());
+         txtPhoto.setVisible(false);
+         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\ecosystemjava\\src\\res\\upload\\event\\");
+         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\event\\photo\\");
          cs.addEvent(c);
          
          lieutext.setText("");
@@ -219,6 +230,8 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
          descriptiontext.setText("");   
          categoriebox_id.getSelectionModel().select(0);
          categoriebox.getSelectionModel().select(0);
+         txtPhoto.setVisible(false);
+        
          afficher();
          
          
@@ -351,8 +364,9 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
        Date date = Date.from(instant);
          
-         Evenement e=new Evenement(events.getSelectionModel().getSelectedItem().getId(),lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date);
-
+         Evenement e=new Evenement(events.getSelectionModel().getSelectedItem().getId(),lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date,txtPhoto.getText());
+         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\ecosystemjava\\src\\res\\upload\\event\\");
+         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\event\\photo\\");
          es.updateEvent(e);
          lieutext.setText("");
          titretext.setText("");
@@ -381,5 +395,24 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
          categoriebox.getSelectionModel().select(0);
          afficher2();
          tabpane.getSelectionModel().select(0);
+     }
+     
+     @FXML
+     private void photoChooser(ActionEvent event)
+     {
+          FileChooser fileChooser = new FileChooser();
+         fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+         );
+        btnPhoto.setOnAction(e-> {
+            File choix = fileChooser.showOpenDialog(null);
+            if (choix != null) {
+                System.out.println(choix.getAbsolutePath());
+                absolutePathPhoto = choix.getAbsolutePath();
+                txtPhoto.setText(choix.getName());
+             } else {
+                System.out.println("Image introuvable");
+            }
+        });
      }
 }
