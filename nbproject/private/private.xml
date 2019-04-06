@@ -8,6 +8,17 @@
             <file>file:/C:/ecosystemjava/src/services/AnnonceService.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/AnnonceAdminController.java</file>
             <file>file:/C:/ecosystemjava/src/gui/annonceadmin.css</file>
+            <file>file:/C:/ecosystemjava/src/controllers/SidePanelController.java</file>
+            <file>file:/C:/ecosystemjava/src/res/logoeco.png</file>
+            <file>file:/C:/ecosystemjava/src/ecosystemjava/Launcher.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/LoginController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/MainAdminScreenController.java</file>
+            <file>file:/C:/ecosystemjava/src/entities/Session.java</file>
+            <file>file:/C:/ecosystemjava/src/entities/Utilisateur.java</file>
+            <file>file:/C:/ecosystemjava/src/iservices/IUserService.java</file>
+            <file>file:/C:/ecosystemjava/src/services/UserService.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/ChangeCallback.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/SplashController.java</file>
         </group>
     </open-files>
 </project-private>

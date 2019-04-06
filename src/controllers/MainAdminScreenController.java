@@ -128,6 +128,7 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
     @Override
     public void update(String src) {
         try {
+
             AnchorPane pane = FXMLLoader.load(getClass().getResource(src));
             root1.getChildren().setAll(pane);
         } catch (IOException ex) {

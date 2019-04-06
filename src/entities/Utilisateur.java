@@ -13,9 +13,9 @@ import java.util.Date;
  */
 public class Utilisateur {
     
-    private Integer id;
+    private int id;
     
-    private Integer group_id;
+    private int group_id;
  
     private String username;
    
@@ -69,24 +69,31 @@ public class Utilisateur {
         this.nomPropriete = nomPropriete;
     }
 
+    public Utilisateur(int id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+    
+    
+
 
 
     public Utilisateur() {
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getGroup_id() {
+    public int getGroup_id() {
         return group_id;
     }
 
-    public void setGroup_id(Integer group_id) {
+    public void setGroup_id(int group_id) {
         this.group_id = group_id;
     }
 
@@ -248,6 +255,11 @@ public class Utilisateur {
 
     public void setNomPropriete(String nomPropriete) {
         this.nomPropriete = nomPropriete;
+    }
+
+    @Override
+    public String toString() {
+        return ""+ username + "";
     }
 
 }

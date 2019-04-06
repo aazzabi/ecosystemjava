@@ -6,6 +6,8 @@
 package services;
 
 import entities.reparateur.Reparateur;
+import entities.Categorie_Evts;
+import entities.reparateur.Reparateur;
 import entities.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +25,10 @@ import utils.ConnectionBase;
  * @author anasc
  */
 public class UserService {
+    
+    Connection cn = ConnectionBase.getInstance().getCnx();
+    ResultSet rs;  
+    PreparedStatement pst;
 
     public static int Inscription(Utilisateur u) {
         int workload = 13;
@@ -208,4 +214,19 @@ public class UserService {
         } 
         return id;
     }
+    
+     
+     public Utilisateur findById(int id_user)throws SQLException{ 
+        {
+            Utilisateur u = new Utilisateur();
+            String requete="select * from user where id ='"+id_user+"';";
+           pst=cn.prepareStatement(requete);
+           rs=pst.executeQuery(requete); 
+            while(rs.next())
+            {
+                u=new Utilisateur(rs.getInt(1), rs.getString(3));
+            }
+            
+           return u;   
+        }}
 }

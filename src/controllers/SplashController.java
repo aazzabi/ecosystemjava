@@ -13,7 +13,7 @@ import javafx.scene.layout.StackPane;
 
 /**
  * FXML Controller class
- *
+ *² ²
  * @author actar
  */
 public class SplashController implements Initializable {
