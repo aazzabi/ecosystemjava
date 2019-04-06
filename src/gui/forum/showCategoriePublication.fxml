@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShowCategoriePublicationController">
+<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ShowCategoriePublicationController">
    <children>
       <SplitPane dividerPositions="0.27414330218068533" orientation="VERTICAL" prefHeight="769.0" prefWidth="1048.0">
         <items>
@@ -50,16 +50,15 @@
                <children>
                   <TableView fx:id="tableListePublication" layoutX="4.0" prefHeight="554.0" prefWidth="1047.0">
                      <columns>
-                        <TableColumn fx:id="idPublication" prefWidth="39.46667766571045" text="ID" />
-                        <TableColumn fx:id="datePublication" prefWidth="58.93334197998047" text="Date" />
-                        <TableColumn fx:id="titrePublication" prefWidth="202.3999786376953" text="Titre" />
-                        <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="558.3999938964844" text="Description" />
-                        <TableColumn fx:id="etatPublication" prefWidth="93.5999755859375" text="Etat" />
-                        <TableColumn fx:id="categoriePublication" prefWidth="86.40008544921875" text="Catégorie" />
-                        <TableColumn fx:id="creeParPublication" prefWidth="447.199951171875" text="Crée par" />
+                        <TableColumn fx:id="datePublication" prefWidth="86.40002012252808" text="Date" />
+                        <TableColumn fx:id="titrePublication" prefWidth="175.1999740600586" text="Titre" />
+                        <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="544.800048828125" text="Description" />
+                        <TableColumn fx:id="etatPublication" prefWidth="107.199951171875" text="Etat" />
+                        <TableColumn fx:id="categoriePublication" prefWidth="132.00006103515625" text="Catégorie" />
+                        <TableColumn fx:id="creeParPublication" prefWidth="402.39990234375" text="Crée par" />
                      </columns>
                      <sortOrder>
-                        <fx:reference source="idPublication" />
+                        <TableColumn fx:id="idPublication" prefWidth="39.46667766571045" text="ID" />
                         <fx:reference source="datePublication" />
                         <fx:reference source="etatPublication" />
                         <fx:reference source="creeParPublication" />

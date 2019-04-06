@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.Forum;
 
+import controllers.Forum.ShowCategoriePublicationController;
 import entities.PublicationForum;
 import entities.CategoriePub;
 import java.io.IOException;
@@ -69,7 +70,6 @@ public class ForumAdminController implements Initializable {
     
     @FXML
     private TableView<CategoriePub> tableListeCategorie;
-    @FXML
     private TableColumn<CategoriePub, Integer> idCategorie;
     @FXML
     private TableColumn<CategoriePub, String> libelleCategorie;
@@ -99,9 +99,9 @@ public class ForumAdminController implements Initializable {
     @FXML
     private Button btnShowCategorie;
     @FXML
-    private Button btnSupprimerPublication;
-    @FXML
     private Button btnArchiverPublication;
+    @FXML
+    private Button btnShowPublication;
     
     /**
      * Initializes the controller class.
@@ -114,7 +114,7 @@ public class ForumAdminController implements Initializable {
         btnViderFormulaireCategorie.setDisable(true);
         btnShowCategorie.setDisable(true);
         
-        btnSupprimerPublication.setDisable(true);
+//        btnSupprimerPublication.setDisable(true);
         btnArchiverPublication.setDisable(true);
         
         tableListeCategorie.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -125,14 +125,14 @@ public class ForumAdminController implements Initializable {
                 btnShowCategorie.setDisable(false);        
             }
         });
-        
-        tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                btnArchiverPublication.setDisable(false);
-                btnSupprimerPublication.setDisable(false);
-            }
-        });
+//        
+//        tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                btnArchiverPublication.setDisable(false);
+//                btnSupprimerPublication.setDisable(false);
+//            }
+//        });
     }  
     
     public void afficherAllPublications(){
@@ -143,13 +143,12 @@ public class ForumAdminController implements Initializable {
             obl.add(e);
         }  
         
-        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
         datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
         titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
         etatPublication.setCellValueFactory(new PropertyValueFactory<>("etat"));
         categoriePublication.setCellValueFactory(new PropertyValueFactory<>("categorie"));
-        creeParPublication.setCellValueFactory(new PropertyValueFactory<>("createdBy"));
+        creeParPublication.setCellValueFactory(new PropertyValueFactory<>("createdByName"));
         
         tableListePublication.setItems(obl);
         tableListePublication.setEditable(true);
@@ -162,7 +161,6 @@ public class ForumAdminController implements Initializable {
         {
             obCateg.add(c);
         }
-        idCategorie.setCellValueFactory(new PropertyValueFactory<>("id"));
         libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
         domaineCategorie.setCellValueFactory(new PropertyValueFactory<>("domaine"));
@@ -172,18 +170,7 @@ public class ForumAdminController implements Initializable {
         tableListeCategorie.setEditable(true);
     }
     
-    
-    @FXML
-    private void supprimerPublication(ActionEvent event) {
-        
-        int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
-        System.out.println(id);
-        int index = tableListePublication.getSelectionModel().getSelectedIndex(); 
-        PublicationForumService.deletePublication(id);
-        
-        tableListePublication.getItems().remove(index);
-    }
-    
+
     @FXML
     private void archiverPublication(ActionEvent event) {
         int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
@@ -286,11 +273,11 @@ public class ForumAdminController implements Initializable {
     }
     
     @FXML
-    private void btnShowPublication(ActionEvent event) {
+    private void showPublication(ActionEvent event) {
         try
         {
             int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
-            CategoriePub cat = CategoriePubService.getCategorieById(id);
+            PublicationForum pub = PublicationForumService.getPublicationById(id);
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/gui/showPublication.fxml"));
             try {
@@ -298,8 +285,8 @@ public class ForumAdminController implements Initializable {
             } catch (IOException e) {
                 System.out.println(e);
             }
-            ShowCategoriePublicationController c = Loader.getController();
-            c.afficherCategorie(cat);
+            ShowPublicationController pubCtr = Loader.getController();
+            pubCtr.afficherPublication(pub);
             Parent p = Loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(p));
@@ -310,6 +297,8 @@ public class ForumAdminController implements Initializable {
             exp.printStackTrace();
         }
     }
+    
+
 
     @FXML
     private void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
@@ -320,9 +309,9 @@ public class ForumAdminController implements Initializable {
         System.out.println(c);
  
         CategoriePubService.updateCategorie(c);
-        System.out.println(event.getNewValue());
+//        System.out.println(event.getNewValue());  
     }
-    
+
     @FXML
     private void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
@@ -330,9 +319,9 @@ public class ForumAdminController implements Initializable {
         c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
 
         CategoriePubService.update(id, "description",event.getNewValue());
-        System.out.println(event.getNewValue());
+//        System.out.println(event.getNewValue());
     }
-    
+
     @FXML
     private void onEditChangedDomaine(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();

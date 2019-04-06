@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShowPublicationController">
+<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ShowPublicationController">
    <children>
       <SplitPane dividerPositions="0.3439291297550808" orientation="VERTICAL" prefHeight="769.0" prefWidth="1048.0">
         <items>
@@ -62,14 +62,13 @@
                <children>
                   <TableView prefHeight="443.0" prefWidth="1048.0">
                     <columns>
-                      <TableColumn fx:id="idCommentaire" prefWidth="70.3999953866005" text="ID Commentaire" />
-                      <TableColumn fx:id="descriptionCommentaire" prefWidth="500.80001068115234" text="Description" />
-                        <TableColumn fx:id="userCommentaire" prefWidth="76.0" text="Par" />
+                      <TableColumn fx:id="descriptionCommentaire" prefWidth="467.1999725699425" text="Description" />
+                        <TableColumn fx:id="userCommentaire" prefWidth="110.40005493164062" text="Par" />
                         <TableColumn fx:id="dateCommentaire" text="Date" />
                         <TableColumn prefWidth="140.800048828125" text="Photos" />
-                        <TableColumn fx:id="signalisationCommentaire" prefWidth="84.79998779296875" text="Signalisation" />
-                        <TableColumn fx:id="likesCommentaire" prefWidth="44.00006103515625" text="Likes" />
-                        <TableColumn fx:id="dislikesCommentaire" prefWidth="54.39990234375" text="Dislikes" />
+                        <TableColumn fx:id="signalisationCommentaire" prefWidth="102.39990234375" text="Signalisation" />
+                        <TableColumn fx:id="likesCommentaire" prefWidth="68.0001220703125" text="Likes" />
+                        <TableColumn fx:id="dislikesCommentaire" prefWidth="78.39996337890625" text="Dislikes" />
                     </columns>
                   </TableView>
                </children></AnchorPane>
