@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Categorie_EvtsController">
@@ -26,6 +28,7 @@
                         <Button fx:id="supprimer" layoutX="483.0" layoutY="468.0" mnemonicParsing="false" onAction="#supprimerCat" text="Supprimer" />
                         <Button fx:id="modifier" layoutX="282.0" layoutY="468.0" mnemonicParsing="false" onAction="#modifierCat" prefHeight="31.0" prefWidth="89.0" text="modifier" />
                         <Button fx:id="ajout" layoutX="394.0" layoutY="468.0" mnemonicParsing="false" onAction="#switchtab" text="Ajouter" />
+                        <HBox fx:id="row" layoutX="65.0" layoutY="449.0" prefHeight="100.0" prefWidth="200.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -35,12 +38,13 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="textlibelle" layoutX="102.0" layoutY="132.0" promptText="Entrez un libelle.." />
-                        <TextField fx:id="textbut" layoutX="435.0" layoutY="132.0" promptText="à but..?" />
+                        <TextField fx:id="textbut" layoutX="311.0" layoutY="387.0" promptText="à but..?" />
                         <Text layoutX="43.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libellé:" />
                         <Text layoutX="392.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="But:" />
                         <Button fx:id="valider" layoutX="423.0" layoutY="267.0" mnemonicParsing="false" onAction="#validerModif" text="ValiderModif" />
                         <Button fx:id="ajouter" layoutX="344.0" layoutY="267.0" mnemonicParsing="false" onAction="#ajouterCat" text="Valider" />
                         <Button fx:id="annuler" layoutX="222.0" layoutY="267.0" mnemonicParsing="false" onAction="#annulerModif" text="AnnulerModif" />
+                        <ChoiceBox fx:id="combobut" layoutX="437.0" layoutY="132.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
             </content>

@@ -159,8 +159,8 @@ public class EvenementController implements Initializable {
            list_event = FXCollections.observableArrayList(es.getAll());
            
             
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        id.cellFactoryProperty();
+       /* id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        id.cellFactoryProperty();*/
         
         lieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
         lieu.cellFactoryProperty();
@@ -246,8 +246,8 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
          list_myEvents = FXCollections.observableArrayList(es.myEvents());
            
            
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        id.cellFactoryProperty();
+        /*id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        id.cellFactoryProperty();*/
         
         lieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
         lieu.cellFactoryProperty();

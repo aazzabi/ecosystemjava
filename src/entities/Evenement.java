@@ -126,6 +126,17 @@ public class Evenement {
         this.nbvues = nbvues;
         this.date=date;
     }
+     public Evenement( Utilisateur createdBy, String lieu,Date date,Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
+       // this.id = id;
+        this.createdBy = createdBy;
+        this.lieu = lieu;
+        this.categorie = categorie;
+        this.titre = titre;
+        this.description = description;
+        this.cover = cover;
+        this.nbvues = nbvues;
+        this.date=date;
+    }
     
     
     

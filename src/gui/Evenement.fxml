@@ -24,7 +24,6 @@
                      <children>
                         <TableView fx:id="events" layoutX="204.0" layoutY="189.0" onMouseClicked="#options" prefHeight="389.0" prefWidth="793.0">
                           <columns>
-                            <TableColumn fx:id="id" prefWidth="45.0" text="id" />
                               <TableColumn fx:id="categorie" prefWidth="98.0" text="Categorie" />
                               <TableColumn fx:id="titre" prefWidth="105.0" text="Titre" />
                               <TableColumn fx:id="date" prefWidth="75.0" text="date" />

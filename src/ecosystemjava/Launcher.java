@@ -29,7 +29,7 @@ public class Launcher extends Application {
         {
          ConnectionBase cnx = ConnectionBase.getInstance();
         
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/Evenement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Categorie_Evts.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);

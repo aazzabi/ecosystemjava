@@ -17,12 +17,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import services.Categorie_EvtsService;
 
 /**
@@ -56,6 +58,10 @@ public class Categorie_EvtsController implements Initializable {
     private TableColumn<Categorie_Evts, String> butCol;
     @FXML
     private TabPane tabpane;
+     @FXML
+     private ChoiceBox combobut;
+      @FXML
+     private HBox row;
     
     
     private ObservableList<Categorie_Evts> list_cats = FXCollections.observableArrayList();
@@ -68,7 +74,7 @@ public class Categorie_EvtsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         //ObservableList<Categorie_Evts> list_cats =catsTable.getItems();
-  
+  combobut.setItems(FXCollections.observableArrayList("Lucratif","Non Lucratif"));
       supprimer.setVisible(false);
       modifier.setVisible(false);
       annuler.setVisible(false);
@@ -87,14 +93,16 @@ public class Categorie_EvtsController implements Initializable {
     @FXML
      private void ajouterCat(ActionEvent event)
      {
-      if (!textlibelle.getText().equals("") && !textbut.getText().equals("")
+      if (!textlibelle.getText().equals("") 
                 ) {
          Categorie_EvtsService cs =new Categorie_EvtsService();
-         Categorie_Evts c=new Categorie_Evts(textlibelle.getText(),textbut.getText());
+         String i = (String) combobut.getValue();
+         Categorie_Evts c=new Categorie_Evts(textlibelle.getText(),i);
          cs.addCategorie_Evts(c);
          
          textlibelle.setText("");
-         textbut.setText("");
+        // textbut.setText("");
+        combobut.getSelectionModel().select(0);
          tabpane.getSelectionModel().select(0);
          afficher();
          
@@ -137,10 +145,21 @@ public class Categorie_EvtsController implements Initializable {
      {
          tabpane.getSelectionModel().select(1);
          textlibelle.setText(catsTable.getSelectionModel().getSelectedItem().getLibelle());
-         textbut.setText(catsTable.getSelectionModel().getSelectedItem().getBut());
+        // textbut.setText(catsTable.getSelectionModel().getSelectedItem().getBut());
+       /*  combobut.getSelectionModel().select(-1);
+       
+       do{
+           combobut.getSelectionModel().selectNext();
+           
+        
+      }
+       while((int)combobut.getValue()!=catsTable.getSelectionModel().getSelectedItem().getId());
+       // combobut.getSelectionModel().selectNext();
+           */
          valider.setVisible(true);
          annuler.setVisible(true);
-         ajouter.setVisible(false);
+         ajouter.setVisible(false); //zxinj.jar pour qr code
+        
          
      
      }
@@ -156,17 +175,19 @@ public class Categorie_EvtsController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 Categorie_EvtsService cs =new Categorie_EvtsService();
+                 String i = (String) combobut.getValue();
                 //System.out.println(catsTable.getSelectionModel().getSelectedItem().getLibelle());
                 //cs.updateCategorie_Evts(catsTable.getSelectionModel().getSelectedItem().getId());
-                Categorie_Evts c=new Categorie_Evts(catsTable.getSelectionModel().getSelectedItem().getId(),textlibelle.getText(),textbut.getText());
+                Categorie_Evts c=new Categorie_Evts(catsTable.getSelectionModel().getSelectedItem().getId(),textlibelle.getText(),i);
                 cs.updateCategorie_Evts(c);
                // SendMail.sendmail("amine.mraihi@esprit.tn",
                   //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
                   textlibelle.setText("");
-                  textbut.setText("");
+                  //textbut.setText("");
                    annuler.setVisible(false);
                    valider.setVisible(false); 
                    ajouter.setVisible(true);
+                   combobut.getSelectionModel().select(0);
                   tabpane.getSelectionModel().select(0);
                 afficher();
             }
@@ -207,7 +228,12 @@ public class Categorie_EvtsController implements Initializable {
         butCol.cellFactoryProperty();
         
         catsTable.setItems(list_cats);
-         
+        /*  int index = 0;
+        
+        row = new HBox() ;
+        row.getStyleClass().add("content-item");
+        content_product.getChildren().add(row);*/
+        
          }
  
     
