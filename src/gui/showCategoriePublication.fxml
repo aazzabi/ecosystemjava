@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShowCategoriePublicationController">
+   <children>
+      <SplitPane dividerPositions="0.27414330218068533" orientation="VERTICAL" prefHeight="769.0" prefWidth="1048.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Text layoutX="40.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id :" wrappingWidth="40.96361541748047">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="36.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle : " wrappingWidth="71.89700317382812">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="37.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description : " wrappingWidth="109.2303466796875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="535.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domaine : " wrappingWidth="109.2303466796875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="535.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de publication :" wrappingWidth="213.2303466796875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="txtLibelleCategorie" layoutX="120.0" layoutY="75.0" prefHeight="24.0" prefWidth="390.0" />
+                  <Label fx:id="txtDescriptionCategorie" layoutX="175.0" layoutY="114.0" prefHeight="78.0" prefWidth="842.0" />
+                  <Label fx:id="txtDomaineCategorie" layoutX="639.0" layoutY="32.0" prefHeight="24.0" prefWidth="245.0" />
+                  <Label fx:id="txtNbrPubCategorie" layoutX="779.0" layoutY="75.0" prefHeight="24.0" prefWidth="123.0" />
+                  <Label fx:id="txtIdCategorie" layoutX="90.0" layoutY="32.0" prefHeight="24.0" prefWidth="116.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="474.0" prefWidth="1046.0">
+               <children>
+                  <TableView fx:id="tableListePublication" layoutX="4.0" prefHeight="554.0" prefWidth="1047.0">
+                     <columns>
+                        <TableColumn fx:id="idPublication" prefWidth="39.46667766571045" text="ID" />
+                        <TableColumn fx:id="datePublication" prefWidth="58.93334197998047" text="Date" />
+                        <TableColumn fx:id="titrePublication" prefWidth="202.3999786376953" text="Titre" />
+                        <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="558.3999938964844" text="Description" />
+                        <TableColumn fx:id="etatPublication" prefWidth="93.5999755859375" text="Etat" />
+                        <TableColumn fx:id="categoriePublication" prefWidth="86.40008544921875" text="Catégorie" />
+                        <TableColumn fx:id="creeParPublication" prefWidth="447.199951171875" text="Crée par" />
+                     </columns>
+                     <sortOrder>
+                        <fx:reference source="idPublication" />
+                        <fx:reference source="datePublication" />
+                        <fx:reference source="etatPublication" />
+                        <fx:reference source="creeParPublication" />
+                     </sortOrder>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
