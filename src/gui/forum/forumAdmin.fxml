@@ -23,14 +23,14 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="725.0" prefWidth="1142.0">
                                  <children>
-                                    <TableView fx:id="tableListePublication" prefHeight="658.0" prefWidth="1145.0">
+                                    <TableView fx:id="tableListePublication" prefHeight="578.0" prefWidth="1140.0">
                                        <columns>
                                           <TableColumn fx:id="datePublication" prefWidth="68.00000077486038" text="Date" />
                                           <TableColumn fx:id="titrePublication" prefWidth="224.0" text="Titre" />
-                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="520.800048828125" text="Description" />
-                                          <TableColumn fx:id="etatPublication" prefWidth="105.5999755859375" text="Etat" />
-                                          <TableColumn fx:id="categoriePublication" prefWidth="119.9998779296875" text="Catégorie" />
-                                          <TableColumn fx:id="creeParPublication" prefWidth="107.2000732421875" text="Crée par" />
+                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="491.9999694824219" text="Description" />
+                                          <TableColumn fx:id="etatPublication" prefWidth="96.800048828125" text="Etat" />
+                                          <TableColumn fx:id="categoriePublication" prefWidth="159.1998291015625" text="Catégorie" />
+                                          <TableColumn fx:id="creeParPublication" prefWidth="97.60009765625" text="Crée par" />
                                        </columns>
                                        <sortOrder>
                                           <TableColumn fx:id="idPublication" prefWidth="40.0" text="ID" />
@@ -43,7 +43,7 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="878.0" prefWidth="214.0">
                                  <children>
-                                    <Button fx:id="btnShowPublication" layoutX="33.0" layoutY="28.0" mnemonicParsing="false" onAction="#showPublication" prefHeight="67.0" prefWidth="154.0" text="AFFICHER">
+                                    <Button fx:id="btnShowPublication" layoutX="33.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnShowPublication" prefHeight="67.0" prefWidth="154.0" text="AFFICHER">
                                        <font>
                                           <Font size="22.0" />
                                        </font>
@@ -69,7 +69,7 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="717.0" prefWidth="1007.0">
+                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="541.0" prefWidth="1007.0">
                                        <columns>
                                           <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="193.59991437196732" text="Libellé" />
                                           <TableColumn fx:id="descriptionCategorie" onEditCommit="#onEditChangedDescription" prefWidth="568.7999267578125" text="Description" />

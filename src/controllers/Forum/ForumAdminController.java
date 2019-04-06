@@ -114,7 +114,7 @@ public class ForumAdminController implements Initializable {
         btnViderFormulaireCategorie.setDisable(true);
         btnShowCategorie.setDisable(true);
         
-//        btnSupprimerPublication.setDisable(true);
+        btnShowPublication.setDisable(true);
         btnArchiverPublication.setDisable(true);
         
         tableListeCategorie.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -125,14 +125,14 @@ public class ForumAdminController implements Initializable {
                 btnShowCategorie.setDisable(false);        
             }
         });
-//        
-//        tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                btnArchiverPublication.setDisable(false);
-//                btnSupprimerPublication.setDisable(false);
-//            }
-//        });
+        
+        tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btnArchiverPublication.setDisable(false);
+                btnShowPublication.setDisable(false);
+            }
+        });
     }  
     
     public void afficherAllPublications(){
@@ -143,6 +143,7 @@ public class ForumAdminController implements Initializable {
             obl.add(e);
         }  
         
+        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
         datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
         titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -153,7 +154,6 @@ public class ForumAdminController implements Initializable {
         tableListePublication.setItems(obl);
         tableListePublication.setEditable(true);
     }
-    
     
     public void afficherAllCategories(){
         ArrayList<CategoriePub> lc = (ArrayList<CategoriePub>) CategoriePubService.getAllCategoriePub();
@@ -169,7 +169,6 @@ public class ForumAdminController implements Initializable {
         tableListeCategorie.setItems(obCateg);
         tableListeCategorie.setEditable(true);
     }
-    
 
     @FXML
     private void archiverPublication(ActionEvent event) {
@@ -251,6 +250,7 @@ public class ForumAdminController implements Initializable {
         try
         {
             int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+            System.out.println(id);
             CategoriePub cat = CategoriePubService.getCategorieById(id);
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/gui/forum/showCategoriePublication.fxml"));
@@ -272,11 +272,13 @@ public class ForumAdminController implements Initializable {
         }
     }
     
+    
     @FXML
-    private void showPublication(ActionEvent event) {
+    private void btnShowPublication(ActionEvent event) {
         try
         {
-            int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+            int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
+            
             PublicationForum pub = PublicationForumService.getPublicationById(id);
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/gui/forum/showPublication.fxml"));
@@ -297,7 +299,6 @@ public class ForumAdminController implements Initializable {
             exp.printStackTrace();
         }
     }
-    
 
 
     @FXML

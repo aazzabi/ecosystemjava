@@ -60,7 +60,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="474.0" prefWidth="1046.0">
                <children>
-                  <TableView prefHeight="443.0" prefWidth="1048.0">
+                  <TableView fx:id="tableListeCommentaire" prefHeight="443.0" prefWidth="1048.0">
                     <columns>
                       <TableColumn fx:id="descriptionCommentaire" prefWidth="467.1999725699425" text="Description" />
                         <TableColumn fx:id="userCommentaire" prefWidth="110.40005493164062" text="Par" />
