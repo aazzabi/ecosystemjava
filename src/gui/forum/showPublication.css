@@ -1,0 +1,10 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    #photo{
+        width: 50px;
+        heigth: 50px;
+    }
+}

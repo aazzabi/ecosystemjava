@@ -5,7 +5,14 @@
  */
 package entities;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javax.imageio.ImageIO;
+import org.imgscalr.Scalr;
 
 /**
  *
@@ -19,6 +26,7 @@ public class CommentairePublication {
     private int idPublication;
     private String publicationName;
     private String photo;
+    private Image photoFile;
     private Date createdAt;
     private int nbSignalisation;
     private int likes;
@@ -108,8 +116,12 @@ public class CommentairePublication {
         return photo;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public Image getPhotoFile() {
+        return photoFile;
+    }
+
+    public void setPhotoFile(Image photo) {
+        this.photoFile = photo;
     }
 
     @Override
@@ -117,4 +129,16 @@ public class CommentairePublication {
         return "CommentairePublication{" + "id=" + id + ", createdBy=" + createdBy + ", description=" + description + ", createdByName=" + createdByName + ", idPublication=" + idPublication + ", publicationName=" + publicationName + ", createdAt=" + createdAt + ", nbrSignalisation=" + nbSignalisation + ", likes=" + likes + ", dislikes=" + dislikes + '}';
     }
     
+    public void setPhoto(String photo) {
+        this.photo = photo;
+        try {
+            BufferedImage bf = ImageIO.read(new File("C:\\wamp\\www\\ecosystemweb\\web\\uploads\\publication\\commentaire\\pieceJointe\\"+photo));
+            System.out.println(bf);
+            BufferedImage bf1 = Scalr.resize(bf, Scalr.Method.SPEED, Scalr.Mode.FIT_TO_WIDTH,
+                    100, 100, Scalr.OP_ANTIALIAS);
+            photoFile = SwingFXUtils.toFXImage(bf1, null);
+        } catch (IOException ex) {
+            System.out.println("entities.commentaire.setPhoto()");;
+        }
+    }
 }

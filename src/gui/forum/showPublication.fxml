@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,7 +10,10 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ShowPublicationController">
-   <children>
+    <stylesheets>
+        <URL value="@showPublication.css" />
+    </stylesheets>
+    <children>
       <SplitPane dividerPositions="0.3439291297550808" orientation="VERTICAL" prefHeight="769.0" prefWidth="1048.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -63,12 +67,12 @@
                   <TableView fx:id="tableListeCommentaire" prefHeight="443.0" prefWidth="1048.0">
                     <columns>
                       <TableColumn fx:id="descriptionCommentaire" prefWidth="467.1999725699425" text="Description" />
-                        <TableColumn fx:id="userCommentaire" prefWidth="110.40005493164062" text="Par" />
-                        <TableColumn fx:id="dateCommentaire" text="Date" />
-                        <TableColumn prefWidth="140.800048828125" text="Photos" />
-                        <TableColumn fx:id="signalisationCommentaire" prefWidth="102.39990234375" text="Signalisation" />
-                        <TableColumn fx:id="likesCommentaire" prefWidth="68.0001220703125" text="Likes" />
-                        <TableColumn fx:id="dislikesCommentaire" prefWidth="78.39996337890625" text="Dislikes" />
+                        <TableColumn fx:id="userCommentaire" prefWidth="99.99996948242188" text="Par" />
+                        <TableColumn fx:id="dateCommentaire" prefWidth="109.5999755859375" text="Date" />
+                        <TableColumn fx:id="photo" prefWidth="164.0" text="Photo" />
+                        <TableColumn fx:id="signalisationCommentaire" prefWidth="92.800048828125" text="Signalisation" />
+                        <TableColumn fx:id="likesCommentaire" prefWidth="51.9998779296875" text="Likes" />
+                        <TableColumn fx:id="dislikesCommentaire" prefWidth="64.79986572265625" text="Dislikes" />
                     </columns>
                   </TableView>
                </children></AnchorPane>

@@ -5,6 +5,7 @@
  */
 package controllers.Forum;
 
+import com.sun.javafx.scene.control.skin.TableColumnHeader;
 import entities.CategoriePub;
 import entities.CommentairePublication;
 import entities.PublicationForum;
@@ -12,14 +13,19 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.util.Callback;
 import services.PublicationForumService;
 
 /**
@@ -60,13 +66,14 @@ public class ShowPublicationController implements Initializable {
     private TableView<CommentairePublication> tableListeCommentaire;
 
     ObservableList<CommentairePublication> obl = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<CommentairePublication, ImageView> photo;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
     public void afficherPublication(PublicationForum p) {
         txtTitrePublication.setText(p.getTitre());
@@ -89,10 +96,11 @@ public class ShowPublicationController implements Initializable {
             obl.add(e);
             System.out.println(e);
         }  
-        
+
         descriptionCommentaire.setCellValueFactory(new PropertyValueFactory<>("description"));
         userCommentaire.setCellValueFactory(new PropertyValueFactory<>("createdByName"));
         dateCommentaire.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        photo.setCellValueFactory(c -> new SimpleObjectProperty<>(new ImageView(c.getValue().getPhotoFile())));
         signalisationCommentaire.setCellValueFactory(new PropertyValueFactory<>("nbSignalisation"));
         likesCommentaire.setCellValueFactory(new PropertyValueFactory<>("likes"));
         dislikesCommentaire.setCellValueFactory(new PropertyValueFactory<>("dislikes"));
