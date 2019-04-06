@@ -13,7 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class SidePanelController implements Initializable {
+public class SidePanelUserController implements Initializable {
 
     @FXML
     private JFXButton b1;
@@ -57,12 +57,6 @@ public class SidePanelController implements Initializable {
                 callback.update("");
                 break;
              case "Forum":
-                callback.update("");
-                break;
-             case "Signalisation":
-                callback.update("");
-                break;
-             case "Utilisateur":
                 callback.update("");
                 break;
             

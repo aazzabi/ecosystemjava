@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="561.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReparateurEditAnnonceController">
+<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="561.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reparateur.ReparateurEditAnnonceController">
     <stylesheets>
         <URL value="@reparateureditannonce.css" />
     </stylesheets>

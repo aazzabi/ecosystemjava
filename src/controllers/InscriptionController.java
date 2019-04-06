@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import entities.Reparateur;
+import entities.reparateur.Reparateur;
 import entities.Utilisateur;
 import java.io.File;
 import java.io.IOException;

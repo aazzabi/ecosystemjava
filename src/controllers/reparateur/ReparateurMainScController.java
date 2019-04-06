@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.reparateur;
 
-import entities.AnnounceRep;
+import com.jfoenix.controls.JFXTextField;
+import entities.reparateur.AnnounceRep;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,6 +72,9 @@ public class ReparateurMainScController implements Initializable {
     @FXML
     private TableColumn<AnnounceRep, Float> a_col_prix;
 
+    @FXML
+    private JFXTextField search;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        tableviewan.setFixedCellSize(25);
@@ -86,6 +92,24 @@ public class ReparateurMainScController implements Initializable {
         a_col_prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
         tableviewan.setItems(AnnounceRepService.getAnnounceRepList());
 
+        FilteredList<AnnounceRep> filteredData = new FilteredList<>(AnnounceRepService.getAnnounceRepList(), p -> true);
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(AnnounceRep -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (AnnounceRep.getTitre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (AnnounceRep.getDescription().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+        SortedList<AnnounceRep> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tableviewan.comparatorProperty());
+        tableviewan.setItems(sortedData);
     }
 
     public void supprimer() {
@@ -114,39 +138,45 @@ public class ReparateurMainScController implements Initializable {
                 });
 
             } else {
-               
+
             }
 
         }
 
     }
-    
-    
-    public void edit ()
-    {
-        
-        try {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/gui/ReparateurEditAnnonce.fxml"));
-        /* 
+
+    public void edit() {
+        if (tableviewan.getSelectionModel().getSelectedIndex() == -1) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Attention !");
+            alert.setHeaderText(null);
+            alert.setContentText("Aucune ligne n'est sélectionner vous devez en sélectioner une ");
+
+            alert.showAndWait();
+        } else {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/gui/ReparateurEditAnnonce.fxml"));
+                /* 
          * if "fx:controller" is not set in fxml
          * fxmlLoader.setController(NewWindowController);
-         */
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        ReparateurEditAnnonceController controller= fxmlLoader.getController();
-        controller.initData(tableviewan.getSelectionModel().getSelectedItem());
-                
-        stage.setTitle("Edition d'une announce de réparation");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        
-        stage.show();
-    } catch (IOException e) {
-        Logger logger = Logger.getLogger(getClass().getName());
-        logger.log(Level.SEVERE, "Failed to create new Window.", e);
-    }
-        
+                 */
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                ReparateurEditAnnonceController controller = fxmlLoader.getController();
+                controller.initData(tableviewan.getSelectionModel().getSelectedItem());
+
+                stage.setTitle("Edition d'une announce de réparation");
+                stage.setScene(scene);
+                stage.setResizable(false);
+
+                stage.show();
+            } catch (IOException e) {
+                Logger logger = Logger.getLogger(getClass().getName());
+                logger.log(Level.SEVERE, "Failed to create new Window.", e);
+            }
+        }
+
     }
 
 }

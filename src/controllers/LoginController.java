@@ -20,9 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.UserService;
 
@@ -73,8 +71,9 @@ public class LoginController implements Initializable {
                     Node node = (Node)event.getSource();
                     dialogStage = (Stage) node.getScene().getWindow();
                     dialogStage.close();
-                    scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/mainadminscreen.fxml")));
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/mainuserscreen.fxml")));
                     dialogStage.setScene(scene);
+                    System.out.println("Passage User");
                     dialogStage.show();
                 }
 

@@ -5,7 +5,7 @@
  */
 package services;
 
-import entities.Reparateur;
+import entities.reparateur.Reparateur;
 import entities.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

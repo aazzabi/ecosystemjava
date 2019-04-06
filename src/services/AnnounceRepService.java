@@ -7,7 +7,7 @@ package services;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import entities.AnnounceRep;
+import entities.reparateur.AnnounceRep;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
