@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.Forum;
 
 import entities.CategoriePub;
 import entities.PublicationForum;
@@ -85,7 +85,6 @@ public class ShowCategoriePublicationController implements Initializable {
             obl.add(e);
         }  
         
-        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
         datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
         titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));

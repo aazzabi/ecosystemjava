@@ -18,10 +18,12 @@ public class PublicationForum {
     private String titre;
     private String description;
     private String etat;
-    private int categorie;
+    private String categorie;
     private int createdBy;
+    private String createdByName;
     private Date createdAt;
     private int nbrVues;
+    private int nbrCommentaires;
     private ArrayList<CommentairePublication> commentaires;
 
     public PublicationForum() {  
@@ -64,11 +66,11 @@ public class PublicationForum {
         this.etat = etat;
     }
 
-    public int getCategorie() {
+    public String getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(int categorie) {
+    public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
 
@@ -104,6 +106,22 @@ public class PublicationForum {
         this.commentaires = commentaires;
     }
 
+    public int getNbrCommentaires() {
+        return nbrCommentaires;
+    }
+
+    public void setNbrCommentaires(int nbrCommentaires) {
+        this.nbrCommentaires = nbrCommentaires;
+    }    
+
+    public String getCreatedByName() {
+        return createdByName;
+    }
+
+    public void setCreatedByName(String createdByName) {
+        this.createdByName = createdByName;
+    }
+    
     @Override
     public String toString() {
         return "PublicationForum{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", etat=" + etat + ", categorie=" + categorie + ", createdBy=" + createdBy + ", createdAt=" + createdAt + ", nbrVues=" + nbrVues + ", commentaires=" + commentaires + '}';

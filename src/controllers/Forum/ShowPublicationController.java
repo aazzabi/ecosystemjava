@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.Forum;
 
 import entities.CategoriePub;
 import entities.PublicationForum;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import services.PublicationForumService;
 
@@ -21,6 +24,33 @@ import services.PublicationForumService;
  */
 public class ShowPublicationController implements Initializable {
 
+    @FXML
+    private Label txtTitrePublication;
+    @FXML
+    private Label txtDescriptionPublication;
+    @FXML
+    private Label txtDatePublication;
+    @FXML
+    private Label txtNbrCommentaire;
+    @FXML
+    private Label txtIdPublication;
+    @FXML
+    private Label txtEtatPublication;
+    @FXML
+    private Label txtCategoriePublication;
+    @FXML
+    private TableColumn<?, ?> descriptionCommentaire;
+    @FXML
+    private TableColumn<?, ?> userCommentaire;
+    @FXML
+    private TableColumn<?, ?> dateCommentaire;
+    @FXML
+    private TableColumn<?, ?> signalisationCommentaire;
+    @FXML
+    private TableColumn<?, ?> likesCommentaire;
+    @FXML
+    private TableColumn<?, ?> dislikesCommentaire;
+
     /**
      * Initializes the controller class.
      */
@@ -28,17 +58,18 @@ public class ShowPublicationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    public void afficherPublication(CategoriePub c) {
-//        txtIdPublication.setText(String.valueOf(c.getId()));
-//        txtLibelleCategorie.setText(c.getLibelle());
-//        txtDescriptionCategorie.setText(c.getDescription());
-//        txtDomaineCategorie.setText(c.getDomaine());
-//        txtNbrPubCategorie.setText(String.valueOf(c.getNbPublication()));
-//        afficherAllPublicationsCategorie(c.getId());
+    public void afficherPublication(PublicationForum p) {
+        txtTitrePublication.setText(p.getTitre());
+        txtDescriptionPublication.setText(p.getDescription());
+        txtDatePublication.setText(String.valueOf(p.getCreatedAt()));
+        txtNbrCommentaire.setText(String.valueOf(p.getNbrCommentaires()));
+        txtIdPublication.setText(String.valueOf(p.getId()));
+        txtEtatPublication.setText(p.getEtat());
+        txtCategoriePublication.setText(p.getCategorie());
     }
     
     public void afficherAllCommentaires(int id ){
-//        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>) PublicationForumService.getAllPublicationsByCategorie(id);
+//        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>) PublicationForumService.getAllCommentairesByPublication(id);
 //
 //        for(PublicationForum e:le)
 //        {
