@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Control;
@@ -26,6 +27,8 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
+import services.CategoriePubService;
+import services.CommentairePublicationService;
 import services.PublicationForumService;
 
 /**
@@ -107,5 +110,36 @@ public class ShowPublicationController implements Initializable {
         
         tableListeCommentaire.setItems(obl);
         tableListeCommentaire.setEditable(true);
+    }
+
+    @FXML
+    private void deleteCommentaire(ActionEvent event) {
+        int id = tableListeCommentaire.getSelectionModel().getSelectedItem().getId();
+        int index = tableListeCommentaire.getSelectionModel().getSelectedIndex(); 
+        System.out.println("id to del "+id);
+        System.out.println("id to del "+index);
+        CommentairePublicationService.delete(id);
+        
+        clearTable(tableListeCommentaire);
+        afficherAllCommentaires(Integer.valueOf(txtIdPublication.getText()));
+    }
+
+    @FXML
+    private void deleteUser(ActionEvent event) {
+        int id = tableListeCommentaire.getSelectionModel().getSelectedItem().getId();
+        int index = tableListeCommentaire.getSelectionModel().getSelectedIndex(); 
+        System.out.println("id to del "+id);
+        System.out.println("id to del "+index);
+        CommentairePublicationService.deleteCommentaireByIdUser(id);
+        CommentairePublicationService.delete(id);
+        
+        clearTable(tableListeCommentaire);
+        afficherAllCommentaires(Integer.valueOf(txtIdPublication.getText()));
+    }
+    
+    public void clearTable(TableView table) {
+       for ( int i = 0; i< table.getItems().size(); i++) {
+            table.getItems().clear();
+        } 
     }
 }

@@ -163,7 +163,7 @@ public class PublicationForumService {
     
     public static List<CommentairePublication> getAllCommentairesByPublication(int id) {
         List<CommentairePublication> pList = new ArrayList();
-        String requete = "Select  u.username , c.description, c.likes, c.dislikes, c.photo,  c.commented_at, c.nbSignalisation "
+        String requete = "Select  c.id, u.username , c.description, c.likes, c.dislikes, c.photo,  c.commented_at, c.nbSignalisation "
                 + "from commentaire_publication c, user u, publication_forum p "
                 + " where c.publication_id=? and c.publication_id=p.id AND u.id =c.commented_by_id ;";
         Connection cn = ConnectionBase.getInstance().getCnx();
@@ -176,6 +176,7 @@ public class PublicationForumService {
             while (rs.next()){
                 CommentairePublication c = new CommentairePublication();
                 
+                c.setId(rs.getInt("c.id"));
                 c.setDescription(rs.getString("c.description"));
                 c.setCreatedByName(rs.getString("u.username"));
                 c.setCreatedAt(rs.getDate("c.commented_at"));

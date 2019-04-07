@@ -138,7 +138,6 @@ public class CommentairePublication {
                     100, 100, Scalr.OP_ANTIALIAS);
             photoFile = SwingFXUtils.toFXImage(bf1, null);
         } catch (IOException ex) {
-            System.out.println("entities.commentaire.setPhoto()");;
         }
     }
 }
