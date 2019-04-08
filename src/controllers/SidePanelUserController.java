@@ -45,7 +45,7 @@ public class SidePanelUserController implements Initializable {
                 callback.update("");
                 break;
             case "Announce":
-                callback.update("");
+                callback.update("/gui/Annonce/AllAnnonces.fxml");
                 break;
              case "Réparation":
                 callback.update("/gui/reparateur/ReparateurMainSc.fxml");
