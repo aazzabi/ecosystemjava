@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ForumUserController">
+    <stylesheets>
+        <URL value="@forumuser.css" />
+    </stylesheets>
+   <children>
+      <TabPane layoutX="11.0" layoutY="84.0" prefHeight="664.0" prefWidth="1350.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Tout les publication">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.8424153166421208" layoutX="3.0" layoutY="-1.0" prefHeight="728.0" prefWidth="1360.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="725.0" prefWidth="1142.0">
+                                 <children>
+                                    <TableView fx:id="tableListePublication" prefHeight="578.0" prefWidth="1133.0">
+                                       <columns>
+                                          <TableColumn fx:id="datePublication" prefWidth="68.00000077486038" text="Date" />
+                                          <TableColumn fx:id="titrePublication" prefWidth="224.0" text="Titre" />
+                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="491.9999694824219" text="Description" />
+                                          <TableColumn fx:id="etatPublication" prefWidth="74.4000244140625" text="Etat" />
+                                          <TableColumn fx:id="categoriePublication" prefWidth="182.4000244140625" text="Catégorie" />
+                                          <TableColumn fx:id="pubCreeParPublication" prefWidth="97.60009765625" text="Crée par" />
+                                       </columns>
+                                       <sortOrder>
+                                          <TableColumn fx:id="idPublication" prefWidth="40.0" text="ID" />
+                                          <fx:reference source="datePublication" />
+                                          <fx:reference source="etatPublication" />
+                                       </sortOrder>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="726.0" prefWidth="174.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.17647058823529413" orientation="VERTICAL" prefHeight="648.0" prefWidth="198.0">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="123.0" prefWidth="197.0">
+                                             <children>
+                                                <Text layoutX="30.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher : ">
+                                                   <font>
+                                                      <Font size="16.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="txtRechercherPublication" layoutX="30.0" layoutY="49.0" onInputMethodTextChanged="#rechercherPublication" onKeyPressed="#rechercherPublication" onKeyReleased="#rechercherPublication" prefHeight="26.0" prefWidth="136.0" />
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="456.0" prefWidth="207.0">
+                                             <children>
+                                                <Button fx:id="btnShowPublication" layoutX="26.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnShowPublication" prefHeight="67.0" prefWidth="154.0" text="AFFICHER">
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+          <Tab text="Mes publications">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.8424153166421208" prefHeight="643.0" prefWidth="1360.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="725.0" prefWidth="1142.0">
+                                 <children>
+                                    <TableView fx:id="tableListeMyPublication" prefHeight="578.0" prefWidth="1134.0">
+                                       <columns>
+                                          <TableColumn fx:id="dateMyPublication" prefWidth="94.40001946687698" text="Date" />
+                                          <TableColumn fx:id="titreMyPublication" prefWidth="227.19998931884766" text="Titre" />
+                                          <TableColumn fx:id="descriptionMyPublication" minWidth="0.0" prefWidth="558.3999938964844" text="Description" />
+                                          <TableColumn fx:id="etatMyPublication" prefWidth="91.2000732421875" text="Etat" />
+                                          <TableColumn fx:id="categorieMyPublication" prefWidth="171.9998779296875" text="Catégorie" />
+                                       </columns>
+                                       <sortOrder>
+                                          <TableColumn fx:id="idMyPublication" prefWidth="40.0" text="ID" />
+                                          <TableColumn fx:id="creeParPublication" prefWidth="65.333251953125" text="Crée par" />
+                                       </sortOrder>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="878.0" prefWidth="214.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.2557704304429195" orientation="VERTICAL" prefHeight="643.0" prefWidth="206.0">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <Text layoutX="20.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher : " wrappingWidth="122.2044677734375">
+                                                   <font>
+                                                      <Font size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="txtRechercherMyPublication" layoutX="20.0" layoutY="59.0" onKeyPressed="#rechercherMyPublication" onKeyReleased="#rechercherMyPublication" prefHeight="26.0" prefWidth="160.0" />
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <Button fx:id="btnShowMyPublication" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnShowPublication" prefHeight="67.0" prefWidth="154.0" text="AFFICHER">
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="btnArchiverPublication" layoutX="25.0" layoutY="97.0" mnemonicParsing="false" onAction="#archiverMyPublication" prefHeight="67.0" prefWidth="154.0" text="ARCHIVER">
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="btnSupprimerPublication" layoutX="25.0" layoutY="179.0" mnemonicParsing="false" onAction="#supprimerMyPublication" prefHeight="67.0" prefWidth="154.0" text="SUPPRIMER">
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Ajouter publication">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.8504007123775602" prefHeight="648.0" prefWidth="1349.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <TextField fx:id="txtMyPublicationTitle" layoutX="138.0" layoutY="34.0" prefHeight="41.0" prefWidth="930.0" />
+                                    <TextArea fx:id="txtMyPublicationDescription" layoutX="145.0" layoutY="190.0" prefHeight="200.0" prefWidth="917.0" />
+                                    <ChoiceBox fx:id="txtMyPublicationCategorie" layoutX="140.0" layoutY="113.0" prefHeight="26.0" prefWidth="923.0" />
+                                    <Text layoutX="30.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre : ">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="25.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie : ">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="27.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description : ">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="206.0">
+                                 <children>
+                                    <Button layoutX="24.0" layoutY="45.0" mnemonicParsing="false" onAction="#ajouterPublication" prefHeight="52.0" prefWidth="148.0" text="CONFIRMER" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -24,6 +24,31 @@ import utils.ConnectionBase;
  */
 public class PublicationForumService {
     
+     public static void add(PublicationForum c) {
+        String requete = "INSERT INTO publication_forum"
+                + "(`categorie_id`, `publication_created_by_id`, `titre`, `description`, `etat`, `pub_created_at`, `nbrVues`) "
+                + "VALUES (?,?,?,?,?,?,?)";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+         System.out.println(requete);
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setInt(1, c.getCategorieId());
+            pst.setInt(2, c.getCreatedBy());
+            pst.setString(3, c.getTitre());
+            pst.setString(4, c.getDescription());
+            pst.setString(5, c.getEtat());
+            pst.setDate(6, c.getCreatedAt());
+            pst.setInt(7, c.getNbrVues());
+           
+            pst.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+    }
+    
     public static List<PublicationForum> getAllPublications()
     {
         List<PublicationForum> pList = new ArrayList();
@@ -45,7 +70,6 @@ public class PublicationForumService {
                 p.setEtat(rs.getString("p.etat"));
                 p.setCategorie(rs.getString("c.libelle"));
                 p.setCreatedByName(rs.getString("u.username"));
-                p.setCreatedAt(rs.getDate("p.pub_created_at"));
                 p.setNbrVues(rs.getInt("p.nbrVues"));
                 pList.add(p);
             }
@@ -58,6 +82,112 @@ public class PublicationForumService {
         return pList;
     }
     
+    public static List<PublicationForum> getAllPublicationsByUserId(int id)
+    {
+        List<PublicationForum> pList = new ArrayList();
+        String requete = "Select p.id, p.titre, p.description, p.etat, u.username, c.libelle, p.pub_created_at, p.nbrVues "
+                + "from publication_forum p, user u, categorie_pub c "
+                + "where u.id= ? and c.id = p.categorie_id AND u.id=p.publication_created_by_id";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                PublicationForum p = new PublicationForum();
+               
+                p.setId(rs.getInt("p.id"));
+                p.setTitre(rs.getString("p.titre"));
+                p.setDescription(rs.getString("p.description"));
+                p.setEtat(rs.getString("p.etat"));
+                p.setCategorie(rs.getString("c.libelle"));
+                p.setCreatedByName(rs.getString("u.username"));
+                p.setNbrVues(rs.getInt("p.nbrVues"));
+                pList.add(p);
+            }
+            System.out.println("Okey ");
+        } 
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
+    public static List<PublicationForum> recherchePublicationsKeyWord(String text)
+    {
+        List<PublicationForum> pList = new ArrayList();
+        String requete = "Select p.id, p.titre, p.description, p.etat, u.username, c.libelle, p.pub_created_at, p.nbrVues "
+                + "from publication_forum p, user u, categorie_pub c "
+                + "where (p.titre LIKE ? or p.description LIKE ? or c.libelle LIKE ? )"
+                + "and c.id = p.categorie_id AND u.id=p.publication_created_by_id";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setString(1, "%"+text+"%");
+            pst.setString(2, "%"+text+"%");
+            pst.setString(3, "%"+text+"%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                PublicationForum p = new PublicationForum();
+               
+                p.setId(rs.getInt("p.id"));
+                p.setTitre(rs.getString("p.titre"));
+                p.setDescription(rs.getString("p.description"));
+                p.setEtat(rs.getString("p.etat"));
+                p.setCategorie(rs.getString("c.libelle"));
+                p.setCreatedByName(rs.getString("u.username"));
+                p.setNbrVues(rs.getInt("p.nbrVues"));
+                pList.add(p);
+            }
+        } 
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
+    public static List<PublicationForum> rechercherMyPublicationsKeyWord(int id, String text){
+        List<PublicationForum> pList = new ArrayList();
+        String requete = "Select p.id, p.titre, p.description, p.etat, u.username, c.libelle, p.pub_created_at, p.nbrVues "
+                + "from publication_forum p, user u, categorie_pub c "
+                + "where u.id= ? and (p.titre LIKE ? or p.description LIKE ? or c.libelle LIKE ? )"
+                + "and c.id = p.categorie_id AND u.id=p.publication_created_by_id";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            pst.setInt(1, id);
+            pst.setString(2, "%"+text+"%");
+            pst.setString(3, "%"+text+"%");
+            pst.setString(4, "%"+text+"%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                PublicationForum p = new PublicationForum();
+               
+                p.setId(rs.getInt("p.id"));
+                p.setTitre(rs.getString("p.titre"));
+                p.setDescription(rs.getString("p.description"));
+                p.setEtat(rs.getString("p.etat"));
+                p.setCategorie(rs.getString("c.libelle"));
+                p.setCreatedByName(rs.getString("u.username"));
+                p.setNbrVues(rs.getInt("p.nbrVues"));
+                pList.add(p);
+            }
+            System.out.println("Okey ");
+        } 
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+        return pList;   
+    }
     public static void deletePublication(int p)
     {
         String requete = "DELETE FROM publication_forum WHERE id=?";
@@ -112,14 +242,13 @@ public class PublicationForumService {
     
     public static void archiverPublication(int p)
     {
-        String requete = "UPDATE publication_forum SET etat= 'publié' WHERE id=?";
+        String requete = "UPDATE publication_forum SET etat= 'archivé' WHERE id=?";
         Connection cn = ConnectionBase.getInstance().getCnx();
         try 
         {
             PreparedStatement pst = cn.prepareStatement(requete);
             pst.setInt(1, p);
             pst.executeUpdate();
-            pst.close();
             System.out.println("archivé"+ p);
         }
         catch (SQLException ex) 

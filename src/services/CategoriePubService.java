@@ -14,6 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.ConnectionBase;
 
 /**
@@ -49,6 +53,25 @@ public class CategoriePubService {
         catch (SQLException ex)
         {
             System.err.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
+    public static ObservableList<String> getAllCategoriesLibelle()
+    {
+        ObservableList<String> pList = FXCollections.observableArrayList();
+        String requete = "SELECT c.libelle FROM categorie_pub c";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+        String request = "select libelle from categorie_pub";
+        try {
+            pt = cn.prepareStatement(request);
+            ResultSet rs = pt.executeQuery();
+            while (rs.next()) {
+                pList.add(rs.getString("libelle"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnounceRepService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pList;
     }
@@ -179,5 +202,22 @@ public class CategoriePubService {
         {
             System.out.println(ex.getMessage());
         }  
+    }
+    
+    public static  Integer getIdCategoriePub(String nom) {
+        try {
+            Connection cn = ConnectionBase.getInstance().getCnx();
+            String loginQry = "SELECT id FROM categorie_pub WHERE libelle = ? ";
+            PreparedStatement ste = cn.prepareStatement(loginQry);
+            ste.setString(1, nom);
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()) {
+            int id = rs.getInt("id");
+            return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

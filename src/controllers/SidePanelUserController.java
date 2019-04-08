@@ -57,7 +57,7 @@ public class SidePanelUserController implements Initializable {
                 callback.update("");
                 break;
              case "Forum":
-                callback.update("");
+                callback.update("/gui/forum/forumUser.fxml");
                 break;
             
          
