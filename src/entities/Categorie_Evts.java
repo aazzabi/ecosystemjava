@@ -5,31 +5,39 @@
  */
 package entities;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author Rania
  */
-public class Categorie_Evts {
+public class Categorie_Evts extends RecursiveTreeObject<Categorie_Evts> {
    
     private int id;
-    private String libelle;
-    private String but;
+    private StringProperty libelle;
+    private StringProperty but;
 
     public Categorie_Evts(String libelle, String but) {
        
-        this.libelle = libelle;
-        this.but = but;
+        this.libelle = new SimpleStringProperty(libelle);
+        this.but =new SimpleStringProperty(but);
     }
     
    public Categorie_Evts(int id, String libelle, String but) {
    this.id = id;
-   this.libelle = libelle;
-   this.but = but;
+   this.libelle = new SimpleStringProperty(libelle);
+   this.but = new SimpleStringProperty(but);
     }
 
     public Categorie_Evts(int id, String libelle) {
         this.id = id;
-        this.libelle = libelle;
+        this.libelle = new SimpleStringProperty(libelle);
+    }
+
+    public Categorie_Evts(String libelle) {
+        this.libelle = new SimpleStringProperty(libelle);
     }
    
    
@@ -45,26 +53,34 @@ public class Categorie_Evts {
         this.id = id;
     }
 
-    public String getLibelle() {
-        return libelle;
+    public final String getLibelle() {
+        return this.libelle.get();  
     }
 
 
-    public void setLibelle(String libelle) {
+    public void setLibelle(StringProperty libelle) {
         this.libelle = libelle;
     }
 
     public String getBut() {
-        return but;
+        return this.but.get();
+    }
+    
+    public final StringProperty libelleProperty() {
+        return this.libelle;
+    }
+    
+    public final StringProperty butProperty() {
+        return this.but; 
     }
 
-    public void setBut(String but) {
+    public void setBut(StringProperty but) {
         this.but = but;
     }
 
     @Override
     public String toString() {
-        return ""+libelle+"";
+        return ""+getLibelle()+"";
     }
     
     

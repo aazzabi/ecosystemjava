@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.events;
 
 import entities.Categorie_Evts;
 import java.net.URL;
@@ -32,7 +32,7 @@ import services.Categorie_EvtsService;
  *
  * @author Rania
  */
-public class Categorie_EvtsController implements Initializable {
+/*public class Categorie_EvtsController implements Initializable {
 
     @FXML
     private TextField textlibelle;
@@ -64,13 +64,13 @@ public class Categorie_EvtsController implements Initializable {
      private HBox row;
     
     
-    private ObservableList<Categorie_Evts> list_cats = FXCollections.observableArrayList();
+    /*private ObservableList<Categorie_Evts> list_cats = FXCollections.observableArrayList();
     Categorie_Evts c=new Categorie_Evts();
     Categorie_EvtsService cs= new Categorie_EvtsService();
     /**
      * Initializes the controller class.
      */
-    @Override
+   /* @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         //ObservableList<Categorie_Evts> list_cats =catsTable.getItems();
@@ -84,7 +84,7 @@ public class Categorie_EvtsController implements Initializable {
 } 
     
     @FXML
-    private void switchtab(ActionEvent event)
+    private void switchtabCat(ActionEvent event)
     {
     
         tabpane.getSelectionModel().select(1);
@@ -156,7 +156,7 @@ public class Categorie_EvtsController implements Initializable {
        while((int)combobut.getValue()!=catsTable.getSelectionModel().getSelectedItem().getId());
        // combobut.getSelectionModel().selectNext();
            */
-         valider.setVisible(true);
+     /*    valider.setVisible(true);
          annuler.setVisible(true);
          ajouter.setVisible(false); //zxinj.jar pour qr code
         
@@ -234,7 +234,7 @@ public class Categorie_EvtsController implements Initializable {
         row.getStyleClass().add("content-item");
         content_product.getChildren().add(row);*/
         
-         }
+         //}
  
     
-}
+//}

@@ -51,7 +51,7 @@ public class SidePanelController implements Initializable {
                 callback.update("/gui/reparateur/ReparateurMainSc.fxml");
                 break;
              case "Evenement":
-                callback.update("/gui/Evenement.fxml");
+                callback.update("/gui/events/EvenementAdmin.fxml");
                 break;
              case "Recyclage":
                 callback.update("");

@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.events;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entities.Categorie_Evts;
 import entities.Evenement;
 import entities.Session;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import static java.lang.System.in;
 import java.net.URL;
 import java.time.Instant;
@@ -43,6 +47,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -100,6 +106,8 @@ public class EvenementController implements Initializable {
       @FXML
      private Button valider;
       @FXML
+     private Button consulter;
+      @FXML
      private Button annuler;
       @FXML
      private Hyperlink myEvents;
@@ -111,6 +119,19 @@ public class EvenementController implements Initializable {
      private JFXTextField searchbar;
       @FXML
       private Text txtPhoto;
+      @FXML
+      private ImageView imageEvent;
+      @FXML
+      private JFXTextField sonlieu;
+      @FXML
+      private JFXTextField sontitre;
+      @FXML
+      private JFXTextField sadate;
+      @FXML
+      private JFXTextField sacategorie;
+      @FXML
+      private JFXTextArea sadescription;
+      
       @FXML
       private Button btnPhoto;
       private String absolutePathPhoto;
@@ -156,8 +177,10 @@ public class EvenementController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(EvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         modifier.setVisible(false);
-         supprimer.setVisible(false);
+        supprimer.setVisible(false);
+        consulter.setVisible(false); 
         
     }
     
@@ -200,6 +223,8 @@ public class EvenementController implements Initializable {
         
         
         events.setItems(list_event);
+       
+            
          
          }
     
@@ -221,8 +246,8 @@ Date date = Date.from(instant);
 System.out.println(localDate + "\n" + instant + "\n" + date);
          Evenement c=new Evenement(lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date,txtPhoto.getText());
          txtPhoto.setVisible(false);
-         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\ecosystemjava\\src\\res\\upload\\event\\");
-         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\event\\photo\\");
+         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\ecosystemjava\\src\\res\\event\\photo");
+         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\evt\\cover");
          cs.addEvent(c);
          
          lieutext.setText("");
@@ -293,10 +318,11 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
       @FXML
     private void options(MouseEvent event)
     {
-        if (!myEvents.isVisible())
-        {
-            modifier.setVisible(true);
-            supprimer.setVisible(true);}
+        consulter.setVisible(true);
+      if (!myEvents.isVisible())
+      { modifier.setVisible(true);
+            supprimer.setVisible(true);
+            } 
     }
      @FXML
      private void supprimerEvent(ActionEvent event)
@@ -309,7 +335,7 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 EvenementService es =new EvenementService(); 
-                System.out.println(events.getSelectionModel().getSelectedItem().getTitre());
+                System.out.println(events.getSelectionModel().getSelectedItem().getId());
                 es.deleteEvent(events.getSelectionModel().getSelectedItem().getId());
                // SendMail.sendmail("amine.mraihi@esprit.tn",
                   //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
@@ -318,6 +344,24 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
         }
      
      
+     }
+     
+     
+    @FXML
+     private void consulter(ActionEvent event)
+     {
+         tabpane.getSelectionModel().select(2);
+         sontitre.setText(events.getSelectionModel().getSelectedItem().getTitre());
+         sonlieu.setText(events.getSelectionModel().getSelectedItem().getLieu());
+       //datepicker.setDate();
+       sadate.setText(events.getSelectionModel().getSelectedItem().getDate().toString());
+   //    sacategorie.setText(events.getSelectionModel().getSelectedItem().getCategorie().getLibelle());
+         sadescription.setText(events.getSelectionModel().getSelectedItem().getDescription());
+         javafx.scene.image.Image im = new javafx.scene.image.Image("http://localhost/ecosystemweb/web/uploads/evt/cover/"+events.getSelectionModel().getSelectedItem().getCover());
+         imageEvent.setImage(im);
+         
+       //  ajouter.setVisible(false);
+         
      }
      
      @FXML
@@ -365,7 +409,7 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
        Date date = Date.from(instant);
          
          Evenement e=new Evenement(events.getSelectionModel().getSelectedItem().getId(),lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date,txtPhoto.getText());
-         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\ecosystemjava\\src\\res\\upload\\event\\");
+         copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\ecosystemjava\\src\\res\\event\\photo\\");
          copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\event\\photo\\");
          es.updateEvent(e);
          lieutext.setText("");
@@ -402,7 +446,7 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
      {
           FileChooser fileChooser = new FileChooser();
          fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg","*.JPG","*.JPEG")
          );
         btnPhoto.setOnAction(e-> {
             File choix = fileChooser.showOpenDialog(null);
