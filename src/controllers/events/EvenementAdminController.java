@@ -107,6 +107,10 @@ public class EvenementAdminController implements Initializable {
     @FXML
     private Button homebutton;
     @FXML
+    private Button homebutton1;
+    @FXML
+    private Button homebutton2;
+    @FXML
     private Button ajouter;
     @FXML
     private ChoiceBox categoriebox_id;
@@ -195,6 +199,9 @@ public class EvenementAdminController implements Initializable {
         }
          supprimer.setVisible(false);  
          homebutton.setStyle("-fx-background-color: rgba(255, 255, 255,0);");
+         homebutton1.setStyle("-fx-background-color: rgba(255, 255, 255,0);");
+         homebutton2.setStyle("-fx-background-color: rgba(255, 255, 255,0);");
+         ajoutcategorie.setStyle("-fx-background-color: rgba(255, 255, 255,0);");
          
          //categorie
           combobut.setItems(FXCollections.observableArrayList("Lucratif","Non Lucratif"));
