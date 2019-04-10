@@ -17,7 +17,14 @@ public interface IAnnonceService {
     public void add(Annonce a);
     public void delete(int id);
     public boolean update(Annonce a, int id);
+    public boolean updateLikes(int id);
     public List<Annonce> getall();
+    public Annonce getAnnonceById(int id);
+    public List<Annonce> trierParDate();
+    public List<Annonce> trierParPrixASC();
+    public List<Annonce> trierParPrixDESC();
+    public List<Annonce> GetByUser();
+    public List<Annonce> GetByCategorie(int id);
     
     
 }

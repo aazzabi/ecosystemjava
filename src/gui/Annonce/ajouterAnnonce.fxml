@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controllers.Annonce.AjouterAnnonceController">
+    <stylesheets>
+        <URL value="@ajouterannonce.css" />
+    </stylesheets>
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" stylesheets="@../../../../Users/anasc/Downloads/Iheb/Iheb/ihebhhhhhhh/ihebhhhhh/Iheb/citeJDBC/src/View/style.css">
+         <center>
+            <HBox>
+               <children>
+                  <TextArea fx:id="descriptionn" prefHeight="400.0" prefWidth="263.0" promptText="Desciption">
+                     <effect>
+                        <DropShadow color="#00000055" height="42.45" radius="18.3425" spread="0.09" width="32.92" />
+                     </effect>
+                  </TextArea>
+                  <VBox alignment="TOP_CENTER" prefHeight="403.0" prefWidth="362.0" spacing="30.0">
+                     <children>
+                        <Label fx:id="filename" prefHeight="26.0" prefWidth="303.0" />
+                        <Label fx:id="filepath" prefHeight="26.0" prefWidth="346.0" />
+                        <ImageView fx:id="img_annonce" fitHeight="310.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="20.0" />
+               </BorderPane.margin>
+            </HBox>
+         </center>
+         <left>
+            <VBox prefHeight="400.0" prefWidth="236.0" spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Titre" />
+                  <TextField fx:id="txt_titre" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #F7ECEB;">
+                     <effect>
+                        <DropShadow color="#00000055" height="42.45" radius="18.3425" spread="0.09" width="32.92" />
+                     </effect>
+                  </TextField>
+                  <Label layoutX="114.0" layoutY="216.0" text="Prix" />
+                  <TextField fx:id="txt_prix" style="-fx-background-color: #F7ECEB;">
+                     <effect>
+                        <DropShadow color="#00000055" height="42.45" radius="18.3425" spread="0.09" width="32.92" />
+                     </effect>
+                  </TextField>
+                  <Label layoutX="114.0" layoutY="10.0" text="Categorie" />
+                  <ComboBox fx:id="cmb_cat" prefHeight="26.0" prefWidth="204.0" promptText="selectionner une Catégorie" />
+                  <Label layoutX="40.0" layoutY="185.0" text="Region :" />
+                  <ComboBox fx:id="cmb_Region" prefHeight="26.0" prefWidth="204.0" promptText="selectionner une région" />
+                  <Label layoutX="40.0" layoutY="255.0" opacity="0.0" text="Categorie" />
+                  <Label layoutX="40.0" layoutY="299.0" opacity="0.0" text="Categorie" />
+                  <Text fx:id="label_photo" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
+                  <Button fx:id="filechoose" mnemonicParsing="false" onAction="#filechoose" prefHeight="26.0" prefWidth="205.0" text="importer" />
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </VBox>
+         </left>
+         <bottom>
+            <HBox alignment="CENTER_RIGHT" prefHeight="79.0" prefWidth="870.0" spacing="50.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="ajouter" mnemonicParsing="false" onAction="#insertData" prefHeight="39.0" prefWidth="110.0" text="creer">
+                     <font>
+                        <Font name="Century Gothic" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="50.0" />
+               </padding>
+            </HBox>
+         </bottom>
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

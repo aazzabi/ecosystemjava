@@ -41,7 +41,7 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="consulter" mnemonicParsing="false" prefHeight="34.0" prefWidth="134.0" text="Conuslter" GridPane.columnIndex="1">
+                  <Button fx:id="consulter" mnemonicParsing="false" onAction="#consulter" prefHeight="34.0" prefWidth="134.0" text="Conuslter" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -61,6 +61,7 @@
                         <Insets left="44.0" />
                      </GridPane.margin>
                   </Label>
+                  <Label fx:id="lbl_id" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
@@ -71,7 +72,7 @@
             <Insets left="35.0" right="28.0" top="26.0" />
          </padding>
          <children>
-            <Button fx:id="likes" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="like">
+            <Button fx:id="likes" mnemonicParsing="false" onAction="#likes" prefHeight="40.0" prefWidth="79.0" text="like">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -83,7 +84,7 @@
                   <Font name="System Italic" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="signaler" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Signaler">
+            <Button fx:id="signaler" mnemonicParsing="false" onAction="#ajoutersignal" prefHeight="40.0" prefWidth="116.0" text="Signaler">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -95,7 +96,7 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="pannier" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Pannier">
+            <Button fx:id="pannier" mnemonicParsing="false" onAction="#ajouterpanier" prefHeight="40.0" prefWidth="106.0" text="Pannier">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
