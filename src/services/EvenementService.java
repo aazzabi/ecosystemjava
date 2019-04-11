@@ -133,7 +133,7 @@ public class EvenementService implements IEvenementService{
         return cats;
     }
     
-    // donner son experience a la cloture de l'event/ QR code si event lucratif../stat sur categorie d'event/mail au participants si un event modifié 
+    // donner son experience a la cloture de l'event/ QR code si event lucratif../etat sur categorie d'event/mail au participants si un event modifié 
     //lieu avec maps +controle saisie date
     
     

@@ -139,6 +139,8 @@ public class EvenementController implements Initializable {
       private ListView listView;
       @FXML
       private Button btnPhoto;
+      @FXML
+      private Button homebutton1;
       private String absolutePathPhoto;
     
      
@@ -186,6 +188,10 @@ public class EvenementController implements Initializable {
         modifier.setVisible(false);
         supprimer.setVisible(false);
         consulter.setVisible(false); 
+        myEvents.setVisible(true);
+        
+        
+        
         
         sontitre.setEditable(false);
         sonlieu.setEditable(false);
@@ -193,7 +199,7 @@ public class EvenementController implements Initializable {
         sacategorie.setEditable(false);
         sadescription.setEditable(false);
          ajout.setStyle("-fx-background-color: rgba(255, 255, 255,0);");
-        
+         homebutton1.setStyle("-fx-background-color: rgba(255, 255, 255,0);");
         //*********************************
         
        
@@ -339,7 +345,7 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
       @FXML
     private void options(MouseEvent event)
     {
-        consulter.setVisible(true);
+       // consulter.setVisible(true);
       if (!myEvents.isVisible())
       { modifier.setVisible(true);
             supprimer.setVisible(true);
@@ -348,16 +354,17 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
      @FXML
      private void supprimerEvent(ActionEvent event)
      {
-         if (!events.getSelectionModel().isEmpty()) {
+         Evenement e=(Evenement)listView .getSelectionModel().getSelectedItem();
+         if (!listView.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("suppression d'un event");
             alert.setHeaderText("Etes-vous sur de vouloir le supprimer ?  "
-                    + events.getSelectionModel().getSelectedItem().getTitre() + "?");
+                    + e.getTitre() + "?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 EvenementService es =new EvenementService(); 
-                System.out.println(events.getSelectionModel().getSelectedItem().getId());
-                es.deleteEvent(events.getSelectionModel().getSelectedItem().getId());
+                
+                es.deleteEvent(e.getId());
                // SendMail.sendmail("amine.mraihi@esprit.tn",
                   //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
                 afficher2();
@@ -381,6 +388,8 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
          sadescription.setText(e.getDescription());
          javafx.scene.image.Image im = new javafx.scene.image.Image("http://localhost/ecosystemweb/web/uploads/evt/cover/"+e.getCover());
          imageEvent.setImage(im);
+         modifier.setVisible(true);
+            supprimer.setVisible(true);
          
        //  ajouter.setVisible(false);
          
@@ -390,8 +399,9 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
      private void modifierEvent(ActionEvent event)
      {
          tabpane.getSelectionModel().select(1);
-         titretext.setText(events.getSelectionModel().getSelectedItem().getTitre());
-         lieutext.setText(events.getSelectionModel().getSelectedItem().getLieu());
+         Evenement e=(Evenement)listView.getSelectionModel().getSelectedItem();
+         titretext.setText(e.getTitre());
+         lieutext.setText(e.getLieu());
        //datepicker.setDate();
        categoriebox.getSelectionModel().select(-1);
        categoriebox_id.getSelectionModel().select(-1);
@@ -400,10 +410,10 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
            categoriebox_id.getSelectionModel().selectNext();
          
       }
-       while((int)categoriebox_id.getValue()!=events.getSelectionModel().getSelectedItem().getCategorie().getId());
+       while((int)categoriebox_id.getValue()!=e.getCategorie().getId());
         categoriebox.getSelectionModel().selectNext();
            categoriebox_id.getSelectionModel().selectNext();
-         descriptiontext.setText(events.getSelectionModel().getSelectedItem().getDescription());
+         descriptiontext.setText(e.getDescription());
          valider.setVisible(true);
          annuler.setVisible(true);
          ajouter.setVisible(false);
@@ -413,12 +423,12 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
      @FXML
      private void validerModif(ActionEvent event)
      {
-
-      if (!events.getSelectionModel().isEmpty()) {
+ Evenement e=(Evenement)listView .getSelectionModel().getSelectedItem();
+      if (!listView.getSelectionModel().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("modification d'un event");
             alert.setHeaderText("Etes-vous sur de vouloir le modifier ?  "
-                    + events.getSelectionModel().getSelectedItem().getTitre() + "?");
+                    + e.getTitre() + "?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 EvenementService es =new EvenementService();
@@ -430,10 +440,10 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
        Date date = Date.from(instant);
          
-         Evenement e=new Evenement(events.getSelectionModel().getSelectedItem().getId(),lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date,txtPhoto.getText());
+         Evenement e1=new Evenement(e.getId(),lieutext.getText(),i,titretext.getText(),descriptiontext.getText(),date,txtPhoto.getText());
          copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\ecosystemjava\\src\\res\\event\\photo\\");
          copyImages.deplacerVers(txtPhoto, absolutePathPhoto,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\event\\photo\\");
-         es.updateEvent(e);
+         es.updateEvent(e1);
          lieutext.setText("");
          titretext.setText("");
          descriptiontext.setText("");   
@@ -481,4 +491,10 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
             }
         });
      }
+     
+     @FXML
+    private void retourHomeUser(ActionEvent event)
+    {
+        tabpane.getSelectionModel().select(0);
+    }
 }

@@ -29,23 +29,21 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="753.0" prefWidth="1360.0">
                      <children>
-                        <Pane layoutX="334.0" layoutY="-28.0" prefHeight="882.0" prefWidth="1500.0" style="-fx-background-color: white;">
+                        <Pane layoutX="270.0" layoutY="-28.0" prefHeight="882.0" prefWidth="1500.0" style="-fx-background-color: white;">
                            <children>
                               <ImageView fitHeight="57.0" fitWidth="78.0" layoutX="869.0" layoutY="732.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../res/add.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="supprimer" layoutX="336.0" layoutY="782.0" mnemonicParsing="false" onAction="#supprimerEvent" text="Supprimer" />
                               <Button fx:id="ajout" layoutX="862.0" layoutY="723.0" mnemonicParsing="false" onAction="#switchtab" prefHeight="76.0" prefWidth="72.0" style="-fx-background-color: #008000; -fx-background-radius: 5em;" />
                               <Button fx:id="consulter" layoutX="192.0" layoutY="776.0" mnemonicParsing="false" onAction="#consulter" text="Consulter" />
-                              <Button fx:id="modifier" layoutX="46.0" layoutY="777.0" mnemonicParsing="false" onAction="#modifierEvent" prefHeight="31.0" prefWidth="82.0" text="Modifier" />
-                              <ImageView fitHeight="83.0" fitWidth="76.0" layoutX="822.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="83.0" fitWidth="76.0" layoutX="836.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../res/myevents.png" />
                                  </image>
                               </ImageView>
-                              <Hyperlink fx:id="myEvents" layoutX="801.0" layoutY="104.0" onAction="#afficher2" prefHeight="100.0" prefWidth="108.0" />
+                              <Hyperlink fx:id="myEvents" layoutX="815.0" layoutY="104.0" onAction="#afficher2" prefHeight="100.0" prefWidth="108.0" />
                            </children>
                         </Pane>
                         <TableView fx:id="events" layoutX="1043.0" layoutY="44.0" onMouseClicked="#options" prefHeight="0.0" prefWidth="0.0">
@@ -80,10 +78,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane layoutX="314.0" layoutY="6.0" prefHeight="864.0" prefWidth="1213.0" style="-fx-background-color: white;">
+                        <Pane layoutX="313.0" layoutY="-26.0" prefHeight="896.0" prefWidth="1276.0" style="-fx-background-color: white;">
                            <children>
-                              <Separator layoutX="146.0" layoutY="467.0" prefHeight="3.0" prefWidth="307.0" style="-fx-background-color: green;" />
-                              <JFXTextField fx:id="titretext" focusColor="#5ea840" layoutX="234.0" layoutY="117.0" promptText="Titre..." />
+                              <Separator layoutX="171.0" layoutY="432.0" prefHeight="0.0" prefWidth="646.0" style="-fx-background-color: green;" />
+                              <JFXTextField fx:id="titretext" focusColor="#5ea840" layoutX="402.0" layoutY="115.0" promptText="Titre..." />
                               <JFXTextField fx:id="lieutext" layoutX="234.0" layoutY="242.0" promptText="Lieu..?" />
                               <ChoiceBox fx:id="categoriebox" layoutX="211.0" layoutY="519.0" prefHeight="24.0" prefWidth="199.0">
                                  <stylesheets>
@@ -91,23 +89,29 @@
                                     <URL value="@listview.css" />
                                  </stylesheets>
                               </ChoiceBox>
-                              <ChoiceBox fx:id="categoriebox_id" layoutX="473.0" layoutY="468.0" prefWidth="150.0" />
-                              <Button fx:id="btnPhoto" layoutX="256.0" layoutY="452.0" mnemonicParsing="false" onAction="#photoChooser" text="Choisir fichier" />
-                              <JFXDatePicker fx:id="datepicker" layoutX="227.0" layoutY="353.0" promptText="Quand?" />
+                              <ChoiceBox fx:id="categoriebox_id" layoutX="563.0" layoutY="519.0" prefWidth="150.0" />
+                              <Button fx:id="btnPhoto" layoutX="409.0" layoutY="418.0" mnemonicParsing="false" onAction="#photoChooser" text="Choisir une couverture" />
+                              <JFXDatePicker fx:id="datepicker" layoutX="563.0" layoutY="242.0" promptText="Quand?" />
                               <JFXTextArea fx:id="descriptiontext" focusColor="#49a840" layoutX="134.0" layoutY="580.0" promptText="Une petite description" />
-                              <Button fx:id="ajouter" layoutX="744.0" layoutY="554.0" mnemonicParsing="false" onAction="#ajout" prefHeight="56.0" prefWidth="95.0" style="-fx-background-color: green; -fx-background-radius: 5em;" text="Ajouter" />
-                              <Button fx:id="valider" layoutX="742.0" layoutY="643.0" mnemonicParsing="false" onAction="#validerModif" prefHeight="62.0" prefWidth="99.0" style="-fx-background-color: green; -fx-background-radius: 5em;" text="Valider" />
-                              <Button fx:id="annuler" layoutX="743.0" layoutY="736.0" mnemonicParsing="false" onAction="#annulerModif" prefHeight="59.0" prefWidth="97.0" style="-fx-background-color: red; -fx-background-radius: 5em;" text="Annuler" />
+                              <Button fx:id="ajouter" layoutX="744.0" layoutY="554.0" mnemonicParsing="false" onAction="#ajout" prefHeight="56.0" prefWidth="95.0" style="-fx-background-color: green; -fx-background-radius: 5em;" text="Ajouter" textFill="WHITE" />
+                              <Button fx:id="valider" layoutX="742.0" layoutY="643.0" mnemonicParsing="false" onAction="#validerModif" prefHeight="62.0" prefWidth="99.0" style="-fx-background-color: green; -fx-background-radius: 5em;" text="Valider" textFill="WHITE" />
+                              <Button fx:id="annuler" layoutX="743.0" layoutY="736.0" mnemonicParsing="false" onAction="#annulerModif" prefHeight="59.0" prefWidth="97.0" style="-fx-background-color: red; -fx-background-radius: 5em;" text="Annuler" textFill="WHITE" />
                            </children>
                         </Pane>
                         <Text fx:id="txtPhoto" layoutX="579.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="24.6708984375" />
                         <Pane prefHeight="1100.0" prefWidth="330.0" style="-fx-background-color: rgb(0,128,0);">
                            <children>
+                              <ImageView fitHeight="90.0" fitWidth="104.0" layoutX="88.0" layoutY="335.0">
+                                 <image>
+                                    <Image url="@../../res/home.png" />
+                                 </image>
+                              </ImageView>
                               <ImageView fitHeight="115.0" fitWidth="307.0" layoutX="7.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../res/web_assets_img_logofinalev1.png" />
                                  </image>
                               </ImageView>
+                              <Button fx:id="homebutton1" layoutX="84.0" layoutY="332.0" mnemonicParsing="false" onAction="#retourHomeUser" prefHeight="96.0" prefWidth="113.0" />
                            </children>
                         </Pane>
                      </children>
@@ -139,6 +143,8 @@
                               </ImageView>
                            </children>
                         </Pane>
+                        <Button fx:id="modifier" layoutX="1172.0" layoutY="588.0" mnemonicParsing="false" onAction="#modifierEvent" prefHeight="57.0" prefWidth="99.0" style="-fx-background-color: green; -fx-background-radius: 5em;" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="supprimer" layoutX="1171.0" layoutY="692.0" mnemonicParsing="false" onAction="#supprimerEvent" prefHeight="60.0" prefWidth="102.0" style="-fx-background-color: red; -fx-background-radius: 5em;" text="Supprimer" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </content>
