@@ -1,54 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.events.EvenementController">
+<AnchorPane id="AnchorPane" prefHeight="691.0" prefWidth="1261.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.events.EvenementController">
    <children>
-      <TabPane fx:id="tabpane" layoutY="-49.0" prefHeight="882.0" prefWidth="1360.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabpane" layoutY="-49.0" prefHeight="747.0" prefWidth="1263.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Untitled Tab 1">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="753.0" prefWidth="1360.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane layoutX="334.0" layoutY="-28.0" prefHeight="882.0" prefWidth="1500.0" style="-fx-background-color: white;">
-                           <children>
-                              <ImageView fitHeight="57.0" fitWidth="78.0" layoutX="869.0" layoutY="732.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../res/add.png" />
-                                 </image>
-                              </ImageView>
-                              <Button fx:id="supprimer" layoutX="336.0" layoutY="782.0" mnemonicParsing="false" onAction="#supprimerEvent" text="Supprimer" />
-                              <Button fx:id="ajout" layoutX="862.0" layoutY="723.0" mnemonicParsing="false" onAction="#switchtab" prefHeight="76.0" prefWidth="72.0" style="-fx-background-color: #008000; -fx-background-radius: 5em;" />
-                              <Button fx:id="consulter" layoutX="192.0" layoutY="776.0" mnemonicParsing="false" onAction="#consulter" text="Consulter" />
-                              <Button fx:id="modifier" layoutX="46.0" layoutY="777.0" mnemonicParsing="false" onAction="#modifierEvent" prefHeight="31.0" prefWidth="82.0" text="Modifier" />
-                              <ImageView fitHeight="83.0" fitWidth="76.0" layoutX="822.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../res/myevents.png" />
-                                 </image>
-                              </ImageView>
-                              <Hyperlink fx:id="myEvents" layoutX="801.0" layoutY="104.0" onAction="#afficher2" prefHeight="100.0" prefWidth="108.0" />
-                           </children>
-                        </Pane>
-                        <TableView fx:id="events" layoutX="1043.0" layoutY="44.0" onMouseClicked="#options" prefHeight="0.0" prefWidth="0.0">
+                        <TableView fx:id="events" layoutX="204.0" layoutY="189.0" onMouseClicked="#options" prefHeight="389.0" prefWidth="793.0">
                           <columns>
                               <TableColumn fx:id="categorie" prefWidth="98.0" text="Categorie" />
                               <TableColumn fx:id="titre" prefWidth="105.0" text="Titre" />
@@ -62,16 +39,11 @@
                         </TableView>
                         <JFXTextField fx:id="searchbar" layoutX="462.0" layoutY="106.0" prefHeight="49.0" prefWidth="306.0" promptText="Rechercher..." />
                         <JFXButton fx:id="search" layoutX="782.0" layoutY="124.0" text="Ok" />
-                        <ListView fx:id="listView" layoutX="343.0" layoutY="189.0" onMouseClicked="#consulter" prefHeight="500.0" prefWidth="981.0" stylesheets="@listview.css" />
-                        <Pane prefHeight="1100.0" prefWidth="330.0" style="-fx-background-color: rgb(0,128,0);">
-                           <children>
-                              <ImageView fitHeight="115.0" fitWidth="307.0" layoutX="7.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../res/web_assets_img_logofinalev1.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
+                        <Button fx:id="ajout" layoutX="997.0" layoutY="619.0" mnemonicParsing="false" onAction="#switchtab" text="Ajouter un évènement" />
+                        <Hyperlink fx:id="myEvents" layoutX="92.0" layoutY="102.0" onAction="#afficher2" text="Mes events" />
+                        <Button fx:id="modifier" layoutX="360.0" layoutY="620.0" mnemonicParsing="false" onAction="#modifierEvent" prefHeight="31.0" prefWidth="82.0" text="Modifier" />
+                        <Button fx:id="supprimer" layoutX="679.0" layoutY="619.0" mnemonicParsing="false" onAction="#supprimerEvent" text="Supprimer" />
+                        <Button fx:id="consulter" layoutX="517.0" layoutY="620.0" mnemonicParsing="false" onAction="#consulter" text="Consulter" />
                      </children>
                   </AnchorPane>
             </content>
@@ -80,36 +52,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane layoutX="314.0" layoutY="6.0" prefHeight="864.0" prefWidth="1213.0" style="-fx-background-color: white;">
-                           <children>
-                              <Separator layoutX="146.0" layoutY="467.0" prefHeight="3.0" prefWidth="307.0" style="-fx-background-color: green;" />
-                              <JFXTextField fx:id="titretext" focusColor="#5ea840" layoutX="234.0" layoutY="117.0" promptText="Titre..." />
-                              <JFXTextField fx:id="lieutext" layoutX="234.0" layoutY="242.0" promptText="Lieu..?" />
-                              <ChoiceBox fx:id="categoriebox" layoutX="211.0" layoutY="519.0" prefHeight="24.0" prefWidth="199.0">
-                                 <stylesheets>
-                                    <URL value="@listview.css" />
-                                    <URL value="@listview.css" />
-                                 </stylesheets>
-                              </ChoiceBox>
-                              <ChoiceBox fx:id="categoriebox_id" layoutX="473.0" layoutY="468.0" prefWidth="150.0" />
-                              <Button fx:id="btnPhoto" layoutX="256.0" layoutY="452.0" mnemonicParsing="false" onAction="#photoChooser" text="Choisir fichier" />
-                              <JFXDatePicker fx:id="datepicker" layoutX="227.0" layoutY="353.0" promptText="Quand?" />
-                              <JFXTextArea fx:id="descriptiontext" focusColor="#49a840" layoutX="134.0" layoutY="580.0" promptText="Une petite description" />
-                              <Button fx:id="ajouter" layoutX="744.0" layoutY="554.0" mnemonicParsing="false" onAction="#ajout" prefHeight="56.0" prefWidth="95.0" style="-fx-background-color: green; -fx-background-radius: 5em;" text="Ajouter" />
-                              <Button fx:id="valider" layoutX="742.0" layoutY="643.0" mnemonicParsing="false" onAction="#validerModif" prefHeight="62.0" prefWidth="99.0" style="-fx-background-color: green; -fx-background-radius: 5em;" text="Valider" />
-                              <Button fx:id="annuler" layoutX="743.0" layoutY="736.0" mnemonicParsing="false" onAction="#annulerModif" prefHeight="59.0" prefWidth="97.0" style="-fx-background-color: red; -fx-background-radius: 5em;" text="Annuler" />
-                           </children>
-                        </Pane>
+                        <TextField fx:id="lieutext" layoutX="431.0" layoutY="182.0" prefHeight="57.0" prefWidth="249.0" promptText="lieu?" />
+                        <ChoiceBox fx:id="categoriebox" layoutX="437.0" layoutY="385.0" prefHeight="40.0" prefWidth="199.0" />
+                        <TextField fx:id="titretext" layoutX="431.0" layoutY="72.0" prefHeight="64.0" prefWidth="268.0" promptText="Titre.." />
+                        <TextArea fx:id="descriptiontext" layoutX="433.0" layoutY="478.0" prefHeight="143.0" prefWidth="264.0" promptText="Description..." />
+                        <Button fx:id="ajouter" layoutX="848.0" layoutY="569.0" mnemonicParsing="false" onAction="#ajout" prefHeight="56.0" prefWidth="95.0" text="Ajouter" />
+                        <ChoiceBox fx:id="categoriebox_id" layoutX="680.0" layoutY="390.0" prefWidth="150.0" />
+                        <DatePicker fx:id="datepicker" layoutX="428.0" layoutY="269.0" />
+                        <Button fx:id="valider" layoutX="961.0" layoutY="570.0" mnemonicParsing="false" onAction="#validerModif" prefHeight="54.0" prefWidth="95.0" text="Valider" />
+                        <Button fx:id="annuler" layoutX="961.0" layoutY="644.0" mnemonicParsing="false" onAction="#annulerModif" prefHeight="50.0" prefWidth="97.0" text="Annuler" />
+                        <Button fx:id="btnPhoto" layoutX="454.0" layoutY="323.0" mnemonicParsing="false" onAction="#photoChooser" text="Choisir fichier" />
                         <Text fx:id="txtPhoto" layoutX="579.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="24.6708984375" />
-                        <Pane prefHeight="1100.0" prefWidth="330.0" style="-fx-background-color: rgb(0,128,0);">
-                           <children>
-                              <ImageView fitHeight="115.0" fitWidth="307.0" layoutX="7.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../res/web_assets_img_logofinalev1.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
                      </children>
                   </AnchorPane>
             </content>
@@ -118,27 +71,12 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="imageEvent" fitHeight="857.0" fitWidth="1146.0" layoutX="330.0" layoutY="10.0" opacity="0.59" pickOnBounds="true" preserveRatio="true" />
-                        <JFXTextArea fx:id="sadescription" layoutX="533.0" layoutY="550.0" />
-                        <JFXTextField fx:id="sontitre" layoutX="574.0" layoutY="95.0" />
-                        <JFXTextField fx:id="sonlieu" layoutX="574.0" layoutY="194.0" />
-                        <JFXTextField fx:id="sacategorie" layoutX="574.0" layoutY="441.0">
-                           <font>
-                              <Font name="Bodoni MT Condensed" size="15.0" />
-                           </font></JFXTextField>
-                        <JFXTextField fx:id="sadate" layoutX="574.0" layoutY="312.0">
-                           <font>
-                              <Font name="Bodoni MT Poster Compressed" size="15.0" />
-                           </font></JFXTextField>
-                        <Pane prefHeight="1100.0" prefWidth="330.0" style="-fx-background-color: rgb(0,128,0);">
-                           <children>
-                              <ImageView fitHeight="115.0" fitWidth="307.0" layoutX="7.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../res/web_assets_img_logofinalev1.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
+                        <ImageView fx:id="imageEvent" fitHeight="698.0" fitWidth="1250.0" layoutX="1.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <JFXTextArea fx:id="sadescription" layoutX="243.0" layoutY="447.0" />
+                        <JFXTextField fx:id="sontitre" layoutX="335.0" layoutY="103.0" />
+                        <JFXTextField fx:id="sonlieu" layoutX="335.0" layoutY="198.0" />
+                        <JFXTextField fx:id="sacategorie" layoutX="335.0" layoutY="394.0" />
+                        <JFXTextField fx:id="sadate" layoutX="329.0" layoutY="309.0" />
                      </children>
                   </AnchorPane>
                </content>

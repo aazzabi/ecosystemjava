@@ -21,7 +21,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 //import java.sql.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -42,8 +41,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -55,7 +52,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.util.Callback;
 import services.Categorie_EvtsService;
 import services.EvenementService;
 import utils.copyImages;
@@ -88,17 +84,17 @@ public class EvenementController implements Initializable {
     @FXML
     private TableColumn<Evenement, Date> date;
      @FXML
-     private JFXTextField lieutext;
+     private TextField lieutext;
      @FXML
-     private JFXDatePicker datepicker;
+     private DatePicker datepicker;
      @FXML
      private ChoiceBox categoriebox;
      @FXML
      private ChoiceBox categoriebox_id;
      @FXML
-     private JFXTextField titretext;
+     private TextField titretext;
      @FXML
-     private JFXTextArea descriptiontext;
+     private TextArea descriptiontext;
      @FXML
      private Button ajouter;
      @FXML
@@ -135,8 +131,7 @@ public class EvenementController implements Initializable {
       private JFXTextField sacategorie;
       @FXML
       private JFXTextArea sadescription;
-      @FXML
-      private ListView listView;
+      
       @FXML
       private Button btnPhoto;
       private String absolutePathPhoto;
@@ -187,31 +182,17 @@ public class EvenementController implements Initializable {
         supprimer.setVisible(false);
         consulter.setVisible(false); 
         
-        sontitre.setEditable(false);
-        sonlieu.setEditable(false);
-        sadate.setEditable(false);
-        sacategorie.setEditable(false);
-        sadescription.setEditable(false);
-         ajout.setStyle("-fx-background-color: rgba(255, 255, 255,0);");
-        
-        //*********************************
-        
-       
-       
-        
-       
-        
     }
     
     void afficher()
          {
               
               
-           /*list_event = FXCollections.observableArrayList(es.getAll());
+           list_event = FXCollections.observableArrayList(es.getAll());
            
             
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        id.cellFactoryProperty();
+       /* id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        id.cellFactoryProperty();*/
         
         lieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
         lieu.cellFactoryProperty();
@@ -237,31 +218,15 @@ public class EvenementController implements Initializable {
         
         creator.setCellValueFactory(new PropertyValueFactory<>("createdBy"));
         creator.cellFactoryProperty();
-      
-        events.setItems(list_event);*/
-        List<Evenement> listEvents = new ArrayList<>();
-        listEvents=es.getAll(); 
         
-        ObservableList<Evenement> data = FXCollections.observableArrayList(listEvents);
-    
-        listView.setCellFactory(new Callback<ListView<Evenement>, ListCell<Evenement>>() {
-                @Override   
-                public ListCell<Evenement> call(ListView<Evenement> listView) {
-                    return new CustomListCell();
-                }
-             });
-       
-        listView.setItems(data);
+        
+        
+        
+        events.setItems(list_event);
        
             
          
          }
-    
-     @FXML
-    private void retourHome(ActionEvent event)
-    {
-        tabpane.getSelectionModel().select(0);
-    }
     
      @FXML
      private void ajout(ActionEvent event) throws Exception
@@ -316,24 +281,38 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
      @FXML
      private void afficher2()
      {
-         //list_myEvents = FXCollections.observableArrayList(es.myEvents());
+         list_myEvents = FXCollections.observableArrayList(es.myEvents());
            
            
-        List<Evenement> listEvents = new ArrayList<>();
-        listEvents=es.myEvents(); 
+        /*id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        id.cellFactoryProperty();*/
         
-        ObservableList<Evenement> data = FXCollections.observableArrayList(listEvents);
-    
-        listView.setCellFactory(new Callback<ListView<Evenement>, ListCell<Evenement>>() {
-                @Override   
-                public ListCell<Evenement> call(ListView<Evenement> listView) {
-                    return new CustomListCell();
-                }
-             });
+        lieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
+        lieu.cellFactoryProperty();
+        
+        categorie.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+        categorie.cellFactoryProperty();
+        
+        titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        titre.cellFactoryProperty();
+        
+         date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        date.cellFactoryProperty();
+        
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        description.cellFactoryProperty();
+        
+        cover.setCellValueFactory(new PropertyValueFactory<>("cover"));
+        cover.cellFactoryProperty();
+        
+        nbvues.setCellValueFactory(new PropertyValueFactory<>("nbvues"));
+        nbvues.cellFactoryProperty();
+        
+        creator.setCellValueFactory(new PropertyValueFactory<>("createdBy"));
+        creator.cellFactoryProperty();
        
-        listView.setItems(data);
-       
-            
+        events.setItems(list_myEvents);
+        myEvents.setVisible(false);
          
      }
       @FXML
@@ -369,17 +348,16 @@ System.out.println(localDate + "\n" + instant + "\n" + date);
      
      
     @FXML
-     private void consulter(MouseEvent event)
+     private void consulter(ActionEvent event)
      {
          tabpane.getSelectionModel().select(2);
-         Evenement e=(Evenement)listView.getSelectionModel().getSelectedItem();
-         sontitre.setText(e.getTitre());
-         sonlieu.setText(e.getLieu());
+         sontitre.setText(events.getSelectionModel().getSelectedItem().getTitre());
+         sonlieu.setText(events.getSelectionModel().getSelectedItem().getLieu());
        //datepicker.setDate();
-       sadate.setText(e.getDate().toString());
-   //   sacategorie.setText(events.getSelectionModel().getSelectedItem().getCategorie().getLibelle());
-         sadescription.setText(e.getDescription());
-         javafx.scene.image.Image im = new javafx.scene.image.Image("http://localhost/ecosystemweb/web/uploads/evt/cover/"+e.getCover());
+       sadate.setText(events.getSelectionModel().getSelectedItem().getDate().toString());
+   //    sacategorie.setText(events.getSelectionModel().getSelectedItem().getCategorie().getLibelle());
+         sadescription.setText(events.getSelectionModel().getSelectedItem().getDescription());
+         javafx.scene.image.Image im = new javafx.scene.image.Image("http://localhost/ecosystemweb/web/uploads/evt/cover/"+events.getSelectionModel().getSelectedItem().getCover());
          imageEvent.setImage(im);
          
        //  ajouter.setVisible(false);
