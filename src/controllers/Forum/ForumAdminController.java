@@ -20,10 +20,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -107,7 +109,16 @@ public class ForumAdminController implements Initializable {
     private Button btnShowPublication;
     @FXML
     private TextField txtRechercherPublication;
-    
+    @FXML
+    private Pagination paginationPublication;
+    @FXML
+    private Pagination paginationCategorie;
+    int fromP =0;
+    int fromC =0;
+    int toP =0;
+    int toC =0;
+    int itemPerPageP =10;
+    int itemPerPageC =10;
     
     /**
      * Initializes the controller class.
@@ -261,7 +272,6 @@ public class ForumAdminController implements Initializable {
         
     }
 
-
     @FXML
     private void btnShowCategorie(ActionEvent event) {
         try
@@ -289,7 +299,6 @@ public class ForumAdminController implements Initializable {
         }
     }
     
-    
     @FXML
     private void btnShowPublication(ActionEvent event) {
         try
@@ -316,10 +325,6 @@ public class ForumAdminController implements Initializable {
             exp.printStackTrace();
         }
     }
-
-
-    
-    
     
     @FXML
     public void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
@@ -334,8 +339,6 @@ public class ForumAdminController implements Initializable {
         CategoriePubService.updateCategorie(c);
     }
 
-    
-    
     @FXML
     private void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
@@ -343,15 +346,6 @@ public class ForumAdminController implements Initializable {
         c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
 
         CategoriePubService.update(id, "description",event.getNewValue());
-    }
-
-    @FXML
-    private void onEditChangedDomaine(TableColumn.CellEditEvent<CategoriePub, String> event) {
-        int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
-        CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
-        c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
-        CategoriePubService.update(id, "domaine",event.getNewValue());
-        System.out.println(event.getNewValue());
     }
 
     @FXML
@@ -376,7 +370,13 @@ public class ForumAdminController implements Initializable {
         tableListePublication.setItems(obl);
         tableListePublication.setEditable(true);
     }
-
+    
+    private Node createPagePub(int pageIndex) {
+        fromC = pageIndex * itemPerPageC;
+        toC = itemPerPageC;
+        tableListeCategorie.setItems(obCateg);
+        return tableListeCategorie;
+    }
 
     private static class primaryStage {
 

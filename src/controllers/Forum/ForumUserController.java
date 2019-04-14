@@ -189,40 +189,6 @@ public class ForumUserController implements Initializable {
                 e.printStackTrace();
             }
         }      
-//        CardsPublicationController.i=0;
-//        ArrayList<PublicationForum> publications = new ArrayList<>();
-//        publications = (ArrayList) PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
-//        obsl = FXCollections.observableArrayList(publications);
-//        indice = 0;
-//        Node[] nodes = new Node[obsl.size()];
-//        for (int i = 0; i < nodes.length; i++) {
-//            try {
-//                final int j = i;
-//                nodes[i] = FXMLLoader.load(getClass().getResource("/gui/forum/CardPublication.fxml"));
-//                flow.getChildren().add(nodes[i]);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }        
-
-//        clearTable(tableListePublication);
-//        ArrayList<PublicationForum> lc = (ArrayList<PublicationForum>) PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
-//        for(PublicationForum c:lc)
-//        {
-//            oblAllPublication.add(c);
-//        }
-//        
-//        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
-//        titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
-//        descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
-//        etatPublication.setCellValueFactory(new PropertyValueFactory<>("etat"));
-//        categoriePublication.setCellValueFactory(new PropertyValueFactory<>("categorie"));
-//        pubCreeParPublication.setCellValueFactory(new PropertyValueFactory<>("createdByName"));
-//        
-//        tableListePublication.setItems(oblAllPublication);
-//        tableListePublication.setEditable(true);
-        
     }
     
     @FXML
@@ -257,7 +223,6 @@ public class ForumUserController implements Initializable {
         clearTable(tableListeMyPublication);
         afficherAllMyPublications(idUser);
         clearTable(tableListePublication);
-//            afficherAllPublications();
     }
 
     @FXML
@@ -268,7 +233,6 @@ public class ForumUserController implements Initializable {
         clearTable(tableListeMyPublication);
         afficherAllMyPublications(idUser);
         clearTable(tableListePublication);
-//        afficherAllPublications();
     }
     
 
@@ -295,8 +259,6 @@ public class ForumUserController implements Initializable {
             PublicationForumService.add(f);
             f.toString();
             clearTable(tableListeMyPublication);
-//            clearTable(tableListePublication);
-//            afficherAllPublications();
             afficherAllMyPublications(idUser);
             
             TrayNotification tray = new TrayNotification("succès", "Publication ajoutée", SUCCESS);

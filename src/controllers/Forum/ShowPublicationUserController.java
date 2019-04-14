@@ -25,12 +25,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javax.sound.sampled.AudioInputStream;
 import services.CommentairePublicationService;
 import services.PublicationForumService;
 import static tray.notification.NotificationType.SUCCESS;
 import tray.notification.TrayNotification;
 import utils.ControlleSaisie;
+import utils.SpeechApi;
 
 /**
  * @author arafe
@@ -59,6 +63,8 @@ public class ShowPublicationUserController implements Initializable {
     private int idPub;
     @FXML
     private Button btnCommenter;
+    @FXML
+    private ImageView son;
     @Override 
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -120,8 +126,14 @@ public class ShowPublicationUserController implements Initializable {
     }
 
     @FXML
-    private void translate(ActionEvent event) {
-//        System.out.println(GoogleTranslate.translate("fr",txtDescriptionPublication.getText() ));
+    private void readDescription(MouseEvent event) {
+        SpeechApi.speechApi(txtDescriptionPublication.getText());
+
+    }
+    @FXML
+    private void readTitre(MouseEvent event) {
+        SpeechApi.speechApi(txtTitrePublication.getText());
+
     }
 
 }
