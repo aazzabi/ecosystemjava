@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="855.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePanelController">
+<VBox prefHeight="855.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePanelController">
    <children>
       <ImageView fitHeight="220.0" fitWidth="724.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -30,7 +30,7 @@
          <font>
             <Font size="23.0" />
          </font></JFXButton>
-      <JFXButton fx:id="b31" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Recyclage">
+      <JFXButton fx:id="b4" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Recyclage">
          <font>
             <Font size="23.0" />
          </font>

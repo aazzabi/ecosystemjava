@@ -31,7 +31,7 @@ public class MissionService {
     public void ajouterEvenement(Mission e) {
         try {
             ResultSet res = null;
-            String requete = "insert into evenement (id_event,nom,Nomcategorie,Nomtype,animateur,date_debut,date_fin,disponible,acces,adresse,description,id_org,image) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String requete = "insert into mission (id_event,nom,Nomcategorie,Nomtype,animateur,date_debut,date_fin,disponible,acces,adresse,description,id_org,image) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement st = conn.getCnx().prepareStatement(requete);
             st.setInt(1, e.getId_event());
             st.setString(2, e.getNom());
@@ -65,7 +65,7 @@ public class MissionService {
         List<Mission> myList = new ArrayList<>();
         try {
             Statement st = conn.getCnx().createStatement();
-            String requete = "select * from evenement ";
+            String requete = "select * from mission ";
             ResultSet resultat = st.executeQuery(requete);
             while (resultat.next()) {
                 Mission e = new Mission();

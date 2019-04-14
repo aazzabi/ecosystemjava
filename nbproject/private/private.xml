@@ -5,35 +5,25 @@
         <group>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/UserService.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/AddMissionController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/FeedBack.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/SplashController.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/SidePanelController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/MissionMail.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/LoginController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/BackDisplayController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/InvitationMissionService.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/FeedBacksService.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/PositionController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/InvitationMission.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/StatisticsService.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/gui/HostVariableManager.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/MissionService.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/ConnectionBase.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/gui/addmission.css</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/FeedBack.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Mission.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Position.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/Loaders/MissionDetailsLoader.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/ChangeCallback.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/LoginController.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/ReparateurMainScController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/ParticipantService.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/BackDisplayController.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Reparateur.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/Loaders/MissionAddLoader.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/DisplayMissionController.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/Loaders/MissionAddLoader.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/InvitationMission.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/Notification.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/FeedbacksSpaceController.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/Loaders/MissionListLoader.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/MainAdminScreenController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Participant.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/gui/HostVariableManager.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/ConnectionBase.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/InscriptionController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/statMissionController.java</file>
         </group>
     </open-files>
 </project-private>

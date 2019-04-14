@@ -21,6 +21,8 @@ public class SidePanelController implements Initializable {
     private JFXButton b2;
     @FXML
     private JFXButton b3;
+     @FXML
+    private JFXButton b4;
     @FXML
     private JFXButton exit;
 

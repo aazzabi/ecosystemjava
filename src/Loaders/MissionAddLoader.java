@@ -25,9 +25,9 @@ public class MissionAddLoader extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL url = new File("src/gui/HostAdd.fxml").toURI().toURL();
+        URL url = new File("src/gui/AddMission.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        primaryStage.setTitle("Host Add");
+        primaryStage.setTitle("AddMission");
         Scene CurrentScene = new Scene(root , WINDOW_WIDTH, WINDOW_HEIGHT);
         CurrentScene.getStylesheets().add("gui/HostStyle.css");
         primaryStage.setScene(CurrentScene);
@@ -49,7 +49,7 @@ public class MissionAddLoader extends Application {
         URL url;
         Parent CurrentRoot = new Parent() {}; 
         try {
-            url = new File("src/gui/HostAdd.fxml").toURI().toURL();
+            url = new File("src/gui/AddMission.fxml").toURI().toURL();
             CurrentRoot = FXMLLoader.load(url);
         } catch (Exception ex) {
             Logger.getLogger(MissionDetailsLoader.class.getName()).log(Level.SEVERE, null, ex);
