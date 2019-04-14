@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -24,8 +23,7 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="725.0" prefWidth="1142.0">
                                  <children>
-                                    <Pagination fx:id="paginationPublication" prefHeight="641.0" prefWidth="1138.0" />
-                                    <TableView fx:id="tableListePublication" prefHeight="578.0" prefWidth="1140.0">
+                                    <TableView fx:id="tableListePublication" prefHeight="600.0" prefWidth="1140.0">
                                        <columns>
                                           <TableColumn fx:id="datePublication" prefWidth="68.00000077486038" text="Date" />
                                           <TableColumn fx:id="titrePublication" prefWidth="224.0" text="Titre" />
@@ -77,14 +75,13 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <Pagination fx:id="paginationCategorie" prefHeight="597.0" prefWidth="999.0" />
-                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="541.0" prefWidth="1007.0">
+                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="619.0" prefWidth="998.0">
                                        <columns>
                                           <TableColumn fx:id="idCategorie" minWidth="0.0" onEditCommit="#onEditChangedLibelle" prefWidth="0.0" text="id" />
                                           <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="297.5999935269356" text="Libellé" />
                                           <TableColumn fx:id="descriptionCategorie" onEditCommit="#onEditChangedDescription" prefWidth="488.8000183105469" text="Description" />
-                                          <TableColumn fx:id="domaineCategorie" prefWidth="148.79998779296875" text="Domaine" />
-                                          <TableColumn fx:id="nbrPublicationCategorie" prefWidth="62.40008544921875" text="nb pub" />
+                                          <TableColumn fx:id="domaineCategorie" prefWidth="135.9998779296875" text="Domaine" />
+                                          <TableColumn fx:id="nbrPublicationCategorie" prefWidth="76.0001220703125" text="nb pub" />
                                        </columns>
                                     </TableView>
                                  </children>

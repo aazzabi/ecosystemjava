@@ -109,16 +109,6 @@ public class ForumAdminController implements Initializable {
     private Button btnShowPublication;
     @FXML
     private TextField txtRechercherPublication;
-    @FXML
-    private Pagination paginationPublication;
-    @FXML
-    private Pagination paginationCategorie;
-    int fromP =0;
-    int fromC =0;
-    int toP =0;
-    int toC =0;
-    int itemPerPageP =10;
-    int itemPerPageC =10;
     
     /**
      * Initializes the controller class.
@@ -370,13 +360,7 @@ public class ForumAdminController implements Initializable {
         tableListePublication.setItems(obl);
         tableListePublication.setEditable(true);
     }
-    
-    private Node createPagePub(int pageIndex) {
-        fromC = pageIndex * itemPerPageC;
-        toC = itemPerPageC;
-        tableListeCategorie.setItems(obCateg);
-        return tableListeCategorie;
-    }
+   
 
     private static class primaryStage {
 
