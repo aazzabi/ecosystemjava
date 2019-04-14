@@ -24,7 +24,7 @@ import utils.ConnectionBase;
  */
 public class PublicationForumService {
     
-     public static void add(PublicationForum c) {
+    public static void add(PublicationForum c) {
         String requete = "INSERT INTO publication_forum"
                 + "(`categorie_id`, `publication_created_by_id`, `titre`, `description`, `etat`, `pub_created_at`, `nbrVues`) "
                 + "VALUES (?,?,?,?,?,?,?)";
@@ -52,9 +52,11 @@ public class PublicationForumService {
     public static List<PublicationForum> getAllPublications()
     {
         List<PublicationForum> pList = new ArrayList();
-        String requete = "Select p.id, p.titre, p.description, p.etat, u.username, c.libelle, p.pub_created_at, p.nbrVues "
+        String requete = "Select p.id, p.titre, p.description, p.etat, u.username, c.libelle, p.pub_created_at, p.nbrVues, "
+                + "(select count(*) from commentaire_publication cp where cp.publication_id = p.id  ) as nbrCommentaire "
                 + "from publication_forum p, user u, categorie_pub c "
                 + "where c.id = p.categorie_id AND u.id=p.publication_created_by_id";
+//                + "ORDER BY p.pub_created_at DESC";
         Connection cn = ConnectionBase.getInstance().getCnx();
 
         try
@@ -71,6 +73,7 @@ public class PublicationForumService {
                 p.setCategorie(rs.getString("c.libelle"));
                 p.setCreatedByName(rs.getString("u.username"));
                 p.setNbrVues(rs.getInt("p.nbrVues"));
+                p.setNbrCommentaires(rs.getInt("nbrCommentaire"));
                 pList.add(p);
             }
             System.out.println("Okey ");
@@ -292,11 +295,10 @@ public class PublicationForumService {
     
     public static List<CommentairePublication> getAllCommentairesByPublication(int id) {
         List<CommentairePublication> pList = new ArrayList();
-        String requete = "Select  c.id, u.username , c.description, c.likes, c.dislikes, c.photo,  c.commented_at, c.nbSignalisation "
+        String requete = "Select  c.id, u.id , u.username , c.description, c.likes, c.dislikes, c.photo,  c.commented_at, c.nbSignalisation "
                 + "from commentaire_publication c, user u, publication_forum p "
                 + " where c.publication_id=? and c.publication_id=p.id AND u.id =c.commented_by_id ;";
         Connection cn = ConnectionBase.getInstance().getCnx();
-        System.out.println(requete);
         try
         {
             PreparedStatement pst = cn.prepareStatement(requete);
@@ -307,6 +309,7 @@ public class PublicationForumService {
                 
                 c.setId(rs.getInt("c.id"));
                 c.setDescription(rs.getString("c.description"));
+                c.setCreatedBy(rs.getInt("u.id"));
                 c.setCreatedByName(rs.getString("u.username"));
                 c.setCreatedAt(rs.getDate("c.commented_at"));
 //                c.setPhoto(rs.getString("c.photo"));

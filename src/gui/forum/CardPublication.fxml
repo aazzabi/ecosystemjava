@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="950.0" style="-fx-border-color: grey; -fx-border-insets: 0; -fx-border-width: 2; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.CardsPublicationController">
+   <children>
+      <SplitPane dividerPositions="0.8" prefHeight="195.0" prefWidth="950.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Text fx:id="lblTitre" layoutX="107.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="590.1367263793945">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="lblDescription" layoutX="109.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="574.9367523193359">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="201.0">
+               <children>
+                  <SplitPane dividerPositions="0.4835164835164835" layoutX="-4.0" orientation="VERTICAL" prefHeight="194.0" prefWidth="196.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <Text fx:id="lblNbrCommentaire" layoutX="30.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="36.811279296875">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="89.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commentaires" wrappingWidth="86.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="lblNbrVues" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="50.13671875">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="90.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vues" wrappingWidth="70.41124725341797">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="181.0">
+                           <children>
+                              <Button fx:id="btnShowPublication" layoutX="42.0" layoutY="22.0" mnemonicParsing="false" onAction="#showPublication" opacity="0.99" prefHeight="51.0" prefWidth="106.0" style="-fx-background-color: #5fac55;" text="AFFICHER" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children></AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</HBox>

@@ -8,6 +8,7 @@ package controllers.Forum;
 import entities.CategoriePub;
 import entities.PublicationForum;
 import entities.Session;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -26,12 +28,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import services.AnnounceRepService;
 import services.CategoriePubService;
 import services.PublicationForumService;
 import static tray.notification.NotificationType.SUCCESS;
 import tray.notification.TrayNotification;
 import utils.ControlleSaisie;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -40,26 +49,16 @@ import utils.ControlleSaisie;
  */
 public class ForumUserController implements Initializable {
 
-    @FXML
     private TableView<PublicationForum> tableListePublication;
-    @FXML
     private TableColumn<PublicationForum, Date> datePublication;
-    @FXML
     private TableColumn<PublicationForum, String> titrePublication;
-    @FXML
     private TableColumn<PublicationForum, String> descriptionPublication;
-    @FXML
     private TableColumn<PublicationForum, String> etatPublication;
-    @FXML
     private TableColumn<PublicationForum, String> categoriePublication;
-    @FXML
     private TableColumn<PublicationForum, String> pubCreeParPublication;
-    @FXML
     private TableColumn<PublicationForum, Integer> idPublication;
     @FXML
     private TextField txtRechercherPublication;
-    @FXML
-    private Button btnShowPublication;
     @FXML
     private TableView<PublicationForum> tableListeMyPublication;
     @FXML
@@ -95,6 +94,11 @@ public class ForumUserController implements Initializable {
     @FXML
     private TextField txtMyPublicationTitle;
 
+    public static ObservableList<PublicationForum> obsl;
+    public static int indice;
+    @FXML
+    private FlowPane flow;
+
     /**
      * Initializes the controller class.
      */
@@ -102,8 +106,28 @@ public class ForumUserController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         int idUser = Session.getCurrentSession();
         txtMyPublicationCategorie.getItems().addAll(CategoriePubService.getAllCategoriesLibelle());
-        afficherAllPublications();
+//        afficherAllPublications();
+        afficherAllPublicationsCard();
         afficherAllMyPublications(idUser);
+    }
+    
+    public void afficherAllPublicationsCard(){
+        CardsPublicationController.i=0;
+        ArrayList<PublicationForum> publications = new ArrayList<>();
+        publications = (ArrayList) PublicationForumService.getAllPublications();
+        obsl = FXCollections.observableArrayList(publications);
+        indice = 0;
+        Node[] nodes = new Node[obsl.size()];
+        for (int i = 0; i < nodes.length; i++) {
+            try {
+                final int j = i;
+                nodes[i] = FXMLLoader.load(getClass().getResource("/gui/forum/CardPublication.fxml"));
+                flow.getChildren().add(nodes[i]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }        
+
     }
     
     public void afficherAllPublications(){
@@ -148,23 +172,56 @@ public class ForumUserController implements Initializable {
 
     @FXML
     private void rechercherPublication(KeyEvent event) {
-        clearTable(tableListePublication);
-        ArrayList<PublicationForum> lc = (ArrayList<PublicationForum>) PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
-        for(PublicationForum c:lc)
-        {
-            oblAllPublication.add(c);
-        }
-        
-        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
-        datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
-        titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
-        descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
-        etatPublication.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        categoriePublication.setCellValueFactory(new PropertyValueFactory<>("categorie"));
-        pubCreeParPublication.setCellValueFactory(new PropertyValueFactory<>("createdByName"));
-        
-        tableListePublication.setItems(oblAllPublication);
-        tableListePublication.setEditable(true);
+        System.out.println("rechercherPublication();");
+        flow.getChildren().clear();
+        CardsPublicationController.i=0;
+        ArrayList<PublicationForum> publications = new ArrayList<>();
+        publications = (ArrayList) PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
+        obsl = FXCollections.observableArrayList(publications);
+        indice = 0;
+        Node[] nodes = new Node[obsl.size()];
+        for (int i = 0; i < nodes.length; i++) {
+            try {
+                final int j = i;
+                nodes[i] = FXMLLoader.load(getClass().getResource("/gui/forum/CardPublication.fxml"));
+                flow.getChildren().add(nodes[i]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }      
+//        CardsPublicationController.i=0;
+//        ArrayList<PublicationForum> publications = new ArrayList<>();
+//        publications = (ArrayList) PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
+//        obsl = FXCollections.observableArrayList(publications);
+//        indice = 0;
+//        Node[] nodes = new Node[obsl.size()];
+//        for (int i = 0; i < nodes.length; i++) {
+//            try {
+//                final int j = i;
+//                nodes[i] = FXMLLoader.load(getClass().getResource("/gui/forum/CardPublication.fxml"));
+//                flow.getChildren().add(nodes[i]);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }        
+
+//        clearTable(tableListePublication);
+//        ArrayList<PublicationForum> lc = (ArrayList<PublicationForum>) PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
+//        for(PublicationForum c:lc)
+//        {
+//            oblAllPublication.add(c);
+//        }
+//        
+//        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
+//        datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+//        titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
+//        descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
+//        etatPublication.setCellValueFactory(new PropertyValueFactory<>("etat"));
+//        categoriePublication.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+//        pubCreeParPublication.setCellValueFactory(new PropertyValueFactory<>("createdByName"));
+//        
+//        tableListePublication.setItems(oblAllPublication);
+//        tableListePublication.setEditable(true);
         
     }
     
@@ -191,9 +248,6 @@ public class ForumUserController implements Initializable {
         tableListeMyPublication.setEditable(true);
     }
 
-    @FXML
-    private void btnShowPublication(ActionEvent event) {
-    }
 
     @FXML
     private void archiverMyPublication(ActionEvent event) {
@@ -202,8 +256,8 @@ public class ForumUserController implements Initializable {
         
         clearTable(tableListeMyPublication);
         afficherAllMyPublications(idUser);
-            clearTable(tableListePublication);
-            afficherAllPublications();
+        clearTable(tableListePublication);
+//            afficherAllPublications();
     }
 
     @FXML
@@ -214,7 +268,7 @@ public class ForumUserController implements Initializable {
         clearTable(tableListeMyPublication);
         afficherAllMyPublications(idUser);
         clearTable(tableListePublication);
-        afficherAllPublications();
+//        afficherAllPublications();
     }
     
 
@@ -241,12 +295,40 @@ public class ForumUserController implements Initializable {
             PublicationForumService.add(f);
             f.toString();
             clearTable(tableListeMyPublication);
-            clearTable(tableListePublication);
-            afficherAllPublications();
+//            clearTable(tableListePublication);
+//            afficherAllPublications();
             afficherAllMyPublications(idUser);
             
             TrayNotification tray = new TrayNotification("succès", "Publication ajoutée", SUCCESS);
             tray.showAndWait();
+        }
+    }
+
+
+    @FXML
+    private void btnShowPublication(ActionEvent event) {
+        try
+        {
+            int id = tableListeMyPublication.getSelectionModel().getSelectedItem().getId();
+            
+            PublicationForum pub = PublicationForumService.getPublicationById(id);
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/gui/forum/showPublicationUser.fxml"));
+            try {
+                Loader.load();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            ShowPublicationUserController pubCtr = Loader.getController();
+            pubCtr.afficherPublication(pub);
+            Parent p = Loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(p));
+            stage.show();
+            event.consume();
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
         }
     }
     

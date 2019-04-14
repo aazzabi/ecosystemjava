@@ -170,14 +170,13 @@ public class CategoriePubService {
     }
 
     public static void update(int id , String colonne, String newValue) {
-        String requete = "UPDATE categorie_pub SET ?= '?' WHERE id=?";
+        String requete = "UPDATE `categorie_pub` SET `description`= ?  WHERE `id`= ?";
         Connection cn = ConnectionBase.getInstance().getCnx();
         try 
         {
             PreparedStatement pst = cn.prepareStatement(requete);
-            pst.setString(1, colonne);
-            pst.setString(2, newValue);
-            pst.setInt(3, id);
+            pst.setString(1, newValue);
+            pst.setInt(2, id);
             pst.executeUpdate();
         }
         catch (SQLException ex) 
@@ -196,6 +195,7 @@ public class CategoriePubService {
             pst.setString(1, c.getLibelle());
             pst.setString(2, c.getDescription());
             pst.setString(3, c.getDomaine());
+            pst.setInt(4, id);
             pst.executeUpdate();
         }
         catch (SQLException ex) 

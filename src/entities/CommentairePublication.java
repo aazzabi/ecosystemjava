@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
@@ -32,6 +33,15 @@ public class CommentairePublication {
     private int likes;
     private int dislikes; 
 
+    public CommentairePublication() {
+        this.createdBy = Session.getCurrentSession();
+        this.createdAt = Date.valueOf(LocalDate.now());
+        this.nbSignalisation = 0;
+        this.likes = 0;
+        this.dislikes = 0;
+    }
+
+    
     public int getId() {
         return id;
     }

@@ -70,7 +70,10 @@ public class ForumAdminController implements Initializable {
     
     @FXML
     private TableView<CategoriePub> tableListeCategorie;
+    
+    @FXML
     private TableColumn<CategoriePub, Integer> idCategorie;
+    
     @FXML
     private TableColumn<CategoriePub, String> libelleCategorie;
     @FXML
@@ -102,6 +105,9 @@ public class ForumAdminController implements Initializable {
     private Button btnArchiverPublication;
     @FXML
     private Button btnShowPublication;
+    @FXML
+    private TextField txtRechercherPublication;
+    
     
     /**
      * Initializes the controller class.
@@ -133,6 +139,17 @@ public class ForumAdminController implements Initializable {
                 btnShowPublication.setDisable(false);
             }
         });
+        
+        
+        titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
+        
+        tableListePublication.setEditable(true);
+        
+        
+        libelleCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
+        descriptionCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
+        
     }  
     
     public void afficherAllPublications(){
@@ -161,6 +178,7 @@ public class ForumAdminController implements Initializable {
         {
             obCateg.add(c);
         }
+        idCategorie.setCellValueFactory(new PropertyValueFactory<>("id"));
         libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
         domaineCategorie.setCellValueFactory(new PropertyValueFactory<>("domaine"));
@@ -233,7 +251,6 @@ public class ForumAdminController implements Initializable {
         {
             obCateg.add(c);
         }
-        idCategorie.setCellValueFactory(new PropertyValueFactory<>("id"));
         libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
         domaineCategorie.setCellValueFactory(new PropertyValueFactory<>("domaine"));
@@ -301,18 +318,24 @@ public class ForumAdminController implements Initializable {
     }
 
 
+    
+    
+    
     @FXML
-    private void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
+    public void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
         CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
         c.setLibelle(event.getNewValue());
-        c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
+        c.setId(id);
         System.out.println(c);
- 
+        
+        System.out.println(event.getNewValue());
+        
         CategoriePubService.updateCategorie(c);
-//        System.out.println(event.getNewValue());  
     }
 
+    
+    
     @FXML
     private void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
@@ -320,7 +343,6 @@ public class ForumAdminController implements Initializable {
         c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
 
         CategoriePubService.update(id, "description",event.getNewValue());
-//        System.out.println(event.getNewValue());
     }
 
     @FXML
@@ -331,6 +353,30 @@ public class ForumAdminController implements Initializable {
         CategoriePubService.update(id, "domaine",event.getNewValue());
         System.out.println(event.getNewValue());
     }
+
+    @FXML
+    private void rechercherPublication(KeyEvent event) {
+        clearTable(tableListePublication);
+        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>)
+                PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
+        for(PublicationForum e:le)
+        {
+            obl.add(e);
+            e.toString();
+        }  
+        
+        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
+        datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
+        etatPublication.setCellValueFactory(new PropertyValueFactory<>("etat"));
+        categoriePublication.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+        creeParPublication.setCellValueFactory(new PropertyValueFactory<>("createdByName"));
+        
+        tableListePublication.setItems(obl);
+        tableListePublication.setEditable(true);
+    }
+
 
     private static class primaryStage {
 
