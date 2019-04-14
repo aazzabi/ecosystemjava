@@ -24,6 +24,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
@@ -109,6 +111,8 @@ public class ForumAdminController implements Initializable {
     private Button btnShowPublication;
     @FXML
     private TextField txtRechercherPublication;
+    @FXML
+    private ChoiceBox<String> cbDomaine;
     
     /**
      * Initializes the controller class.
@@ -132,7 +136,7 @@ public class ForumAdminController implements Initializable {
                 btnShowCategorie.setDisable(false);        
             }
         });
-        
+        cbDomaine.getItems().addAll("Electronique","Environement","Art","Vie");
         tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -141,12 +145,9 @@ public class ForumAdminController implements Initializable {
             }
         });
         
-        
         titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
-        
         tableListePublication.setEditable(true);
-        
         
         libelleCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
         descriptionCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -226,13 +227,14 @@ public class ForumAdminController implements Initializable {
     @FXML
     private void btnAddCategorie(ActionEvent event) {
         if ( !(ControlleSaisie.estVide(txtLibelleCategorie, "nom")) 
-            && !(ControlleSaisie.estVide(txtDescriptionCategorie, "prenom")) 
-            && !(ControlleSaisie.estVide(txtDomaineCategorie, "prenom")) ){
+            && !(ControlleSaisie.estVide(txtDescriptionCategorie, "description")) 
+            && !(ControlleSaisie.estVideComboBox(cbDomaine, "categorie")) ){
             CategoriePub c = new CategoriePub();
 
             c.setLibelle(txtLibelleCategorie.getText());
             c.setDescription(txtDescriptionCategorie.getText());
-            c.setDomaine(txtDomaineCategorie.getText());
+//            c.setDomaine(txtDomaineCategorie.getText());
+            c.setDomaine(cbDomaine.getValue().toString());
             
             CategoriePubService.add(c);
             clearTable(tableListeCategorie);
@@ -328,7 +330,7 @@ public class ForumAdminController implements Initializable {
         
         CategoriePubService.updateCategorie(c);
     }
-
+    
     @FXML
     private void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
@@ -359,13 +361,6 @@ public class ForumAdminController implements Initializable {
         
         tableListePublication.setItems(obl);
         tableListePublication.setEditable(true);
-    }
-   
-
-    private static class primaryStage {
-
-        public primaryStage() {
-        }
     }
 
 }

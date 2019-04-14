@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -114,7 +115,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="txtDomaineCategorie" layoutX="21.0" layoutY="276.0" prefHeight="39.0" prefWidth="310.0" />
+                                                <TextField fx:id="txtDomaineCategorie" layoutX="19.0" layoutY="395.0" prefHeight="22.0" prefWidth="310.0" />
                                                 <Text layoutX="18.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domaine :" wrappingWidth="98.48486328125">
                                                    <font>
                                                       <Font size="20.0" />
@@ -130,6 +131,7 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
+                                                <ChoiceBox fx:id="cbDomaine" layoutX="25.0" layoutY="288.0" prefHeight="26.0" prefWidth="307.0" />
                                              </children>
                                           </AnchorPane>
                                       </items>
