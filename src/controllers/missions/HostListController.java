@@ -84,7 +84,7 @@ public class HostListController implements Initializable {
         Host MostRatedHost = new Host();
          try {
              
-             System.out.println("Getting data from DataBase at Gui.HostListController.InitiateGrid(), if error occured, check DB connection or Tables");
+             System.out.println("Getting data from DataBase at controllers.missions.HostListController.InitiateGrid(), if error occured, check DB connection or Tables");
              MostRatedHost = GetMostRatedHost();
              System.out.println(MostRatedHost.getID() + " has been transferred to the list Controller");
              HostsList = GetAllHosts(Filter);

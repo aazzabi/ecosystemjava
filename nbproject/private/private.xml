@@ -4,14 +4,46 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/UserService.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/loaders/HostAddLoader.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/HostRating.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/missions/HostDetailsController.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/SplashController.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/SidePanelController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/Notification.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/MainAdminScreenController.java</file>
-            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/ChangeCallback.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/gui/missions/HostVariableManager.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/LoginController.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/TypeCategorie.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/HostMail.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/ContenusService.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/loaders/HostListLoader.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Host.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/CommentairePublication.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/loaders/HostDetailsLoader.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/DBHelper.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/Notification.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/ControlleSaisie.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/PublicationForum.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Session.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/HostParticipation.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/EvenementService.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/ConnectionBase.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/HostRatingService.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Tag.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Categorie_Evts.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/PublicationForumService.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/reparateur/AnnounceRep.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/ChangeCallback.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/GlobalLibrary.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/missions/HostListController.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/HostGuiService.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Categorie_Annonce.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/missions/HostAddController.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/HostService.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/MainAdminScreenController.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/utils/MapClass.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/entities/Evenement.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/services/HostParticipationService.java</file>
             <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/controllers/InscriptionController.java</file>
+            <file>file:/C:/Users/Weepey/Documents/PIDEV%20JAVA/ecosystemjava/src/iservices/IEvenementService.java</file>
         </group>
     </open-files>
 </project-private>

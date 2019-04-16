@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class ConnectionBase {
 
-    private String url = "jdbc:mysql://localhost:3306/ecosystem";
+    private String url = "jdbc:mysql://localhost:3306/agencedevoyage";
     private String login = "root";
     private String pwd = "";
     private Connection cnx;
