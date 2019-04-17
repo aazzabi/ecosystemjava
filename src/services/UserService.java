@@ -225,7 +225,7 @@ public class UserService {
            rs=pst.executeQuery(requete); 
             while(rs.next())
             {
-                u=new Utilisateur(rs.getInt(1), rs.getString(3));
+                u=new Utilisateur(rs.getInt(1), rs.getString(3), rs.getString(14), rs.getString(15));
             }
             
            return u;   

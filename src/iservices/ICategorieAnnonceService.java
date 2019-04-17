@@ -19,4 +19,5 @@ public interface ICategorieAnnonceService {
     public List<Categorie_Annonce> getall();
     public Categorie_Annonce displayById(int id);
     public Categorie_Annonce displayByName(int id);
+    
 }
