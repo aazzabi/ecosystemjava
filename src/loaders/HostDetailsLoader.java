@@ -32,7 +32,7 @@ public class HostDetailsLoader extends Application{
         Parent root = FXMLLoader.load(url); 
         primaryStage.setTitle("Host Details");
         Scene CurrentScene = new Scene(root , WINDOW_WIDTH, WINDOW_HEIGHT);
-        CurrentScene.getStylesheets().add("gui/missions/HostStyle.css");
+        //CurrentScene.getStylesheets().add("gui/missions/HostStyle.css");
         primaryStage.setScene(CurrentScene);
         primaryStage.show();       
     }

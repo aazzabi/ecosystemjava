@@ -5,6 +5,7 @@
  */
 package controllers.missions;
 
+import com.google.zxing.WriterException;
 import static gui.missions.HostVariableManager.WINDOW_WIDTH;
 import static gui.missions.HostVariableManager.WINDOW_HEIGHT;
 import loaders.HostDetailsLoader;
@@ -38,7 +39,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -47,8 +47,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.web.WebView;
-import javafx.stage.Stage;
+import javax.mail.MessagingException;
 import services.UserService;
+
+import java.io.FileInputStream; 
+import java.io.FileNotFoundException;
+import javafx.scene.Group; 
+import javafx.scene.Scene; 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;  
+import javafx.stage.Stage;  
 
 /**
  * FXML Controller class
@@ -130,37 +138,7 @@ public class HostDetailsController implements Initializable {
 
     }
 
-    public void insertData(int HostID) {
-        //Init Editmode 
-        SetEditMode(EditMode);
-
-        try {
-            CurrentHost = HostService.GetHost(HostID);
-        } catch (SQLException ex) {
-            Logger.getLogger(HostDetailsController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //SetUp the values in main data grid
-        OwnerName_Label.setText(CurrentHost.getOwner());
-        TotalPlaces_Label.setText(CurrentHost.getTotalPlaces() + "");
-        AvailablePlaces_Label.setText(CurrentHost.getAvailablePlaces() + "");
-        DateStart.setText(GlobalLibrary.DateToString(CurrentHost.getDateStart()));
-        DateEnd.setText(GlobalLibrary.DateToString(CurrentHost.getDateEnd()));
-        Localisation_Button.onMouseReleasedProperty().set((event) -> {
-            LatLng CurrentLatLng = StringToLatLng(CurrentHost.getLocalisation());
-            MapClass Map = MapClass.LaunchMap("Map");
-            Map.SetLocationInMap(CurrentLatLng, 16, true);
-        });
-        Web_3D.getEngine().load("https://google.com/");
-
-        ReturnButton.onMouseReleasedProperty().set((event) -> {
-            ((Stage) ReturnButton.getScene().getWindow()).setScene(new Scene(HostListLoader.GetRoot(), WINDOW_WIDTH, WINDOW_HEIGHT));
-        });
-
-        //SetUp Administrator management buttons
-        SetUpAdminSection();
-
-    }
+     
 
     public void InitializeData(int HostID) {
         //Init Editmode 
@@ -183,7 +161,7 @@ public class HostDetailsController implements Initializable {
             MapClass Map = MapClass.LaunchMap("Map");
             Map.SetLocationInMap(CurrentLatLng, 16, true);
         });
-        Web_3D.getEngine().load("https://google.com/");
+        Web_3D.getEngine().load("https://www.google.com/maps/search/recyclage/@36.0041131,8.3817836,8z");
 
         ReturnButton.onMouseReleasedProperty().set((event) -> {
             ((Stage) ReturnButton.getScene().getWindow()).setScene(new Scene(HostListLoader.GetRoot(), WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -291,14 +269,59 @@ public class HostDetailsController implements Initializable {
                 Join_Button.setDisable(true);
             } //The User isn't subscribed
             else if (TempParticipation.getActive() == 0) {
-                Join_Button.setText("S'inscrire");
+                Join_Button.setText("y participer ! ");
                 Join_Button.onMouseReleasedProperty().set((event) -> {
                     try {
                         HostParticipationService.AddHostParticipation(new HostParticipation(HostVariableManager.getCurrentUserID(), HostVariableManager.getCurrentHost(), Date.valueOf(LocalDate.now()), 1));
                         HostService.JoinHost(HostVariableManager.getCurrentHost(), HostVariableManager.getCurrentUserID());
                     } catch (SQLException ex) {
                         Logger.getLogger(HostDetailsController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (WriterException ex) {
+                        Logger.getLogger(HostDetailsController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(HostDetailsController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (MessagingException ex) {
+                        Logger.getLogger(HostDetailsController.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    
+                    
+       Image image = null;  
+                    try {
+                        image = new Image(new FileInputStream("src\\res\\QRCodeMailer.png"));
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(HostDetailsController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+      /*
+      //Setting the image view 
+      ImageView imageView = new ImageView(image); 
+      
+      //Setting the position of the image 
+      imageView.setX(50); 
+      imageView.setY(25); 
+      
+      //setting the fit height and width of the image view 
+      imageView.setFitHeight(455); 
+      imageView.setFitWidth(500); 
+      
+      //Setting the preserve ratio of the image view 
+      imageView.setPreserveRatio(true);  
+      
+      //Creating a Group object  
+      Group root = new Group(imageView);  
+      
+      //Creating a scene object 
+      Scene scene = new Scene(root, 600, 500);  
+      Stage stage = null;
+      //Setting title to the Stage 
+      stage.setTitle("Voici votre QR CODE");  
+      
+      //Adding scene to the stage 
+      stage.setScene(scene);
+      
+      //Displaying the contents of the stage 
+      stage.show(); 
+                    */
+                    
                     ReloadThisPage();
                 });
 

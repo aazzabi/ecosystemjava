@@ -104,9 +104,9 @@ public class HostListController implements Initializable {
 
         String BoxLayout = "-fx-border-color: black;\n"
                 + "-fx-border-insets: 10;\n"
-                + "-fx-border-width: 0.5;\n";
-        String LabelLayout = "-fx-font-size: 20px;";
-        String ButtonLayout = "-fx-font-size: 20px; -fx-background-color: gray; -fx-text-fill: white;";
+                + "-fx-border-width: 0.8;\n";
+        String LabelLayout = "-fx-font-size: 30px;";
+        String ButtonLayout = "-fx-font-size: 20px; -fx-background-color: #90ee90; -fx-text-fill: white;";
 
         int ColumnPicker = 0;
         int IndexPicker = 0;
@@ -121,7 +121,7 @@ public class HostListController implements Initializable {
             if (TempHost.getID() == MostRatedHost.getID()) {
                 ButtonDetails = "Le meilleur de notre platforme!\n " + ButtonDetails;
             }
-            JFXButton HostButtonTemp = MakeGridButton(ButtonDetails, "#7f8fa8");
+            JFXButton HostButtonTemp = MakeGridButton(ButtonDetails, "#008000");
             //Setting Up the ID for later Use
             HostButtonTemp.setId(TempHost.getID() + "");
 
@@ -235,7 +235,7 @@ public class HostListController implements Initializable {
                 color = "#e2dbcc";
                 break;
             default:
-                color = "white";
+                color = "black";
                 break;
         }
         return Paint.valueOf(color);

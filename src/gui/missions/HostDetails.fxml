@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
@@ -9,27 +8,36 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane id="AnchorPane" fx:id="content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.missions.HostDetailsController">
+<AnchorPane id="AnchorPane" fx:id="content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1362.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.missions.HostDetailsController">
    <children>
-      <AnchorPane fx:id="contentPane" layoutX="244.0" prefHeight="619.0" prefWidth="556.0" style="-fx-background-color: #34495e;">
+      <AnchorPane fx:id="contentPane" layoutX="1.0" prefHeight="760.0" prefWidth="1362.0" style="-fx-background-color: white;">
          <children>
-            <ScrollPane layoutX="4.0" layoutY="14.0" prefHeight="612.0" prefWidth="548.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1194.0" prefWidth="527.0" style="-fx-background-color: #34495e;">
+            <ImageView fitHeight="534.0" fitWidth="1362.0" opacity="0.4">
+               <image>
+                  <Image url="@../../../../../../Desktop/testbg.PNG" />
+               </image>
+            </ImageView>
+            <ScrollPane layoutX="252.0" layoutY="66.0" prefHeight="617.0" prefWidth="932.0">
+               <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1236.0" prefWidth="921.0" style="-fx-background-color: white;">
                      <children>
-                        <GridPane alignment="CENTER" layoutX="6.0" layoutY="109.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="263.0" prefWidth="524.0">
+                        <ImageView fitHeight="1435.0" fitWidth="1047.0" layoutX="-55.0" layoutY="-9.0">
+                           <image>
+                              <Image url="@../../res/missions/photo/pannel_1.png" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="199.0" layoutY="142.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="263.0" prefWidth="524.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.0" minWidth="10.0" prefWidth="184.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="335.0" minWidth="10.0" prefWidth="165.0" />
@@ -44,17 +52,17 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="181.0" prefWidth="453.0" styleClass="loginLabel" text="Titre de la mission:" textAlignment="CENTER" textFill="#bfbfbf">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="181.0" prefWidth="453.0" styleClass="loginLabel" text="Titre de la mission:" textAlignment="CENTER" textFill="#9fe438">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="239.0" prefWidth="521.0" styleClass="loginLabel" text="Nombre de matériaux (objectif):" textFill="#bfbfbf" GridPane.rowIndex="1">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="239.0" prefWidth="521.0" styleClass="loginLabel" text="Nombre de matériaux (objectif):" textFill="#9fe438" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Nombre de mats atteints : " textFill="#bfbfbf" GridPane.rowIndex="2">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Nombre de mats atteints : " textFill="#9fe438" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -74,12 +82,12 @@
                                     <Font size="13.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Début de la mission:" textFill="#bfbfbf" GridPane.rowIndex="3">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Début de la mission:" textFill="#9fe438" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Fin de la mission:" textFill="#bfbfbf" GridPane.rowIndex="4">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Fin de la mission:" textFill="#9fe438" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -94,27 +102,27 @@
                                     <Font size="13.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Localisation (Region) :" textFill="#bfbfbf" GridPane.rowIndex="5">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="241.0" prefWidth="512.0" styleClass="loginLabel" text="Localisation (Region) :" textFill="#9fe438" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </Label>
-                              <JFXTextField fx:id="NewOwnerName_TF" alignment="CENTER" focusColor="WHITE" labelFloat="true" prefHeight="25.0" prefWidth="171.0" promptText="Nouveau Nom" style="-fx-text-inner-color: White;" styleClass="loginLabel" unFocusColor="WHITE" GridPane.columnIndex="2" />
-                              <JFXTextField fx:id="NewTP_FT" alignment="CENTER" focusColor="WHITE" labelFloat="true" prefHeight="25.0" prefWidth="171.0" promptText="Nouveau Nombre de Places" style="-fx-text-inner-color: White;" styleClass="loginLabel" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <JFXTextField fx:id="New_AP_TF" alignment="CENTER" focusColor="WHITE" labelFloat="true" prefHeight="25.0" prefWidth="171.0" promptText="Nouvelles Places Libres" style="-fx-text-inner-color: White;" styleClass="loginLabel" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <JFXButton fx:id="ValidateModification_Button" contentDisplay="CENTER" onAction="#ValidateModification" prefHeight="104.0" prefWidth="203.0" styleClass="loginBtn" text="Confirmer" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <DatePicker fx:id="NewStartDate" opacity="0.39" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                              <DatePicker fx:id="NewEndDate" opacity="0.39" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                              <JFXButton fx:id="Localisation_Button" prefHeight="63.0" prefWidth="193.0" style="-fx-border-color: White; -fx-border-radius: 20;" text="Localisation" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <JFXTextField fx:id="NewOwnerName_TF" alignment="CENTER" focusColor="BLACK" labelFloat="true" prefHeight="25.0" prefWidth="171.0" promptText="Nouveau Nom" style="-fx-text-inner-color: White;" styleClass="loginLabel" unFocusColor="WHITE" GridPane.columnIndex="2" />
+                              <JFXTextField fx:id="NewTP_FT" alignment="CENTER" focusColor="BLACK" labelFloat="true" prefHeight="25.0" prefWidth="171.0" promptText="Nouveau Nombre de Matériaux" style="-fx-text-inner-color: White;" styleClass="loginLabel" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="New_AP_TF" alignment="CENTER" focusColor="BLACK" labelFloat="true" prefHeight="25.0" prefWidth="171.0" promptText="Matériaux Atteints" style="-fx-text-inner-color: White;" styleClass="loginLabel" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <JFXButton fx:id="ValidateModification_Button" contentDisplay="CENTER" onAction="#ValidateModification" prefHeight="104.0" prefWidth="203.0" styleClass="loginBtn" text="Confirmer Localisation" textFill="#24f200" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <DatePicker fx:id="NewStartDate" opacity="0.39" promptText="Date de début" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <DatePicker fx:id="NewEndDate" opacity="0.39" promptText="Date de fin" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <JFXButton fx:id="Localisation_Button" prefHeight="63.0" prefWidth="193.0" style="-fx-border-color: Green; -fx-border-radius: 20;" text="Localisation" textAlignment="CENTER" textFill="#4bbf3b" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                            </children>
                            <opaqueInsets>
                               <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                            </opaqueInsets>
                            <effect>
-                              <DropShadow color="#a1a1a1" height="23.96" radius="12.2225" width="26.93" />
+                              <DropShadow color="#a1a1a1" height="0.0" radius="0.0" width="0.0" />
                            </effect>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="875.0" prefHeight="33.0" prefWidth="143.0" styleClass="loginLabel" text="Commentaires" textFill="#f8f8f8">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="805.0" prefHeight="103.0" prefWidth="449.0" styleClass="loginLabel" text="Commentaires &amp; Avis" textFill="#00eb2c">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -122,43 +130,11 @@
                               <InnerShadow color="#b25353" radius="4.75" width="0.0" />
                            </effect>
                         </Label>
-                        <VBox fx:id="AdminBox" layoutX="28.0" layoutY="390.0" prefHeight="75.0" prefWidth="485.0">
-                           <children>
-                              <Label fx:id="Role_Label" alignment="CENTER" prefHeight="41.0" prefWidth="493.0" styleClass="loginLabel" text="En tant que" textAlignment="CENTER" textFill="WHITE" />
-                              <HBox alignment="CENTER" prefHeight="54.0" prefWidth="235.0">
-                                 <children>
-                                    <JFXButton fx:id="Modify_Button" alignment="CENTER" onAction="#ModifyHost" prefHeight="40.0" prefWidth="500.0" ripplerFill="BLACK" styleClass="loginBtn" text="Modifier" textFill="#c9c1c1" />
-                                    <JFXButton fx:id="Join_Button" alignment="CENTER" onAction="#JoinHost" prefHeight="40.0" prefWidth="500.0" ripplerFill="BLACK" styleClass="loginBtn" text="S'inscrire" textFill="#c9c1c1" />
-                                    <JFXButton fx:id="Delete_Button" alignment="CENTER" onAction="#DeleteHost" prefHeight="40.0" prefWidth="500.0" ripplerFill="BLACK" styleClass="loginBtn" text="Supprimer" textFill="#c9c1c1" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <WebView fx:id="Web_3D" layoutX="63.0" layoutY="509.0" prefHeight="334.0" prefWidth="405.0" />
-                        <Label alignment="CENTER" layoutX="57.0" layoutY="26.0" prefHeight="6.0" prefWidth="414.0" text="Détails de la mission" textAlignment="CENTER" textFill="#a1a1a1">
-                           <font>
-                              <Font size="32.0" />
-                           </font>
-                           <effect>
-                              <Reflection fraction="0.64" topOffset="-10.0" topOpacity="0.28" />
-                           </effect>
-                        </Label>
-                        <JFXButton fx:id="ReturnButton" layoutX="-144.0" layoutY="83.0" styleClass="loginBtn" text="Retourner à la liste" textAlignment="CENTER" textFill="#dce8b7">
-                           <ripplerFill>
-                              <LinearGradient endX="0.13333333333333336" endY="0.20476190476190476">
-                                 <stops>
-                                    <Stop color="#fdff9e" />
-                                    <Stop color="#171717" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </ripplerFill>
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </JFXButton>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="15.0" layoutY="931.0" pannable="true" prefHeight="214.0" prefWidth="496.0" style="-fx-background-color: #34495e; -fx-border-color: #34495e;">
+                        <VBox fx:id="AdminBox" layoutX="28.0" layoutY="390.0" prefHeight="75.0" prefWidth="485.0" />
+                        <WebView fx:id="Web_3D" layoutX="50.0" layoutY="581.0" prefHeight="311.0" prefWidth="820.0" />
+                        <ScrollPane hbarPolicy="NEVER" layoutX="212.0" layoutY="875.0" pannable="true" prefHeight="214.0" prefWidth="496.0" style="-fx-background-color: black; -fx-border-color: Black;">
                            <content>
-                              <GridPane fx:id="CommentGrid" alignment="TOP_CENTER" hgap="10.0" prefHeight="210.0" prefWidth="495.0" style="-fx-background-color: #34495e;" vgap="10.0">
+                              <GridPane fx:id="CommentGrid" alignment="TOP_CENTER" hgap="10.0" prefHeight="210.0" prefWidth="495.0" style="-fx-background-color: #006400;" vgap="10.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.0" minWidth="10.0" prefWidth="129.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="247.0" />
@@ -173,12 +149,28 @@
                               </GridPane>
                            </content>
                         </ScrollPane>
+                        <HBox alignment="CENTER" layoutX="266.0" layoutY="488.0" prefHeight="44.0" prefWidth="410.0">
+                           <children>
+                              <JFXButton fx:id="Modify_Button" alignment="CENTER" onAction="#ModifyHost" prefHeight="40.0" prefWidth="500.0" ripplerFill="BLACK" styleClass="loginBtn" text="Modifier" textFill="#c9c1c1" />
+                              <JFXButton fx:id="Join_Button" alignment="CENTER" onAction="#JoinHost" prefHeight="40.0" prefWidth="500.0" ripplerFill="BLACK" styleClass="loginBtn" text="S'inscrire" textFill="#c9c1c1" />
+                              <JFXButton fx:id="Delete_Button" alignment="CENTER" onAction="#DeleteHost" prefHeight="40.0" prefWidth="500.0" ripplerFill="BLACK" styleClass="loginBtn" text="Supprimer" textFill="#c9c1c1" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="Role_Label" alignment="CENTER" layoutX="131.0" layoutY="452.0" prefHeight="46.0" prefWidth="687.0" styleClass="loginLabel" text="En tant que" textAlignment="CENTER" textFill="WHITE" />
+                        <ImageView fitHeight="58.0" fitWidth="444.0" layoutX="239.0" layoutY="20.0">
+                           <image>
+                              <Image url="@../../res/missions/photo/generatedtext%20(3).png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-              </content>
+               </content>
             </ScrollPane>
+            <JFXButton fx:id="ReturnButton" layoutX="1187.0" layoutY="24.0" prefHeight="85.0" prefWidth="175.0" ripplerFill="#8ed64f" style="-fx-border-color: green; -fx-border-radius: 15;" styleClass="loginBtn" text="Retourner à la liste" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
          </children></AnchorPane>
-      <AnchorPane fx:id="menuPane" prefHeight="619.0" prefWidth="244.0" style="-fx-background-color: #2c3e50;" />
-      <JFXHamburger fx:id="hamburger" layoutX="1696.0" layoutY="24.0" />
    </children>
 </AnchorPane>

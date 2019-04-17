@@ -25,7 +25,7 @@ public class HostMail {
             String usermail = "pidevmailer2019@gmail.com";
             String pass = "Theansweris42";
             String to = Email;
-            String from = "pidevmailer2019@gmail.com";
+            String from = "ECOZONE";
             String subject = Subject;
             boolean sessionDebug = false;
 
@@ -45,8 +45,7 @@ public class HostMail {
             msg.setRecipients(Message.RecipientType.TO, address);
             msg.setSubject(subject); msg.setSentDate(new Date());
             msg.setText(MessageText);
-
-            Transport transport=mailSession.getTransport("smtp");
+             Transport transport=mailSession.getTransport("smtp");
             transport.connect(host, usermail, pass);
             transport.sendMessage(msg, msg.getAllRecipients());
             transport.close();

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ecosystemjava.jar" size="2462052" download="eager" />
+    <jar href="ecosystemjava.jar" size="4831035" download="eager" />
     <jar href="lib\AnimatonClass.jar" size="41804" download="eager" />
     <jar href="lib\TrayTester.jar" size="52070" download="eager" />
     <jar href="lib\activation.jar" size="124332" download="eager" />
@@ -56,6 +56,8 @@
     <jar href="lib\poi-scratchpad-3.15.jar" size="1324935" download="eager" />
     <jar href="lib\stripe-java-5.35.1.jar" size="259230" download="eager" />
     <jar href="lib\xmlworker-5.5.10.jar" size="255586" download="eager" />
+    <jar href="lib\zxing-1.7-javase.jar" size="22002" download="eager" />
+    <jar href="lib\zxing-core-2.0.jar" size="432773" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="ecosystemjava" >
     <param name="requiredFXVersion" value="8.0+"/>
