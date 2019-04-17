@@ -60,7 +60,7 @@ public class SidePanelController implements Initializable {
                 callback.update("/gui/forum/forumAdmin.fxml");
                 break;
              case "Signalisation":
-                callback.update("");
+                callback.update("/gui/forum/signalisationsCommentaire.fxml");
                 break;
              case "Utilisateur":
                 callback.update("");

@@ -70,6 +70,7 @@ public class ShowPublicationUserController implements Initializable {
     }
     
     public void afficherPublication(PublicationForum p) {
+        PublicationForumService.vu(p.getId());
         txtTitrePublication.setText(p.getTitre());
         txtDescriptionPublication.setText(p.getDescription());
         txtDatePublication.setText(String.valueOf(p.getCreatedAt()));

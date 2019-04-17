@@ -23,6 +23,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -114,6 +119,21 @@ public class ForumAdminController implements Initializable {
     @FXML
     private ChoiceBox<String> cbDomaine;
     
+    @FXML
+    private BarChart<?, ?> chartCommentPerPub;
+    
+    @FXML
+    private BarChart<?, ?> chartPubPerCateg;
+    @FXML
+    private CategoryAxis categrories;
+    @FXML
+    private NumberAxis nbrPubPerCateg;
+    @FXML
+    private NumberAxis nbrVuesPerPub;
+    @FXML
+    private CategoryAxis publication;
+    @FXML
+    private PieChart pieChartCommentairePerPublication;
     /**
      * Initializes the controller class.
      */
@@ -121,6 +141,9 @@ public class ForumAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         afficherAllPublications();
         afficherAllCategories();
+        publicationsPerCategorie();
+        commentsPerPublication();
+        vuesPerPublication();
         btnDeleteCategorie.setDisable(true);
         btnViderFormulaireCategorie.setDisable(true);
         btnShowCategorie.setDisable(true);
@@ -330,7 +353,7 @@ public class ForumAdminController implements Initializable {
         
         CategoriePubService.updateCategorie(c);
     }
-    
+
     @FXML
     private void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
@@ -348,7 +371,6 @@ public class ForumAdminController implements Initializable {
         for(PublicationForum e:le)
         {
             obl.add(e);
-            e.toString();
         }  
         
         idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -362,5 +384,46 @@ public class ForumAdminController implements Initializable {
         tableListePublication.setItems(obl);
         tableListePublication.setEditable(true);
     }
+    
+    public void publicationsPerCategorie(){
+        ArrayList<CategoriePub> le = (ArrayList<CategoriePub>) CategoriePubService.getStatPublicationPerCategorie();
+        XYChart.Series set1 = new XYChart.Series<>();
+
+        for(CategoriePub e:le)
+        {
+            set1.getData().add(new XYChart.Data(e.getLibelle(), e.getNbPublication()));
+        }
+
+        chartPubPerCateg.getData().addAll(set1);
+    }
+    
+    public void commentsPerPublication(){
+        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>) PublicationForumService.getStatVuesPerPublication();
+        XYChart.Series set2 = new XYChart.Series<>();
+
+        for(PublicationForum e:le)
+        {
+            System.out.println(" taille "+le.size());
+            System.out.println("nbr comm "+e.getNbrCommentaires());
+            System.out.println(e);
+            System.out.println("----------------------------");
+            set2.getData().add(new XYChart.Data(e.getTitre(), e.getNbrCommentaires()));
+        }
+
+        chartCommentPerPub.getData().addAll(set2);
+    }
+
+    public void vuesPerPublication(){
+        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>) PublicationForumService.getStatVuesPerPublication();
+        for(PublicationForum e:le)
+        {
+            System.out.println(" taille "+le.size());
+            System.out.println("nbr vues "+e.getNbrVues());
+            System.out.println(e);
+            System.out.println("----------------------------");
+            pieChartCommentairePerPublication.getData().add(new PieChart.Data(e.getTitre()+" : "+ e.getNbrVues()+"%", e.getNbrVues()));
+        }
+    }
+
 
 }

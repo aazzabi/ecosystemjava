@@ -155,6 +155,24 @@ public class PublicationForumService {
         return pList;
     }
     
+    public static void vu(int p)
+    {
+        String req = "UPDATE publication_forum SET nbrVues = nbrVues+1 where id=?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        try 
+        {
+            PreparedStatement pst = cn.prepareStatement(req);
+            pst.setInt(1, p);
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("vu :"+ p);
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }  
+    }
+    
     public static List<PublicationForum> rechercherMyPublicationsKeyWord(int id, String text){
         List<PublicationForum> pList = new ArrayList();
         String requete = "Select p.id, p.titre, p.description, p.etat, u.username, c.libelle, p.pub_created_at, p.nbrVues "
@@ -191,6 +209,7 @@ public class PublicationForumService {
         }
         return pList;   
     }
+    
     public static void deletePublication(int p)
     {
         String requete = "DELETE FROM publication_forum WHERE id=?";
@@ -319,6 +338,36 @@ public class PublicationForumService {
                 c.setDislikes(rs.getInt("c.dislikes"));
                 c.setLikes(rs.getInt("c.likes"));
                 pList.add(c);
+            }
+            System.out.println("Okey ");
+        } 
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+        return pList;
+    }
+        
+    public static List<PublicationForum> getStatVuesPerPublication()
+    {
+        List<PublicationForum> pList = new ArrayList();
+        String requete = "Select p.id, p.titre, p.nbrVues, "
+                + "(select count(*) from commentaire_publication cp where cp.publication_id = p.id  ) as nbrCommentaire "
+                + "from publication_forum p ";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                PublicationForum p = new PublicationForum();
+               
+                p.setId(rs.getInt("p.id"));
+                p.setTitre(rs.getString("p.titre"));
+                p.setNbrVues(rs.getInt("p.nbrVues"));
+                p.setNbrCommentaires(rs.getInt("nbrCommentaire"));
+                pList.add(p);
             }
             System.out.println("Okey ");
         } 

@@ -37,7 +37,7 @@ public class CommentairePublicationService {
         }  
     }
     
-    public static void deleteCommentaireByIdUser(int p)
+    public static void deleteUserByIdCommentaire(int p)
     {
         String req = "DELETE FROM user WHERE id IN (SELECT c.commented_by_id from commentaire_publication c WHERE c.id=?)";
         Connection cn = ConnectionBase.getInstance().getCnx();

@@ -220,4 +220,33 @@ public class CategoriePubService {
         }
         return null;
     }
+    public static List<CategoriePub> getStatPublicationPerCategorie()
+    {
+        List<CategoriePub> pList = new ArrayList();
+        String requete = "SELECT c.id, c.libelle , (SELECT COUNT(id) AS nb_pub FROM publication_forum p WHERE p.categorie_id=c.id) as nbPublication FROM categorie_pub c";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        
+        Statement st;
+        int nb=0;
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                CategoriePub c = new CategoriePub();
+                
+                c.setId(rs.getInt("c.id"));
+                c.setLibelle(rs.getString("c.libelle"));
+                c.setNbPublication(rs.getInt("nbPublication"));
+                c.toString();
+                pList.add(c);
+            }
+        } 
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
 }

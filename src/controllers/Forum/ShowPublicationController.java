@@ -79,6 +79,7 @@ public class ShowPublicationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }    
     public void afficherPublication(PublicationForum p) {
+        PublicationForumService.vu(p.getId());
         txtTitrePublication.setText(p.getTitre());
         txtDescriptionPublication.setText(p.getDescription());
         txtDatePublication.setText(String.valueOf(p.getCreatedAt()));
@@ -130,7 +131,7 @@ public class ShowPublicationController implements Initializable {
         int index = tableListeCommentaire.getSelectionModel().getSelectedIndex(); 
         System.out.println("id to del "+id);
         System.out.println("id to del "+index);
-        CommentairePublicationService.deleteCommentaireByIdUser(id);
+        CommentairePublicationService.deleteUserByIdCommentaire(id);
         CommentairePublicationService.delete(id);
         
         clearTable(tableListeCommentaire);
