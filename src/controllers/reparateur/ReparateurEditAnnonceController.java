@@ -81,9 +81,6 @@ public class ReparateurEditAnnonceController implements Initializable {
     
     public void confirmer ()
     {
-        
-        
-        
         int idAnn=Integer.parseInt(a_id.getText());
         AnnounceRep ann=new AnnounceRep();
         ann=AnnounceRepService.getAnnounceRep(idAnn);
@@ -95,14 +92,7 @@ public class ReparateurEditAnnonceController implements Initializable {
         ann.setPrix(Integer.parseInt(a_prix.getText()));
         AnnounceRepService.edit(ann);
         System.exit(0);
-        
-        
-       
-        
-        
-        
-        
-        
+          
     }
 
 }

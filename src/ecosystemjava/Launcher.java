@@ -30,19 +30,20 @@ public class Launcher extends Application {
         {
          ConnectionBase cnx = ConnectionBase.getInstance();
          
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/panier/CMDAdmin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
         }
         catch (Exception exp){
             exp.printStackTrace();
             
         }
-        
+       
       
     }
+  
     public static void main(String[] args) {
         
        /* Categorie_Evts c=new Categorie_Evts("java","java");

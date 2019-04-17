@@ -13,8 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="341.0" style="-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Annonce.CardsAnnonceController">
+<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="341.0" style="-fx-border-color: black; -fx-border-insets: 5; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Annonce.CardsAnnonceController">
    <children>
+      <Label fx:id="id_annonce" text="5" />
       <ImageView fx:id="img_annoce" fitHeight="150.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
          <VBox.margin>
             <Insets left="57.0" />
@@ -95,11 +96,11 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="pannier" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Pannier">
+            <Button fx:id="panier" mnemonicParsing="false" onAction="#ajouterAupanier" prefHeight="40.0" prefWidth="106.0" text="Pannier">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../res/shopping-cart.png" />
+                        <Image url="@../../res/panier.png" />
                      </image>
                   </ImageView>
                </graphic>

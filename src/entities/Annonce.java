@@ -67,6 +67,26 @@ public class Annonce  {
         this.user_id = user_id;
     }
 
+   
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Annonce other = (Annonce) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
     public Annonce(String titre, String description,Double prix, String region, String photo, int categorie_id, int user_id) {
         this.titre = titre;
         this.description = description;
