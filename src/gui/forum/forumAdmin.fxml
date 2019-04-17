@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -23,14 +28,14 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="725.0" prefWidth="1142.0">
                                  <children>
-                                    <TableView fx:id="tableListePublication" prefHeight="658.0" prefWidth="1145.0">
+                                    <TableView fx:id="tableListePublication" prefHeight="600.0" prefWidth="1140.0">
                                        <columns>
                                           <TableColumn fx:id="datePublication" prefWidth="68.00000077486038" text="Date" />
                                           <TableColumn fx:id="titrePublication" prefWidth="224.0" text="Titre" />
-                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="520.800048828125" text="Description" />
-                                          <TableColumn fx:id="etatPublication" prefWidth="105.5999755859375" text="Etat" />
-                                          <TableColumn fx:id="categoriePublication" prefWidth="119.9998779296875" text="Catégorie" />
-                                          <TableColumn fx:id="creeParPublication" prefWidth="107.2000732421875" text="Crée par" />
+                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="491.9999694824219" text="Description" />
+                                          <TableColumn fx:id="etatPublication" prefWidth="96.800048828125" text="Etat" />
+                                          <TableColumn fx:id="categoriePublication" prefWidth="159.1998291015625" text="Catégorie" />
+                                          <TableColumn fx:id="creeParPublication" prefWidth="97.60009765625" text="Crée par" />
                                        </columns>
                                        <sortOrder>
                                           <TableColumn fx:id="idPublication" prefWidth="40.0" text="ID" />
@@ -43,16 +48,22 @@
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="878.0" prefWidth="214.0">
                                  <children>
-                                    <Button fx:id="btnShowPublication" layoutX="33.0" layoutY="28.0" mnemonicParsing="false" onAction="#showPublication" prefHeight="67.0" prefWidth="154.0" text="AFFICHER">
+                                    <Button fx:id="btnShowPublication" layoutX="28.0" layoutY="136.0" mnemonicParsing="false" onAction="#btnShowPublication" prefHeight="67.0" prefWidth="154.0" text="AFFICHER">
                                        <font>
                                           <Font size="22.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnArchiverPublication" layoutX="33.0" layoutY="132.0" mnemonicParsing="false" onAction="#archiverPublication" prefHeight="67.0" prefWidth="154.0" text="ARCHIVER">
+                                    <Button fx:id="btnArchiverPublication" layoutX="28.0" layoutY="240.0" mnemonicParsing="false" onAction="#archiverPublication" prefHeight="67.0" prefWidth="154.0" text="ARCHIVER">
                                        <font>
                                           <Font size="22.0" />
                                        </font>
                                     </Button>
+                                    <TextField fx:id="txtRechercherPublication" layoutX="27.0" layoutY="65.0" onKeyPressed="#rechercherPublication" onKeyReleased="#rechercherPublication" prefHeight="26.0" prefWidth="157.0" />
+                                    <Text layoutX="29.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher :" wrappingWidth="107.3043212890625">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
                                  </children>
                               </AnchorPane>
                           </items>
@@ -69,12 +80,13 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="717.0" prefWidth="1007.0">
+                                    <TableView fx:id="tableListeCategorie" editable="true" prefHeight="619.0" prefWidth="998.0">
                                        <columns>
-                                          <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="193.59991437196732" text="Libellé" />
-                                          <TableColumn fx:id="descriptionCategorie" onEditCommit="#onEditChangedDescription" prefWidth="568.7999267578125" text="Description" />
-                                          <TableColumn fx:id="domaineCategorie" onEditCommit="#onEditChangedDomaine" prefWidth="139.2000732421875" text="Domaine" />
-                                          <TableColumn fx:id="nbrPublicationCategorie" prefWidth="93.60009765625" text="nb pub" />
+                                          <TableColumn fx:id="idCategorie" minWidth="0.0" onEditCommit="#onEditChangedLibelle" prefWidth="0.0" text="id" />
+                                          <TableColumn fx:id="libelleCategorie" onEditCommit="#onEditChangedLibelle" prefWidth="297.5999935269356" text="Libellé" />
+                                          <TableColumn fx:id="descriptionCategorie" onEditCommit="#onEditChangedDescription" prefWidth="488.8000183105469" text="Description" />
+                                          <TableColumn fx:id="domaineCategorie" prefWidth="135.9998779296875" text="Domaine" />
+                                          <TableColumn fx:id="nbrPublicationCategorie" prefWidth="76.0001220703125" text="nb pub" />
                                        </columns>
                                     </TableView>
                                  </children>
@@ -107,7 +119,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="txtDomaineCategorie" layoutX="21.0" layoutY="276.0" prefHeight="39.0" prefWidth="310.0" />
+                                                <TextField fx:id="txtDomaineCategorie" layoutX="19.0" layoutY="395.0" prefHeight="22.0" prefWidth="310.0" />
                                                 <Text layoutX="18.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domaine :" wrappingWidth="98.48486328125">
                                                    <font>
                                                       <Font size="20.0" />
@@ -123,16 +135,17 @@
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
                                                 </Button>
+                                                <ChoiceBox fx:id="cbDomaine" layoutX="25.0" layoutY="288.0" prefHeight="26.0" prefWidth="307.0" />
                                              </children>
                                           </AnchorPane>
                                       </items>
                                     </SplitPane>
-                                    <Button fx:id="btnShowCategorie" layoutX="196.0" layoutY="588.0" mnemonicParsing="false" onAction="#btnShowCategorie" prefHeight="22.0" prefWidth="135.0" text="AFFICHER">
+                                    <Button fx:id="btnShowCategorie" layoutX="196.0" layoutY="569.0" mnemonicParsing="false" onAction="#btnShowCategorie" prefHeight="22.0" prefWidth="135.0" text="AFFICHER">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="btnDeleteCategorie" layoutX="27.0" layoutY="586.0" mnemonicParsing="false" onAction="#btnDeleteCategorie" prefHeight="34.0" prefWidth="146.0" text="SUPPRIMER">
+                                    <Button fx:id="btnDeleteCategorie" layoutX="27.0" layoutY="567.0" mnemonicParsing="false" onAction="#btnDeleteCategorie" prefHeight="34.0" prefWidth="146.0" text="SUPPRIMER">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
@@ -144,6 +157,58 @@
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="STATISTIQUES">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane layoutX="-1.0" layoutY="14.0" prefHeight="714.0" prefWidth="1367.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Publications">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <BarChart fx:id="chartCommentPerPub" prefHeight="570.0" prefWidth="1346.0" title="Nombre de commentaire par publication">
+                                            <xAxis>
+                                              <CategoryAxis fx:id="publication" label="Categoires" side="BOTTOM" tickLabelRotation="-90.0" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis fx:id="nbrCommPerPub" label="Nbr.  Publications" side="LEFT" upperBound="50.0" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children></AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Categorie">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <BarChart fx:id="chartPubPerCateg" layoutX="17.0" layoutY="15.0" prefHeight="570.0" prefWidth="1346.0" title="Nombre de publication par catégorie">
+                                             <xAxis>
+                                                <CategoryAxis fx:id="categrories" label="Categoires" side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis fx:id="nbrPubPerCateg" label="Nbr.  Publications" side="LEFT" upperBound="50.0" />
+                                             </yAxis>
+                                          </BarChart>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="Untitled Tab">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <PieChart fx:id="pieChartCommentairePerPublication" layoutX="2.0" layoutY="3.0" prefHeight="685.0" prefWidth="1367.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

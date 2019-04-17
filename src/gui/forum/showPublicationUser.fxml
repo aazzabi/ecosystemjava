@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ShowPublicationUserController">
+   <children>
+      <SplitPane dividerPositions="0.3557993730407524, 0.896551724137931" orientation="VERTICAL" prefHeight="640.0" prefWidth="906.0">
+        <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="880.0">
+               <children>
+                  <Text layoutX="783.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="commentaires" wrappingWidth="87.99992675781249">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="txtTitrePublication" layoutX="14.0" layoutY="6.0" prefHeight="44.0" prefWidth="722.0" text="TITRE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtDescriptionPublication" layoutX="14.0" layoutY="82.0" prefHeight="102.0" prefWidth="859.0" text="DESC" />
+                  <Label fx:id="txtDatePublication" layoutX="796.0" layoutY="7.0" prefHeight="24.0" prefWidth="96.0" text="DATE" />
+                  <Label fx:id="txtNbrCommentaire" layoutX="740.0" layoutY="190.0" prefHeight="24.0" prefWidth="34.0" text="NB">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtEtatPublication" layoutX="14.0" layoutY="185.0" prefHeight="32.0" prefWidth="123.0" text="ETAT" />
+                  <Label fx:id="txtCategoriePublication" layoutX="14.0" layoutY="56.0" prefHeight="24.0" prefWidth="130.0" style="-fx-background-color: #00b0ffde;" text="CATEGORIE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="son" fitHeight="32.0" fitWidth="34.0" layoutX="158.0" layoutY="58.0" onMouseClicked="#readDescription" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../res/son.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="748.0" layoutY="18.0" onMouseClicked="#readTitre" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../res/son.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="905.0">
+               <children>
+                  <!--<ScrollPane hbarPolicy="NEVER" layoutX="-1.0" layoutY="230.0" prefHeight="378.0" prefWidth="902.0" vbarPolicy="ALWAYS">-->
+                  <ScrollPane fitToWidth="true" prefHeight="339.0" prefWidth="902.0">
+                    <content>
+                        <FlowPane fx:id="flowCom" alignment="TOP_CENTER" hgap="20.0" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity" prefWidth="901.0" prefWrapLength="1700.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" vgap="10.0">
+                            <padding>
+                               <Insets left="10.0" top="20.0" />
+                            </padding>
+                        </FlowPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="63.0" prefWidth="910.0">
+               <children>
+                  <TextField fx:id="txtCommentaire" layoutX="20.0" layoutY="11.0" prefHeight="44.0" prefWidth="743.0" />
+                  <Button fx:id="btnCommenter" layoutX="774.0" layoutY="10.0" mnemonicParsing="false" onAction="#commenter" prefHeight="44.0" prefWidth="123.0" text="COMMENTER" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

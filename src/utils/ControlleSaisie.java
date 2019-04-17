@@ -8,7 +8,9 @@ package utils;
 import static controllers.InscriptionController.valideEmail;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -29,6 +31,30 @@ public class ControlleSaisie {
             return true; 
         } else {
             txtField.setStyle("-fx-border-color: none ; -fx-border-width: 0px ; -fx-border-radius: 4;");
+            return false; 
+        }
+    }
+    
+    public static boolean estVideTextArea(TextArea txtField, String nomField){
+        if(txtField.getText().equals("")){
+            txtField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ; -fx-border-radius: 4;");
+            TrayNotification tray = new TrayNotification("Erreur", "Précisez votre "+ nomField , ERROR);
+            tray.showAndDismiss(Duration.millis(2000));
+            return true; 
+        } else {
+            txtField.setStyle("-fx-border-color: none ; -fx-border-width: 0px ; -fx-border-radius: 4;");
+            return false; 
+        }
+    }
+    
+    public static boolean estVideComboBox(ChoiceBox cb, String nomField){
+        if(cb.getSelectionModel().isEmpty()){
+            cb.setStyle("-fx-border-color: red ; -fx-border-width: 2px ; -fx-border-radius: 4;");
+            TrayNotification tray = new TrayNotification("Erreur", "Précisez votre "+ nomField , ERROR);
+            tray.showAndDismiss(Duration.millis(2000));
+            return true; 
+        } else {
+            cb.setStyle("-fx-border-color: none ; -fx-border-width: 0px ; -fx-border-radius: 4;");
             return false; 
         }
     }

@@ -19,6 +19,7 @@ public class PublicationForum {
     private String description;
     private String etat;
     private String categorie;
+    private int categorieId;
     private int createdBy;
     private String createdByName;
     private Date createdAt;
@@ -121,6 +122,15 @@ public class PublicationForum {
     public void setCreatedByName(String createdByName) {
         this.createdByName = createdByName;
     }
+
+    public int getCategorieId() {
+        return categorieId;
+    }
+
+    public void setCategorieId(int categorieId) {
+        this.categorieId = categorieId;
+    }
+    
     
     @Override
     public String toString() {

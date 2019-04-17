@@ -14,6 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.ConnectionBase;
 
 /**
@@ -49,6 +53,25 @@ public class CategoriePubService {
         catch (SQLException ex)
         {
             System.err.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
+    public static ObservableList<String> getAllCategoriesLibelle()
+    {
+        ObservableList<String> pList = FXCollections.observableArrayList();
+        String requete = "SELECT c.libelle FROM categorie_pub c";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+        String request = "select libelle from categorie_pub";
+        try {
+            pt = cn.prepareStatement(request);
+            ResultSet rs = pt.executeQuery();
+            while (rs.next()) {
+                pList.add(rs.getString("libelle"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnounceRepService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pList;
     }
@@ -147,14 +170,13 @@ public class CategoriePubService {
     }
 
     public static void update(int id , String colonne, String newValue) {
-        String requete = "UPDATE categorie_pub SET ?= '?' WHERE id=?";
+        String requete = "UPDATE `categorie_pub` SET `description`= ?  WHERE `id`= ?";
         Connection cn = ConnectionBase.getInstance().getCnx();
         try 
         {
             PreparedStatement pst = cn.prepareStatement(requete);
-            pst.setString(1, colonne);
-            pst.setString(2, newValue);
-            pst.setInt(3, id);
+            pst.setString(1, newValue);
+            pst.setInt(2, id);
             pst.executeUpdate();
         }
         catch (SQLException ex) 
@@ -173,6 +195,7 @@ public class CategoriePubService {
             pst.setString(1, c.getLibelle());
             pst.setString(2, c.getDescription());
             pst.setString(3, c.getDomaine());
+            pst.setInt(4, id);
             pst.executeUpdate();
         }
         catch (SQLException ex) 
@@ -180,4 +203,50 @@ public class CategoriePubService {
             System.out.println(ex.getMessage());
         }  
     }
+    
+    public static  Integer getIdCategoriePub(String nom) {
+        try {
+            Connection cn = ConnectionBase.getInstance().getCnx();
+            String loginQry = "SELECT id FROM categorie_pub WHERE libelle = ? ";
+            PreparedStatement ste = cn.prepareStatement(loginQry);
+            ste.setString(1, nom);
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()) {
+            int id = rs.getInt("id");
+            return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static List<CategoriePub> getStatPublicationPerCategorie()
+    {
+        List<CategoriePub> pList = new ArrayList();
+        String requete = "SELECT c.id, c.libelle , (SELECT COUNT(id) AS nb_pub FROM publication_forum p WHERE p.categorie_id=c.id) as nbPublication FROM categorie_pub c";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        
+        Statement st;
+        int nb=0;
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(requete);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                CategoriePub c = new CategoriePub();
+                
+                c.setId(rs.getInt("c.id"));
+                c.setLibelle(rs.getString("c.libelle"));
+                c.setNbPublication(rs.getInt("nbPublication"));
+                c.toString();
+                pList.add(c);
+            }
+        } 
+        catch (SQLException ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
 }

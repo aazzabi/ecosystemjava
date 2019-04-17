@@ -20,10 +20,19 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -70,7 +79,10 @@ public class ForumAdminController implements Initializable {
     
     @FXML
     private TableView<CategoriePub> tableListeCategorie;
+    
+    @FXML
     private TableColumn<CategoriePub, Integer> idCategorie;
+    
     @FXML
     private TableColumn<CategoriePub, String> libelleCategorie;
     @FXML
@@ -102,7 +114,26 @@ public class ForumAdminController implements Initializable {
     private Button btnArchiverPublication;
     @FXML
     private Button btnShowPublication;
+    @FXML
+    private TextField txtRechercherPublication;
+    @FXML
+    private ChoiceBox<String> cbDomaine;
     
+    @FXML
+    private BarChart<?, ?> chartCommentPerPub;
+    
+    @FXML
+    private BarChart<?, ?> chartPubPerCateg;
+    @FXML
+    private CategoryAxis categrories;
+    @FXML
+    private NumberAxis nbrPubPerCateg;
+    @FXML
+    private NumberAxis nbrVuesPerPub;
+    @FXML
+    private CategoryAxis publication;
+    @FXML
+    private PieChart pieChartCommentairePerPublication;
     /**
      * Initializes the controller class.
      */
@@ -110,11 +141,14 @@ public class ForumAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         afficherAllPublications();
         afficherAllCategories();
+        publicationsPerCategorie();
+        commentsPerPublication();
+        vuesPerPublication();
         btnDeleteCategorie.setDisable(true);
         btnViderFormulaireCategorie.setDisable(true);
         btnShowCategorie.setDisable(true);
         
-//        btnSupprimerPublication.setDisable(true);
+        btnShowPublication.setDisable(true);
         btnArchiverPublication.setDisable(true);
         
         tableListeCategorie.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -125,14 +159,22 @@ public class ForumAdminController implements Initializable {
                 btnShowCategorie.setDisable(false);        
             }
         });
-//        
-//        tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                btnArchiverPublication.setDisable(false);
-//                btnSupprimerPublication.setDisable(false);
-//            }
-//        });
+        cbDomaine.getItems().addAll("Electronique","Environement","Art","Vie");
+        tableListePublication.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btnArchiverPublication.setDisable(false);
+                btnShowPublication.setDisable(false);
+            }
+        });
+        
+        titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
+        tableListePublication.setEditable(true);
+        
+        libelleCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
+        descriptionCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
+        
     }  
     
     public void afficherAllPublications(){
@@ -143,6 +185,7 @@ public class ForumAdminController implements Initializable {
             obl.add(e);
         }  
         
+        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
         datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
         titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -154,13 +197,13 @@ public class ForumAdminController implements Initializable {
         tableListePublication.setEditable(true);
     }
     
-    
     public void afficherAllCategories(){
         ArrayList<CategoriePub> lc = (ArrayList<CategoriePub>) CategoriePubService.getAllCategoriePub();
         for(CategoriePub c:lc)
         {
             obCateg.add(c);
         }
+        idCategorie.setCellValueFactory(new PropertyValueFactory<>("id"));
         libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
         domaineCategorie.setCellValueFactory(new PropertyValueFactory<>("domaine"));
@@ -169,7 +212,6 @@ public class ForumAdminController implements Initializable {
         tableListeCategorie.setItems(obCateg);
         tableListeCategorie.setEditable(true);
     }
-    
 
     @FXML
     private void archiverPublication(ActionEvent event) {
@@ -208,13 +250,14 @@ public class ForumAdminController implements Initializable {
     @FXML
     private void btnAddCategorie(ActionEvent event) {
         if ( !(ControlleSaisie.estVide(txtLibelleCategorie, "nom")) 
-            && !(ControlleSaisie.estVide(txtDescriptionCategorie, "prenom")) 
-            && !(ControlleSaisie.estVide(txtDomaineCategorie, "prenom")) ){
+            && !(ControlleSaisie.estVide(txtDescriptionCategorie, "description")) 
+            && !(ControlleSaisie.estVideComboBox(cbDomaine, "categorie")) ){
             CategoriePub c = new CategoriePub();
 
             c.setLibelle(txtLibelleCategorie.getText());
             c.setDescription(txtDescriptionCategorie.getText());
-            c.setDomaine(txtDomaineCategorie.getText());
+//            c.setDomaine(txtDomaineCategorie.getText());
+            c.setDomaine(cbDomaine.getValue().toString());
             
             CategoriePubService.add(c);
             clearTable(tableListeCategorie);
@@ -234,7 +277,6 @@ public class ForumAdminController implements Initializable {
         {
             obCateg.add(c);
         }
-        idCategorie.setCellValueFactory(new PropertyValueFactory<>("id"));
         libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
         domaineCategorie.setCellValueFactory(new PropertyValueFactory<>("domaine"));
@@ -245,12 +287,12 @@ public class ForumAdminController implements Initializable {
         
     }
 
-
     @FXML
     private void btnShowCategorie(ActionEvent event) {
         try
         {
             int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+            System.out.println(id);
             CategoriePub cat = CategoriePubService.getCategorieById(id);
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/gui/forum/showCategoriePublication.fxml"));
@@ -273,10 +315,11 @@ public class ForumAdminController implements Initializable {
     }
     
     @FXML
-    private void showPublication(ActionEvent event) {
+    private void btnShowPublication(ActionEvent event) {
         try
         {
-            int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
+            int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
+            
             PublicationForum pub = PublicationForumService.getPublicationById(id);
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/gui/forum/showPublication.fxml"));
@@ -298,18 +341,17 @@ public class ForumAdminController implements Initializable {
         }
     }
     
-
-
     @FXML
-    private void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
+    public void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
         CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
         c.setLibelle(event.getNewValue());
-        c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
+        c.setId(id);
         System.out.println(c);
- 
+        
+        System.out.println(event.getNewValue());
+        
         CategoriePubService.updateCategorie(c);
-//        System.out.println(event.getNewValue());  
     }
 
     @FXML
@@ -319,22 +361,69 @@ public class ForumAdminController implements Initializable {
         c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
 
         CategoriePubService.update(id, "description",event.getNewValue());
-//        System.out.println(event.getNewValue());
     }
 
     @FXML
-    private void onEditChangedDomaine(TableColumn.CellEditEvent<CategoriePub, String> event) {
-        int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
-        CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
-        c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
-        CategoriePubService.update(id, "domaine",event.getNewValue());
-        System.out.println(event.getNewValue());
+    private void rechercherPublication(KeyEvent event) {
+        clearTable(tableListePublication);
+        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>)
+                PublicationForumService.recherchePublicationsKeyWord(txtRechercherPublication.getText());
+        for(PublicationForum e:le)
+        {
+            obl.add(e);
+        }  
+        
+        idPublication.setCellValueFactory(new PropertyValueFactory<>("id"));
+        datePublication.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
+        etatPublication.setCellValueFactory(new PropertyValueFactory<>("etat"));
+        categoriePublication.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+        creeParPublication.setCellValueFactory(new PropertyValueFactory<>("createdByName"));
+        
+        tableListePublication.setItems(obl);
+        tableListePublication.setEditable(true);
+    }
+    
+    public void publicationsPerCategorie(){
+        ArrayList<CategoriePub> le = (ArrayList<CategoriePub>) CategoriePubService.getStatPublicationPerCategorie();
+        XYChart.Series set1 = new XYChart.Series<>();
+
+        for(CategoriePub e:le)
+        {
+            set1.getData().add(new XYChart.Data(e.getLibelle(), e.getNbPublication()));
+        }
+
+        chartPubPerCateg.getData().addAll(set1);
+    }
+    
+    public void commentsPerPublication(){
+        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>) PublicationForumService.getStatVuesPerPublication();
+        XYChart.Series set2 = new XYChart.Series<>();
+
+        for(PublicationForum e:le)
+        {
+            System.out.println(" taille "+le.size());
+            System.out.println("nbr comm "+e.getNbrCommentaires());
+            System.out.println(e);
+            System.out.println("----------------------------");
+            set2.getData().add(new XYChart.Data(e.getTitre(), e.getNbrCommentaires()));
+        }
+
+        chartCommentPerPub.getData().addAll(set2);
     }
 
-    private static class primaryStage {
-
-        public primaryStage() {
+    public void vuesPerPublication(){
+        ArrayList<PublicationForum> le = (ArrayList<PublicationForum>) PublicationForumService.getStatVuesPerPublication();
+        for(PublicationForum e:le)
+        {
+            System.out.println(" taille "+le.size());
+            System.out.println("nbr vues "+e.getNbrVues());
+            System.out.println(e);
+            System.out.println("----------------------------");
+            pieChartCommentairePerPublication.getData().add(new PieChart.Data(e.getTitre()+" : "+ e.getNbrVues()+"%", e.getNbrVues()));
         }
     }
+
 
 }
