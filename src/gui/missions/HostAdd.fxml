@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1362.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.missions.HostAddController">
+   <children>
+      <AnchorPane fx:id="contentPane" layoutX="-1.0" prefHeight="824.0" prefWidth="1387.0" style="-fx-background-color: White;" AnchorPane.rightAnchor="-1.0">
+         <children>
+            <ImageView fitHeight="534.0" fitWidth="1362.0" layoutX="249.0" layoutY="-4.0" opacity="0.4">
+               <image>
+                  <Image url="@../../../../../../Desktop/testbg.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="866.0" fitWidth="874.0" layoutX="397.0" layoutY="-42.0">
+               <image>
+                  <Image url="@../../../../../../Desktop/pannel.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="OwnerTF" alignment="CENTER" focusColor="WHITE" labelFloat="true" layoutX="574.0" layoutY="194.0" prefHeight="50.0" prefWidth="220.0" promptText="Nom de la mission" style="-jfx-focus-color: Black; -jfx-unfocus-color: Black; -fx-text-inner-color: Black;" unFocusColor="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="TotalPlacesTF" alignment="CENTER" focusColor="WHITE" labelFloat="true" layoutX="533.0" layoutY="405.0" prefHeight="50.0" prefWidth="301.0" promptText="Nombre de matériaux à collecter " style="-jfx-focus-color: Black; -jfx-unfocus-color: Black; -fx-text-inner-color: Black;" unFocusColor="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="AddButton" layoutX="757.0" layoutY="508.0" onAction="#AddHostAction" prefHeight="46.0" prefWidth="156.0" ripplerFill="#90d74a" style="-fx-border-radius: 15; -fx-border-color: green;" styleClass="loginBtn" text="Créer Mission ! " textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></JFXButton>
+            <DatePicker fx:id="DateStart" layoutX="572.0" layoutY="266.0" prefHeight="50.0" prefWidth="220.0" promptText="Date Début" />
+            <DatePicker fx:id="DateEnd" layoutX="572.0" layoutY="316.0" prefHeight="50.0" prefWidth="220.0" promptText="Date Fin" />
+            <JFXButton fx:id="OpenMap_Button" layoutX="945.0" layoutY="223.0" onAction="#OpenMap_Action" prefHeight="54.0" prefWidth="220.0" style="-fx-border-color: green; -fx-border-radius: 20;" text="Ouvrir G Maps pour la localisation" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="TakePosition_Button" disable="true" layoutX="995.0" layoutY="306.0" onAction="#TakePosition_Action" prefHeight="70.0" prefWidth="120.0" ripplerFill="#8cd048" style="-fx-border-color: green; -fx-border-radius: 50;" text="Localiser" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="1287.0" layoutY="661.0" onAction="#Return_Button" prefHeight="81.0" prefWidth="186.0" ripplerFill="#92d95f" style="-fx-border-color: green; -fx-border-radius: 15;" styleClass="loginBtn" text="Retourner à la liste">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <FontAwesomeIconView fill="LAWNGREEN" glyphName="LEAF" layoutX="520.0" layoutY="438.0" size="25" />
+            <FontAwesomeIconView fill="LAWNGREEN" glyphName="CALENDAR" layoutX="521.0" layoutY="324.0" size="25" />
+            <FontAwesomeIconView fill="LAWNGREEN" glyphName="MAP_MARKER" layoutX="916.0" layoutY="259.0" size="25" />
+            <FontAwesomeIconView fill="LAWNGREEN" glyphName="CHECK" layoutX="823.0" layoutY="503.0" size="25" />
+            <ImageView fitHeight="38.0" fitWidth="453.0" layoutX="597.0" layoutY="99.0">
+               <image>
+                  <Image url="@../../../../../../Downloads/generatedtext%20(1).png" />
+               </image>
+            </ImageView>
+            <TextArea editable="false" layoutX="955.0" layoutY="401.0" opacity="0.7" prefHeight="81.0" prefWidth="200.0" text="Instructions : &#10;Clickez sur le boutton &quot;Localiser&quot; lorsque vous centrez la Map sur la localisation souhaitée." wrapText="true" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

@@ -24,6 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import ecosystemjava.Launcher;
+import javafx.scene.Node;
 
 /**
  * FXML Controller class
@@ -34,10 +35,10 @@ public class MainuserscreenController implements Initializable, ChangeCallback {
 
     @FXML
     private AnchorPane root;
-    
-        @FXML
+
+    @FXML
     private AnchorPane menu;
-    
+
     @FXML
     private AnchorPane root1;
 
@@ -45,15 +46,17 @@ public class MainuserscreenController implements Initializable, ChangeCallback {
     private JFXHamburger hamburger;
 
     @FXML
-    private  JFXDrawer drawer;
+    private JFXDrawer drawer;
+
+    public static MainuserscreenController thisController;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        thisController = this;
         System.out.println("Screen Utilisateur");
         if (!Launcher.isSplashLoaded) {
             loadSplashScreen();
         }
-        
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/SidePanelUser.fxml"));
             VBox box = loader.load();
@@ -69,17 +72,11 @@ public class MainuserscreenController implements Initializable, ChangeCallback {
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
             transition.setRate(transition.getRate() * -1);
             transition.play();
-           
-            
-            
-            
-            
             if (drawer.visibleProperty().getValue() == false) {
                 drawer.setVisible(true);
             } else {
                 drawer.setVisible(false);
             }
-
             if (drawer.isOpened()) {
                 drawer.close();
             } else {
@@ -127,6 +124,7 @@ public class MainuserscreenController implements Initializable, ChangeCallback {
 
     @Override
     public void update(String src) {
+        System.out.println(src);
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(src));
             root1.getChildren().setAll(pane);
@@ -134,4 +132,10 @@ public class MainuserscreenController implements Initializable, ChangeCallback {
             Logger.getLogger(MainuserscreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    // zedna hedhi
+    public void up(Node n) {
+        root1.getChildren().setAll(n);
+    }
+
 }

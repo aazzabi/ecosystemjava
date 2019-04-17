@@ -1,0 +1,40 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+* {
+    -fx-primary: #66D0C4;
+    -fx-secondary: #FFFF8D;
+    -fx-primarytext: #b2b2b2;
+}
+
+.loginText {
+    -fx-prompt-text-fill: #008000;
+    -jfx-focus-color:  #006400;
+    -jfx-unfocus-color: #90ee90;
+}
+
+.loginLabel {
+    -fx-text-fill: #000000;
+}
+
+.loginBtn {
+    -fx-rippler-fill: -fx-secondary;
+    -fx-text-fill: -fx-primarytext;
+    -fx-border-color: -fx-primarytext;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.mainFxmlClass {
+
+}
+
+.addFriendBtn {
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+}
+
+.imageView {
+    -fx-background-radius: 50%;
+}
