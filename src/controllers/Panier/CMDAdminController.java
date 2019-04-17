@@ -28,6 +28,9 @@ import iservices.panier.ILigneCommandeService;
 import iservices.panier.IPanierService;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -46,6 +49,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.mail.MessagingException;
 import service.panier.LigneCommandeService;
+import services.AnnonceService;
 import services.UserService;
 import static tray.notification.NotificationType.SUCCESS;
 import tray.notification.TrayNotification;
@@ -59,6 +63,9 @@ public class CMDAdminController implements Initializable {
     
     @FXML
     private BarChart<String,Integer> bar_chart;
+    
+    @FXML
+    private BarChart<String,Integer> stat_liv;
     
  @FXML
     private Tab cond;
@@ -210,22 +217,74 @@ public class CMDAdminController implements Initializable {
          nombre_livraison.setCellValueFactory(new PropertyValueFactory<>("nbr_livraison"));
          note.setCellValueFactory(new PropertyValueFactory<>("note"));
         table_livreur.setItems(livraisonService.getall2());
+        
         XYChart.Series<String,Integer> series=new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>("Janvier",3));
-        series.getData().add(new XYChart.Data<>("Février",0));
-        series.getData().add(new XYChart.Data<>("Mars",3));
-        series.getData().add(new XYChart.Data<>("Avril",8));
-        series.getData().add(new XYChart.Data<>("Mai",3));
-        series.getData().add(new XYChart.Data<>("Juin",3));
-        series.getData().add(new XYChart.Data<>("Juillet",15));
-        series.getData().add(new XYChart.Data<>("Août",3));
-        series.getData().add(new XYChart.Data<>("Spetembre",3));
-        series.getData().add(new XYChart.Data<>("Octobre",6));
-        series.getData().add(new XYChart.Data<>("Nomvembre",3));
-        series.getData().add(new XYChart.Data<>("Décembre",3));
+        
+ int jan=commandeService.CommandeJanvier();
+  int fev=commandeService.CommandeFevrier();
+   int mar=commandeService.CommandeMars();
+    int avr=commandeService.CommandeAvril();
+     int mai=commandeService.CommandeMai();
+      int juin=commandeService.CommandeJuin();
+       int jui=commandeService.CommandeJuillet();
+        int aou=commandeService.CommandeAout();
+         int sep=commandeService.CommandeSeptembre();
+          int oct=commandeService.CommandeOctobre();
+           int nov=commandeService.CommandeNovembre();
+            int dec=commandeService.CommandeDecembre();
+  
+ System.out.println("nb jan :"+jan);
+ System.out.println("nb jan :"+jan);
+        series.getData().add(new XYChart.Data<>("Janvier",jan));
+        series.getData().add(new XYChart.Data<>("Février",fev));
+        series.getData().add(new XYChart.Data<>("Mars",mar));
+        series.getData().add(new XYChart.Data<>("Avril",avr));
+        series.getData().add(new XYChart.Data<>("Mai",mai));
+        series.getData().add(new XYChart.Data<>("Juin",juin));
+        series.getData().add(new XYChart.Data<>("Juillet",jui));
+        series.getData().add(new XYChart.Data<>("Août",aou));
+        series.getData().add(new XYChart.Data<>("Spetembre",sep));
+        series.getData().add(new XYChart.Data<>("Octobre",oct));
+        series.getData().add(new XYChart.Data<>("Nomvembre",nov));
+        series.getData().add(new XYChart.Data<>("Décembre",dec));
                           bar_chart.getData().add(series);
        bar_chart.setTitle("Nombres de Commandes Par rapport au mois de l'année 2019 ");
-    
+       
+       
+       XYChart.Series<String,Integer> series2=new XYChart.Series<>();
+   
+       int sfax=livraisonService.StatLiv("Sfax");
+ int mestir=livraisonService.StatLiv("Mestir");
+  int ariana=livraisonService.StatLiv("Ariana");
+   int sousse=livraisonService.StatLiv("Sousse");
+    int tunis=livraisonService.StatLiv("Tunis");
+     int mahdia=livraisonService.StatLiv("Mahdia");
+      int nabeul=livraisonService.StatLiv("Nabeul");
+       int benarous=livraisonService.StatLiv("Ben Arous");
+        int bizerte=livraisonService.StatLiv("Bizerte");
+         int manouba=livraisonService.StatLiv("Manouba");
+          int zaghouan=livraisonService.StatLiv("Zaghouan");
+           int beja=livraisonService.StatLiv("Béja");
+            int kairouan=livraisonService.StatLiv("Kairouan");
+             
+            
+         series2.getData().add(new XYChart.Data<>("Sfax",sfax));
+        series2.getData().add(new XYChart.Data<>("Mestir",mestir));
+        series2.getData().add(new XYChart.Data<>("Ariana",ariana));
+        series2.getData().add(new XYChart.Data<>("Sousse",sousse));
+        series2.getData().add(new XYChart.Data<>("Tunis",tunis));
+        series2.getData().add(new XYChart.Data<>("Mahdia",mahdia));
+        series2.getData().add(new XYChart.Data<>("Nabeul",nabeul));
+        series2.getData().add(new XYChart.Data<>("Ben Arous",benarous));
+        series2.getData().add(new XYChart.Data<>("Bizerte",bizerte));
+        series2.getData().add(new XYChart.Data<>("Manouba",manouba));
+        series2.getData().add(new XYChart.Data<>("Zaghouan",zaghouan));
+        series2.getData().add(new XYChart.Data<>("Béja",beja));
+        series2.getData().add(new XYChart.Data<>("Kairouan",kairouan));
+        
+                          stat_liv.getData().add(series2);
+       stat_liv.setTitle("Nombres de Livraisons Par rapport aux Gouvernorats de la  Tunisie ");
+      
     }    
     @FXML
     void AjouterLivreur(ActionEvent event) {

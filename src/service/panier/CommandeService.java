@@ -269,6 +269,223 @@ Statement st;
         }
     }
 
+    @Override
+    public int CommandeJanvier() {
+        int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-01-01') AND (date_emission <= '2019-01-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+      
+    }
+
+    @Override
+    public int CommandeFevrier() {
+         int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-02-01') AND (date_emission <= '2019-02-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeMars() {
+            int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-03-01') AND (date_emission <= '2019-03-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeAvril() {
+          int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-04-01') AND (date_emission <= '2019-04-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeMai() {
+          int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-05-01') AND (date_emission <= '2019-05-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeJuin() {
+          int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-06-01') AND (date_emission <= '2019-06-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeJuillet() {
+          int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-07-01') AND (date_emission <= '2019-07-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeAout() {
+           int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-08-01') AND (date_emission <= '2019-08-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeSeptembre() {
+         int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-09-01') AND (date_emission <= '2019-09-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeOctobre() {
+          int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-10-01') AND (date_emission <= '2019-10-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeNovembre() {
+          int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-11-01') AND (date_emission <= '2019-11-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public int CommandeDecembre() {
+         int count=0;
+     String req = "SELECT  COUNT(*) from commande where (date_emission >= '2019-12-01') AND (date_emission <= '2019-12-31')";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
     
    
 }

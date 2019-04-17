@@ -17,32 +17,37 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="660.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.CMDAdminController">
+<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.CMDAdminController">
     <stylesheets>
         <URL value="@cmdadmin.css" />
     </stylesheets>
    <children>
-      <JFXTabPane layoutY="3.0" prefHeight="1360" prefWidth="1260.0">
+      <JFXTabPane layoutY="3.0" prefHeight="1360" prefWidth="1360.0">
          <tabs>
             <Tab fx:id="cond" text="Commandes">
                <content>
                   <AnchorPane fx:id="piechart" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table_commande" layoutX="40.0" layoutY="42.0" prefHeight="200.0" prefWidth="1131.0">
+                        <TableView fx:id="table_commande" layoutX="32.0" layoutY="26.0" prefHeight="200.0" prefWidth="1252.0">
                           <columns>
                             <TableColumn fx:id="date" prefWidth="287.0" text="Date Emission" />
                             <TableColumn fx:id="etat" prefWidth="374.0" text="Etat Commande" />
                               <TableColumn fx:id="prix_total" prefWidth="243.0" text="Prix Total" />
-                              <TableColumn fx:id="id_user" prefWidth="226.0" text="Id Utilisateur" />
+                              <TableColumn fx:id="id_user" prefWidth="347.0" text="Id Utilisateur" />
                           </columns>
                         </TableView>
-                        <Button fx:id="annuler_cmd" layoutX="981.0" layoutY="279.0" mnemonicParsing="false" onAction="#Annuler_Commande" prefHeight="25.0" prefWidth="232.0" text="Annuler Commande" />
-                        <Text fill="WHITE" layoutX="87.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques Des Commandes :">
+                        <ImageView fitHeight="421.0" fitWidth="1185.0" layoutX="62.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/blanc.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="annuler_cmd" layoutX="1052.0" layoutY="236.0" mnemonicParsing="false" onAction="#Annuler_Commande" prefHeight="25.0" prefWidth="232.0" text="Annuler Commande" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques Des Commandes :">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Text>
-                        <BarChart fx:id="bar_chart" layoutX="78.0" layoutY="404.0" prefHeight="400.0" prefWidth="1117.0">
+                        <BarChart fx:id="bar_chart" layoutX="60.0" layoutY="310.0" prefHeight="400.0" prefWidth="1117.0">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -65,7 +70,25 @@
                               <TableColumn fx:id="adr_livraison" prefWidth="508.0" text="Adresse" />
                           </columns>
                         </TableView>
-                        <Button fx:id="annuler_livraison" layoutX="1018.0" layoutY="274.0" mnemonicParsing="false" onAction="#Annuler_Livraison" prefHeight="25.0" prefWidth="216.0" text="Annuler Livraison" />
+                        <Button fx:id="annuler_livraison" layoutX="1069.0" layoutY="248.0" mnemonicParsing="false" onAction="#Annuler_Livraison" prefHeight="25.0" prefWidth="216.0" text="Annuler Livraison" />
+                        <Text fill="WHITE" layoutX="21.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des Livraisons :">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="413.0" fitWidth="1166.0" layoutX="68.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/blanc.png" />
+                           </image>
+                        </ImageView>
+                        <BarChart fx:id="stat_liv" layoutX="86.0" layoutY="294.0" prefHeight="400.0" prefWidth="1055.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -73,65 +96,65 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="livreur">
                      <children>
-                        <ImageView fitHeight="600.0" fitWidth="302.0" layoutX="936.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="600.0" fitWidth="302.0" layoutX="1036.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@back_ajout_livreur.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="947.0" layoutY="82.0" text="Formulaire d'Ajout de Livreur" textFill="WHITE">
+                        <Label layoutX="1047.0" layoutY="81.0" text="Formulaire d'Ajout de Livreur" textFill="WHITE">
                            <font>
                               <Font size="17.0" />
                            </font></Label>
-                        <Label layoutX="940.0" layoutY="148.0" text="Nom :" textFill="WHITE">
+                        <Label layoutX="1040.0" layoutY="147.0" text="Nom :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="939.0" layoutY="194.0" text="Prenom :" textFill="WHITE">
+                        <Label layoutX="1039.0" layoutY="193.0" text="Prenom :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="937.0" layoutY="297.0" text="Photo :" textFill="WHITE">
+                        <Label layoutX="1037.0" layoutY="296.0" text="Photo :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="939.0" layoutY="246.0" text="Email :" textFill="WHITE">
+                        <Label layoutX="1039.0" layoutY="245.0" text="Email :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="940.0" layoutY="347.0" text="Pseudo :" textFill="WHITE">
+                        <Label layoutX="1040.0" layoutY="346.0" text="Pseudo :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="940.0" layoutY="392.0" text="Zone :" textFill="WHITE">
+                        <Label layoutX="1040.0" layoutY="391.0" text="Zone :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="nom" layoutX="1003.0" layoutY="146.0" prefHeight="25.0" prefWidth="225.0" />
-                        <TextField fx:id="prenom" layoutX="1004.0" layoutY="192.0" prefHeight="25.0" prefWidth="222.0" />
-                        <TextField fx:id="email" layoutX="1004.0" layoutY="244.0" prefHeight="25.0" prefWidth="221.0" />
-                        <TextField fx:id="pseudo" layoutX="1004.0" layoutY="345.0" prefHeight="25.0" prefWidth="220.0" />
-                        <Button fx:id="ajouter" layoutX="1002.0" layoutY="549.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="25.0" prefWidth="169.0" text="Ajouter" />
-                        <Button fx:id="photo" layoutX="1004.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Choisir Photo" />
-                        <Label layoutX="940.0" layoutY="444.0" text="Mot de Passe :" textFill="WHITE">
+                        <TextField fx:id="nom" layoutX="1103.0" layoutY="145.0" prefHeight="25.0" prefWidth="225.0" />
+                        <TextField fx:id="prenom" layoutX="1104.0" layoutY="191.0" prefHeight="25.0" prefWidth="222.0" />
+                        <TextField fx:id="email" layoutX="1104.0" layoutY="243.0" prefHeight="25.0" prefWidth="221.0" />
+                        <TextField fx:id="pseudo" layoutX="1104.0" layoutY="344.0" prefHeight="25.0" prefWidth="220.0" />
+                        <Button fx:id="ajouter" layoutX="1102.0" layoutY="548.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="25.0" prefWidth="169.0" text="Ajouter" />
+                        <Button fx:id="photo" layoutX="1104.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Choisir Photo" />
+                        <Label layoutX="1040.0" layoutY="443.0" text="Mot de Passe :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="940.0" layoutY="492.0" text="Confirmer MDP:" textFill="WHITE">
+                        <Label layoutX="1040.0" layoutY="491.0" text="Confirmer MDP:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="motdepasse" layoutX="1043.0" layoutY="442.0" prefHeight="25.0" prefWidth="185.0" />
-                        <TextField fx:id="confirmer_mdp" layoutX="1054.0" layoutY="490.0" prefHeight="25.0" prefWidth="174.0" />
-                        <TextField fx:id="zone" layoutX="1001.0" layoutY="390.0" prefHeight="25.0" prefWidth="223.0" />
-                        <Text layoutX="1213.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <TextField fx:id="motdepasse" layoutX="1143.0" layoutY="441.0" prefHeight="25.0" prefWidth="185.0" />
+                        <TextField fx:id="confirmer_mdp" layoutX="1154.0" layoutY="489.0" prefHeight="25.0" prefWidth="174.0" />
+                        <TextField fx:id="zone" layoutX="1101.0" layoutY="389.0" prefHeight="25.0" prefWidth="223.0" />
+                        <Text layoutX="1313.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                         <TableView fx:id="table_livreur" layoutX="22.0" layoutY="48.0" prefHeight="200.0" prefWidth="884.0">
                           <columns>
                             <TableColumn fx:id="id_liv" prefWidth="75.0" text="Id Livreur" />

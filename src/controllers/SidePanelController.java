@@ -71,7 +71,7 @@ public class SidePanelController implements Initializable {
              case "Forum":
                 callback.update("/gui/forum/forumAdmin.fxml");
                 break;
-                case "Commandes&Livraison":
+                case "Commandes & Livraisons":
                 callback.update("/gui/panier/CMDAdmin.fxml");
                 break;
                 

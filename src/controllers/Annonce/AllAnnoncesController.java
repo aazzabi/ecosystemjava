@@ -66,11 +66,8 @@ public class AllAnnoncesController implements Initializable {
     private FlowPane flow;
     @FXML
     private BorderPane container;
-    @FXML
-    private Button livraison;
+  
 
-     @FXML
-    private Button espace_livreur;
      
     private IAnnonceService annonceService;
     private IPanierService panierService;
@@ -91,8 +88,7 @@ public class AllAnnoncesController implements Initializable {
     @FXML
     private ImageView panier;
     
-    @FXML
-    private Button mes_commandes;
+   
 
     @FXML
      private Label nombre_article;
@@ -266,23 +262,7 @@ public class AllAnnoncesController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/Annonce.fxml"));
         container.setCenter(root);
     }
-    @FXML
-    void Afficher_Livraison(ActionEvent event) {
- try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/gui/panier/Livraison.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-            
-                stage.setTitle("Livraison");
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-            } catch (IOException e) {
-                Logger logger = Logger.getLogger(getClass().getName());
-                logger.log(Level.SEVERE, "Failed to create new Window.", e);
-            }
-    }
+   
 
     @FXML
     private void AffichagePanier(MouseEvent event) {
@@ -312,51 +292,8 @@ public class AllAnnoncesController implements Initializable {
         
     }
     
-    @FXML
-    void mes_commandes(ActionEvent event) {
-try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/gui/panier/Commande.fxml"));
-                /* 
-         * if "fx:controller" is not set in fxml
-         * fxmlLoader.setController(NewWindowController);
-                 */
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-              
-                stage.setTitle("Affichage des Commandes ");
-                stage.setScene(scene);
-                stage.setResizable(false);
-
-                stage.show();
-            } catch (IOException e) {
-                Logger logger = Logger.getLogger(getClass().getName());
-                logger.log(Level.SEVERE, "Failed to create new Window.", e);
-            }
-    }
-        @FXML
-    void Espace_livreur(ActionEvent event) {
-try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/gui/panier/EspaceLivreur.fxml"));
-                /* 
-         * if "fx:controller" is not set in fxml
-         * fxmlLoader.setController(NewWindowController);
-                 */
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-              
-                stage.setTitle("Espace Livreur ");
-                stage.setScene(scene);
-                stage.setResizable(false);
-
-                stage.show();
-            } catch (IOException e) {
-                Logger logger = Logger.getLogger(getClass().getName());
-                logger.log(Level.SEVERE, "Failed to create new Window.", e);
-            }
-    }
- 
+    
+     
     
     
     

@@ -30,11 +30,12 @@ public interface ILivraisonService {
      public void ChangerEtatCommandeToEncours(int id);
      public void ChangerEtatCommandeToLivre(int id);
      public void ChangerEtatLivreurToindispo(int id);
+     public int RoleLivreur(int id);
      public void ChangerEtatLivraison(int id);
       public void NoterLivreur(int id,int note);
        public Livreur MeilleurLivreur();
     public String RecupererAdresseClient(int id);
     public String RecupererVilleClient(int id);
     public String RecupererNP_Livreur(int id);
-    
+    public int StatLiv(String zone);
 }

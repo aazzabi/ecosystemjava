@@ -463,6 +463,61 @@ Statement st;
         }
     }
 
+    @Override
+    public int RoleLivreur(int id) {
+        int x=0;
+       String req = "SELECT * FROM `livreur` WHERE `id`='"+id+"' ";
+        try {
+            pt = cnx.prepareStatement(req);
+            rs = pt.executeQuery();
+           String zone;
+            
+            while(rs.next())
+            {
+                 
+               zone=rs.getString(2);
+               if(zone.length()>0)
+               {
+               return x=3;
+               }
+               else
+               {
+               return x=0;
+               }
+            }     
+            
+           return x;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return x;
+        }
+    
+    }
+
+    @Override
+    public int StatLiv(String zone) {
+         int count=0;
+         
+     String req = "SELECT COUNT(*) FROM `livraison` WHERE `ville`='"+zone+"'";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
     
     
-}
+    
+    
+    }
+
+    
+    
+

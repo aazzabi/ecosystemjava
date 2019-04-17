@@ -40,7 +40,7 @@
             <Font size="23.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="b3111" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Commandes&amp;Livraisons">
+      <JFXButton fx:id="b3111" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Commandes &amp; Livraisons">
          <font>
             <Font size="23.0" />
          </font>

@@ -11,32 +11,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.EspaceLivreurController">
+<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.EspaceLivreurController">
     <stylesheets>
         <URL value="@espacelivreur.css" />
     </stylesheets>
    <children>
-      <Button fx:id="valider_livraison" layoutX="780.0" layoutY="308.0" mnemonicParsing="false" onAction="#Valider_Livraison" prefHeight="33.0" prefWidth="199.0" text="Valider Livraison" textFill="WHITE">
+      <Button fx:id="valider_livraison" layoutX="1089.0" layoutY="149.0" mnemonicParsing="false" onAction="#Valider_Livraison" prefHeight="33.0" prefWidth="199.0" text="Valider Livraison" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="detail_liv" layoutX="780.0" layoutY="267.0" mnemonicParsing="false" onAction="#Detail_Liv" prefHeight="33.0" prefWidth="199.0" text="Détails Livraison" textFill="WHITE">
+      <Button fx:id="detail_liv" layoutX="1089.0" layoutY="108.0" mnemonicParsing="false" onAction="#Detail_Liv" prefHeight="33.0" prefWidth="199.0" text="Détails Livraison" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="788.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="1097.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../res/checked.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table_livraison" layoutX="27.0" layoutY="45.0" prefHeight="200.0" prefWidth="947.0">
+      <TableView fx:id="table_livraison" layoutX="27.0" layoutY="45.0" prefHeight="200.0" prefWidth="1005.0">
         <columns>
           <TableColumn fx:id="date_livraison" prefWidth="170.0" text="Date Livraison" />
           <TableColumn fx:id="etat" prefWidth="210.0" text="Etat Livraison" />
             <TableColumn fx:id="adresse" prefWidth="380.0" text="Adresse Livraison" />
-            <TableColumn fx:id="ville" prefWidth="186.0" text="Ville" />
+            <TableColumn fx:id="ville" prefWidth="244.0" text="Ville" />
         </columns>
       </TableView>
       <Text fill="#514a4a" layoutX="27.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vos Livraison Monsieur :">
