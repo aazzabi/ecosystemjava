@@ -25,7 +25,7 @@
          <children>
             <ImageView fitHeight="534.0" fitWidth="1362.0" opacity="0.4">
                <image>
-                  <Image url="@../../../../../../Desktop/testbg.PNG" />
+                  <Image url="@../../res/missions/photo/testbg.PNG" />
                </image>
             </ImageView>
             <ScrollPane layoutX="252.0" layoutY="66.0" prefHeight="617.0" prefWidth="932.0">

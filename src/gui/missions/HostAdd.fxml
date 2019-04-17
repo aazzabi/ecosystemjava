@@ -16,12 +16,12 @@
          <children>
             <ImageView fitHeight="534.0" fitWidth="1362.0" layoutX="249.0" layoutY="-4.0" opacity="0.4">
                <image>
-                  <Image url="@../../../../../../Desktop/testbg.PNG" />
+                  <Image url="@../../res/missions/photo/testbg.PNG" />
                </image>
             </ImageView>
             <ImageView fitHeight="866.0" fitWidth="874.0" layoutX="397.0" layoutY="-42.0">
                <image>
-                  <Image url="@../../../../../../Desktop/pannel.png" />
+                  <Image url="@../../res/missions/photo/pannel.png" />
                </image>
             </ImageView>
             <JFXTextField fx:id="OwnerTF" alignment="CENTER" focusColor="WHITE" labelFloat="true" layoutX="574.0" layoutY="194.0" prefHeight="50.0" prefWidth="220.0" promptText="Nom de la mission" style="-jfx-focus-color: Black; -jfx-unfocus-color: Black; -fx-text-inner-color: Black;" unFocusColor="WHITE">
@@ -59,7 +59,7 @@
             <FontAwesomeIconView fill="LAWNGREEN" glyphName="CHECK" layoutX="823.0" layoutY="503.0" size="25" />
             <ImageView fitHeight="38.0" fitWidth="453.0" layoutX="597.0" layoutY="99.0">
                <image>
-                  <Image url="@../../../../../../Downloads/generatedtext%20(1).png" />
+                  <Image url="@../../res/missions/photo/generatedtext%20(1).png" />
                </image>
             </ImageView>
             <TextArea editable="false" layoutX="955.0" layoutY="401.0" opacity="0.7" prefHeight="81.0" prefWidth="200.0" text="Instructions : &#10;Clickez sur le boutton &quot;Localiser&quot; lorsque vous centrez la Map sur la localisation souhaitée." wrapText="true" />
