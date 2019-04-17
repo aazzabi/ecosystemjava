@@ -68,8 +68,6 @@ public class CardsAnnonceController implements Initializable {
             lbl_prix.setText("$" + AllAnnoncesController.obsl.get(i).getPrix().toString());
             lbl_id.setText(Integer.toString(AllAnnoncesController.obsl.get(i).getId()));
             t = AllAnnoncesController.obsl.get(i).getId();
-            //pri=Integer.parseInt(prixx.getText());
-            System.out.println(AllAnnoncesController.obsl.get(i).getPhoto());
             Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.obsl.get(i).getPhoto());
             img_annoce.setImage(imag);
             i++;
@@ -78,8 +76,6 @@ public class CardsAnnonceController implements Initializable {
             lbl_prix.setText("$" + AllAnnoncesController.prixasc.get(i).getPrix().toString());
             lbl_id.setText(Integer.toString(AllAnnoncesController.prixasc.get(i).getId()));
             t = AllAnnoncesController.prixasc.get(i).getId();
-            //pri=Integer.parseInt(prixx.getText());
-            //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
             Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.prixasc.get(i).getPhoto());
             img_annoce.setImage(imag);
             i++;
@@ -98,8 +94,6 @@ public class CardsAnnonceController implements Initializable {
             lbl_prix.setText("$" + AllAnnoncesController.obsDate.get(i).getPrix().toString());
             lbl_id.setText(Integer.toString(AllAnnoncesController.obsDate.get(i).getId()));
             t = AllAnnoncesController.obsDate.get(i).getId();
-            //pri=Integer.parseInt(prixx.getText());
-            //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
             Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.obsDate.get(i).getPhoto());
             img_annoce.setImage(imag);
             i++;
@@ -108,8 +102,6 @@ public class CardsAnnonceController implements Initializable {
             lbl_prix.setText("$" + AllAnnoncesController.myannonces.get(i).getPrix().toString());
             lbl_id.setText(Integer.toString(AllAnnoncesController.myannonces.get(i).getId()));
             t = AllAnnoncesController.myannonces.get(i).getId();
-            //pri=Integer.parseInt(prixx.getText());
-            //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
             Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.myannonces.get(i).getPhoto());
             img_annoce.setImage(imag);
             i++;
@@ -139,7 +131,9 @@ public class CardsAnnonceController implements Initializable {
     @FXML
     private void likes(ActionEvent event) {
         annonceService = new AnnonceService();
-
+        int index = Integer.parseInt(lbl_id.getText());
+        annonceService.updateLikes(index);
+        likes.setVisible(false);
     }
 
     @FXML
@@ -170,7 +164,9 @@ public class CardsAnnonceController implements Initializable {
 
     @FXML
     private void consulter(ActionEvent event) throws IOException {
+        annonceService = new AnnonceService();
         DetaileAnnonceController.idd = Integer.parseInt(lbl_id.getText());
+        annonceService.updateViwes(Integer.parseInt(lbl_id.getText()));
         FXMLLoader Loader = new FXMLLoader();
         Loader.setLocation(getClass().getResource("/gui/Annonce/DetaileAnnonce.fxml"));
         try {
@@ -182,7 +178,7 @@ public class CardsAnnonceController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(p));
         stage.show();
-        event.consume();;
+        event.consume();
     }
 
 }

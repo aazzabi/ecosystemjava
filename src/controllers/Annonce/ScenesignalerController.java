@@ -73,6 +73,7 @@ public class ScenesignalerController implements Initializable {
         }
         signalAnnonce e = new signalAnnonce(id, Session.getCurrentSession(), lbl);
         signalservice.add(e);
+        signalservice.nbSignalParAnnonce();
         Node node = (Node)event.getSource();
         dialogStage = (Stage) node.getScene().getWindow();
         dialogStage.close();

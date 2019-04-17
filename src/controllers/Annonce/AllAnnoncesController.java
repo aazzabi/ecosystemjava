@@ -9,6 +9,7 @@ import entities.Annonce;
 import entities.Categorie_Annonce;
 import iservices.IAnnonceService;
 import iservices.ICategorieAnnonceService;
+import iservices.ISignalAnnonceService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import services.AnnonceService;
 import services.CategorieAnnonceService;
+import services.SignalAnnonceService;
 
 /**
  * FXML Controller class
@@ -71,6 +73,11 @@ public class AllAnnoncesController implements Initializable {
     private Button btnall;
     @FXML
     private ComboBox<Categorie_Annonce> cmb_cat;
+    private ISignalAnnonceService signalAnnonceService;
+    @FXML
+    private Button btn_liked;
+    @FXML
+    private Button btn_viwed;
 
     /**
      * Initializes the controller class.
@@ -161,6 +168,8 @@ public class AllAnnoncesController implements Initializable {
     public void AfficherCards() {
         
         annonceService = new AnnonceService();
+        signalAnnonceService = new SignalAnnonceService();
+        signalAnnonceService.nbSignalParAnnonce();
         CardsAnnonceController.i = 0;
         ArrayList<Annonce> annonces = new ArrayList<>();
         annonces = (ArrayList) annonceService.getall();
@@ -202,5 +211,13 @@ public class AllAnnoncesController implements Initializable {
         CardsAnnonceController.i = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/Annonce.fxml"));
         container.setCenter(root);
+    }
+
+    @FXML
+    private void getliked(ActionEvent event) {
+    }
+
+    @FXML
+    private void getviwed(ActionEvent event) {
     }
 }

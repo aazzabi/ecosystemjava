@@ -15,6 +15,7 @@ import java.util.List;
 public interface ISignalAnnonceService {
     
     public void add(signalAnnonce e);
-    public List<signalAnnonce> getAll(); 
+    public List<signalAnnonce> getAll();
+    public void nbSignalParAnnonce();
   
 }

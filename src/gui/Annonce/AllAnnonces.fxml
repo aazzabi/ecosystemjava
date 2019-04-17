@@ -31,6 +31,8 @@
                   <Button accessibleRole="TOGGLE_BUTTON" alignment="CENTER" layoutX="34.0" layoutY="20.0" mnemonicParsing="false" onAction="#plusrécente" prefHeight="26.0" prefWidth="168.0" text="Plus Récente" />
                   <Button accessibleRole="TOGGLE_BUTTON" alignment="CENTER" layoutX="34.0" layoutY="92.0" mnemonicParsing="false" onAction="#prixasc" prefHeight="26.0" prefWidth="168.0" text="Prix ascendant" />
                   <Button accessibleRole="TOGGLE_BUTTON" alignment="CENTER" layoutX="34.0" layoutY="128.0" mnemonicParsing="false" onAction="#prixdesc" prefHeight="26.0" prefWidth="166.0" text="Prix decendant" />
+                  <Button fx:id="btn_liked" accessibleRole="TOGGLE_BUTTON" alignment="CENTER" mnemonicParsing="false" onAction="#getliked" prefHeight="26.0" prefWidth="166.0" text="Plus aimé" />
+                  <Button fx:id="btn_viwed" accessibleRole="TOGGLE_BUTTON" alignment="CENTER" mnemonicParsing="false" onAction="#getviwed" prefHeight="26.0" prefWidth="166.0" text="Plus Regardé" />
                   <Separator layoutX="10.0" layoutY="49.0" prefWidth="200.0" />
                   <Label prefHeight="18.0" prefWidth="91.0" text="Gérer " />
                   <Separator prefWidth="200.0" />

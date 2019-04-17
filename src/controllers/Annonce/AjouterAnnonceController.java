@@ -11,8 +11,10 @@ import entities.Annonce;
 import entities.Categorie_Annonce;
 import entities.Session;
 import iservices.IAnnonceService;
+import javafx.scene.Parent;
 import iservices.ICategorieAnnonceService;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -66,13 +70,12 @@ public class AjouterAnnonceController implements Initializable {
     private Label filepath;
     @FXML
     private ImageView img_annonce;
-     @FXML
+    @FXML
     private Text label_photo;
     private IAnnonceService annonceService;
     private ICategorieAnnonceService categorieAnnonceService;
-   
-    private String absolutePathPhotoAnnonce;
 
+    private String absolutePathPhotoAnnonce;
 
     /**
      * Initializes the controller class.
@@ -81,7 +84,8 @@ public class AjouterAnnonceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         AfficherCombo();
         // TODO
-    }  
+    }
+
     private void AfficherCombo() {
         categorieAnnonceService = new CategorieAnnonceService();
         List<Categorie_Annonce> listCat = categorieAnnonceService.getall();
@@ -94,7 +98,7 @@ public class AjouterAnnonceController implements Initializable {
 
     @FXML
     private void filechoose(ActionEvent event) {
-         FileChooser fileChooser = new FileChooser();
+        FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
         );
@@ -105,9 +109,9 @@ public class AjouterAnnonceController implements Initializable {
                 absolutePathPhotoAnnonce = choix.getAbsolutePath();
                 label_photo.setText(choix.getName());
                 copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-            copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
-            Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + label_photo.getText());
-            img_annonce.setImage(imag);
+                copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + label_photo.getText());
+                img_annonce.setImage(imag);
             } else {
                 System.out.println("Image introuvable");
             }
@@ -131,11 +135,12 @@ public class AjouterAnnonceController implements Initializable {
                     label_photo.getText(),
                     cmb_cat.getValue().getId(),
                     Session.getCurrentSession());
-           // copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-           // copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+            // copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
+            // copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
             annonceService.add(a);
-              Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.close();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.close();
+          
         }
     }
 }

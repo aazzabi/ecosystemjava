@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="204.0" prefWidth="468.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controllers.Annonce.ScenesignalerController">
+<AnchorPane id="AnchorPane" prefHeight="204.0" prefWidth="468.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Annonce.ScenesignalerController">
     <stylesheets>
         <URL value="@scenesignaler.css" />
     </stylesheets>
@@ -59,7 +60,10 @@
          <left>
             <Pane prefHeight="130.0" prefWidth="142.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="132.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="132.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../res/signal.png" />
+                     </image></ImageView>
                </children>
             </Pane>
          </left>

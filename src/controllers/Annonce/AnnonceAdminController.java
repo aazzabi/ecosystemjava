@@ -18,11 +18,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import javafx.scene.Parent;
 import javafx.collections.transformation.FilteredList;
@@ -31,6 +33,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -148,13 +155,17 @@ public class AnnonceAdminController implements Initializable {
     @FXML
     private TableColumn<Categorie_Annonce, String> Libelle;
     @FXML
-    private Button btn_likes;
-    @FXML
-    private Button btn_dislike;
-    @FXML
     private TableColumn<Annonce, String> Cat_lib;
     @FXML
     private TableColumn<Annonce, String> user_lib;
+    @FXML
+    private BarChart<?, ?> all;
+    @FXML
+    private NumberAxis y;
+    @FXML
+    private CategoryAxis x;
+    @FXML
+    private PieChart piecharCAt;
 
     /**
      * Initializes the controller class.
@@ -214,7 +225,8 @@ public class AnnonceAdminController implements Initializable {
         FilterRech();
         FilterRechCat();
         ImageClicked();
-
+        AfficherStat();
+        getSataCat();
     }
 
     private void FilterRech() {
@@ -240,7 +252,8 @@ public class AnnonceAdminController implements Initializable {
         });
         ListeAnnonce.setItems(filtred_an);
     }
-     private void FilterRechCat() {
+
+    private void FilterRechCat() {
         categorieAnnonceService = new CategorieAnnonceService();
         ArrayList categories = (ArrayList) categorieAnnonceService.getall();
         ObservableList Ocategories = FXCollections.observableArrayList(categories);
@@ -263,7 +276,6 @@ public class AnnonceAdminController implements Initializable {
         });
         ListeCategories.setItems(filtred_c);
     }
-    
 
     @FXML
     private void photoAnnonceChooser(ActionEvent event
@@ -382,7 +394,6 @@ public class AnnonceAdminController implements Initializable {
         cmb_region.setValue(null);
         txt_lib.setText("");
     }
-    
 
     private void showDetails() {
         txt_Titre.setText(ListeAnnonce.getSelectionModel().getSelectedItem().getTitre());
@@ -395,8 +406,8 @@ public class AnnonceAdminController implements Initializable {
         img = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + txtAnnoncephoto.getText());
         img_photo.setImage(img);
     }
-    private void showCat()
-    {
+
+    private void showCat() {
         txt_lib.setText(ListeCategories.getSelectionModel().getSelectedItem().getLibelle());
     }
 
@@ -422,6 +433,45 @@ public class AnnonceAdminController implements Initializable {
             }
 
         });
+    }
+
+    private void AfficherStat() {
+        annonceService = new AnnonceService();
+        ArrayList<Integer> Stat = new ArrayList<Integer>();
+        Stat = (ArrayList<Integer>) annonceService.Stat();
+        ArrayList<String> months = new ArrayList<>();
+        months.add("janvier");
+        months.add("février");
+        months.add("mars");
+        months.add("avril");
+        months.add("mai");
+        months.add("juin");
+        months.add("juillet");
+        months.add("janvier");
+        months.add("août");
+        months.add("septembre");
+        months.add("octobre");
+        months.add("décembre");
+        XYChart.Series set1 = new XYChart.Series<>();
+
+        for (int i = 0; i < Stat.size(); i++) {
+            set1.getData().add(new XYChart.Data(months.get(i), Stat.get(i)));
+
+        }
+
+        all.getData().addAll(set1);
+    }
+
+    private void getSataCat() {
+        List<Annonce> la = new ArrayList<>();
+        annonceService = new AnnonceService();
+        la = annonceService.StatByCat();
+        ObservableList<PieChart.Data> piecharts = FXCollections.observableArrayList();
+        for (Annonce l : la) {
+            piecharts.add(new PieChart.Data(l.getNomCat(), l.getNb_cat()));
+        }
+
+        piecharCAt.setData(piecharts);
     }
 
 }
