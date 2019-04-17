@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controllers.Annonce.AjouterAnnonceController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Annonce.AjouterAnnonceController">
     <stylesheets>
         <URL value="@ajouterannonce.css" />
     </stylesheets>
@@ -65,7 +66,7 @@
                   <Label layoutX="40.0" layoutY="255.0" opacity="0.0" text="Categorie" />
                   <Label layoutX="40.0" layoutY="299.0" opacity="0.0" text="Categorie" />
                   <Text fx:id="label_photo" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
-                  <Button fx:id="filechoose" mnemonicParsing="false" onAction="#filechoose" prefHeight="26.0" prefWidth="205.0" text="importer" />
+                  <Button fx:id="filechoose" mnemonicParsing="false" onAction="#filechoose" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: blue;" text="importer" />
                </children>
                <padding>
                   <Insets left="30.0" />
@@ -75,7 +76,7 @@
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="79.0" prefWidth="870.0" spacing="50.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="ajouter" mnemonicParsing="false" onAction="#insertData" prefHeight="39.0" prefWidth="110.0" text="creer">
+                  <Button fx:id="ajouter" mnemonicParsing="false" onAction="#insertData" prefHeight="39.0" prefWidth="110.0" style="-fx-background-color: blue;" text="creer">
                      <font>
                         <Font name="Century Gothic" size="24.0" />
                      </font>
@@ -90,7 +91,19 @@
             </HBox>
          </bottom>
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="150.0" prefWidth="714.0" text="Ajouter une annonce :">
+                     <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../res/annonce.jpg" />
+                     </image>
+                  </ImageView>
+               </children></HBox>
          </top>
       </BorderPane>
    </children>

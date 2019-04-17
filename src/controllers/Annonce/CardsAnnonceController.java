@@ -125,6 +125,26 @@ public class CardsAnnonceController implements Initializable {
             Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.listsearch.get(i).getPhoto());
             img_annoce.setImage(imag);
             i++;
+        } else if (AllAnnoncesController.indice == 7) {
+            lbl_titre.setText(AllAnnoncesController.likedAnnonce.get(i).getTitre());
+            lbl_prix.setText("$" + AllAnnoncesController.likedAnnonce.get(i).getPrix().toString());
+            lbl_id.setText(Integer.toString(AllAnnoncesController.likedAnnonce.get(i).getId()));
+            t = AllAnnoncesController.likedAnnonce.get(i).getId();
+            //pri=Integer.parseInt(prixx.getText());
+            //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
+            Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.likedAnnonce.get(i).getPhoto());
+            img_annoce.setImage(imag);
+            i++;
+        } else if (AllAnnoncesController.indice == 8) {
+            lbl_titre.setText(AllAnnoncesController.ViwedAnnonce.get(i).getTitre());
+            lbl_prix.setText("$" + AllAnnoncesController.ViwedAnnonce.get(i).getPrix().toString());
+            lbl_id.setText(Integer.toString(AllAnnoncesController.ViwedAnnonce.get(i).getId()));
+            t = AllAnnoncesController.ViwedAnnonce.get(i).getId();
+            //pri=Integer.parseInt(prixx.getText());
+            //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
+            Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.ViwedAnnonce.get(i).getPhoto());
+            img_annoce.setImage(imag);
+            i++;
         }
     }
 

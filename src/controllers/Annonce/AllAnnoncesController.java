@@ -63,6 +63,8 @@ public class AllAnnoncesController implements Initializable {
     public static ObservableList<Annonce> prixdesc;
     public static ObservableList<Annonce> myannonces;
     public static ObservableList<Annonce> myannoncesCAt;
+    public static ObservableList<Annonce> likedAnnonce;
+    public static ObservableList<Annonce> ViwedAnnonce;
     public static List<Annonce> listsearch;
     public static int indice;
     @FXML
@@ -78,6 +80,8 @@ public class AllAnnoncesController implements Initializable {
     private Button btn_liked;
     @FXML
     private Button btn_viwed;
+    @FXML
+    private Button btn_my1;
 
     /**
      * Initializes the controller class.
@@ -88,12 +92,13 @@ public class AllAnnoncesController implements Initializable {
         AfficherCards();
         AfficherCombo();
     }
+
     private void AfficherCombo() {
         categorieAnnonceService = new CategorieAnnonceService();
         List<Categorie_Annonce> listCat = categorieAnnonceService.getall();
         cmb_cat.getItems().addAll(listCat);
     }
-    
+
     @FXML
     private void prixasc(ActionEvent event) throws IOException {
         container.setCenter(null);
@@ -119,32 +124,23 @@ public class AllAnnoncesController implements Initializable {
 
     @FXML
     private void search(ActionEvent event) throws IOException {
-        listsearch = obsl.stream().filter(e->e.getTitre().contains(search.getText())).collect(Collectors.toList());
-        indice=6;
+        listsearch = obsl.stream().filter(e -> e.getTitre().contains(search.getText())).collect(Collectors.toList());
+        indice = 6;
         CardsAnnonceController.i = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/Annonce.fxml"));
         container.setCenter(root);
     }
 
     @FXML
-    private void AjouterAnnonce(ActionEvent event) {
-        System.out.println("j'ai clicker ici");
-        FXMLLoader Loader = new FXMLLoader();
-        Loader.setLocation(getClass().getResource("/gui/Annonce/ajouterAnnonce.fxml"));
-        try {
-            Loader.load();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        Parent p = Loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(p));
-        stage.show();
-        event.consume();
+    private void AjouterAnnonce(ActionEvent event) throws IOException {
+        container.setCenter(null);
+        annonceService = new AnnonceService();
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/ajouterAnnonce.fxml"));
+        container.setCenter(root);
     }
 
     @FXML
-    private void MesAnnonces(ActionEvent event)throws IOException  {
+    private void MesAnnonces(ActionEvent event) throws IOException {
         container.setCenter(null);
         annonceService = new AnnonceService();
         myannonces = FXCollections.observableArrayList((ArrayList) annonceService.GetByUser());
@@ -166,7 +162,7 @@ public class AllAnnoncesController implements Initializable {
     }
 
     public void AfficherCards() {
-        
+
         annonceService = new AnnonceService();
         signalAnnonceService = new SignalAnnonceService();
         signalAnnonceService.nbSignalParAnnonce();
@@ -192,7 +188,7 @@ public class AllAnnoncesController implements Initializable {
 
     @FXML
     private void gettall(ActionEvent event) throws IOException {
-      container.setCenter(null);
+        container.setCenter(null);
         annonceService = new AnnonceService();
         obsl = FXCollections.observableArrayList((ArrayList) annonceService.getall());
         indice = 0;
@@ -203,10 +199,10 @@ public class AllAnnoncesController implements Initializable {
 
     @FXML
     private void showsCardsCat(ActionEvent event) throws IOException {
-       
-          container.setCenter(null);
+
+        container.setCenter(null);
         annonceService = new AnnonceService();
-        myannoncesCAt = FXCollections.observableArrayList((ArrayList) annonceService.GetByCategorie( cmb_cat.getValue().getId()));
+        myannoncesCAt = FXCollections.observableArrayList((ArrayList) annonceService.GetByCategorie(cmb_cat.getValue().getId()));
         indice = 5;
         CardsAnnonceController.i = 0;
         Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/Annonce.fxml"));
@@ -214,10 +210,32 @@ public class AllAnnoncesController implements Initializable {
     }
 
     @FXML
-    private void getliked(ActionEvent event) {
+    private void getliked(ActionEvent event) throws IOException {
+        container.setCenter(null);
+        annonceService = new AnnonceService();
+        likedAnnonce = FXCollections.observableArrayList((ArrayList) annonceService.GetMostLikes());
+        indice = 7;
+        CardsAnnonceController.i = 0;
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/Annonce.fxml"));
+        container.setCenter(root);
     }
 
     @FXML
-    private void getviwed(ActionEvent event) {
+    private void getviwed(ActionEvent event) throws IOException {
+        container.setCenter(null);
+        annonceService = new AnnonceService();
+        ViwedAnnonce = FXCollections.observableArrayList((ArrayList) annonceService.GetMostViwed());
+        indice = 8;
+        CardsAnnonceController.i = 0;
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/Annonce.fxml"));
+        container.setCenter(root);
+    }
+
+    @FXML
+    private void Stat(ActionEvent event) throws IOException {
+        container.setCenter(null);
+        annonceService = new AnnonceService();
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Annonce/Stat.fxml"));
+        container.setCenter(root);
     }
 }

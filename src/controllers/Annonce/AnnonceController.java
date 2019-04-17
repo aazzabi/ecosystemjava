@@ -45,6 +45,10 @@ public class AnnonceController implements Initializable {
             size = AllAnnoncesController.myannoncesCAt.size();
         }else if (AllAnnoncesController.indice == 6) {
             size = AllAnnoncesController.listsearch.size();
+        }else if (AllAnnoncesController.indice == 7) {
+            size = AllAnnoncesController.likedAnnonce.size();
+        }else if (AllAnnoncesController.indice == 8) {
+            size = AllAnnoncesController.ViwedAnnonce.size();
         }
 
   

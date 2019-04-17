@@ -15,7 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -32,6 +34,7 @@ public class AnnonceService implements IAnnonceService {
     ResultSet rs;
     ArrayList<Annonce> annonces = new ArrayList<Annonce>();
     ArrayList<Annonce> retour = new ArrayList<Annonce>();
+    ArrayList<Integer> Stat = new ArrayList<Integer>();
 
     @Override
     public void add(Annonce a) {
@@ -193,5 +196,101 @@ public class AnnonceService implements IAnnonceService {
             Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+
+    @Override
+    public boolean updateViwes(int id) {
+        try {
+            String requete = "UPDATE annonce SET views= views+1 WHERE id=" + id;
+
+            pt = cn.prepareStatement(requete);
+            if (pt.executeUpdate() > 0) {
+                System.out.println("update avce sucée");
+                return true;
+            }
+            System.out.println("Categorie  modifiée !!");
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public List<Annonce> GetMostLikes() {
+        retour.removeAll(retour);
+        retour = (ArrayList<Annonce>) getall();
+        return retour.stream().filter(e -> e.getLikes() >= 5).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Annonce> GetMostViwed() {
+        retour.removeAll(retour);
+        retour = (ArrayList<Annonce>) getall();
+        return retour.stream().filter(e -> e.getViews() >= 5).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Integer> Stat() {
+        String req = "Select year(date_creation),month(date_creation),count(*) from annonce group by year(date_creation),month(date_creation)";
+        try {
+            pt = cn.prepareStatement(req);
+            rs = pt.executeQuery();
+            while (rs.next()) {
+
+                Stat.add(rs.getInt(3));
+            }
+
+            return Stat;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<Annonce> StatByCat() {
+
+        String req = "SELECT c.libelle,COUNT(p.id) FROM annonce p, categorie_annonce c WHERE p.categorie_id = c.id GROUP BY categorie_id";
+        try {
+            ArrayList<Annonce> aa = new ArrayList<Annonce>();
+            pt = cn.prepareStatement(req);
+            rs = pt.executeQuery();
+            while (rs.next()) {
+
+                Annonce a = new Annonce();
+                a.setNomCat(rs.getString(1));
+                a.setNb_cat(rs.getInt(2));
+                aa.add(a);
+            }
+
+            return aa;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<Annonce> StatByMyAnnonces() {
+
+        String req = "SELECT c.libelle,count(a.id) from annonce a , categorie_annonce c  where c.id =a.categorie_id AND likes >=5 AND views >=5 group by categorie_id";
+        try {
+            ArrayList<Annonce> aa = new ArrayList<Annonce>();
+            pt = cn.prepareStatement(req);
+            rs = pt.executeQuery();
+            while (rs.next()) {
+
+                Annonce a = new Annonce();
+                a.setNomCat(rs.getString(1));
+                a.setNb_cat(rs.getInt(2));
+                aa.add(a);
+            }
+
+            return aa;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }

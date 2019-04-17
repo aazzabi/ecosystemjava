@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import services.SignalAnnonceService;
 
@@ -40,6 +41,8 @@ public class ScenesignalerController implements Initializable {
     private String lbl;
     private int id;
      private ISignalAnnonceService signalservice;
+    @FXML
+    private ToggleGroup signale;
     
      
     /**

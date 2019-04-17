@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -43,10 +44,13 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton fx:id="rd_vi" mnemonicParsing="false" text="Violence" />
-                  <RadioButton fx:id="rd_arnaq" mnemonicParsing="false" text="arnaque" GridPane.rowIndex="1" />
-                  <RadioButton fx:id="rd_har" mnemonicParsing="false" text="Harcelement" GridPane.rowIndex="2" />
-                  <RadioButton fx:id="rd_dis" mnemonicParsing="false" text="Discour insitant à la haine" GridPane.rowIndex="3" />
+                  <RadioButton fx:id="rd_vi" mnemonicParsing="false" text="Violence">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="signale" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="rd_arnaq" mnemonicParsing="false" text="arnaque" toggleGroup="$signale" GridPane.rowIndex="1" />
+                  <RadioButton fx:id="rd_har" mnemonicParsing="false" text="Harcelement" toggleGroup="$signale" GridPane.rowIndex="2" />
+                  <RadioButton fx:id="rd_dis" mnemonicParsing="false" text="Discour insitant à la haine" toggleGroup="$signale" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </center>

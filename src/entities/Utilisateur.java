@@ -69,10 +69,15 @@ public class Utilisateur {
         this.nomPropriete = nomPropriete;
     }
 
-    public Utilisateur(int id, String username) {
+    public Utilisateur(int id, String username, String nom, String prenom) {
         this.id = id;
         this.username = username;
+         this.nom = nom;
+        this.prenom = prenom;
     }
+
+ 
+    
     
     
 
