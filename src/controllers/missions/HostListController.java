@@ -164,7 +164,7 @@ public class HostListController implements Initializable {
         //BECOME A HOST BUTTON CHECK
         if (HostVariableManager.getCurrentRole() == HostVariableManager.UserRole.Other) {
             //Become a Host Button Declaration
-            JFXButton BecomeHost_Button = MakeGridButton("Devenir un hôte", "#435470");
+            JFXButton BecomeHost_Button = MakeGridButton("Crée votre mission ", "#435470");
 
             //OnClick
             BecomeHost_Button.onMouseReleasedProperty().set((event) -> {

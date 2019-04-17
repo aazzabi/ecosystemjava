@@ -190,6 +190,10 @@ public class HostService {
         //SendMail
         UserService TempUserService = new UserService();
         String EmailReceiver = TempUserService.findById(OwnerID).getEmail();
+        
+        
+        	    System.out.println("email  = " + EmailReceiver);
+
         HostMail.SendMail(EmailReceiver, "Inscription", "Vous êtes inscrit à " +  GetHost(HostID).getOwner());
         
     }

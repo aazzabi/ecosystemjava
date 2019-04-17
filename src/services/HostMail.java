@@ -22,10 +22,10 @@ public class HostMail {
     public static void SendMail(String Email, String Subject, String MessageText){
         try{
             String host ="smtp.gmail.com" ;
-            String usermail = "worldfriendship69@gmail.com";
-            String pass = "WorldFriendship2019";
+            String usermail = "pidevmailer2019@gmail.com";
+            String pass = "Theansweris42";
             String to = Email;
-            String from = "worldfriendship69@gmail.com";
+            String from = "pidevmailer2019@gmail.com";
             String subject = Subject;
             boolean sessionDebug = false;
 

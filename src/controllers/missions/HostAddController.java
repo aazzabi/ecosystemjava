@@ -20,6 +20,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.teamdev.jxmaps.Marker;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,7 +33,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 /**
  * FXML Controller class
  *
@@ -80,7 +82,7 @@ public class HostAddController implements Initializable {
     }    
 
     @FXML
-    private void AddHostAction(ActionEvent event) {
+    private void AddHostAction(ActionEvent event) throws ParseException {
         
 //        OwnerTF.getCharacters().toString() == "" ||
         if( !ValidName() || !ValidDateStart() || !ValidDateEnd())
@@ -159,8 +161,15 @@ public class HostAddController implements Initializable {
         }
         else return true;
     }
-    private boolean ValidDateEnd(){
-        if (DateEnd.getValue() == null)
+    private boolean ValidDateEnd() throws ParseException{
+        String endDate = DateEnd.getValue().toString();
+        String startDate = DateStart.getValue().toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date sDate = sdf.parse(startDate);
+        Date eDate = sdf.parse(endDate);
+   
+        
+        if ((DateEnd.getValue() == null)&& (eDate.compareTo(sDate) <= 0))
         {
             
             DateEnd.setStyle("-fx-background-color : Red;" + DateEnd.getStyle());
