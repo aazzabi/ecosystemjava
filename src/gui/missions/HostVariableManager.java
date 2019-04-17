@@ -11,8 +11,8 @@ package gui.missions;
  */
 public class HostVariableManager {
     
-    public static int WINDOW_HEIGHT = 619;
-    public static int WINDOW_WIDTH = 800;
+    public static int WINDOW_HEIGHT = 760;
+    public static int WINDOW_WIDTH = 1362;
 
     
     public enum UserRole{

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ecosystemjava.jar" size="2462985" download="eager" />
+    <jar href="ecosystemjava.jar" size="2462052" download="eager" />
     <jar href="lib\AnimatonClass.jar" size="41804" download="eager" />
     <jar href="lib\TrayTester.jar" size="52070" download="eager" />
     <jar href="lib\activation.jar" size="124332" download="eager" />

@@ -14,7 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 public class SidePanelUserController implements Initializable {
-
+    
     @FXML
     private JFXButton b1;
     @FXML
@@ -23,18 +23,18 @@ public class SidePanelUserController implements Initializable {
     private JFXButton b3;
     @FXML
     private JFXButton exit;
-
+    
     private ChangeCallback callback;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
     }
-
+    
     public void setCallback(ChangeCallback callback) {
         this.callback = callback;
     }
-
+    
     @FXML
     // a mettre les SRC
     private void navigate(ActionEvent event) {
@@ -47,26 +47,25 @@ public class SidePanelUserController implements Initializable {
             case "Announce":
                 callback.update("");
                 break;
-             case "Réparation":
+            case "Réparation":
                 callback.update("/gui/reparateur/ReparateurMainSc.fxml");
                 break;
-             case "Evenement":
+            case "Evenement":
                 callback.update("/gui/events/Evenement.fxml");
                 break;
-             case "Recyclage":
-                callback.update("");
+            case "Recyclage":
+                callback.update("/gui/missions/HostList.fxml");
                 break;
-             case "Forum":
+            case "Forum":
                 callback.update("");
                 break;
             
-         
         }
     }
-
+    
     @FXML
     private void exit(ActionEvent event) {
         System.exit(0);
     }
-
+    
 }

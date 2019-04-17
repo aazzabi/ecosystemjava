@@ -27,9 +27,8 @@ public class HostAddLoader extends Application {
     public void start(Stage primaryStage) throws Exception {
         URL url = new File("src/gui/missions/HostAdd.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        primaryStage.setTitle("Host Add");
+        primaryStage.setTitle("Ajout Mission");
         Scene CurrentScene = new Scene(root , WINDOW_WIDTH, WINDOW_HEIGHT);
-        CurrentScene.getStylesheets().add("gui/missions/HostStyle.css");
         primaryStage.setScene(CurrentScene);
         primaryStage.show();
     }
