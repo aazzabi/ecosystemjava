@@ -6,12 +6,19 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class SidePanelController implements Initializable {
 
@@ -23,6 +30,11 @@ public class SidePanelController implements Initializable {
     private JFXButton b3;
     @FXML
     private JFXButton exit;
+    
+      @FXML
+    private JFXButton b3111;
+      
+      
 
     private ChangeCallback callback;
 
@@ -45,7 +57,7 @@ public class SidePanelController implements Initializable {
                 callback.update("");
                 break;
             case "Announce":
-                callback.update("/gui/annonceAdmin.fxml");
+                callback.update("/gui/Annonce/annonceAdmin.fxml");
                 break;
              case "Réparation":
                 callback.update("/gui/reparateur/ReparateurMainSc.fxml");
@@ -59,6 +71,10 @@ public class SidePanelController implements Initializable {
              case "Forum":
                 callback.update("/gui/forum/forumAdmin.fxml");
                 break;
+                case "Commandes & Livraisons":
+                callback.update("/gui/panier/CMDAdmin.fxml");
+                break;
+                
              case "Signalisation":
                 callback.update("/gui/forum/signalisationsCommentaire.fxml");
                 break;
@@ -74,5 +90,6 @@ public class SidePanelController implements Initializable {
     private void exit(ActionEvent event) {
         System.exit(0);
     }
-
+    
+   
 }

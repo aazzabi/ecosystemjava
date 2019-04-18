@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import java.net.URL?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.CMDAdminController">
+    <stylesheets>
+        <URL value="@cmdadmin.css" />
+    </stylesheets>
+   <children>
+      <JFXTabPane layoutY="3.0" prefHeight="1360" prefWidth="1360.0">
+         <tabs>
+            <Tab fx:id="cond" text="Commandes">
+               <content>
+                  <AnchorPane fx:id="piechart" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="table_commande" layoutX="32.0" layoutY="26.0" prefHeight="200.0" prefWidth="1252.0">
+                          <columns>
+                            <TableColumn fx:id="date" prefWidth="287.0" text="Date Emission" />
+                            <TableColumn fx:id="etat" prefWidth="374.0" text="Etat Commande" />
+                              <TableColumn fx:id="prix_total" prefWidth="243.0" text="Prix Total" />
+                              <TableColumn fx:id="id_user" prefWidth="347.0" text="Id Utilisateur" />
+                          </columns>
+                        </TableView>
+                        <ImageView fitHeight="421.0" fitWidth="1185.0" layoutX="62.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/blanc.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="annuler_cmd" layoutX="1052.0" layoutY="236.0" mnemonicParsing="false" onAction="#Annuler_Commande" prefHeight="25.0" prefWidth="232.0" text="Annuler Commande" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques Des Commandes :">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <BarChart fx:id="bar_chart" layoutX="60.0" layoutY="310.0" prefHeight="400.0" prefWidth="1117.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Livraisons">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="livraison">
+                     <children>
+                        <TableView fx:id="table_livraison" layoutX="43.0" layoutY="39.0" prefHeight="200.0" prefWidth="1173.0">
+                          <columns>
+                            <TableColumn fx:id="id_livreur" prefWidth="144.0" text="Id Livreur" />
+                            <TableColumn fx:id="date_livraison" prefWidth="277.0" text="Date Livraison" />
+                              <TableColumn fx:id="etat_livraison" prefWidth="243.0" text="Etat de La Livraison" />
+                              <TableColumn fx:id="adr_livraison" prefWidth="508.0" text="Adresse" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="annuler_livraison" layoutX="1069.0" layoutY="248.0" mnemonicParsing="false" onAction="#Annuler_Livraison" prefHeight="25.0" prefWidth="216.0" text="Annuler Livraison" />
+                        <Text fill="WHITE" layoutX="21.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des Livraisons :">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="413.0" fitWidth="1166.0" layoutX="68.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/blanc.png" />
+                           </image>
+                        </ImageView>
+                        <BarChart fx:id="stat_liv" layoutX="86.0" layoutY="294.0" prefHeight="400.0" prefWidth="1055.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Livreur">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="livreur">
+                     <children>
+                        <ImageView fitHeight="600.0" fitWidth="302.0" layoutX="1036.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@back_ajout_livreur.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="1047.0" layoutY="81.0" text="Formulaire d'Ajout de Livreur" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font></Label>
+                        <Label layoutX="1040.0" layoutY="147.0" text="Nom :" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="1039.0" layoutY="193.0" text="Prenom :" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="1037.0" layoutY="296.0" text="Photo :" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="1039.0" layoutY="245.0" text="Email :" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="1040.0" layoutY="346.0" text="Pseudo :" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="1040.0" layoutY="391.0" text="Zone :" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nom" layoutX="1103.0" layoutY="145.0" prefHeight="25.0" prefWidth="225.0" />
+                        <TextField fx:id="prenom" layoutX="1104.0" layoutY="191.0" prefHeight="25.0" prefWidth="222.0" />
+                        <TextField fx:id="email" layoutX="1104.0" layoutY="243.0" prefHeight="25.0" prefWidth="221.0" />
+                        <TextField fx:id="pseudo" layoutX="1104.0" layoutY="344.0" prefHeight="25.0" prefWidth="220.0" />
+                        <Button fx:id="ajouter" layoutX="1102.0" layoutY="548.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="25.0" prefWidth="169.0" text="Ajouter" />
+                        <Button fx:id="photo" layoutX="1104.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Choisir Photo" />
+                        <Label layoutX="1040.0" layoutY="443.0" text="Mot de Passe :" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="1040.0" layoutY="491.0" text="Confirmer MDP:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="motdepasse" layoutX="1143.0" layoutY="441.0" prefHeight="25.0" prefWidth="185.0" />
+                        <TextField fx:id="confirmer_mdp" layoutX="1154.0" layoutY="489.0" prefHeight="25.0" prefWidth="174.0" />
+                        <TextField fx:id="zone" layoutX="1101.0" layoutY="389.0" prefHeight="25.0" prefWidth="223.0" />
+                        <Text layoutX="1313.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <TableView fx:id="table_livreur" layoutX="22.0" layoutY="48.0" prefHeight="200.0" prefWidth="884.0">
+                          <columns>
+                            <TableColumn fx:id="id_liv" prefWidth="75.0" text="Id Livreur" />
+                            <TableColumn fx:id="zone_travail" prefWidth="174.0" text="Zone de Travail" />
+                              <TableColumn fx:id="dispo_livreur" prefWidth="148.0" text="Disponibilite" />
+                              <TableColumn fx:id="nombre_livraison" prefWidth="246.0" text="Nombre de livraisons Effectuées" />
+                              <TableColumn fx:id="note" prefWidth="240.0" text="Notes ( Nombre d'étoiles )" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="noter1" layoutX="22.0" layoutY="269.0" mnemonicParsing="false" onAction="#Noter1" prefHeight="25.0" prefWidth="138.0" />
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="135.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="29.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 1 étoile" />
+                        <Button fx:id="noter2" layoutX="22.0" layoutY="304.0" mnemonicParsing="false" onAction="#Noter2" prefHeight="25.0" prefWidth="173.0" />
+                        <Button fx:id="noter3" layoutX="22.0" layoutY="335.0" mnemonicParsing="false" onAction="#Noter3" prefHeight="25.0" prefWidth="195.0" />
+                        <Button fx:id="noter4" layoutX="22.0" layoutY="370.0" mnemonicParsing="false" onAction="#Noter4" prefHeight="25.0" prefWidth="223.0" />
+                        <Button fx:id="noter5" layoutX="22.0" layoutY="403.0" mnemonicParsing="false" onAction="#Noter5" prefHeight="25.0" prefWidth="248.0" />
+                        <Text layoutX="29.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 2 étoiles" />
+                        <Text layoutX="29.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 3 étoiles" />
+                        <Text layoutX="29.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 4 étoiles" />
+                        <Text layoutX="29.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 5 étoiles" />
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="135.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="135.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="189.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="137.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="189.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="217.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="137.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="189.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="217.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="241.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/etoile.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="meilleur_livreur" layoutX="22.0" layoutY="442.0" mnemonicParsing="false" onAction="#Meilleur_livreur" prefHeight="25.0" prefWidth="251.0" text="Meilleur Livreur" />
+                        <ImageView fitHeight="26.0" fitWidth="35.0" layoutX="204.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../res/medaille.png" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>

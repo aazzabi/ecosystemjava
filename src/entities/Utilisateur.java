@@ -62,6 +62,11 @@ public class Utilisateur {
     
     private List<Evenement>eventsParticipes=new ArrayList();
 
+    public Utilisateur(int aInt, String string) {
+        this.id = aInt;
+        this.username = string;
+    }
+
     public List<Evenement> getEventsParticipes() {
         return eventsParticipes;
     }
@@ -77,10 +82,15 @@ public class Utilisateur {
         this.nomPropriete = nomPropriete;
     }
 
-    public Utilisateur(int id, String username) {
+    public Utilisateur(int id, String username, String nom, String prenom) {
         this.id = id;
         this.username = username;
+         this.nom = nom;
+        this.prenom = prenom;
     }
+
+ 
+    
     
     
 

@@ -58,6 +58,7 @@ public class ControlleSaisie {
             return false; 
         }
     }
+    
     public static boolean estVidePhoto(Text txtField, String nomField){
         if(txtField.getText().equals("")){
             txtField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ; -fx-border-radius: 4;");

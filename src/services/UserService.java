@@ -9,6 +9,7 @@ import entities.reparateur.Reparateur;
 import entities.Categorie_Evts;
 import entities.reparateur.Reparateur;
 import entities.Utilisateur;
+import entities.panier.Livreur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -226,9 +227,9 @@ public class UserService {
         {
             u=new Utilisateur(rs.getInt(1), rs.getString(3));
         }
-
        return u;   
     }
+     
      public static List<Utilisateur> getAllUsers() {
         List<Utilisateur> list = new ArrayList<Utilisateur>();
         Connection cn = ConnectionBase.getInstance().getCnx();
@@ -255,5 +256,57 @@ public class UserService {
 
         }
         return list;
+     }
+     
+     public static int InscriptionLivreur(Livreur r) {
+        int workload = 13;
+        int status = 0;
+        int statusRep = 0;
+        int statusGetLastId = 0;
+
+        PreparedStatement pt, ptRep;
+        String sql = "INSERT INTO user(username, username_canonical, email, email_canonical, enabled, password, roles, nom, prenom, photo, photo_updated_at, discr ) "
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sqlRep = "INSERT INTO livreur(id,zone,description,nbr_livraison,note) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
+        int last = 0;
+        String sqlGetLastId= "SELECT MAX(id) FROM user";
+        
+        try {
+            Connection cn = ConnectionBase.getInstance().getCnx();
+            pt = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            pt.setString(1,r.getUsername());
+            pt.setString(2,r.getUsername());
+            pt.setString(3,r.getEmail());
+            pt.setString(4,r.getEmail());
+            pt.setInt(5,1);
+            String mdp = BCrypt.hashpw(r.getPassword(), BCrypt.gensalt(workload));
+            pt.setString(6,mdp.replaceFirst("2a", "2y"));
+            pt.setString(7,"a:1:{i:0;s:15:\"ROLE_LIVREUR\";}");
+            pt.setString(8,r.getNom());
+            pt.setString(9,r.getPrenom());
+            pt.setString(10,r.getPhoto());
+            pt.setDate(11,java.sql.Date.valueOf(java.time.LocalDate.now()));
+            pt.setString(12,r.getDiscr());
+                
+            status = pt.executeUpdate();
+            ResultSet rs = pt.getGeneratedKeys();
+            if(rs.next())
+            {
+                last = rs.getInt(1);
+            }            
+            ptRep = cn.prepareStatement(sqlRep);
+            ptRep.setInt(1, last);
+            ptRep.setString(2,r.getZone());
+            ptRep.setString(3,r.getDisponibilite());
+            ptRep.setInt(4,r.getNbr_livraison());
+            ptRep.setInt(5,r.getNote());
+            
+            statusRep = ptRep.executeUpdate();
+            System.out.println("succée part 2");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
     }
 }

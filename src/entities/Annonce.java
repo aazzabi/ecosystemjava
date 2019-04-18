@@ -47,9 +47,11 @@ public class Annonce  {
     private String lib ;
     
     private String nomPrenom;
+    private String nomCat;
+    private int nb_cat;
     public Annonce() {
     }
-
+    
     public Annonce(int id, String titre, String description, Date date_creation, Date date_update, Double prix, String region, String etat, String photo, Date photo_updated_at, int likes, int views, int categorie_id, int user_id) {
         this.id = id;
         this.titre = titre;
@@ -65,6 +67,26 @@ public class Annonce  {
         this.views = views;
         this.categorie_id = categorie_id;
         this.user_id = user_id;
+    }
+
+   
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Annonce other = (Annonce) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 
     public Annonce(String titre, String description,Double prix, String region, String photo, int categorie_id, int user_id) {
@@ -92,6 +114,12 @@ public class Annonce  {
         this.photo = photo;
         this.categorie_id = categorie_id;
     }
+
+    public Annonce(String nomCat, int nb_cat) {
+        this.nomCat = nomCat;
+        this.nb_cat = nb_cat;
+    }
+    
     
     public int getId() {
         return id;
@@ -115,6 +143,22 @@ public class Annonce  {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getNomCat() {
+        return nomCat;
+    }
+
+    public void setNomCat(String nomCat) {
+        this.nomCat = nomCat;
+    }
+
+    public int getNb_cat() {
+        return nb_cat;
+    }
+
+    public void setNb_cat(int nb_cat) {
+        this.nb_cat = nb_cat;
     }
 
     public Date getDate_creation() {
