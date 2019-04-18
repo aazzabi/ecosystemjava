@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/ecosystemjava/src/gui/missions/HostQR.fxml</file>
+            <file>file:/C:/ecosystemjava/src/gui/missions/HostAdd.fxml</file>
             <file>file:/C:/ecosystemjava/src/controllers/Forum/ForumAdminController.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/LoginController.java</file>
+            <file>file:/C:/ecosystemjava/src/res/+.png</file>
+            <file>file:/C:/ecosystemjava/src/res/QRCodeMailer.png</file>
             <file>file:/C:/ecosystemjava/src/controllers/MainAdminScreenController.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/SidePanelUserController.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/missions/HostDetailsController.java</file>
@@ -13,7 +15,6 @@
             <file>file:/C:/ecosystemjava/src/services/HostRatingService.java</file>
             <file>file:/C:/ecosystemjava/src/utils/MapClass.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/missions/HostListController.java</file>
-            <file>file:/C:/ecosystemjava/src/controllers/missions/HostQRController.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/MainuserscreenController.java</file>
             <file>file:/C:/ecosystemjava/src/entities/HostRating.java</file>
             <file>file:/C:/ecosystemjava/src/controllers/events/Categorie_EvtsController.java</file>
