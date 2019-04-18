@@ -237,7 +237,8 @@ public class ForumUserController implements Initializable {
         
         clearTable(tableListeMyPublication);
         afficherAllMyPublications(idUser);
-        clearTable(tableListePublication);
+        flow.getChildren().clear();
+        afficherAllPublicationsCard();
     }
 
     @FXML
@@ -247,7 +248,8 @@ public class ForumUserController implements Initializable {
                 
         clearTable(tableListeMyPublication);
         afficherAllMyPublications(idUser);
-        clearTable(tableListePublication);
+        flow.getChildren().clear();
+        afficherAllPublicationsCard();
     }
     
 

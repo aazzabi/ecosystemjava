@@ -130,9 +130,12 @@ public class ForumAdminController implements Initializable {
     @FXML
     private CategoryAxis publication;
     @FXML
-    private PieChart pieChartCommentairePerPublication;
+    private PieChart pieChartVuesPerPublication;
     @FXML
     private NumberAxis nbrCommPerPub;
+    @FXML
+    private Label lblPieChartInfo;
+    
     /**
      * Initializes the controller class.
      */
@@ -353,6 +356,7 @@ public class ForumAdminController implements Initializable {
         }
     }
     
+    @FXML
     public void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
         CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
@@ -364,7 +368,8 @@ public class ForumAdminController implements Initializable {
         
         CategoriePubService.updateCategorie(c);
     }
-
+    
+    @FXML
     public void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
         CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
@@ -431,10 +436,18 @@ public class ForumAdminController implements Initializable {
             System.out.println("nbr vues "+e.getNbrVues());
             System.out.println(e);
             System.out.println("----------------------------");
-            pieChartCommentairePerPublication.getData().add(new PieChart.Data(e.getTitre()+" : "+ e.getNbrVues()+"%", e.getNbrVues()));
+            pieChartVuesPerPublication.getData().add(new PieChart.Data(e.getTitre()+" : "+ e.getNbrVues()+" Vue(s)", e.getNbrVues()));
+//            pieChartVuesPerPublication.getData().add(new PieChart.Data("Publication"+e.getTitre().toString()));
         }
+        pieChartVuesPerPublication.getData().stream()
+                    .forEach(data -> {
+                        data.getNode().addEventHandler(MouseEvent.ANY, element->{
+                           lblPieChartInfo.setText("Publication : "+data.getName()+"\n Nbr Vues: "+ data.getPieValue()); 
+                        });
+                    });
     }
-
+    
+    @FXML
     public void onEditChangedTitrePub(TableColumn.CellEditEvent<PublicationForum, String> event)
     {
         
@@ -455,8 +468,7 @@ public class ForumAdminController implements Initializable {
     @FXML
     private void onEditChangedDescriptionPub(TableColumn.CellEditEvent<CategoriePub, String> event) {
     }
-*/
-
+*/  
     @FXML
     public void onEditChangedDescriptionPub(TableColumn.CellEditEvent<PublicationForum, String> event) {
         
@@ -470,8 +482,6 @@ public class ForumAdminController implements Initializable {
         
         PublicationForumService.updatePublicationDesc(p);
     }
-
-   
 
 
 }

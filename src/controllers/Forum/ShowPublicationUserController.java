@@ -5,11 +5,13 @@
  */
 package controllers.Forum;
 
+import static controllers.Forum.CardsCommentairesController.i;
 import static controllers.Forum.CardsPublicationController.i;
 import static controllers.Forum.ForumUserController.indice;
 import static controllers.Forum.ForumUserController.obsl;
 import entities.CommentairePublication;
 import entities.PublicationForum;
+import entities.Session;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -77,7 +79,6 @@ public class ShowPublicationUserController implements Initializable {
         System.out.println(p.getNbrCommentaires());
         txtNbrCommentaire.setText(String.valueOf(p.getNbrCommentaires()));
         idPub = p.getId();
-//        txtIdPublication.setText(String.valueOf(p.getId()));
         txtEtatPublication.setText(p.getEtat());
         txtCategoriePublication.setText(p.getCategorie());
         
@@ -135,6 +136,10 @@ public class ShowPublicationUserController implements Initializable {
     private void readTitre(MouseEvent event) {
         SpeechApi.speechApi(txtTitrePublication.getText());
 
+    }
+
+    @FXML
+    private void archiver(ActionEvent event) {
     }
 
 }
