@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="root1" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reparateur.AllAnnonceRepController">
+    <stylesheets>
+        <URL value="@allannoncerep.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="106.0" layoutY="103.0" prefHeight="760.0" prefWidth="1360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="56.0" prefWidth="1360.0" style="-fx-background-radius: 5;">
+               <children>
+                  <JFXButton onAction="#retour" prefHeight="56.0" prefWidth="98.0" ripplerFill="RED" text="Retour" textFill="RED">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font></JFXButton>
+                  <Label prefHeight="17.0" prefWidth="136.0" text="Label" visible="false" />
+                  <Label prefHeight="56.0" prefWidth="102.0" text="Recherche :" />
+                  <JFXTextField fx:id="rech" onKeyTyped="#Rechercher" prefHeight="51.0" prefWidth="232.0" />
+                  <Label prefHeight="56.0" prefWidth="173.0" text="Filtrer par :" />
+                  <JFXComboBox fx:id="combobox" onAction="#filtrer" prefHeight="61.0" prefWidth="227.0" />
+                  <Label prefHeight="17.0" prefWidth="187.0" text="Label" visible="false" />
+                  <JFXButton alignment="CENTER" onAction="#ajouter" prefHeight="55.0" prefWidth="229.0" text="Postez une announce !" textAlignment="CENTER" textFill="#2b00ff">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font></JFXButton>
+                  <Label prefHeight="17.0" prefWidth="101.0" text="Label" visible="false" />
+               </children>
+            </HBox>
+            <ScrollPane>
+               <content>
+                  <VBox fx:id="content_product" prefHeight="701.0" prefWidth="1358.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

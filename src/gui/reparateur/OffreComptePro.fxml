@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="root1" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reparateur.OffreCompteProController">
+    <stylesheets>
+        <URL value="@offrecomptepro.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="img1" fitHeight="559.0" fitWidth="394.0" layoutX="35.0" layoutY="33.0" onMouseClicked="#Demander" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Offre1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img2" fitHeight="620.0" fitWidth="349.0" layoutX="478.0" layoutY="36.0" onMouseClicked="#Demander" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Offre2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img3" fitHeight="543.0" fitWidth="356.0" layoutX="923.0" layoutY="44.0" onMouseClicked="#Demander" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Offre3.png" />
+         </image>
+      </ImageView>
+      <TextArea editable="false" layoutX="27.0" layoutY="609.0" prefHeight="137.0" prefWidth="1264.0" text="Charte :&#10;Pourquoi choisir notre platforme ? Des réparateurs audités et agréés selon notre charte qualité Nous avons au fil de notre expérience testé, audité &#10;et agréé les meilleurs centres de réparation par typologie d'appareil. Ecozone.com vous assure une qualité de service irréprochable à travers des processus industriels stricts &#10;et une charte d'agrément pour nos réparateurs dont les principaux éléments sont la qualité, le délai, et le suivi d'information en temps réel. &#10;Des délais de réparation rapides Les délais de réparation constatés sont de 24 à 72 heures ouvrées, sous condition de disponibilité des pièces. &#10;Une garantie incluse Pour chaque réparation, vous bénéficiez d'une garantie de 6 mois." />
+      <JFXButton layoutX="9.0" layoutY="8.0" onAction="#retour" text="Retour" textFill="#f20000" />
+   </children>
+</AnchorPane>
