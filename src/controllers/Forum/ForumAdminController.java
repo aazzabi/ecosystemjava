@@ -97,7 +97,6 @@ public class ForumAdminController implements Initializable {
     private TextField txtLibelleCategorie;
     @FXML
     private TextField txtDescriptionCategorie;
-    @FXML
     private TextField txtDomaineCategorie;
     @FXML
     private TextField txtRechercheCategorie;
@@ -129,11 +128,11 @@ public class ForumAdminController implements Initializable {
     @FXML
     private NumberAxis nbrPubPerCateg;
     @FXML
-    private NumberAxis nbrVuesPerPub;
-    @FXML
     private CategoryAxis publication;
     @FXML
     private PieChart pieChartCommentairePerPublication;
+    @FXML
+    private NumberAxis nbrCommPerPub;
     /**
      * Initializes the controller class.
      */
@@ -168,12 +167,25 @@ public class ForumAdminController implements Initializable {
             }
         });
         
+        //CELLULE EDITABLE PUBLICATION
         titrePublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
         descriptionPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
+        
+        titrePublication.setCellFactory(TextFieldTableCell.forTableColumn());
+        descriptionPublication.setCellFactory(TextFieldTableCell.forTableColumn());
+        
         tableListePublication.setEditable(true);
+
+        
+        
+        //CELLULE EDITABLE CATEGORIE
+        libelleCategorie.setCellValueFactory(new PropertyValueFactory<>("libelle"));
+        descriptionCategorie.setCellValueFactory(new PropertyValueFactory<>("description"));
+        tableListeCategorie.setEditable(true);
         
         libelleCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
         descriptionCategorie.setCellFactory(TextFieldTableCell.forTableColumn());
+        
         
     }  
     
@@ -341,7 +353,6 @@ public class ForumAdminController implements Initializable {
         }
     }
     
-    @FXML
     public void onEditChangedLibelle(TableColumn.CellEditEvent<CategoriePub, String> event) {
         CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
@@ -354,8 +365,7 @@ public class ForumAdminController implements Initializable {
         CategoriePubService.updateCategorie(c);
     }
 
-    @FXML
-    private void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
+    public void onEditChangedDescription(TableColumn.CellEditEvent<CategoriePub, String> event) {
         int id = tableListeCategorie.getSelectionModel().getSelectedItem().getId();
         CategoriePub c = tableListeCategorie.getSelectionModel().getSelectedItem();
         c.setId(tableListeCategorie.getSelectionModel().getSelectedItem().getId());
@@ -424,6 +434,44 @@ public class ForumAdminController implements Initializable {
             pieChartCommentairePerPublication.getData().add(new PieChart.Data(e.getTitre()+" : "+ e.getNbrVues()+"%", e.getNbrVues()));
         }
     }
+
+    public void onEditChangedTitrePub(TableColumn.CellEditEvent<PublicationForum, String> event)
+    {
+        
+        PublicationForum p = tableListePublication.getSelectionModel().getSelectedItem();
+        int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
+        p.setTitre(event.getNewValue());
+        p.setId(id);
+        System.out.println(p);
+        
+        System.out.println(event.getNewValue());
+        
+        PublicationForumService.updatePublicationTitre(p);
+        
+
+    }
+
+    /*
+    @FXML
+    private void onEditChangedDescriptionPub(TableColumn.CellEditEvent<CategoriePub, String> event) {
+    }
+*/
+
+    @FXML
+    public void onEditChangedDescriptionPub(TableColumn.CellEditEvent<PublicationForum, String> event) {
+        
+        PublicationForum p = tableListePublication.getSelectionModel().getSelectedItem();
+        int id = tableListePublication.getSelectionModel().getSelectedItem().getId();
+        p.setDescription(event.getNewValue());
+        p.setId(id);
+        System.out.println(p);
+        
+        System.out.println(event.getNewValue());
+        
+        PublicationForumService.updatePublicationDesc(p);
+    }
+
+   
 
 
 }

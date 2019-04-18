@@ -39,6 +39,7 @@ import utils.ControlleSaisie;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
@@ -57,6 +58,8 @@ public class ForumUserController implements Initializable {
     private TableColumn<PublicationForum, String> categoriePublication;
     private TableColumn<PublicationForum, String> pubCreeParPublication;
     private TableColumn<PublicationForum, Integer> idPublication;
+    
+    
     @FXML
     private TextField txtRechercherPublication;
     @FXML
@@ -109,6 +112,18 @@ public class ForumUserController implements Initializable {
 //        afficherAllPublications();
         afficherAllPublicationsCard();
         afficherAllMyPublications(idUser);
+        
+        //CELLULE EDITABLE PUBLICATION
+        titreMyPublication.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        descriptionMyPublication.setCellValueFactory(new PropertyValueFactory<>("description"));
+        
+        titreMyPublication.setCellFactory(TextFieldTableCell.forTableColumn());
+        descriptionMyPublication.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        tableListeMyPublication.setEditable(true);
+        
+        
+        
     }
     
     public void afficherAllPublicationsCard(){
@@ -292,6 +307,33 @@ public class ForumUserController implements Initializable {
         catch (Exception exp){
             exp.printStackTrace();
         }
+    }
+
+    @FXML
+    public void onEditChangedTitrePub(TableColumn.CellEditEvent<PublicationForum, String> event) {
+        PublicationForum p = tableListeMyPublication.getSelectionModel().getSelectedItem();
+        int id = tableListeMyPublication.getSelectionModel().getSelectedItem().getId();
+        p.setTitre(event.getNewValue());
+        p.setId(id);
+        System.out.println(p);
+        
+        System.out.println(event.getNewValue());
+        
+        PublicationForumService.updatePublicationTitre(p);
+        
+    }
+
+    @FXML
+    public void onEditChangedDescriptionPub(TableColumn.CellEditEvent<PublicationForum, String> event) {
+          PublicationForum p = tableListeMyPublication.getSelectionModel().getSelectedItem();
+        int id = tableListeMyPublication.getSelectionModel().getSelectedItem().getId();
+        p.setDescription(event.getNewValue());
+        p.setId(id);
+        System.out.println(p);
+        
+        System.out.println(event.getNewValue());
+        
+        PublicationForumService.updatePublicationDesc(p);
     }
     
 }

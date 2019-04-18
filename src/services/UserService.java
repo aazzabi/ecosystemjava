@@ -216,17 +216,44 @@ public class UserService {
     }
     
      
-     public Utilisateur findById(int id_user)throws SQLException{ 
+     public Utilisateur findById(int id_user)throws SQLException
+    {
+        Utilisateur u = new Utilisateur();
+        String requete="select * from user where id ='"+id_user+"';";
+       pst=cn.prepareStatement(requete);
+       rs=pst.executeQuery(requete); 
+        while(rs.next())
         {
-            Utilisateur u = new Utilisateur();
-            String requete="select * from user where id ='"+id_user+"';";
-           pst=cn.prepareStatement(requete);
-           rs=pst.executeQuery(requete); 
-            while(rs.next())
-            {
-                u=new Utilisateur(rs.getInt(1), rs.getString(3));
+            u=new Utilisateur(rs.getInt(1), rs.getString(3));
+        }
+
+       return u;   
+    }
+     public static List<Utilisateur> getAllUsers() {
+        List<Utilisateur> list = new ArrayList<Utilisateur>();
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+        try {
+            String sql = "select * from user ";
+            pt = cn.prepareStatement(sql);
+            ResultSet resultSet = pt.executeQuery();
+            while (resultSet.next()) {
+                Utilisateur utilisateur = new Utilisateur();
+
+                utilisateur.setNom(resultSet.getString("nom"));
+                utilisateur.setPrenom(resultSet.getString("prenom"));
+                utilisateur.setUsername(resultSet.getString("username"));
+                utilisateur.setEmail(resultSet.getString("email"));
+                utilisateur.setNumtel(resultSet.getString("numtel"));
+                utilisateur.setVille(resultSet.getString("ville"));
+                list.add(utilisateur);
+                utilisateur.toString();
             }
-            
-           return u;   
-        }}
+            cn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return list;
+    }
 }

@@ -377,4 +377,44 @@ public class PublicationForumService {
         }
         return pList;
     }
+    
+    public static void updatePublicationTitre(PublicationForum p)
+    {
+        String req = "UPDATE `publication_forum` SET `titre` = ?  WHERE `id` = ?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        try 
+        {
+            PreparedStatement pst = cn.prepareStatement(req);
+            pst.setString(1, p.getTitre());
+            pst.setInt(2, p.getId());
+
+            pst.executeUpdate();
+            
+            pst.close();
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }  
+    }
+    
+    public static void updatePublicationDesc(PublicationForum p)
+    {
+        String req = "UPDATE `publication_forum` SET `description` = ?  WHERE `id` = ?";
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        try 
+        {
+            PreparedStatement pst = cn.prepareStatement(req);
+            pst.setString(1, p.getDescription());
+            pst.setInt(2, p.getId());
+
+            pst.executeUpdate();
+            
+            pst.close();
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }  
+    }
 }

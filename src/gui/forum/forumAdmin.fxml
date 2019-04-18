@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ForumAdminController">
+<AnchorPane id="AnchorPane" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Forum.ForumAdminController">
       <children>   
       <TabPane layoutX="12.0" layoutY="95.0" prefHeight="760" prefWidth="1367.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -31,8 +31,8 @@
                                     <TableView fx:id="tableListePublication" prefHeight="600.0" prefWidth="1140.0">
                                        <columns>
                                           <TableColumn fx:id="datePublication" prefWidth="68.00000077486038" text="Date" />
-                                          <TableColumn fx:id="titrePublication" prefWidth="224.0" text="Titre" />
-                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" prefWidth="491.9999694824219" text="Description" />
+                                          <TableColumn fx:id="titrePublication" onEditCommit="#onEditChangedTitrePub" prefWidth="224.0" text="Titre" />
+                                          <TableColumn fx:id="descriptionPublication" minWidth="0.0" onEditCommit="#onEditChangedDescriptionPub" prefWidth="491.9999694824219" text="Description" />
                                           <TableColumn fx:id="etatPublication" prefWidth="96.800048828125" text="Etat" />
                                           <TableColumn fx:id="categoriePublication" prefWidth="159.1998291015625" text="Catégorie" />
                                           <TableColumn fx:id="creeParPublication" prefWidth="97.60009765625" text="Crée par" />
@@ -119,7 +119,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="txtDomaineCategorie" layoutX="19.0" layoutY="395.0" prefHeight="22.0" prefWidth="310.0" />
                                                 <Text layoutX="18.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domaine :" wrappingWidth="98.48486328125">
                                                    <font>
                                                       <Font size="20.0" />

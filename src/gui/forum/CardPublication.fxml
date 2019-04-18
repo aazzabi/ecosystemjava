@@ -31,26 +31,21 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Text fx:id="lblNbrCommentaire" layoutX="30.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="36.811279296875">
+                              <Text fx:id="lblNbrCommentaire" layoutX="24.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="47.136709094047546">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="89.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commentaires" wrappingWidth="86.13671875">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="lblNbrVues" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="50.13671875">
+                              <Text fx:id="lblNbrVues" layoutX="24.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="47.13671875">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="90.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vues" wrappingWidth="70.41124725341797">
+                              <Text layoutX="52.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commentaires" wrappingWidth="127.5999698638916" />
+                              <Text layoutX="52.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vues" wrappingWidth="69.13670909404755">
                                  <font>
                                     <Font size="13.0" />
-                                 </font>
-                              </Text>
+                                 </font></Text>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="181.0">
