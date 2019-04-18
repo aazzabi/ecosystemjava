@@ -2,6 +2,29 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/ecosystemjava/src/gui/missions/HostQR.fxml</file>
+            <file>file:/C:/ecosystemjava/src/controllers/Forum/ForumAdminController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/LoginController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/MainAdminScreenController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/SidePanelUserController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/missions/HostDetailsController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/events/EvenementAdminController.java</file>
+            <file>file:/C:/ecosystemjava/src/services/HostRatingService.java</file>
+            <file>file:/C:/ecosystemjava/src/utils/MapClass.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/missions/HostListController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/missions/HostQRController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/MainuserscreenController.java</file>
+            <file>file:/C:/ecosystemjava/src/entities/HostRating.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/events/Categorie_EvtsController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/InscriptionController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/SidePanelController.java</file>
+            <file>file:/C:/ecosystemjava/src/controllers/missions/HostAddController.java</file>
+            <file>file:/C:/ecosystemjava/src/services/HostParticipationService.java</file>
+            <file>file:/C:/ecosystemjava/src/loaders/HostAddLoader.java</file>
+            <file>file:/C:/ecosystemjava/src/services/HostService.java</file>
+            <file>file:/C:/ecosystemjava/src/gui/forum/forumadmin.css</file>
+            <file>file:/C:/ecosystemjava/src/controllers/AnnonceAdminController.java</file>
+        </group>
     </open-files>
 </project-private>
