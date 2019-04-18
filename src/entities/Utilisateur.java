@@ -5,7 +5,9 @@
  */
 package entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -57,6 +59,12 @@ public class Utilisateur {
     private String numtel;
     
     private String nomPropriete;
+    
+    private List<Evenement>eventsParticipes=new ArrayList();
+
+    public List<Evenement> getEventsParticipes() {
+        return eventsParticipes;
+    }
 
     public Utilisateur(String username, String usernameCanonical, String email, String emailCanonical, String password, String nom, String prenom, String nomPropriete) {
         this.username = username;

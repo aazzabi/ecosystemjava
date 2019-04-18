@@ -55,8 +55,8 @@ import javafx.scene.text.Text;
         protected void updateItem(Evenement item, boolean empty) {
             super.updateItem(item, empty);
             if (item != null && !empty) { // <== test for null item and empty parameter
-                createdBy.setText("Créé par : "+item.getCreatedBy().toString());
-                titre.setText(item.getTitre()+"                                                                             "+item.getCategorie().toString()); 
+                createdBy.setText("Créé par : "+item.getCreatedBy().toString()+"                                "+item.getCategorie().toString());
+                titre.setText(item.getTitre()); 
                 lieu.setText("à : "+item.getLieu());
                 date.setText("Le : "+item.getDate().toString());
             

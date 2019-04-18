@@ -6,7 +6,9 @@
 package entities;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 //import java.sql.Date;
 /**
  *
@@ -24,8 +26,17 @@ public class Evenement {
     private String description;
     private String cover;
     private Date coverUpdatedAt;
-    private int nbvues;
 
+    public List<Utilisateur> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Utilisateur> participants) {
+        this.participants = participants;
+    }
+    private int nbvues;
+     
+    private List<Utilisateur>participants=new ArrayList();
     
     public Evenement() {
     }
