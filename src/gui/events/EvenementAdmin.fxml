@@ -107,7 +107,7 @@
                                     <Image url="@../../res/home.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="homebutton" layoutX="85.0" layoutY="310.0" mnemonicParsing="false" onAction="#retourHome" prefHeight="96.0" prefWidth="113.0" />
+                              <Button fx:id="homebutton" layoutX="85.0" layoutY="310.0" mnemonicParsing="false" onAction="#retourHomeUser" prefHeight="96.0" prefWidth="113.0" />
                               <ImageView fitHeight="115.0" fitWidth="307.0" layoutX="7.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../res/web_assets_img_logofinalev1.png" />
@@ -168,7 +168,7 @@
                                                             <Image url="@../../res/home.png" />
                                                          </image>
                                                       </ImageView>
-                                                      <Button fx:id="homebutton2" layoutX="85.0" layoutY="310.0" mnemonicParsing="false" onAction="#retourHome" prefHeight="96.0" prefWidth="113.0" />
+                                                      <Button fx:id="homebutton2" layoutX="85.0" layoutY="310.0" mnemonicParsing="false" onAction="#retourHomeUser" prefHeight="96.0" prefWidth="113.0" />
                                                       <ImageView fitHeight="115.0" fitWidth="307.0" layoutX="7.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@../../res/web_assets_img_logofinalev1.png" />
@@ -180,9 +180,9 @@
                                                 <Text layoutX="789.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="But:" />
                                                 <TextField fx:id="textlibelle" layoutX="552.0" layoutY="208.0" promptText="Entrez un libelle.." />
                                                 <Text layoutX="479.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libellé:" />
-                                                <Button fx:id="validerCat" layoutX="869.0" layoutY="385.0" mnemonicParsing="false" onAction="#validerModif" text="ValiderModif" />
-                                                <Button fx:id="ajouter1" layoutX="751.0" layoutY="385.0" mnemonicParsing="false" onAction="#ajouterCat" text="Valider" />
-                                                <Button fx:id="annulerCat" layoutX="598.0" layoutY="385.0" mnemonicParsing="false" onAction="#annulerModif" text="AnnulerModif" />
+                                                <Button fx:id="validerCat" layoutX="869.0" layoutY="385.0" mnemonicParsing="false" onAction="#validerModif" style="-fx-background-color: rgb(60,179,113); -fx-background-radius: 5em;" text="ValiderModif" />
+                                                <Button fx:id="ajouter1" layoutX="751.0" layoutY="385.0" mnemonicParsing="false" onAction="#ajouterCat" prefHeight="33.0" prefWidth="85.0" style="-fx-background-color: rgb(60,179,113); -fx-background-radius: 5em;" text="Valider" />
+                                                <Button fx:id="annulerCat" layoutX="598.0" layoutY="385.0" mnemonicParsing="false" onAction="#annulerModif" style="-fx-background-color: red; -fx-background-radius: 5em;" text="AnnulerModif" />
                                              </children>
                                           </Pane>
                                        </children>

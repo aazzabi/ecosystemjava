@@ -66,7 +66,7 @@
                                     <Image url="@../../res/green-star-icon.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="670.0" layoutY="753.0" prefHeight="32.0" prefWidth="229.0" text="Ajouter un évènement" />
+                              <Label layoutX="672.0" layoutY="760.0" prefHeight="32.0" prefWidth="150.0" text="Ajouter un évènement" />
                               <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="359.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../res/src_res_searchicon.png" />
@@ -147,7 +147,7 @@
                            </font></JFXTextField>
                         <JFXTextField fx:id="sadate" layoutX="574.0" layoutY="312.0">
                            <font>
-                              <Font name="Bodoni MT Poster Compressed" size="15.0" />
+                              <Font name="Agency FB" size="15.0" />
                            </font></JFXTextField>
                         <Pane prefHeight="1100.0" prefWidth="330.0" style="-fx-background-color: rgb(0,128,0);">
                            <children>
@@ -189,7 +189,7 @@
                               <Font name="Forte" size="23.0" />
                            </font>
                         </Label>
-                        <Label fx:id="nbparticipants" layoutX="1039.0" layoutY="51.0" prefHeight="26.0" prefWidth="25.0">
+                        <Label fx:id="nbparticipants" layoutX="1039.0" layoutY="51.0" prefHeight="26.0" prefWidth="25.0" textFill="#82b228">
                            <font>
                               <Font name="Forte" size="27.0" />
                            </font>
@@ -209,12 +209,12 @@
                               <Font name="Forte" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="518.0" layoutY="329.0" text="A" textFill="MEDIUMSEAGREEN">
+                        <Label layoutX="518.0" layoutY="329.0" prefHeight="21.0" prefWidth="33.0" text="Le" textFill="MEDIUMSEAGREEN">
                            <font>
-                              <Font name="Forte" size="18.0" />
+                              <Font name="Forte" size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="823.0" layoutY="116.0" text="Catégorie" textFill="MEDIUMSEAGREEN">
+                        <Label layoutX="823.0" layoutY="116.0" textFill="MEDIUMSEAGREEN">
                            <font>
                               <Font name="Forte" size="18.0" />
                            </font>

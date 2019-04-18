@@ -458,7 +458,7 @@ public class EvenementService implements IEvenementService{
          ObservableList<Evenement>listEvents = FXCollections.observableArrayList();
         String req= "SELECT * FROM `evenement` where id IN (select evenement_id from `evenement_user`) AND"
                 + " (select count(*) from `evenement_user` where evenement_id IN (select id from `evenement_user`)) >0 AND "
-                + "DATEDIFF(date, CURRENT_DATE()) >0";
+                + "DATEDIFF(date, CURRENT_DATE()) >0"; 
      
         try {
             pst=cn.prepareStatement(req);

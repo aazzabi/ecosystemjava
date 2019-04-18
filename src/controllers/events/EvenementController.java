@@ -264,7 +264,7 @@ public class EvenementController implements Initializable {
          
          modifier.setVisible(false);
          supprimer.setVisible(false);
-         
+         sacategorie.setVisible(false);
          valider.setVisible(false);
          annuler.setVisible(false);
           qr.setVisible(false);
@@ -394,7 +394,8 @@ public class EvenementController implements Initializable {
          titretext.setText("");
          descriptiontext.setText("");   
          categoriebox_id.getSelectionModel().select(0);
-         categoriebox.getSelectionModel().select(0);
+         categoriebox.getSelectionModel().select(-1);
+         datepicker.setValue(null);
          txtPhoto.setVisible(false);
         
          accueil();} 
@@ -470,6 +471,7 @@ public class EvenementController implements Initializable {
                 es.deleteEvent(e.getId());
                // SendMail.sendmail("amine.mraihi@esprit.tn",
                   //   "Annulation d evenement", "nous sommes désolés mais l evenement est annulé");
+                  tabpane.getSelectionModel().select(0);
                 afficher2();
             }
         }
@@ -657,6 +659,12 @@ public class EvenementController implements Initializable {
          valider.setVisible(false);
          annuler.setVisible(false);
          ajouter.setVisible(true);
+          lieutext.setText("");
+         titretext.setText("");
+         descriptiontext.setText("");   
+         categoriebox_id.getSelectionModel().select(0);
+         categoriebox.getSelectionModel().select(-1);
+         datepicker.setValue(null);
     }
     @FXML
     private void participer(ActionEvent event) throws SQLException

@@ -144,8 +144,8 @@ public class EvenementAdminController implements Initializable {
     private TabPane tabpane1;
      @FXML
     private TextField textlibelle;
-    @FXML
-    private TextField textbut;
+    /*@FXML
+    private TextField textbut;*/
     @FXML
     private Button ajouter1;
     @FXML
@@ -255,8 +255,8 @@ public class EvenementAdminController implements Initializable {
       }      
       });
      // ajouter1.setVisible(false);
-      //annulerCat.setVisible(false);
-      //validerCat.setVisible(false); 
+      annulerCat.setVisible(false);
+      validerCat.setVisible(false); 
       
       LoadBarChartData();
     }
@@ -333,9 +333,9 @@ public class EvenementAdminController implements Initializable {
     }
 
     @FXML
-    private void ajout(ActionEvent event) {
-         if (!lieutext.getText().equals("") && !titretext.getText().equals("") && !descriptiontext.getText().equals("") 
-                ) { 
+    private void ajout(ActionEvent event)
+    {
+         if (!lieutext.getText().equals("") && !titretext.getText().equals("") && !descriptiontext.getText().equals("")) { 
               
          System.out.println("hi");
          EvenementService cs =new EvenementService();
@@ -355,7 +355,8 @@ public class EvenementAdminController implements Initializable {
          titretext.setText("");
          descriptiontext.setText("");   
          categoriebox_id.getSelectionModel().select(0);
-         categoriebox.getSelectionModel().select(0);
+         categoriebox.getSelectionModel().select(-1);
+         datepicker.setValue(null);
          txtPhoto.setVisible(false);
         
          afficher();
@@ -396,6 +397,7 @@ public class EvenementAdminController implements Initializable {
     {
         
         tabpane.getSelectionModel().select(2);
+        tabpane1.getSelectionModel().select(0);
         
     }
     
@@ -403,6 +405,18 @@ public class EvenementAdminController implements Initializable {
     private void retourHome(ActionEvent event)
     {
         tabpane.getSelectionModel().select(0);
+        // tabpane1.getSelectionModel().select(0);
+    }
+    @FXML
+    private void retourHomeUser(ActionEvent event)
+    {
+        tabpane.getSelectionModel().select(0);
+         lieutext.setText("");
+         titretext.setText("");
+         descriptiontext.setText("");   
+         categoriebox_id.getSelectionModel().select(0);
+         categoriebox.getSelectionModel().select(-1);
+         datepicker.setValue(null);
     }
     
     
@@ -419,7 +433,10 @@ public class EvenementAdminController implements Initializable {
      @FXML
      private void ajouterCat(ActionEvent event)
      {
-      if (!textlibelle.getText().equals("") && !textbut.getText().equals("")               ) 
+          validerCat.setVisible(false);
+         annulerCat.setVisible(false);
+         ajouter1.setVisible(true); 
+      if (!textlibelle.getText().equals("")) 
       {
          Categorie_EvtsService cs =new Categorie_EvtsService();
          String i = (String) combobut.getValue();
@@ -428,7 +445,7 @@ public class EvenementAdminController implements Initializable {
          
          textlibelle.setText("");
         // textbut.setText("");
-        combobut.getSelectionModel().select(0);
+        combobut.getSelectionModel().select(2);
         
          afficher();
          
@@ -470,8 +487,11 @@ public class EvenementAdminController implements Initializable {
      private void modifierCat(ActionEvent event)
      {
          tabpane1.getSelectionModel().select(1);
+          validerCat.setVisible(true);
+         annulerCat.setVisible(true);
+         ajouter1.setVisible(false); 
         textlibelle.setText(catsTable.getSelectionModel().getSelectedItem().getValue().getLibelle());
-        textbut.setText(catsTable.getSelectionModel().getSelectedItem().getValue().getBut());
+       // textbut.setText(catsTable.getSelectionModel().getSelectedItem().getValue().getBut());
          combobut.getSelectionModel().select(-1);
        
        do{
@@ -515,6 +535,8 @@ public class EvenementAdminController implements Initializable {
                    annulerCat.setVisible(false);
                    validerCat.setVisible(false); 
                    ajouter1.setVisible(true);
+             
+                   
                    
                   tabpane1.getSelectionModel().select(0);
                afficherCat();
@@ -529,7 +551,7 @@ public class EvenementAdminController implements Initializable {
      {
      
          textlibelle.setText("");
-         textbut.setText("");
+      //   textbut.setText("");
          //validerCat.setVisible(false);
          //annulerCat.setVisible(false);
          tabpane1.getSelectionModel().select(0);
