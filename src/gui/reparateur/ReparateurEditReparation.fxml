@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="577.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reparateur.ReparateurEditReparationController">
+     <children>
+      <Pane layoutX="72.0" layoutY="69.0" prefHeight="204.0" prefWidth="287.0" style="-fx-border-style: solid; -fx-border-radius: 8;">
+         <children>
+            <Pane layoutX="2.0" layoutY="75.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="127.0" text="Reparateur" />
+                  <JFXComboBox fx:id="rep_rep" disable="true" layoutX="135.0" layoutY="18.0" prefHeight="25.0" prefWidth="135.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="2.0" layoutY="138.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="91.0" text="Statut" />
+                  <JFXComboBox fx:id="rep_statut" disable="true" layoutX="138.0" layoutY="18.0" prefHeight="25.0" prefWidth="135.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="2.0" layoutY="14.0" prefHeight="61.0" prefWidth="287.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="25.0" prefWidth="91.0" text="Utilisateur" />
+                  <JFXComboBox fx:id="rep_user" disable="true" layoutX="138.0" layoutY="18.0" prefHeight="25.0" prefWidth="135.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Label layoutX="84.0" layoutY="14.0" prefHeight="38.0" prefWidth="287.0" text="Détails d'une réparation en cours" textAlignment="CENTER" textFill="#ee0606">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Pane fx:id="pane2" layoutX="119.0" layoutY="533.0">
+         <children>
+            <JFXButton fx:id="editbtn" layoutX="109.0" onAction="#editer" prefHeight="25.0" prefWidth="109.0" text="Editer" textFill="#4813da">
+               <font>
+                  <Font name="Gadugi Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#cancel1" prefHeight="25.0" prefWidth="109.0" text="Annuler" textFill="#4813da">
+               <font>
+                  <Font name="Gadugi Bold" size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Label fx:id="rep_id" layoutX="209.0" layoutY="52.0" text="Id:" />
+      <Pane layoutX="75.0" layoutY="289.0" prefHeight="232.0" prefWidth="287.0" style="-fx-border-style: solid; -fx-border-radius: 8;">
+         <children>
+            <Label layoutX="101.0" layoutY="2.0" prefHeight="25.0" prefWidth="127.0" text="Commentaire" />
+            <JFXTextArea fx:id="rep_comment" editable="false" layoutY="39.0" prefHeight="178.0" prefWidth="287.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane1" layoutX="133.0" layoutY="517.0" visible="false">
+         <children>
+            <JFXButton fx:id="annuler" onAction="#canceledit" prefHeight="25.0" prefWidth="91.0" ripplerFill="#f21111" text="Annuler " textFill="#da0909">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="confirmer" layoutX="112.0" onAction="#confirmer" prefHeight="25.0" prefWidth="91.0" text="Confirmer" textFill="#0e19eb">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

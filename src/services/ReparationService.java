@@ -1,0 +1,154 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package services;
+
+import entities.reparateur.AnnounceRep;
+import entities.reparateur.Reparation;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import utils.ConnectionBase;
+
+/**
+ *
+ * @author actar
+ */
+public class ReparationService {
+
+    public static ObservableList<Reparation> getReparationList() {
+        ObservableList<Reparation> reparationList = FXCollections.observableArrayList();
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+
+        try {
+            String request = "select * from reparation";
+            pt = cn.prepareStatement(request);
+            ResultSet resultSet = pt.executeQuery();
+            while (resultSet.next()) {
+                Reparation rep = new Reparation();
+                rep.setId(resultSet.getInt("id"));
+                rep.setCommentaire(resultSet.getString("Commentaire"));
+                rep.setStatut(resultSet.getString("statut"));
+                rep.setRepId(resultSet.getInt("reparateur_id"));
+                rep.setUserId(resultSet.getInt("utilisateur_id"));
+                rep.setDateP(resultSet.getDate("DatePrisEnCharge").toLocalDate().toString());
+
+                // get Nom réparateur + nom utilisateur
+                request = "select nom from user where id ='" + resultSet.getInt("reparateur_id") + "'";
+                pt = cn.prepareStatement(request);
+                ResultSet resultSet1 = pt.executeQuery();
+                while (resultSet1.next()) {
+                    rep.setNomRep(resultSet1.getString("nom"));
+                }
+                request = "select nom from user where id ='" + resultSet.getInt("utilisateur_id") + "'";
+                pt = cn.prepareStatement(request);
+                resultSet1 = pt.executeQuery();
+                while (resultSet1.next()) {
+                    rep.setNomUser(resultSet1.getString("nom"));
+                }
+                reparationList.add(rep);
+            }
+            // cn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return reparationList;
+
+    }
+
+    public static Reparation getReparation(int id) {
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+        Reparation rep = new Reparation();
+        try {
+            String request = "SELECT * FROM `reparation` WHERE id ='" + id + "'";
+            pt = cn.prepareStatement(request);
+            ResultSet resultSet = pt.executeQuery();
+
+            while (resultSet.next()) {
+
+                rep.setId(resultSet.getInt("id"));
+                rep.setCommentaire(resultSet.getString("Commentaire"));
+                rep.setStatut(resultSet.getString("statut"));
+                rep.setRepId(resultSet.getInt("reparateur_id"));
+                rep.setUserId(resultSet.getInt("utilisateur_id"));
+                rep.setDateP(resultSet.getDate("DatePrisEnCharge").toLocalDate().toString());
+
+                // get Nom réparateur + nom utilisateur
+                request = "select nom from user where id ='" + resultSet.getInt("reparateur_id") + "'";
+                pt = cn.prepareStatement(request);
+                ResultSet resultSet1 = pt.executeQuery();
+                while (resultSet1.next()) {
+                    rep.setNomRep(resultSet1.getString("nom"));
+                }
+                request = "select nom from user where id ='" + resultSet.getInt("utilisateur_id") + "'";
+                pt = cn.prepareStatement(request);
+                resultSet1 = pt.executeQuery();
+                while (resultSet1.next()) {
+                    rep.setNomUser(resultSet1.getString("nom"));
+                }
+
+            }
+
+            // cn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rep;
+    }
+    
+    
+    public static void edit(Reparation rep) {
+
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+
+        try {
+
+            PreparedStatement ps = cn.prepareStatement(
+                    "UPDATE reparation SET statut = ? , Commentaire=?, utilisateur_id = ?, reparateur_id = ? WHERE id = ?");
+
+            ps.setString(1, rep.getStatut());
+            ps.setString(2, rep.getCommentaire());
+            System.out.println("Utilistaeur"+UserService.getTtUtilisateur().stream().filter(e->e.getUsername().equals(rep.getNomUser())).collect(Collectors.toList()).get(0).getId());
+             System.out.println("Reparateur"+UserService.getTtReparateur().stream().filter(e->e.getUsername().equals(rep.getNomRep())).collect(Collectors.toList()).get(0).getId());
+            ps.setInt(3, UserService.getTtUtilisateur().stream().filter(e->e.getUsername().equals(rep.getNomUser())).collect(Collectors.toList()).get(0).getId());
+            ps.setInt(4, UserService.getTtReparateur().stream().filter(e->e.getUsername().equals(rep.getNomRep())).collect(Collectors.toList()).get(0).getId());
+            ps.setInt(5, rep.getId());
+            ps.executeUpdate();
+            ps.close();
+            
+        } catch (SQLException se) {
+           System.out.println(se.getMessage());
+
+        }
+
+    }
+
+    public static void supprimer(int id) {
+
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+
+        try {
+            String request = "DELETE FROM `reparation` WHERE id ='" + id + "'";
+            pt = cn.prepareStatement(request);
+            int res = pt.executeUpdate();
+            System.err.println(res);
+
+            //cn.close();
+        } catch (Exception exp) {
+            System.out.println(exp.getMessage());
+
+        }
+
+    }
+
+}

@@ -8,8 +8,13 @@ package services;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import entities.reparateur.AnnounceRep;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -116,16 +121,16 @@ public class AnnounceRepService {
         Connection cn = ConnectionBase.getInstance().getCnx();
         PreparedStatement pt;
 
+        String req = "delete from annonce_rep where id =?";
         try {
-            String request = "DELETE FROM `annonce_rep` WHERE id ='" + id + "'";
-            pt = cn.prepareStatement(request);
-            int res = pt.executeUpdate();
-            System.err.println(res);
-
-            //cn.close();
-        } catch (Exception exp) {
-            System.out.println(exp.getMessage());
-
+            pt = cn.prepareStatement(req);
+            pt.setInt(1, id);
+            pt.executeUpdate();
+          System.out.println("Suppression terminé avec succes ");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+          System.out.println("not ok");
         }
 
     }
@@ -170,6 +175,64 @@ public class AnnounceRepService {
             
         } catch (SQLException se) {
            System.out.println(se.getMessage());
+
+        }
+
+    }
+    
+      public static int getNombreAnn(String cat) {
+        Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+        int rowCount=0;
+        try {
+            String request = "SELECT COUNT(*) FROM `annonce_rep` WHERE categorie ='" + cat + "'";
+            pt = cn.prepareStatement(request);
+            ResultSet resultSet = pt.executeQuery();
+              
+            while (resultSet.next()) {
+            
+                     rowCount = Integer.parseInt(resultSet.getString("count(*)"));
+            System.out.println(Integer.parseInt(resultSet.getString("count(*)")));
+            return rowCount;
+                
+            }
+            
+            // cn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+     return rowCount;
+    }
+      
+      
+      
+      
+      public static  void add(AnnounceRep a) {
+            Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        
+
+    
+
+        String req = "INSERT INTO annonce_rep (utilisateur_id, titre, description, datepublication, datemodification,photo, photo_updated_at, categorie, etat) VALUES (?,?,?,?,?,?,?,?,?)";
+        try {
+            pt = cn.prepareStatement(req);
+            pt.setInt(1, a.getUserId());
+            pt.setString(2, a.getTitre());
+            pt.setString(3, a.getDescription());
+            pt.setDate(4, Date.valueOf(LocalDate.now()));
+            pt.setDate(5, Date.valueOf(LocalDate.now()));
+            pt.setString(6, a.getUrlPhoto());
+            pt.setDate(7,Date.valueOf(LocalDate.now()) );
+            pt.setString(8, a.getCategorie());
+            pt.setString(9, a.getEtat());        
+            pt.executeUpdate();
+            System.out.println("ajout établie");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="root1" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reparateur.AllreparateursController">
+    <stylesheets>
+        <URL value="@allreparateurs.css" />
+    </stylesheets>
+       <HBox prefHeight="56.0" prefWidth="1360.0" style="-fx-background-radius: 5;">
+               <children>
+                  <JFXButton onAction="#retour" prefHeight="56.0" prefWidth="98.0" ripplerFill="RED" text="Retour" textFill="RED">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font></JFXButton>
+                  <Label prefHeight="17.0" prefWidth="305.0" text="Label" visible="false" />
+                  <Label prefHeight="56.0" prefWidth="102.0" text="Recherche :" />
+                  <JFXTextField fx:id="rech" onKeyTyped="#Rechercher" prefHeight="51.0" prefWidth="232.0" />
+                  <Label prefHeight="56.0" prefWidth="173.0" text="Filtrer par :" />
+                  <JFXComboBox fx:id="combobox" onAction="#filtrer" prefHeight="61.0" prefWidth="227.0" />
+                  <Label prefHeight="17.0" prefWidth="187.0" text="Label" visible="false" />
+                  <Label prefHeight="17.0" prefWidth="101.0" text="Label" visible="false" />
+               </children>
+            </HBox>
+   <ScrollPane layoutX="-2.0" layoutY="56.0">
+      <content>
+         <VBox fx:id="content_product" prefHeight="698.0" prefWidth="1360.0" />
+      </content>
+   </ScrollPane>
+</AnchorPane>

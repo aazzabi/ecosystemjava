@@ -6,6 +6,7 @@
 package entities.reparateur;
 
 import entities.Utilisateur;
+import java.util.Date;
 
 /**
  *
@@ -24,6 +25,19 @@ public class Reparateur extends Utilisateur {
     public Reparateur(String username, String usernameCanonical, String email, String emailCanonical, String password, String nom, String prenom, String nomPropriete) {
         super(username, usernameCanonical, email, emailCanonical, password, nom, prenom, nomPropriete);
     }
+
+    public Reparateur(String adresse, int numerofix, int numerotel, String specialite, String horaire, String type, String description, int id, String username, String email, String nom, String prenom, String discr, String photo, String rue, String ville, String numtel) {
+        super(id, username, email, nom, prenom, discr, photo, rue, ville, numtel);
+        this.adresse = adresse;
+        this.numerofix = numerofix;
+        this.numerotel = numerotel;
+        this.specialite = specialite;
+        this.horaire = horaire;
+        this.type = type;
+        this.description = description;
+    }
+    
+    
 
     public Reparateur() {
     }

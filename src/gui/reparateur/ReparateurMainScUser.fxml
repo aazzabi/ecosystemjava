@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="root1" prefHeight="760" prefWidth="1360" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reparateur.ReparateurMainScUserController">
+    <stylesheets>
+        <URL value="@reparateurmainscuser.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="183.0" layoutY="47.0" prefHeight="760.0" prefWidth="1360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="250.0" prefWidth="1360.0" style="-fx-background-image: url('file:/C:/ecosystemjava/src/res/ImageRep1.jpg');">
+               <children>
+                  <Label layoutX="680.0" layoutY="106.0" onMouseClicked="#NewFenAnnonceRep" prefHeight="64.0" prefWidth="558.0" text="Postez votre annonce maintenant !" textAlignment="CENTER" textFill="#b50c0c">
+                     <font>
+                        <Font name="Ink Free" size="38.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="14.0" prefHeight="104.0" prefWidth="1209.0" text="Vous avez un produit endommagé ?" textFill="#da0000">
+                     <font>
+                        <Font name="Courier New" size="58.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane onMouseClicked="#NewFenReparateur" prefHeight="290.0" prefWidth="1360.0" style="-fx-background-image: url('file:/C:/ecosystemjava/src/res/ImageRep2.png');">
+               <children>
+                  <Label layoutX="42.0" layoutY="30.0" onMouseClicked="#NewFenReparateur" prefHeight="104.0" prefWidth="1209.0" text="Vous avez besoin d'un réparateur ?" textFill="#c6c6c6">
+                     <font>
+                        <Font name="Courier New" size="58.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="668.0" layoutY="125.0" onMouseClicked="#NewFenReparateur" prefHeight="64.0" prefWidth="616.0" text="Retrouvez les meilleurs réparateur" textAlignment="CENTER" textFill="#ff1818">
+                     <font>
+                        <Font name="Ink Free" size="38.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane onMouseClicked="#NewFendemande" prefHeight="262.0" prefWidth="1360.0" style="-fx-background-image: url('file:/C:/ecosystemjava/src/res/ImageRep3.jpg');">
+               <children>
+                  <Label layoutX="22.0" layoutY="21.0" onMouseClicked="#NewFendemande" prefHeight="104.0" prefWidth="1290.0" text="Voulez vous devenir un réparateur PRO ?">
+                     <font>
+                        <Font name="Courier New" size="55.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#5a0dff" />
+                              <Stop color="#0037ff" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label layoutX="655.0" layoutY="124.0" onMouseClicked="#NewFendemande" prefHeight="64.0" prefWidth="603.0" text="Demandez un compte pro mainetant !" textAlignment="CENTER" textFill="#b50c0c">
+                     <font>
+                        <Font name="Ink Free" size="38.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -73,6 +73,19 @@ public class Utilisateur {
         this.id = id;
         this.username = username;
     }
+
+    public Utilisateur(int id, String username, String email, String nom, String prenom, String discr, String photo , String rue, String ville, String numtel) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.discr = discr;
+        this.photo = photo;
+        this.rue = rue;
+        this.ville = ville;
+        this.numtel = numtel;
+    }
     
     
 
