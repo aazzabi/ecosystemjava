@@ -46,14 +46,25 @@ public class HostAddController implements Initializable {
     private MapClass Map;
     private Marker Mark;
     private String Localisation = "";
+    @FXML
     private JFXTextField OwnerTF;
+    @FXML
     private DatePicker DateStart;
+    @FXML
     private DatePicker DateEnd;
+    @FXML
     private JFXTextField TotalPlacesTF;
     @FXML
     private JFXButton AddButton;
     @FXML
+    private AnchorPane menuPane;
+    @FXML
+    private JFXButton HostButton;
+    @FXML
     private AnchorPane contentPane;
+    @FXML
+    private JFXButton OpenMap_Button;
+    @FXML
     private JFXButton TakePosition_Button;
     @FXML
     private AnchorPane content;
@@ -108,10 +119,12 @@ public class HostAddController implements Initializable {
         ((Stage)AddButton.getScene().getWindow()).setScene(new Scene(HostListLoader.GetRoot(), WINDOW_WIDTH, WINDOW_HEIGHT));
     }
 
+    @FXML
     private void AccessHostSection(ActionEvent event) {
         ((Stage)AddButton.getScene().getWindow()).setScene(new Scene(HostListLoader.GetRoot(), WINDOW_WIDTH, WINDOW_HEIGHT));
     }
 
+    @FXML
     private void OpenMap_Action(ActionEvent event) {
         
         if (!MapOn){
@@ -126,6 +139,7 @@ public class HostAddController implements Initializable {
         }
     }
 
+    @FXML
     private void TakePosition_Action(ActionEvent event) {
         Localisation = LatLngToString(Map.GetLocationFromMap());
     }
@@ -148,14 +162,14 @@ public class HostAddController implements Initializable {
         else return true;
     }
     private boolean ValidDateEnd() throws ParseException{
-      /* String endDate = DateEnd.getValue().toString();
+        String endDate = DateEnd.getValue().toString();
         String startDate = DateStart.getValue().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date sDate = sdf.parse(startDate);
         Date eDate = sdf.parse(endDate);
-   */
+   
         
-        if ((DateEnd.getValue() == null)/*&& (eDate.compareTo(sDate) <= 0)*/)
+        if ((DateEnd.getValue() == null)&& (eDate.compareTo(sDate) <= 0))
         {
             
             DateEnd.setStyle("-fx-background-color : Red;" + DateEnd.getStyle());
@@ -171,13 +185,12 @@ public class HostAddController implements Initializable {
         else return true;
     }
 
+    @FXML
     private void AccessSujetSection(ActionEvent event) throws IOException {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TopicsModuleMenu.fxml"));
                AnchorPane pane = fxmlLoader.load();
                content.getChildren().setAll(pane);
     }
-
-    @FXML
-    private void saveToFile(ActionEvent event) {
-    }
 }
+
+
