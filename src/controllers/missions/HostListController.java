@@ -115,11 +115,11 @@ public class HostListController implements Initializable {
             //Host DATA
 
             //Adding the button to the Grid
-            String ButtonDetails = "Propriétaire : " + TempHost.getOwner() + "\n"
-                    + "Places : " + TempHost.getAvailablePlaces() + "/" + TempHost.getTotalPlaces() + "\n"
-                    + "Date : " + TempHost.getDateStart() + " -> " + TempHost.getDateEnd();
+            String ButtonDetails = "Nom Mission : " + TempHost.getOwner() + "\n"
+                    + "Matériaux Atteints/Objectifs : " + TempHost.getAvailablePlaces() + "/" + TempHost.getTotalPlaces() + "\n"
+                    + "Date de début & fin : " + TempHost.getDateStart() + " -> " + TempHost.getDateEnd();
             if (TempHost.getID() == MostRatedHost.getID()) {
-                ButtonDetails = "Le meilleur de notre platforme!\n " + ButtonDetails;
+                ButtonDetails = "LA MEILLEUR MISSION de notre platforme!\n \n " + ButtonDetails;
             }
             JFXButton HostButtonTemp = MakeGridButton(ButtonDetails, "#008000");
             //Setting Up the ID for later Use

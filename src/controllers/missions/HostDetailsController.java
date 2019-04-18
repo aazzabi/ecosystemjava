@@ -24,6 +24,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.teamdev.jxmaps.LatLng;
+import entities.Session;
 import entities.Utilisateur;
 import gui.missions.HostVariableManager;
 import java.io.IOException;
@@ -53,10 +54,13 @@ import services.UserService;
 import java.io.FileInputStream; 
 import java.io.FileNotFoundException;
 import javafx.scene.Group; 
+import javafx.scene.Parent;
 import javafx.scene.Scene; 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;  
+import javafx.stage.Modality;
 import javafx.stage.Stage;  
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -224,6 +228,7 @@ public class HostDetailsController implements Initializable {
     public void SetUpAdminSection() {
 
         ShowAllAdminSection();
+     
 
         if (HostVariableManager.getCurrentRole() == HostVariableManager.UserRole.Admin) {
             Role_Label.setText("Connecté en tant qu'administrateur");
@@ -265,7 +270,7 @@ public class HostDetailsController implements Initializable {
 
             } //There are no places
             else if (CurrentHost.getAvailablePlaces() == 0) {
-                Join_Button.setText("Materiaux Objectifs atteint ! ");
+                Join_Button.setText("Objectif atteint ! ");
                 Join_Button.setDisable(true);
             } //The User isn't subscribed
             else if (TempParticipation.getActive() == 0) {
@@ -285,12 +290,20 @@ public class HostDetailsController implements Initializable {
                     }
                     
                     
-       Image image = null;  
-                    try {
-                        image = new Image(new FileInputStream("src\\res\\QRCodeMailer.png"));
-                    } catch (FileNotFoundException ex) {
+                 try {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/missions/HostQR.fxml"));
+    Parent root1 = (Parent) fxmlLoader.load();
+    Stage stage = new Stage();
+    stage.initModality(Modality.APPLICATION_MODAL);
+    stage.initStyle(StageStyle.UNDECORATED);
+    stage.setTitle("ABC");
+    stage.setScene(new Scene(root1));  
+    stage.show();
+}                   catch (IOException ex) {   
                         Logger.getLogger(HostDetailsController.class.getName()).log(Level.SEVERE, null, ex);
                     }
+        
+                    
       /*
       //Setting the image view 
       ImageView imageView = new ImageView(image); 
@@ -415,9 +428,12 @@ public class HostDetailsController implements Initializable {
 
                 //Get the data from the user 
                 UserService TempUserService = new UserService();
-                Utilisateur TempUser = TempUserService.findById(RatingTemp.getOwnerID());
+                //Utilisateur TempUser = TempUserService.findById(RatingTemp.getOwnerID());
+               Utilisateur TempUser = TempUserService.findById(Session.getCurrentSession());
+
+                
                 //Fill the Labels                
-                Label UserID_Date_Label = new Label("User : " + TempUser.getNom() + "\n" + "Date : " + GlobalLibrary.DateToString(RatingTemp.getRatingDate()));
+                Label UserID_Date_Label = new Label("User : " + TempUser.getUsername()+ "\n" + "Date : " + GlobalLibrary.DateToString(RatingTemp.getRatingDate()));
 
                 Label Comment_Label = new Label();
                 if (RatingTemp.getRank() != 0) {

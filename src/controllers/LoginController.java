@@ -7,6 +7,7 @@ package controllers;
 
 import entities.Session;
 import entities.Utilisateur;
+import gui.missions.HostVariableManager;
 import java.io.IOException;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -73,6 +74,8 @@ public class LoginController implements Initializable {
                     scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/mainadminscreen.fxml")));
                     dialogStage.setScene(scene);
                     dialogStage.show();
+                    HostVariableManager.setCurrentRole(HostVariableManager.UserRole.Admin); 
+                   System.out.println("ADMIN CONNECTE");
                 } else {
                     Node node = (Node)event.getSource();
                     dialogStage = (Stage) node.getScene().getWindow();
