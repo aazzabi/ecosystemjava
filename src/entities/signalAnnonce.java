@@ -15,6 +15,10 @@ public class signalAnnonce {
     private int user_id;
     private String description;
 
+    public signalAnnonce() {
+    }
+
+    
     public signalAnnonce(int id, int annonce_id, int user_id, String description) {
         this.id = id;
         this.annonce_id = annonce_id;

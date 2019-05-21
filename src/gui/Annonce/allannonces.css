@@ -3,5 +3,6 @@
  */
 
 .mainFxmlClass {
-
+-fx-background-image: url('file:C:/ecosystemjava/src/res/bg_annonce.jpg');
+-fx-background-size: 100% 100%;
 }
