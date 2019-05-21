@@ -26,6 +26,7 @@ public interface ICommandeService {
     public void AnnulerCommande(int id);
     public ObservableList<Commande> getall();
        public void ChangerEtatCommandeToPaye(int id);
+       public void ChangerEtatCommandeToLivre(int id);
       // SELECT  COUNT(*) as nb1 from commande where (date_emission >= \'2019-01-01\') AND (date_emission <= \'2019-01-31\');
        public int CommandeJanvier();
        public int CommandeFevrier();

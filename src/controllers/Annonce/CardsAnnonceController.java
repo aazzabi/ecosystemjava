@@ -83,87 +83,87 @@ public class CardsAnnonceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        id_annonce.setVisible(false);
         // TODO
-        lignecommandeService = new LigneCommandeService();
+      //  lignecommandeService = new LigneCommandeService();
         if (AllAnnoncesController.indice == 0) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.obsl.get(i).getId()) == 0) {
 
                 lbl_titre.setText(AllAnnoncesController.obsl.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.obsl.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.obsl.get(i).getId()));
                 t = AllAnnoncesController.obsl.get(i).getId();
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.obsl.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.obsl.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 1) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.prixasc.get(i).getId()) == 0) {
+           
                 lbl_titre.setText(AllAnnoncesController.prixasc.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.prixasc.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.prixasc.get(i).getId()));
                 t = AllAnnoncesController.prixasc.get(i).getId();
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.prixasc.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.prixasc.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 2) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.prixdesc.get(i).getId()) == 0) {
+            
                 lbl_titre.setText(AllAnnoncesController.prixdesc.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.prixdesc.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.prixdesc.get(i).getId()));
                 t = AllAnnoncesController.prixdesc.get(i).getId();
                 //pri=Integer.parseInt(prixx.getText());
                 //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.prixdesc.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.prixdesc.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 3) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.obsDate.get(i).getId()) == 0) {
+           
                 lbl_titre.setText(AllAnnoncesController.obsDate.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.obsDate.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.obsDate.get(i).getId()));
                 t = AllAnnoncesController.obsDate.get(i).getId();
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.obsDate.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.obsDate.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 4) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.myannonces.get(i).getId()) == 0) {
+            
                 lbl_titre.setText(AllAnnoncesController.myannonces.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.myannonces.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.myannonces.get(i).getId()));
                 t = AllAnnoncesController.myannonces.get(i).getId();
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.myannonces.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.myannonces.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 5) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.myannoncesCAt.get(i).getId()) == 0) {
+            
                 lbl_titre.setText(AllAnnoncesController.myannoncesCAt.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.myannoncesCAt.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.myannoncesCAt.get(i).getId()));
                 t = AllAnnoncesController.myannoncesCAt.get(i).getId();
                 //pri=Integer.parseInt(prixx.getText());
                 //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.myannoncesCAt.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.myannoncesCAt.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 6) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.listsearch.get(i).getId()) == 0) {
+            
                 lbl_titre.setText(AllAnnoncesController.listsearch.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.listsearch.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.listsearch.get(i).getId()));
                 t = AllAnnoncesController.listsearch.get(i).getId();
                 //pri=Integer.parseInt(prixx.getText());
                 //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.listsearch.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.listsearch.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 7) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.likedAnnonce.get(i).getId()) == 0) {
+           
 
                 lbl_titre.setText(AllAnnoncesController.likedAnnonce.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.likedAnnonce.get(i).getPrix().toString());
@@ -171,22 +171,22 @@ public class CardsAnnonceController implements Initializable {
                 t = AllAnnoncesController.likedAnnonce.get(i).getId();
                 //pri=Integer.parseInt(prixx.getText());
                 //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.likedAnnonce.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.likedAnnonce.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         } else if (AllAnnoncesController.indice == 8) {
-            if (lignecommandeService.VerifAnnonce(AllAnnoncesController.ViwedAnnonce.get(i).getId()) == 0) {
+            
                 lbl_titre.setText(AllAnnoncesController.ViwedAnnonce.get(i).getTitre());
                 lbl_prix.setText("$" + AllAnnoncesController.ViwedAnnonce.get(i).getPrix().toString());
                 lbl_id.setText(Integer.toString(AllAnnoncesController.ViwedAnnonce.get(i).getId()));
                 t = AllAnnoncesController.ViwedAnnonce.get(i).getId();
                 //pri=Integer.parseInt(prixx.getText());
                 //System.out.println(AllAnnoncesController.prixasc.get(i).getPhoto());
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.ViwedAnnonce.get(i).getPhoto());
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + AllAnnoncesController.ViwedAnnonce.get(i).getPhoto());
                 img_annoce.setImage(imag);
                 i++;
-            }
+            
         }
     }
 
@@ -245,7 +245,7 @@ public class CardsAnnonceController implements Initializable {
 
     @FXML
     private void ajouterAupanier(ActionEvent event) {
-        int ida = Integer.parseInt(id_annonce.getText());
+        int ida = Integer.parseInt(lbl_id.getText());
         System.out.println("id : " + ida);
         panierService = new PanierService();
         System.out.println("Test de fonction ::: " + panierService.existAnnonce(ida));
@@ -272,6 +272,8 @@ public class CardsAnnonceController implements Initializable {
                 Logger logger = Logger.getLogger(getClass().getName());
                 logger.log(Level.SEVERE, "Failed to create new Window.", e);
             }
+            
+            
         } else {
             System.out.println("Erreur Ajout");
             try {

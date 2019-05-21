@@ -1,4 +1,4 @@
-/*
+t/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,6 +8,14 @@ package entities;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javax.imageio.ImageIO;
+import org.imgscalr.Scalr;
 
 /**
  *
@@ -50,6 +58,15 @@ public class Utilisateur {
     
     private String photo ;
     
+    Image image;
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
     private Date photo_updated_at;
     
     private String rue;
@@ -239,6 +256,15 @@ public class Utilisateur {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+        try {
+            BufferedImage bf = ImageIO.read(new File("C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\" + photo));
+            BufferedImage bf1 = Scalr.resize(bf, Scalr.Method.SPEED, Scalr.Mode.FIT_TO_WIDTH,
+                    250, 100, Scalr.OP_ANTIALIAS);
+            image = SwingFXUtils.toFXImage(bf1, null);
+        } catch (IOException ex) {
+            // NO PHOTO A AJOUTER
+            //System.out.println("entities.AnnounceRep.setUrlPhoto()");;
+        }
     }
 
     public Date getPhoto_updated_at() {

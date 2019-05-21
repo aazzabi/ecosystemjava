@@ -93,9 +93,11 @@ public class EspaceLivreurController implements Initializable {
 
       int idliv = table_livraison.getSelectionModel().getSelectedItem().getId();
 livraisonService = new LivraisonService();
+commandeService = new CommandeService();
 livraisonService.ChangerEtatLivraison(idliv);
       int id=Session.getCurrentSession();
 livraisonService.ChangerEtatLivreurTodispo(id);
+commandeService.ChangerEtatCommandeToLivre(table_livraison.getSelectionModel().getSelectedItem().getId_commande());
 
 Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erreur !");

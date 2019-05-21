@@ -47,6 +47,33 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
+import com.jfoenix.controls.JFXTextField;
+import entities.reparateur.AnnounceRep;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import services.AnnounceRepService;
 /**
  * FXML Controller class
  *
@@ -96,7 +123,8 @@ public class PanierController implements Initializable {
         panierService = new PanierService();
         tableview_panier.setEditable(false);
         tableview_panier.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        
+       photo.setCellValueFactory(c -> new SimpleObjectProperty<>(new ImageView(c.getValue().getImage())));
+        //photo.setCellValueFactory(c -> new SimpleObjectProperty<>(new Image("C:\\ecosystemjava\\src\\res\\ajoutpanier.png")));
         titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         prix.setCellValueFactory(new PropertyValueFactory<>("prix"));

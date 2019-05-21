@@ -512,6 +512,24 @@ Statement st;
             return 0;
         }
     }
+
+    @Override
+    public int NbrLivreurDispo() {
+          int count=0;
+     String req = "select count(*) from `livreur` where `disponibilite`='Disponible'";
+        try {
+            PreparedStatement pstm = cnx.prepareStatement(req);
+ ResultSet res = pstm.executeQuery();
+ while (res.next()) {
+            count = res.getInt(1);
+        }
+            return count;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
     
     
     

@@ -26,6 +26,7 @@ import service.panier.LivraisonService;
 import iservices.panier.ILivraisonService;
 import iservices.panier.ILigneCommandeService;
 import iservices.panier.IPanierService;
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -44,8 +45,11 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.mail.MessagingException;
 import service.panier.LigneCommandeService;
@@ -54,6 +58,7 @@ import services.UserService;
 import static tray.notification.NotificationType.SUCCESS;
 import tray.notification.TrayNotification;
 import utils.ControlleSaisie;
+import utils.copyImages;
 /**
  * FXML Controller class
  *
@@ -105,8 +110,8 @@ public class CMDAdminController implements Initializable {
 @FXML
     private TextField zone;
 
-  @FXML
-    private Button photo;
+@FXML
+    private Button btnPhotoUser;
     
 
     @FXML
@@ -149,7 +154,9 @@ public class CMDAdminController implements Initializable {
 
     @FXML
     private TableColumn<Livreur,Integer> note;
-    
+     private String absolutePathPhotoUser;
+     @FXML
+    private Text txtPhotoUser;
     @FXML
     private Button noter1;
 
@@ -177,6 +184,24 @@ public class CMDAdminController implements Initializable {
     /**
      * Initializes the controller class.
      */
+     
+     @FXML
+    private void photoUserChooser(ActionEvent event){
+    FileChooser fileChooser = new FileChooser();
+         fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+         );
+        btnPhotoUser.setOnAction(e-> {
+            File choix = fileChooser.showOpenDialog(null);
+            if (choix != null) {
+                System.out.println(choix.getAbsolutePath());
+                absolutePathPhotoUser = choix.getAbsolutePath();
+                txtPhotoUser.setText(choix.getName());
+             } else {
+                System.out.println("Image introuvable");
+            }
+        });
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        commandeService = new CommandeService();
@@ -306,7 +331,7 @@ if ( !(ControlleSaisie.estVide(nom, "nom"))
         r.setEmail(email.getText());
         r.setEmailCanonical(email.getText());
         r.setUsername(pseudo.getText());
-        r.setPhoto("tab.png");
+        r.setPhoto(txtPhotoUser.getText());
         r.setUsernameCanonical(pseudo.getText());
         r.setZone(zone.getText());
         r.setDisponibilite("Disponible");
@@ -317,8 +342,8 @@ if ( !(ControlleSaisie.estVide(nom, "nom"))
         r.setDiscr("livreur");
         r.setRoles("a:1:{i:0;s:15:\"ROLE_LIVREUR\";}");
         
-      //  copyImages.deplacerVers(txtPhotoReparateur, absolutePathPhotoReparateur,"C:\\ecosystemjava\\src\\res\\upload\\user\\");
-      //  copyImages.deplacerVers(txtPhotoReparateur, absolutePathPhotoReparateur,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\");
+        copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\ecosystemjava\\src\\res\\upload\\user\\");
+            copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\");
             
         UserService.InscriptionLivreur(r);
         TrayNotification tray = new TrayNotification("succès", "Livreur ajouté", SUCCESS);

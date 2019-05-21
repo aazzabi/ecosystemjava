@@ -486,6 +486,23 @@ Statement st;
         }
     }
 
+    @Override
+    public void ChangerEtatCommandeToLivre(int id) {
+      try {
+
+            PreparedStatement ps = cnx.prepareStatement(
+                    "UPDATE commande SET etat_commande = ? where id = ? ");
+
+            ps.setString(1,"Livrée");
+            ps.setInt(2,id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException se) {
+           System.out.println(se.getMessage());
+
+        }
+    }
+
     
    
 }

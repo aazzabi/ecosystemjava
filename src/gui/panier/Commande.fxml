@@ -25,10 +25,22 @@
           <TableColumn fx:id="etat" prefWidth="447.0" text="Etat Commande" />
         </columns>
       </TableView>
-      <Button fx:id="afficher_details" layoutX="1094.0" layoutY="225.0" mnemonicParsing="false" onAction="#AfficherDetails" prefHeight="25.0" prefWidth="141.0" text="Afficher Détails" />
-      <Button fx:id="demander_livraison" layoutX="1094.0" layoutY="305.0" mnemonicParsing="false" onAction="#demander_livraison" prefHeight="25.0" prefWidth="141.0" text="Demander Livraisn" />
-      <Button fx:id="payer" layoutX="1094.0" layoutY="349.0" mnemonicParsing="false" onAction="#Payer" prefHeight="25.0" prefWidth="141.0" text="Payer Commande" />
-      <Button fx:id="annuler_commande" layoutX="1094.0" layoutY="266.0" mnemonicParsing="false" onAction="#Annuler_Commande" prefHeight="25.0" prefWidth="141.0" text="Annuler Commande" />
+      <Button fx:id="afficher_details" layoutX="1094.0" layoutY="212.0" mnemonicParsing="false" onAction="#AfficherDetails" prefHeight="38.0" prefWidth="172.0" text="Afficher Détails" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="demander_livraison" layoutX="1094.0" layoutY="314.0" mnemonicParsing="false" onAction="#demander_livraison" prefHeight="38.0" prefWidth="172.0" text="Demander Livraisn" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="payer" layoutX="1094.0" layoutY="361.0" mnemonicParsing="false" onAction="#Payer" prefHeight="38.0" prefWidth="172.0" text="Payer Commande" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="annuler_commande" layoutX="1094.0" layoutY="266.0" mnemonicParsing="false" onAction="#Annuler_Commande" prefHeight="38.0" prefWidth="172.0" text="Annuler Commande" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Label layoutX="627.0" layoutY="28.0" text="Monsieur / Madame :" textFill="WHITE">
          <font>
             <Font size="20.0" />

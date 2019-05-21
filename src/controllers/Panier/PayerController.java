@@ -217,16 +217,6 @@ sendEmailService.SendE_mail(mail,message,"Payement Effectué Avec Succes");
 
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
     
     

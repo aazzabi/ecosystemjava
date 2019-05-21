@@ -16,6 +16,7 @@ import iservices.panier.IPanierService;
 import service.panier.LigneCommandeService;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +28,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import service.panier.PanierService;
 
@@ -43,7 +45,7 @@ public class LigneCommandeController implements Initializable {
     private TableView<Annonce> detail_commande;
 
     @FXML
-    private TableColumn<Annonce,String> photo;
+    private TableColumn<Annonce,ImageView> photo;
 
     @FXML
     private TableColumn<Annonce,String> titre;
@@ -111,6 +113,7 @@ Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
        titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+         photo.setCellValueFactory(p -> new SimpleObjectProperty<>(new ImageView(p.getValue().getImage())));
         detail_commande.setItems(all_a);
       
     }

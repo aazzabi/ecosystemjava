@@ -28,17 +28,26 @@
             <TableColumn fx:id="prix" prefWidth="85.0" text="Prix" />
         </columns>
       </TableView>
-      <Button fx:id="supprimer" layoutX="459.0" layoutY="270.0" mnemonicParsing="false" onAction="#Supprimer_AnnonceP" prefHeight="25.0" prefWidth="122.0" text="Supprimer" />
-      <Button fx:id="vider" layoutX="459.0" layoutY="303.0" mnemonicParsing="false" onAction="#ViderPanier" prefHeight="25.0" prefWidth="122.0" text="Vider Panier" />
-      <Button fx:id="ajouter_commande" layoutX="459.0" layoutY="335.0" mnemonicParsing="false" onAction="#ajout_cmd" prefHeight="25.0" prefWidth="122.0" text="Passer Commande" />
-      <Label layoutX="14.0" layoutY="274.0" prefHeight="22.0" prefWidth="78.0" text="Prix Total:" textFill="WHITE">
+      <Button fx:id="supprimer" layoutX="459.0" layoutY="270.0" mnemonicParsing="false" onAction="#Supprimer_AnnonceP" prefHeight="25.0" prefWidth="122.0" text="Supprimer" textFill="WHITE">
          <font>
-            <Font name="BebasNeue" size="17.0" />
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="vider" layoutX="459.0" layoutY="303.0" mnemonicParsing="false" onAction="#ViderPanier" prefHeight="25.0" prefWidth="122.0" text="Vider Panier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Button>
+      <Button fx:id="ajouter_commande" layoutX="459.0" layoutY="335.0" mnemonicParsing="false" onAction="#ajout_cmd" prefHeight="25.0" prefWidth="122.0" text="Passer Commande" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Label layoutX="22.0" layoutY="275.0" prefHeight="24.0" prefWidth="122.0" text="Prix Total:" textFill="WHITE">
+         <font>
+            <Font name="Caviar Dreams" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="prix_total" layoutX="80.0" layoutY="275.0" text="Label" textFill="WHITE">
+      <Label fx:id="prix_total" layoutX="116.0" layoutY="277.0" text="Label" textFill="WHITE">
          <font>
-            <Font name="BebasNeue" size="15.0" />
+            <Font name="Caviar Dreams" size="17.0" />
          </font>
       </Label>
       <ImageView fx:id="affichage_panier" fitHeight="38.0" fitWidth="51.0" layoutX="508.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -46,6 +55,9 @@
             <Image url="@../../res/panier2.png" />
          </image>
       </ImageView>
-      <Label fx:id="nb_article" layoutX="547.0" layoutY="21.0" text="Label" textFill="WHITE" />
+      <Label fx:id="nb_article" layoutX="547.0" layoutY="21.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
    </children>
 </AnchorPane>

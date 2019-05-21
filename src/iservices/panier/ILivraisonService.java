@@ -26,6 +26,7 @@ public interface ILivraisonService {
     public ObservableList<Livraison> getall();
     public ObservableList<Livreur> getall2();
      public Livreur RecupererLivreurDispo(String zone);
+     public int NbrLivreurDispo();
      public void ChangerEtatLivreurTodispo(int id);
      public void ChangerEtatCommandeToEncours(int id);
      public void ChangerEtatCommandeToLivre(int id);
