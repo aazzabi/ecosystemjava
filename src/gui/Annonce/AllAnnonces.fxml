@@ -54,7 +54,7 @@
             </VBox>
          </right>
          <center>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="576.0" prefWidth="565.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="576.0" prefWidth="565.0" style="-fx-border-radius: 20; -fx-background-color: #F0F1F7;" styleClass="mainFxmlClass" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                <padding>
                   <Insets left="30.0" />
                </padding>
