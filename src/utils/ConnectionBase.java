@@ -21,7 +21,7 @@ public class ConnectionBase {
     private Connection cnx;
     private static ConnectionBase instance; // Pour éviter plusieurs  connexions
 
-    public ConnectionBase() {
+    private ConnectionBase() {
 
         try {
             cnx = (Connection) DriverManager.getConnection(url, login, pwd);

@@ -6,7 +6,6 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -169,6 +168,15 @@
                                        <children>
                                           <TabPane prefHeight="688.0" prefWidth="1371.0" tabClosingPolicy="UNAVAILABLE">
                                             <tabs>
+                                              <Tab text="Vues">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <PieChart fx:id="pieChartVuesPerPublication" legendSide="RIGHT" prefHeight="518.0" prefWidth="1367.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                </content>
+                                              </Tab>
                                               <Tab text="Commentaires">
                                                 <content>
                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -181,16 +189,6 @@
                                                                 <NumberAxis fx:id="nbrCommPerPub" label="Nbr.  Commentaires" side="LEFT" tickLabelRotation="-40.7" upperBound="50.0" />
                                                               </yAxis>
                                                             </BarChart>
-                                                         </children>
-                                                      </AnchorPane>
-                                                </content>
-                                              </Tab>
-                                              <Tab text="Vues">
-                                                <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                         <children>
-                                                            <PieChart fx:id="pieChartVuesPerPublication" legendSide="RIGHT" prefHeight="518.0" prefWidth="1367.0" />
-                                                            <Label fx:id="lblPieChartInfo" layoutX="41.0" layoutY="42.0" prefHeight="133.0" prefWidth="158.0" />
                                                          </children>
                                                       </AnchorPane>
                                                 </content>

@@ -439,12 +439,6 @@ public class ForumAdminController implements Initializable {
             pieChartVuesPerPublication.getData().add(new PieChart.Data(e.getTitre()+" : "+ e.getNbrVues()+" Vue(s)", e.getNbrVues()));
 //            pieChartVuesPerPublication.getData().add(new PieChart.Data("Publication"+e.getTitre().toString()));
         }
-        pieChartVuesPerPublication.getData().stream()
-                    .forEach(data -> {
-                        data.getNode().addEventHandler(MouseEvent.ANY, element->{
-                           lblPieChartInfo.setText("Publication : "+data.getName()+"\n Nbr Vues: "+ data.getPieValue()); 
-                        });
-                    });
     }
     
     @FXML
