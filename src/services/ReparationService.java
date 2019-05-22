@@ -8,9 +8,15 @@ package services;
 import entities.reparateur.AnnounceRep;
 import entities.reparateur.Reparation;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -116,11 +122,9 @@ public class ReparationService {
                     "UPDATE reparation SET statut = ? , Commentaire=?, utilisateur_id = ?, reparateur_id = ? WHERE id = ?");
 
             ps.setString(1, rep.getStatut());
-            ps.setString(2, rep.getCommentaire());
-            System.out.println("Utilistaeur"+UserService.getTtUtilisateur().stream().filter(e->e.getUsername().equals(rep.getNomUser())).collect(Collectors.toList()).get(0).getId());
-             System.out.println("Reparateur"+UserService.getTtReparateur().stream().filter(e->e.getUsername().equals(rep.getNomRep())).collect(Collectors.toList()).get(0).getId());
-            ps.setInt(3, UserService.getTtUtilisateur().stream().filter(e->e.getUsername().equals(rep.getNomUser())).collect(Collectors.toList()).get(0).getId());
-            ps.setInt(4, UserService.getTtReparateur().stream().filter(e->e.getUsername().equals(rep.getNomRep())).collect(Collectors.toList()).get(0).getId());
+            ps.setString(2, rep.getCommentaire());   
+            ps.setInt(3, rep.getUserId());
+            ps.setInt(4, rep.getRepId());
             ps.setInt(5, rep.getId());
             ps.executeUpdate();
             ps.close();
@@ -146,6 +150,33 @@ public class ReparationService {
             //cn.close();
         } catch (Exception exp) {
             System.out.println(exp.getMessage());
+
+        }
+
+    }
+    
+    public static  void add(Reparation a) {
+            Connection cn = ConnectionBase.getInstance().getCnx();
+        PreparedStatement pt;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        
+
+    
+
+        String req = "INSERT INTO `reparation` (DatePrisEnCharge, Commentaire, utilisateur_id, reparateur_id, statut) VALUES (?,?,?,?,?)";
+        try {
+            pt = cn.prepareStatement(req);
+            pt.setDate(1, Date.valueOf(LocalDate.now()));
+            pt.setString(2, a.getCommentaire());
+            pt.setInt(3, a.getUserId());
+            pt.setInt(4, a.getRepId());
+            pt.setString(5, a.getStatut());    
+            pt.executeUpdate();
+            System.out.println("ajout établie");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AnnonceService.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 

@@ -117,6 +117,8 @@ public class ReparateurConfirmDemandeController implements Initializable {
         StringBuilder boxText = new StringBuilder();
 
         try {
+            
+          
 
             PdfWriter.getInstance(document, new FileOutputStream(out));
             document.open();
@@ -128,6 +130,9 @@ public class ReparateurConfirmDemandeController implements Initializable {
 
             Anchor anchorTarget = new Anchor("ECO-SYSTEME");
             anchorTarget.setName("BackToTop");
+              com.itextpdf.text.Image Eco = com.itextpdf.text.Image.getInstance("C:\\ecosystemjava\\src\\res\\logoeco.png");
+            Eco.scaleToFit(200, 70);
+            document.add(Eco);
             Paragraph p1 = new Paragraph();
 
             p1.setSpacingBefore(50);
@@ -179,6 +184,8 @@ public class ReparateurConfirmDemandeController implements Initializable {
                 .create();
 
         System.out.println(message.getSid());
+               Stage s = (Stage) nom.getScene().getWindow();
+        s.close();
     }
     
     public void annuler()

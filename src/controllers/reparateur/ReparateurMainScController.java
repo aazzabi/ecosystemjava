@@ -134,7 +134,7 @@ public class ReparateurMainScController implements Initializable {
 
     @FXML
     private Label nbdemande;
-    
+
     @FXML
     private Label nbtotal;
 
@@ -170,8 +170,7 @@ public class ReparateurMainScController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-       
+
         tableviewan.setEditable(false);
         tableviewan.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         a_col_img.setCellValueFactory(c -> new SimpleObjectProperty<>(new ImageView(c.getValue().getImage())));
@@ -208,7 +207,7 @@ public class ReparateurMainScController implements Initializable {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         FilteredList<AnnounceRep> filteredData = new FilteredList<>(tableDataAnnonce, p -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
-        filteredData.setPredicate(AnnounceRep -> {
+            filteredData.setPredicate(AnnounceRep -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
@@ -262,12 +261,16 @@ public class ReparateurMainScController implements Initializable {
         tableviewdemande.setItems(sortedData3);
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         int sizett = AnnounceRepService.getAnnounceRepList().size();
+        System.out.println("Size total :" + sizett);
         if (sizett != 0) {
+            long l1 = AnnounceRepService.getAnnounceRepList().stream().filter(e -> e.getCategorie().equals("Téléphone")).count();
+            long l2 = AnnounceRepService.getAnnounceRepList().stream().filter(e -> e.getCategorie().equals("Electroménager")).count();
+            long l3 = AnnounceRepService.getAnnounceRepList().stream().filter(e -> e.getCategorie().equals("Meuble")).count();
             ObservableList<PieChart.Data> pieChartData
                     = FXCollections.observableArrayList(
-                            new PieChart.Data("Téléphone", (AnnounceRepService.getNombreAnn("Téléphone") / sizett) * 100),
-                            new PieChart.Data("Electroménager", (AnnounceRepService.getNombreAnn("Electroménager") / sizett) * 100),
-                            new PieChart.Data("Meuble", (AnnounceRepService.getNombreAnn("Meuble") / sizett) * 100));
+                            new PieChart.Data("Téléphone", ((double) l1 / sizett) * 100),
+                            new PieChart.Data("Electroménager", ((double) l2 / sizett) * 100),
+                            new PieChart.Data("Meuble", ((double) l3 / sizett) * 100));
             piechart1.setData(pieChartData);
             piechart1.setTitle("Pourcentage des catégories");
         }
@@ -289,13 +292,13 @@ public class ReparateurMainScController implements Initializable {
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         sizett = DemandeCompteProService.getDemandeCompteList().size();
-        Long somme=0L ;
+        Long somme = 0L;
         if (sizett != 0) {
             long l1 = DemandeCompteProService.getDemandeCompteList().stream().filter(e -> e.getStatut().equals("Standard")).count();
             long l2 = DemandeCompteProService.getDemandeCompteList().stream().filter(e -> e.getStatut().equals("Basique")).count();
             long l3 = DemandeCompteProService.getDemandeCompteList().stream().filter(e -> e.getStatut().equals("Ilimite")).count();
-            
-             somme=l1*80+l2*40+l3*150;
+
+            somme = l1 * 80 + l2 * 40 + l3 * 150;
             ObservableList<PieChart.Data> pieChartData3
                     = FXCollections.observableArrayList(
                             new PieChart.Data("Standard", ((double) l1 / sizett) * 100),
@@ -304,7 +307,7 @@ public class ReparateurMainScController implements Initializable {
             piechart121.setData(pieChartData3);
             piechart121.setTitle("Type de compte professionnel");
         }
-       
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
@@ -318,19 +321,15 @@ public class ReparateurMainScController implements Initializable {
         nban.setText(Integer.toString(nbann));
         nboffre.setText(Long.toString(nboffres));
         nbreps.setText(Long.toString(reps));
-        ObservableList<Reparateur>ListRep=UserService.getTtReparateur();
-          System.out.println(ListRep.size());
-        Long nbreppros =ListRep.stream().filter(e->e.getType().equals("Professionel")).count();
-        
-        
+        ObservableList<Reparateur> ListRep = UserService.getTtReparateur();
+        System.out.println(ListRep.size());
+        Long nbreppros = ListRep.stream().filter(e -> e.getType().equals("Professionel")).count();
+
         nbtotal.setText(Integer.toString(ListRep.size()));
         nbreppro.setText(Long.toString(nbreppros));
         nbdemande.setText(Integer.toString(DemandeCompteProService.getDemandeCompteList().size()));
         gain.setText(Long.toString(somme));
-        
-       
-    
-        
+
     }
 
     public void supprimer() {
@@ -399,7 +398,6 @@ public class ReparateurMainScController implements Initializable {
 //        }
 //
 //    }
-
     public void clickItem(MouseEvent event) {
         if (event.getClickCount() == 2) //Checking double click
         {
@@ -427,7 +425,7 @@ public class ReparateurMainScController implements Initializable {
 
         }
     }
-    
+
     public void clickItem2(MouseEvent event) {
         if (event.getClickCount() == 2) //Checking double click
         {
@@ -455,8 +453,8 @@ public class ReparateurMainScController implements Initializable {
 
         }
     }
-    
-      public void clickItem3(MouseEvent event) {
+
+    public void clickItem3(MouseEvent event) {
         if (event.getClickCount() == 2) //Checking double click
         {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -483,7 +481,6 @@ public class ReparateurMainScController implements Initializable {
 
         }
     }
-
 
     public void supprimer3() {
 
@@ -554,30 +551,25 @@ public class ReparateurMainScController implements Initializable {
         }
 
     }
-    
-    
-   public void refresh1()
-    {
-          tableDataAnnonce = AnnounceRepService.getAnnounceRepList();
+
+    public void refresh1() {
+        tableDataAnnonce = AnnounceRepService.getAnnounceRepList();
         tableviewan.setItems(tableDataAnnonce);
         System.out.println("LOL");
-        
+
     }
-    
-    public   void refresh2()
-    {
-      tableDataReparation = ReparationService.getReparationList();
+
+    public void refresh2() {
+        tableDataReparation = ReparationService.getReparationList();
         tableviewrep.setItems(tableDataReparation);
-           System.out.println("LOL");
-        
+        System.out.println("LOL");
+
     }
-       
-     public     void refresh3()
-    {
-         tableDataDemande = DemandeCompteProService.getDemandeCompteList();
+
+    public void refresh3() {
+        tableDataDemande = DemandeCompteProService.getDemandeCompteList();
         tableviewdemande.setItems(tableDataDemande);
-           System.out.println("LOL");
-        
-        
+        System.out.println("LOL");
+
     }
 }
