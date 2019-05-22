@@ -109,8 +109,8 @@ public class AjouterAnnonceController implements Initializable {
                 absolutePathPhotoAnnonce = choix.getAbsolutePath();
                 label_photo.setText(choix.getName());
                 copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-                copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
-                Image imag = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + label_photo.getText());
+                copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+                Image imag = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + label_photo.getText());
                 img_annonce.setImage(imag);
             } else {
                 System.out.println("Image introuvable");

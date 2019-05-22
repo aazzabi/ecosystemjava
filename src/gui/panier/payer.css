@@ -3,6 +3,11 @@
  */
 
 .mainFxmlClass {
--fx-background-image: url('file:C:/ecosystemjava/src/gui/panier/bg_payement.png');
+-fx-background-image: url('file:C:/ecosystemjava/src/gui/panier/bg_payement2.png');
      -fx-background-size: 100% 100%;   
+}
+.button 
+{
+    -fx-background-color: #3CB371;
+    
 }

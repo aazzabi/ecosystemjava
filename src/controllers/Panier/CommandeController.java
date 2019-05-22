@@ -79,6 +79,7 @@ public class CommandeController implements Initializable {
    public ObservableList<AnnoncePanier>  tab;
       @FXML
     private Button payer;
+      public static int date_plus=3;
 
 private IPanierService panierService;
     private ICommandeService commandeService;
@@ -187,7 +188,23 @@ else
 
       @FXML
     void demander_livraison(ActionEvent event) {
-  int id_u=Session.getCurrentSession();
+ 
+    livraisonService = new LivraisonService();
+    int n;
+    n=livraisonService.NbrLivreurDispo();
+    if(n==0)
+    {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erreur !");
+            alert.setHeaderText(null);
+            alert.setContentText("On s'excuse , nous n'avons pas de livreur disponible pour le moment ");
+            alert.showAndWait();   
+    
+    
+    }
+    else
+    {
+     int id_u=Session.getCurrentSession();
     livraisonService = new LivraisonService();
   Livraison l=new Livraison();
   Commande a=tableview_commande.getSelectionModel().getSelectedItem();
@@ -197,7 +214,7 @@ else
   Date date_c=a.getDate_emission();
 Calendar c = Calendar.getInstance();
 c.setTime(date_c); // Now use today date.
-c.add(Calendar.DATE,3); // Adding 5 days
+c.add(Calendar.DATE,date_plus); // Adding 5 days
  java.util.Date date_liv=c.getTime();
 LocalDate date2=date_liv.toInstant().atZone(ZoneId.of( "Africa/Tunis" )).toLocalDate(); 
 java.sql.Date date_liv2 = java.sql.Date.valueOf(date2);
@@ -211,19 +228,6 @@ l.setDate_livraison(date_liv2);
  l.setVille(ville);
  Livreur liv=livraisonService.RecupererLivreurDispo(ville);
 
- if(liv == null)
- {
- Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur !");
-            alert.setHeaderText(null);
-            alert.setContentText("Nous n'avons pas de livreur Disponbile dans votre zone pour le moment");
-            alert.showAndWait();
-            
-            //break;
-            
-            
-
- }
  l.setId_livreur(liv.getId());
  
   livraisonService.AjouterLivraison(l);
@@ -232,7 +236,7 @@ l.setDate_livraison(date_liv2);
     System.out.println("Livraison Ajouté");
     TrayNotification tray = new TrayNotification("succès", "Votre Livraison Vient d'être confirmé ", SUCCESS);
         tray.showAndWait();
-        
+        date_plus=date_plus+2;
         
         try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -248,6 +252,8 @@ l.setDate_livraison(date_liv2);
                 Logger logger = Logger.getLogger(getClass().getName());
                 logger.log(Level.SEVERE, "Failed to create new Window.", e);
             }
+    }
+    
     }
     
     

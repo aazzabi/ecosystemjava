@@ -22,13 +22,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import utils.ConnectionBase;
+import service.panier.LigneCommandeService;
+import iservices.panier.ILigneCommandeService;
 
 /**
  *
  * @author anasc
  */
 public class AnnonceService implements IAnnonceService {
-
+private ILigneCommandeService lignecommandeService;
     Connection cn = ConnectionBase.getInstance().getCnx();
     PreparedStatement pt;
     ResultSet rs;
@@ -38,6 +40,7 @@ public class AnnonceService implements IAnnonceService {
 
     @Override
     public void add(Annonce a) {
+        
         String req = "INSERT INTO annonce (categorie_id, user_id, titre, description, date_creation, date_update, prix, region, etat, photo, photo_updated_at, likes, views) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             pt = cn.prepareStatement(req);
@@ -104,6 +107,7 @@ public class AnnonceService implements IAnnonceService {
 
     @Override
     public List<Annonce> getall() {
+         lignecommandeService = new LigneCommandeService();
         String req = "SELECT a.* , c.libelle , Concat(u.nom,\" \",u.prenom) from annonce a, categorie_annonce c, user u WHERE a.categorie_id = c.id AND a.user_id= u.id";
         try {
             pt = cn.prepareStatement(req);
@@ -126,7 +130,11 @@ public class AnnonceService implements IAnnonceService {
                 a.setViews(rs.getInt(14));
                 a.setLib(rs.getString(15));
                 a.setNomPrenom(rs.getString(16));
-                annonces.add(a);
+                if(lignecommandeService.VerifAnnonce(a.getId())==0)
+                {
+                 annonces.add(a);
+                }
+               
             }
             System.out.println("affichage etablie");
             return annonces;

@@ -6,32 +6,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controllers.Panier.DetailLivraisonController">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Panier.DetailLivraisonController">
     <stylesheets>
         <URL value="@detaillivraison.css" />
     </stylesheets>
    <children>
-      <Text fill="WHITE" layoutX="31.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Commande :" wrappingWidth="114.91796875">
+      <Text fill="WHITE" layoutX="31.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Commande :" wrappingWidth="134.91796875">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Caviar Dreams Bold" size="16.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="31.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom &amp; Prénom Client : " wrappingWidth="255.91796875">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Caviar Dreams Bold" size="17.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="31.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro de Téléphone du Client :" wrappingWidth="255.91796875">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Caviar Dreams Bold" size="16.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="31.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :" wrappingWidth="255.91796875">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Caviar Dreams Bold" size="15.0" />
          </font>
       </Text>
-      <Label fx:id="id_cmd" layoutX="159.0" layoutY="42.0" text="Label" textFill="WHITE">
+      <Label fx:id="id_cmd" layoutX="159.0" layoutY="52.0" text="Label" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -41,7 +41,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="num_tel" layoutX="287.0" layoutY="169.0" text="Label" textFill="WHITE">
+      <Label fx:id="num_tel" layoutX="300.0" layoutY="169.0" text="Label" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>

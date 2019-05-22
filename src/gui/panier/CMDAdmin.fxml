@@ -22,11 +22,11 @@
         <URL value="@cmdadmin.css" />
     </stylesheets>
    <children>
-      <JFXTabPane layoutY="3.0" prefHeight="1360" prefWidth="1360.0">
+      <JFXTabPane layoutY="3.0" prefHeight="1360" prefWidth="1360.0" styleClass="pane">
          <tabs>
-            <Tab fx:id="cond" text="Commandes">
+            <Tab fx:id="cond" styleClass="tab1" text="Commandes">
                <content>
-                  <AnchorPane fx:id="piechart" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane fx:id="piechart" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane1">
                      <children>
                         <TableView fx:id="table_commande" layoutX="32.0" layoutY="26.0" prefHeight="200.0" prefWidth="1252.0">
                           <columns>
@@ -41,7 +41,10 @@
                               <Image url="@../../res/blanc.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="annuler_cmd" layoutX="1052.0" layoutY="236.0" mnemonicParsing="false" onAction="#Annuler_Commande" prefHeight="25.0" prefWidth="232.0" text="Annuler Commande" />
+                        <Button fx:id="annuler_cmd" layoutX="1052.0" layoutY="236.0" mnemonicParsing="false" onAction="#Annuler_Commande" prefHeight="30.0" prefWidth="232.0" text="Annuler Commande" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
                         <Text fill="WHITE" layoutX="14.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques Des Commandes :">
                            <font>
                               <Font name="System Bold" size="20.0" />
@@ -58,7 +61,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Livraisons">
+            <Tab styleClass="tab1" text="Livraisons">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="livraison">
                      <children>
@@ -70,7 +73,10 @@
                               <TableColumn fx:id="adr_livraison" prefWidth="508.0" text="Adresse" />
                           </columns>
                         </TableView>
-                        <Button fx:id="annuler_livraison" layoutX="1069.0" layoutY="248.0" mnemonicParsing="false" onAction="#Annuler_Livraison" prefHeight="25.0" prefWidth="216.0" text="Annuler Livraison" />
+                        <Button fx:id="annuler_livraison" layoutX="1069.0" layoutY="248.0" mnemonicParsing="false" onAction="#Annuler_Livraison" prefHeight="25.0" prefWidth="216.0" text="Annuler Livraison" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Button>
                         <Text fill="WHITE" layoutX="21.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des Livraisons :">
                            <font>
                               <Font name="System Bold" size="20.0" />
@@ -92,18 +98,18 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab text="Livreur">
+            <Tab styleClass="tab1" text="Livreur">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="livreur">
                      <children>
-                        <ImageView fitHeight="600.0" fitWidth="302.0" layoutX="1036.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="600.0" fitWidth="316.0" layoutX="1022.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@back_ajout_livreur.png" />
+                              <Image url="@ajt.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="1047.0" layoutY="81.0" text="Formulaire d'Ajout de Livreur" textFill="WHITE">
+                        <Label layoutX="1048.0" layoutY="93.0" text="Formulaire d'Ajout de Livreur" textFill="WHITE">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Caviar Dreams" size="20.0" />
                            </font></Label>
                         <Label layoutX="1040.0" layoutY="147.0" text="Nom :" textFill="WHITE">
                            <font>
@@ -135,12 +141,15 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="nom" layoutX="1103.0" layoutY="145.0" prefHeight="25.0" prefWidth="225.0" />
-                        <TextField fx:id="prenom" layoutX="1104.0" layoutY="191.0" prefHeight="25.0" prefWidth="222.0" />
-                        <TextField fx:id="email" layoutX="1104.0" layoutY="243.0" prefHeight="25.0" prefWidth="221.0" />
-                        <TextField fx:id="pseudo" layoutX="1104.0" layoutY="344.0" prefHeight="25.0" prefWidth="220.0" />
-                        <Button fx:id="ajouter" layoutX="1102.0" layoutY="548.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="25.0" prefWidth="169.0" text="Ajouter" />
-                        <Button fx:id="photo" layoutX="1104.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Choisir Photo" />
+                        <TextField fx:id="nom" layoutX="1103.0" layoutY="145.0" prefHeight="25.0" prefWidth="210.0" />
+                        <TextField fx:id="prenom" layoutX="1104.0" layoutY="191.0" prefHeight="25.0" prefWidth="209.0" />
+                        <TextField fx:id="email" layoutX="1104.0" layoutY="243.0" prefHeight="25.0" prefWidth="210.0" />
+                        <TextField fx:id="pseudo" layoutX="1104.0" layoutY="344.0" prefHeight="25.0" prefWidth="208.0" />
+                        <Button fx:id="ajouter" layoutX="1083.0" layoutY="606.0" mnemonicParsing="false" onAction="#AjouterLivreur" prefHeight="35.0" prefWidth="188.0" text="Ajouter" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Button>
+                        <Button fx:id="btnPhotoUser" layoutX="1104.0" layoutY="294.0" mnemonicParsing="false" onAction="#photoUserChooser" prefHeight="25.0" prefWidth="196.0" text="Choisir Photo" textFill="WHITE" />
                         <Label layoutX="1040.0" layoutY="443.0" text="Mot de Passe :" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
@@ -151,10 +160,9 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="motdepasse" layoutX="1143.0" layoutY="441.0" prefHeight="25.0" prefWidth="185.0" />
-                        <TextField fx:id="confirmer_mdp" layoutX="1154.0" layoutY="489.0" prefHeight="25.0" prefWidth="174.0" />
-                        <TextField fx:id="zone" layoutX="1101.0" layoutY="389.0" prefHeight="25.0" prefWidth="223.0" />
-                        <Text layoutX="1313.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <TextField fx:id="motdepasse" accessibleRole="PASSWORD_FIELD" layoutX="1138.0" layoutY="441.0" prefHeight="25.0" prefWidth="178.0" />
+                        <TextField fx:id="confirmer_mdp" accessibleRole="PASSWORD_FIELD" layoutX="1143.0" layoutY="490.0" prefHeight="25.0" prefWidth="174.0" />
+                        <TextField fx:id="zone" layoutX="1101.0" layoutY="389.0" prefHeight="25.0" prefWidth="211.0" />
                         <TableView fx:id="table_livreur" layoutX="22.0" layoutY="48.0" prefHeight="200.0" prefWidth="884.0">
                           <columns>
                             <TableColumn fx:id="id_liv" prefWidth="75.0" text="Id Livreur" />
@@ -164,97 +172,118 @@
                               <TableColumn fx:id="note" prefWidth="240.0" text="Notes ( Nombre d'étoiles )" />
                           </columns>
                         </TableView>
-                        <Button fx:id="noter1" layoutX="22.0" layoutY="269.0" mnemonicParsing="false" onAction="#Noter1" prefHeight="25.0" prefWidth="138.0" />
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="135.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="noter1" layoutX="22.0" layoutY="269.0" mnemonicParsing="false" onAction="#Noter1" prefHeight="25.0" prefWidth="156.0" />
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="151.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="29.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 1 étoile" />
-                        <Button fx:id="noter2" layoutX="22.0" layoutY="304.0" mnemonicParsing="false" onAction="#Noter2" prefHeight="25.0" prefWidth="173.0" />
-                        <Button fx:id="noter3" layoutX="22.0" layoutY="335.0" mnemonicParsing="false" onAction="#Noter3" prefHeight="25.0" prefWidth="195.0" />
-                        <Button fx:id="noter4" layoutX="22.0" layoutY="370.0" mnemonicParsing="false" onAction="#Noter4" prefHeight="25.0" prefWidth="223.0" />
-                        <Button fx:id="noter5" layoutX="22.0" layoutY="403.0" mnemonicParsing="false" onAction="#Noter5" prefHeight="25.0" prefWidth="248.0" />
-                        <Text layoutX="29.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 2 étoiles" />
-                        <Text layoutX="29.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 3 étoiles" />
-                        <Text layoutX="29.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 4 étoiles" />
-                        <Text layoutX="29.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 5 étoiles" />
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="135.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fill="WHITE" layoutX="29.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 1 étoile">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Text>
+                        <Button fx:id="noter2" layoutX="22.0" layoutY="304.0" mnemonicParsing="false" onAction="#Noter2" prefHeight="25.0" prefWidth="184.0" />
+                        <Button fx:id="noter3" layoutX="22.0" layoutY="335.0" mnemonicParsing="false" onAction="#Noter3" prefHeight="25.0" prefWidth="212.0" />
+                        <Button fx:id="noter4" layoutX="22.0" layoutY="370.0" mnemonicParsing="false" onAction="#Noter4" prefHeight="25.0" prefWidth="235.0" />
+                        <Button fx:id="noter5" layoutX="22.0" layoutY="403.0" mnemonicParsing="false" onAction="#Noter5" prefHeight="25.0" prefWidth="256.0" />
+                        <Text fill="WHITE" layoutX="29.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 2 étoiles">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Text>
+                        <Text fill="WHITE" layoutX="29.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 3 étoiles">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Text>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="151.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="174.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="174.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="135.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="151.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="189.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="199.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="137.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="151.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="174.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="189.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="199.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="217.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="221.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="137.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="151.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="164.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="174.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="189.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="199.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="217.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="221.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="241.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="248.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/etoile.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="meilleur_livreur" layoutX="22.0" layoutY="442.0" mnemonicParsing="false" onAction="#Meilleur_livreur" prefHeight="25.0" prefWidth="251.0" text="Meilleur Livreur" />
-                        <ImageView fitHeight="26.0" fitWidth="35.0" layoutX="204.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="meilleur_livreur" layoutX="19.0" layoutY="502.0" mnemonicParsing="false" onAction="#Meilleur_livreur" prefHeight="35.0" prefWidth="251.0" text="Meilleur Livreur" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <ImageView fitHeight="26.0" fitWidth="35.0" layoutX="204.0" layoutY="507.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../res/medaille.png" />
                            </image>
                         </ImageView>
+                        <Text fill="WHITE" layoutX="26.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 4 étoiles">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="26.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attriuber 5 étoiles">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtPhotoUser" layoutX="1306.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children></AnchorPane>
                </content>
             </Tab>

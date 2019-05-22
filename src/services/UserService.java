@@ -240,8 +240,8 @@ public class UserService {
         PreparedStatement pt, ptRep;
         String sql = "INSERT INTO user(username, username_canonical, email, email_canonical, enabled, password, roles, nom, prenom, photo, photo_updated_at, discr ) "
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-        String sqlRep = "INSERT INTO livreur(id,zone,description,nbr_livraison,note) "
-                + "VALUES (?,?,?,?,?,?,?,?)";
+        String sqlRep = "INSERT INTO livreur(id,zone,disponibilite,nbr_livraison,note) "
+                + "VALUES (?,?,?,?,?)";
         int last = 0;
         String sqlGetLastId= "SELECT MAX(id) FROM user";
         
