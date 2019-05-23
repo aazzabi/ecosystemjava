@@ -41,7 +41,7 @@
                                     <TableColumn fx:id="a_col_prix" editable="false" prefWidth="296.0" text="Dernier prix proposé" visible="false" />
                                 </columns>
                               </TableView>
-                              <JFXButton layoutX="128.0" layoutY="637.0" onAction="#supprimer" prefHeight="50.0" prefWidth="139.0" ripplerFill="#da1616" text="Supprimer" textFill="RED">
+                              <JFXButton layoutX="261.0" layoutY="637.0" onAction="#supprimer" prefHeight="50.0" prefWidth="139.0" ripplerFill="#da1616" text="Supprimer" textFill="RED">
                                  <font>
                                     <Font name="Georgia Bold" size="14.0" />
                                  </font>
@@ -52,11 +52,6 @@
                                     <JFXTextField fx:id="search" layoutX="138.0" layoutY="7.0" prefHeight="26.0" prefWidth="196.0" promptText="Titre/description" />
                                  </children>
                               </Pane>
-                              <JFXButton layoutX="353.0" layoutY="635.0" prefHeight="55.0" prefWidth="144.0" text="Exporter En PDF" textFill="#0015ff">
-                                 <font>
-                                    <Font name="Georgia Bold" size="14.0" />
-                                 </font>
-                              </JFXButton>
                               <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="595.0" layoutY="14.0" onMouseClicked="#refresh1" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../res/refresh.png" />

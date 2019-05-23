@@ -5,11 +5,13 @@
  */
 package controllers.reparateur;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import controllers.MainAdminScreenController;
 import entities.Session;
 import entities.reparateur.AnnounceRep;
+import entities.reparateur.Reparation;
 import javafx.geometry.Insets;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,6 +32,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
@@ -42,6 +45,7 @@ import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
 
 import services.AnnounceRepService;
+import services.ReparationService;
 import services.UserService;
 
 /**
@@ -62,6 +66,9 @@ public class AllAnnonceRepController implements Initializable {
 
     @FXML
     private JFXTextField rech;
+    
+        @FXML
+    private JFXButton mesreps;
 
     ObservableList<AnnounceRep> Allannonces = AnnounceRepService.getAnnounceRepList();
 
@@ -69,6 +76,10 @@ public class AllAnnonceRepController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<AnnounceRep> annonces = AnnounceRepService.getAnnounceRepList();
         afficherAll(annonces);
+         if (UserService.getTtUtilisateur().stream().filter(e -> e.getRoles().contains("ROLE_REPARATEUR")).anyMatch(e -> e.getId() == Session.getCurrentSession()))
+         {
+            mesreps.setVisible(true);
+         }
 
         ObservableList<String> status = FXCollections.observableArrayList();
         status.addAll("Tout", "Téléphone", "Meuble", "Electroménager");
@@ -147,7 +158,7 @@ public class AllAnnonceRepController implements Initializable {
             Button item = new Button("", content);
             content.setOnMouseClicked(mouseEvent -> {
                 if (mouseEvent.getClickCount() == 2) {
-                    if (ann.getUserId()!= Session.getCurrentSession()) {
+                    if (ann.getUserId() != Session.getCurrentSession()) {
                         if (UserService.getTtUtilisateur().stream().filter(e -> e.getRoles().contains("ROLE_REPARATEUR")).anyMatch(e -> e.getId() == Session.getCurrentSession())) {
 
                             TextInputDialog dialog = new TextInputDialog();
@@ -176,12 +187,32 @@ public class AllAnnonceRepController implements Initializable {
                             //ERREUR
                         }
                     } else {
-                        Alert alert = new Alert(AlertType.INFORMATION);
-                        alert.setTitle("Vous ne pouvez pas proposer une offre a votre propre announce ");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Vous ne pouvez pas proposer une offre a votre propre announce ");
 
-                        alert.showAndWait();
+                        if (ann.getPrix() != 0.0) {
+
+                            Alert alert = new Alert(AlertType.CONFIRMATION);
+                            alert.setTitle("Confirmation Dialog");
+                            alert.setHeaderText("Vous accepter la derniere offre ?");
+                            alert.setContentText("Etes vous certain ?");
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.get() == ButtonType.OK) {
+                              Reparation repar =new Reparation ();
+                              repar.setCommentaire("Réparation en cours Titre :"+ann.getTitre()+" Description"+ann.getDescription());
+                              repar.setStatut("En cours");
+                              repar.setUserId(ann.getUserId());
+                              repar.setRepId(ann.getRepId());
+                              ReparationService.add(repar);
+                              AnnounceRepService.supprimer(ann.getId());
+                                
+                            } else {
+                                // ... user chose CANCEL or closed the dialog
+                            }
+
+                        } else {
+
+                        }
+                       
                     }
                 } else {
                     popOver.show(content);
@@ -259,6 +290,31 @@ public class AllAnnonceRepController implements Initializable {
             afficherAll(Allannonces);
         }
 
+    }
+    
+    public void reps()
+    {
+    FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/gui/reparateur/DUREP.fxml"));
+        /* 
+         * if "fx:controller" is not set in fxml
+         * fxmlLoader.setController(NewWindowController);
+         */
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+
+            Stage stage = new Stage();
+            DUREPController controller = fxmlLoader.getController();
+            controller.initData(ReparationService.getReparationList().stream().filter(e->e.getRepId()==Session.getCurrentSession()).collect(Collectors.toCollection(FXCollections::observableArrayList)));
+
+            stage.setTitle("Dashboard Réparateur");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ReparateurMainScController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

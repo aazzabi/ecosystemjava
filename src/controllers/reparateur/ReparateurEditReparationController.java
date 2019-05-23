@@ -8,7 +8,6 @@ package controllers.reparateur;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
-import entities.reparateur.AnnounceRep;
 import entities.reparateur.Reparation;
 import java.net.URL;
 import java.util.ResourceBundle;
