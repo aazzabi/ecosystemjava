@@ -137,7 +137,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="imageEvent" fitHeight="857.0" fitWidth="1146.0" layoutX="330.0" layoutY="10.0" opacity="0.59" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageEvent" fitHeight="840.0" fitWidth="1055.0" layoutX="330.0" layoutY="10.0" opacity="0.59" pickOnBounds="true" preserveRatio="true" />
                         <JFXTextArea fx:id="sadescription" layoutX="533.0" layoutY="550.0" />
                         <JFXTextField fx:id="sontitre" layoutX="574.0" layoutY="95.0" />
                         <JFXTextField fx:id="sonlieu" layoutX="574.0" layoutY="194.0" />
