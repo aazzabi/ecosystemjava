@@ -5,7 +5,6 @@
  */
 package controllers.Forum;
 
-import entities.CategoriePub;
 import entities.PublicationForum;
 import entities.Session;
 import java.io.IOException;
@@ -26,11 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import services.AnnounceRepService;
 import services.CategoriePubService;
 import services.PublicationForumService;
 import static tray.notification.NotificationType.SUCCESS;

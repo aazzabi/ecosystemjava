@@ -114,8 +114,9 @@ public class MainAdminScreenController implements Initializable, ChangeCallback 
 
             fadeOut.setOnFinished((e) -> {
                 try {
-                    AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/gui/mainadminscreen.fxml")));
-                    root.getChildren().setAll(parentContent);
+                   AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/gui/mainadminscreen.fxml")));
+                   update ("/gui/Annonce/annonceAdmin.fxml");
+                   root.getChildren().setAll(parentContent);
                 } catch (IOException ex) {
                     Logger.getLogger(MainAdminScreenController.class.getName()).log(Level.SEVERE, null, ex);
                 }

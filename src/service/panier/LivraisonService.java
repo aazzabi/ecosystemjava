@@ -174,16 +174,14 @@ Statement st;
             while (rs.next())
             {   
                Livraison a = new Livraison();
-               a.setId(rs.getInt(1));
-               a.setId_commande(rs.getInt(2));
-               a.setId_utilisateur(rs.getInt(3));
-               a.setId_livreur(rs.getInt(4));
-               a.setDate_livraison(rs.getDate(5));
-               a.setEtat_livraison(rs.getString(6));
-               a.setAdresse_livraison(rs.getString(7));
-               a.setVille(rs.getString(8));
-          
-               
+               a.setId(rs.getInt("id"));
+               a.setId_commande(rs.getInt("id_commande"));
+               a.setId_utilisateur(rs.getInt("id_utilisateur"));
+               a.setId_livreur(rs.getInt("id_livreur"));
+               a.setDate_livraison(rs.getDate("date_livraison"));
+               a.setEtat_livraison(rs.getString("etat_livraison"));
+               a.setAdresse_livraison(rs.getString("adresse_livraison"));
+               a.setVille(rs.getString("ville"));
                cmd.add(a);   
             }
              System.out.println("recup liv ok ");
@@ -308,7 +306,7 @@ Statement st;
             ps.setString(1,"Disponible");
             ps.setInt(2,id);
             ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException se) {
            System.out.println(se.getMessage());
 
@@ -325,7 +323,7 @@ Statement st;
             ps.setString(1,"Indisponible");
             ps.setInt(2,id);
             ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException se) {
            System.out.println(se.getMessage());
 
@@ -342,7 +340,7 @@ Statement st;
             ps.setString(1,"En cours de livraison");
             ps.setInt(2,id);
             ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException se) {
            System.out.println(se.getMessage());
 
@@ -359,7 +357,7 @@ Statement st;
             ps.setString(1,"Confirmé et livré");
             ps.setInt(2,id);
             ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException se) {
            System.out.println(se.getMessage());
 
@@ -429,7 +427,7 @@ Statement st;
             ps.setInt(1,note);
             ps.setInt(2,id);
             ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException se) {
            System.out.println(se.getMessage());
 

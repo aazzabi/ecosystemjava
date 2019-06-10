@@ -11,7 +11,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -30,10 +29,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,18 +43,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
 import javax.imageio.ImageIO;
-import javax.mail.BodyPart;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import services.AnnonceService;
 
 /**
@@ -100,7 +86,7 @@ public class DetaileAnnonceController implements Initializable {
         lbl_Region.setText(a.getRegion());
         lbl_viwes.setText(Integer.toString(a.getViews()));
         lbl_prix.setText("DT" + " " + Double.toString(a.getPrix()));
-        img = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto());
+        img = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto());
         img_ann.setImage(img);
     }
 
@@ -210,7 +196,7 @@ public class DetaileAnnonceController implements Initializable {
             table1.setSpacingBefore(10f); //Space before table
             table1.setSpacingAfter(10f); //Space after table
 
-            com.itextpdf.text.Image x = com.itextpdf.text.Image.getInstance("C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\" + a.getPhoto());
+            com.itextpdf.text.Image x = com.itextpdf.text.Image.getInstance("C:\\wamp\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\" + a.getPhoto());
                x.scaleToFit(100, 100);
             PdfPCell image = new PdfPCell(x);
             image.setBorderColor(BaseColor.BLUE);

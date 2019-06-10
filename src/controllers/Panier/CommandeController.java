@@ -25,7 +25,6 @@ import iservices.panier.ILivraisonService;
 import service.panier.LigneCommandeService;
 import iservices.panier.ILigneCommandeService;
 import iservices.panier.IPanierService;
-import service.panier.SendEmailService;
 import iservices.panier.ISendEmailService;
 import java.io.IOException;
 import java.sql.Date;
@@ -34,6 +33,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Optional;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
@@ -227,7 +227,9 @@ l.setDate_livraison(date_liv2);
  l.setAdresse_livraison(adresse);
  l.setVille(ville);
  Livreur liv=livraisonService.RecupererLivreurDispo(ville);
-
+  Random r = new Random();
+                           String val = "" + r.nextInt(10000);
+                           l.setCode(val);
  l.setId_livreur(liv.getId());
  
   livraisonService.AjouterLivraison(l);

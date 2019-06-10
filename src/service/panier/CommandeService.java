@@ -62,14 +62,10 @@ Statement st;
             {   
                Commande a = new Commande();
                a.setId(rs.getInt(1));
-               a.setDate_emission(rs.getDate(2));
-               
-               a.setEtat_commande(rs.getString(3));
-               a.setId_user(rs.getInt(4));
-               
-               a.setPrixTotal(rs.getDouble(5));
-          
-               
+               a.setDate_emission(rs.getDate("date_emission"));
+               a.setEtat_commande(rs.getString("etat_commande"));
+               a.setId_user(rs.getInt("id_utilisateur"));
+               a.setPrixTotal(rs.getDouble("prixTotal"));
                cmd.add(a);   
             }
              System.out.println("recup cmd ok ");
@@ -105,11 +101,11 @@ Statement st;
             Commande a = new Commande();
             while(rs.next())
             {
-               a.setId(rs.getInt(1));
-               a.setDate_emission(rs.getDate(2));
-               a.setEtat_commande(rs.getString(3));
-               a.setId_user(rs.getInt(4));
-               a.setPrixTotal(rs.getInt(5));
+               a.setId(rs.getInt("id"));
+               a.setDate_emission(rs.getDate("date_emission"));
+               a.setEtat_commande(rs.getString("etat_commande"));
+               a.setId_user(rs.getInt("id_utilisateur"));
+               a.setPrixTotal(rs.getInt("prixTotal"));
                
                
             }
@@ -161,11 +157,11 @@ Statement st;
             while(rs.next())
             {
                 Commande a = new Commande();
-               a.setId(rs.getInt(1));
-               a.setDate_emission(rs.getDate(2));
-               a.setEtat_commande(rs.getString(3));
-               a.setId_user(rs.getInt(4));
-               a.setPrixTotal(rs.getInt(5));
+               a.setId(rs.getInt("id"));
+               a.setDate_emission(rs.getDate("date_emission"));
+               a.setEtat_commande(rs.getString("etat_commande"));
+               a.setId_user(rs.getInt("id_utilisateur"));
+               a.setPrixTotal(rs.getInt("prixTotal"));
                
                cmd.add(a); 
             }
@@ -188,11 +184,11 @@ Statement st;
             Commande a = new Commande();
             while(rs.next())
             {
-               a.setId(rs.getInt(1));
-               a.setDate_emission(rs.getDate(2));
-               a.setEtat_commande(rs.getString(3));
-               a.setId_user(rs.getInt(4));
-               a.setPrixTotal(rs.getInt(5));
+               a.setId(rs.getInt("id"));
+               a.setDate_emission(rs.getDate("date_emission"));
+               a.setEtat_commande(rs.getString("etat_commande"));
+               a.setId_user(rs.getInt("id_utilisateur"));
+               a.setPrixTotal(rs.getInt("prixTotal"));
             
             }
             
@@ -238,7 +234,7 @@ Statement st;
             ps.setString(1,"Payée");
             ps.setInt(2,id);
             ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException se) {
            System.out.println(se.getMessage());
 
@@ -496,7 +492,7 @@ Statement st;
             ps.setString(1,"Livrée");
             ps.setInt(2,id);
             ps.executeUpdate();
-            ps.close();
+            //ps.close();
         } catch (SQLException se) {
            System.out.println(se.getMessage());
 

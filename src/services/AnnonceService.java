@@ -15,9 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -108,28 +106,28 @@ private ILigneCommandeService lignecommandeService;
     @Override
     public List<Annonce> getall() {
          lignecommandeService = new LigneCommandeService();
-        String req = "SELECT a.* , c.libelle , Concat(u.nom,\" \",u.prenom) from annonce a, categorie_annonce c, user u WHERE a.categorie_id = c.id AND a.user_id= u.id";
+        String req = "SELECT a.* , c.libelle , Concat(u.nom,\" \",u.prenom) as nomUser from annonce a, categorie_annonce c, user u WHERE a.categorie_id = c.id AND a.user_id= u.id";
         try {
             pt = cn.prepareStatement(req);
             rs = pt.executeQuery();
             while (rs.next()) {
                 Annonce a = new Annonce();
-                a.setId(rs.getInt(1));
-                a.setCategorie_id(rs.getInt(2));
-                a.setUser_id(rs.getInt(3));
-                a.setTitre(rs.getString(4));
-                a.setDescription(rs.getString(5));
-                a.setDate_creation(rs.getDate(6));
-                a.setDate_update(rs.getDate(7));
-                a.setPrix(rs.getDouble(8));
-                a.setRegion(rs.getString(9));
-                a.setEtat(rs.getString(10));
-                a.setPhoto(rs.getString(11));
-                a.setPhoto_updated_at(rs.getDate(12));
-                a.setLikes(rs.getInt(13));
-                a.setViews(rs.getInt(14));
-                a.setLib(rs.getString(15));
-                a.setNomPrenom(rs.getString(16));
+                a.setId(rs.getInt("a.id"));
+                a.setCategorie_id(rs.getInt("a.categorie_id"));
+                a.setUser_id(rs.getInt("a.user_id"));
+                a.setTitre(rs.getString("a.titre"));
+                a.setDescription(rs.getString("a.description"));
+                a.setDate_creation(rs.getDate("a.date_creation"));
+                a.setDate_update(rs.getDate("a.date_update"));
+                a.setPrix(rs.getDouble("a.prix"));
+                a.setRegion(rs.getString("a.region"));
+                a.setEtat(rs.getString("a.etat"));
+                a.setPhoto(rs.getString("a.photo"));
+//                a.setPhoto_updated_at(rs.getDate(12));
+                a.setLikes(rs.getInt("a.likes"));
+                a.setViews(rs.getInt("a.views"));
+                a.setLib(rs.getString("c.libelle"));
+                a.setNomPrenom(rs.getString("nomUser"));
                 if(lignecommandeService.VerifAnnonce(a.getId())==0)
                 {
                  annonces.add(a);

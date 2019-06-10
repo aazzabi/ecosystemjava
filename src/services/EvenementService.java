@@ -53,8 +53,9 @@ public class EvenementService implements IEvenementService{
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); 
        //Date d=new Date();
          try {
-             request = "INSERT INTO evenement ( created_by_id,lieu,date,categorie,titre, description,cover,cover_updated_at) VALUES ( '"+Session.getCurrentSession()+"','"+e.getLieu()+"','"+dateFormat.format(e.getDate()) +"','"+e.getId_categorie()+"' ,'"+e.getTitre()+"', '"+e.getDescription()+"' ,'"+e.getCover()+"','"+java.sql.Date.valueOf(java.time.LocalDate.now())+"');";
-             //  req = "insert into evenement (created_by_id,lieu,categorie,titre,description) values (2,'"+e.getLieu()+"',"+e.getId_categorie()+",'"+ e.getTitre()+"','"+ e.getDescription()+"');";
+            request = "INSERT INTO evenement ( created_by_id,lieu,date,categorie,titre, description,cover,cover_updated_at, nbvues) VALUES ( '"+Session.getCurrentSession()+"','"+e.getLieu()+"','"+dateFormat.format(e.getDate()) +"','"+e.getId_categorie()+"' ,'"+e.getTitre()+"', '"+e.getDescription()+"' ,'"+e.getCover()+"','"+java.sql.Date.valueOf(java.time.LocalDate.now())+"', 0);";
+            System.out.println(request);
+            //  req = "insert into evenement (created_by_id,lieu,categorie,titre,description) values (2,'"+e.getLieu()+"',"+e.getId_categorie()+",'"+ e.getTitre()+"','"+ e.getDescription()+"');";
          } catch (Exception ex) {
              Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -111,7 +112,17 @@ public class EvenementService implements IEvenementService{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Evenement e= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+                Evenement e= new Evenement(
+                        resultSet.getInt("id"),
+                        new UserService().findById(resultSet.getInt("created_by_id")),
+                        resultSet.getString("lieu"),
+                        resultSet.getDate("date"), 
+                        new Categorie_EvtsService().findById(resultSet.getInt("categorie")),
+                        resultSet.getString("titre"),
+                        resultSet.getString("description"),
+                        resultSet.getString("cover"),
+                        resultSet.getInt("nbvues")
+                );
                 cats.add(e); 
             }
         } catch (SQLException ex) {
@@ -135,7 +146,17 @@ public class EvenementService implements IEvenementService{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Evenement e= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+                Evenement e= new Evenement(
+                        resultSet.getInt("id"),
+                        new UserService().findById(resultSet.getInt("created_by_id")),
+                        resultSet.getString("lieu"),
+                        resultSet.getDate("date"), 
+                        new Categorie_EvtsService().findById(resultSet.getInt("categorie")),
+                        resultSet.getString("titre"),
+                        resultSet.getString("description"),
+                        resultSet.getString("cover"),
+                        resultSet.getInt("nbvues")
+                );
                 cats.add(e); 
             }
         } catch (SQLException ex) {
@@ -256,7 +277,17 @@ public class EvenementService implements IEvenementService{
             preparedStatement=cn.prepareStatement(req);
             ResultSet resultSet=preparedStatement.executeQuery();
             while(resultSet.next()){
-           Evenement event = new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+           Evenement event = new Evenement(
+                   resultSet.getInt("id"),
+                    new UserService().findById(resultSet.getInt("created_by_id")),
+                    resultSet.getString("lieu"),
+                    resultSet.getDate("date"), 
+                    new Categorie_EvtsService().findById(resultSet.getInt("categorie")),
+                    resultSet.getString("titre"),
+                    resultSet.getString("description"),
+                    resultSet.getString("cover"),
+                    resultSet.getInt("nbvues")
+           );
               listEvents.add(event); 
                 
             }
@@ -277,7 +308,17 @@ public class EvenementService implements IEvenementService{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Evenement e= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+                Evenement e= new Evenement(
+                        resultSet.getInt("id"),
+                        new UserService().findById(resultSet.getInt("created_by_id")),
+                        resultSet.getString("lieu"),
+                        resultSet.getDate("date"), 
+                        new Categorie_EvtsService().findById(resultSet.getInt("categorie")),
+                        resultSet.getString("titre"),
+                        resultSet.getString("description"),
+                        resultSet.getString("cover"),
+                        resultSet.getInt("nbvues")
+                );
                 cats.add(e); 
             }
         } catch (SQLException ex) {
@@ -299,7 +340,17 @@ public class EvenementService implements IEvenementService{
 
             while(resultSet.next()){
                 
-           Evenement ev= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+           Evenement ev= new Evenement(
+                   resultSet.getInt("id"),
+                        new UserService().findById(resultSet.getInt("created_by_id")),
+                        resultSet.getString("lieu"),
+                        resultSet.getDate("date"), 
+                        new Categorie_EvtsService().findById(resultSet.getInt("categorie")),
+                        resultSet.getString("titre"),
+                        resultSet.getString("description"),
+                        resultSet.getString("cover"),
+                        resultSet.getInt("nbvues")
+            );
              
             listEvents.add(ev); 
                 
@@ -466,7 +517,17 @@ public class EvenementService implements IEvenementService{
 
             while(resultSet.next()){
                 
-           Evenement ev= new Evenement(resultSet.getInt(1),new UserService().findById(resultSet.getInt(2)),resultSet.getString(3),resultSet.getDate(4), new Categorie_EvtsService().findById(resultSet.getInt(5)),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(10));
+           Evenement ev= new Evenement(
+                    resultSet.getInt("id"),
+                    new UserService().findById(resultSet.getInt("created_by_id")),
+                    resultSet.getString("lieu"),
+                    resultSet.getDate("date"), 
+                    new Categorie_EvtsService().findById(resultSet.getInt("categorie")),
+                    resultSet.getString("titre"),
+                    resultSet.getString("description"),
+                    resultSet.getString("cover"),
+                    resultSet.getInt("nbvues")
+           );
              
             listEvents.add(ev); 
                 

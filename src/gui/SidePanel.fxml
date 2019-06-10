@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="855.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePanelController">
+<VBox prefHeight="855.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidePanelController">
    <children>
-      <ImageView fitHeight="144.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="222.0" fitWidth="552.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/logoeco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="b11" buttonType="RAISED" onAction="#navigate" prefHeight="114.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Acceuil" textAlignment="CENTER">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </JFXButton>
+      <HBox prefHeight="75.0" prefWidth="505.0">
+         <children>
+            <Label fx:id="user" prefHeight="39.0" prefWidth="407.0" text="Utilisateur" />
+            <JFXButton prefHeight="45.0" prefWidth="87.0" onAction="#deco" text="Déconnexion" textFill="#fc0d0d" />
+         </children>
+      </HBox>
+   
       <JFXButton fx:id="b1" buttonType="RAISED" onAction="#navigate" prefHeight="100.0" prefWidth="500.0" ripplerFill="#fc0000" style="-fx-background-color: #f1f1f1;" text="Announce" textAlignment="CENTER">
          <font>
             <Font size="23.0" />

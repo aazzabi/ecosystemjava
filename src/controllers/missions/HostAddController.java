@@ -162,6 +162,7 @@ public class HostAddController implements Initializable {
         else return true;
     }
     private boolean ValidDateEnd() throws ParseException{
+        /*
         String endDate = DateEnd.getValue().toString();
         String startDate = DateStart.getValue().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -176,6 +177,8 @@ public class HostAddController implements Initializable {
             return false;
         }
         else return true;
+*/
+        return true ; 
     }
     private boolean ValidTotalPlaces(){
         if (Integer.bitCount(Integer.valueOf(TotalPlacesTF.getCharacters().toString())) != 0){

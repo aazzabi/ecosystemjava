@@ -142,7 +142,7 @@ public class AllAnnonceRepController implements Initializable {
 
             Image image = null;
             try {
-                image = new Image(new FileInputStream("C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\annoncerep\\photos\\" + ann.getUrlPhoto()));
+                image = new Image(new FileInputStream("C:\\wamp\\www\\ecosystemweb\\web\\uploads\\annoncerep\\photos\\" + ann.getUrlPhoto()));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AllAnnonceRepController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -287,6 +287,7 @@ public class AllAnnonceRepController implements Initializable {
             content_product.getChildren().remove(0, content_product.getChildren().size());
             afficherAll(Allannonces.stream().filter(e -> e.getTitre().equals(rech.getText())).collect(Collectors.toCollection(FXCollections::observableArrayList)));
         } else {
+            content_product.getChildren().remove(0, content_product.getChildren().size());
             afficherAll(Allannonces);
         }
 

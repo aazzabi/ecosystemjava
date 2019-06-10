@@ -21,11 +21,20 @@ public class Livraison {
  private String etat_livraison;
  private String adresse_livraison;
  private String ville;
+ private String code;
 
     public Livraison() {
     }
 
-    public Livraison(int id_commande, int id_utilisateur, int id_livreur, Date date_livraison, String etat_livraison, String adresse_livraison, String ville) {
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Livraison(int id_commande, int id_utilisateur, int id_livreur, Date date_livraison, String etat_livraison, String adresse_livraison, String ville,String code) {
         this.id_commande = id_commande;
         this.id_utilisateur = id_utilisateur;
         this.id_livreur = id_livreur;
@@ -33,6 +42,7 @@ public class Livraison {
         this.etat_livraison = etat_livraison;
         this.adresse_livraison = adresse_livraison;
         this.ville = ville;
+        this.code = code;
     }
 
     public int getId() {

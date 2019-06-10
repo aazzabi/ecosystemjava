@@ -6,7 +6,6 @@
 package controllers.Annonce;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entities.Annonce;
 import entities.Categorie_Annonce;
@@ -18,13 +17,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
 import javafx.scene.Parent;
 import javafx.collections.transformation.FilteredList;
@@ -315,7 +312,7 @@ public class AnnonceAdminController implements Initializable {
                     cmb_cat.getValue().getId(),
                     Session.getCurrentSession());
             copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-            copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+            copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
             annonceService.add(a);
 
         }
@@ -403,7 +400,7 @@ public class AnnonceAdminController implements Initializable {
         cmb_region.setValue(ListeAnnonce.getSelectionModel().getSelectedItem().getRegion());
         Categorie_Annonce a = categorieAnnonceService.displayByName(ListeAnnonce.getSelectionModel().getSelectedItem().getCategorie_id());
         cmb_cat.setValue(a);
-        img = new Image("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + txtAnnoncephoto.getText());
+        img = new Image("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + txtAnnoncephoto.getText());
         img_photo.setImage(img);
     }
 

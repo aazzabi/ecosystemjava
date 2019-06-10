@@ -5,30 +5,22 @@
  */
 package controllers.Annonce;
 
-import static controllers.Annonce.AllAnnoncesController.obsl;
-import static controllers.Annonce.CardsAnnonceController.i;
 import entities.Annonce;
 import entities.Categorie_Annonce;
 import entities.Session;
 import iservices.IAnnonceService;
-import javafx.scene.Parent;
 import iservices.ICategorieAnnonceService;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -136,7 +128,7 @@ public class AjouterAnnonceController implements Initializable {
                     cmb_cat.getValue().getId(),
                     Session.getCurrentSession());
             // copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-            // copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+            // copyImages.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
             annonceService.add(a);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.close();

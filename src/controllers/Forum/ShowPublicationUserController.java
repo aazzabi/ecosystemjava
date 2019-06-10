@@ -5,13 +5,8 @@
  */
 package controllers.Forum;
 
-import static controllers.Forum.CardsCommentairesController.i;
-import static controllers.Forum.CardsPublicationController.i;
-import static controllers.Forum.ForumUserController.indice;
-import static controllers.Forum.ForumUserController.obsl;
 import entities.CommentairePublication;
 import entities.PublicationForum;
-import entities.Session;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,12 +20,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javax.sound.sampled.AudioInputStream;
 import services.CommentairePublicationService;
 import services.PublicationForumService;
 import static tray.notification.NotificationType.SUCCESS;

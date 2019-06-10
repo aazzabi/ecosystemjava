@@ -90,7 +90,7 @@ public class PostCompteProController implements Initializable {
         DemandeCompteProService.add(dmd);
         
         
-        copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\demandecompte\\photos\\");
+        copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\demandecompte\\photos\\");
             Stage s = (Stage) combobox.getScene().getWindow();
         s.close();
     }

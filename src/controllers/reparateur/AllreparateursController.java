@@ -112,7 +112,7 @@ public class AllreparateursController implements Initializable {
             
             Image image = null;
             try {
-                image = new Image(new FileInputStream("C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\user\\photo\\" + rep.getPhoto()));
+                image = new Image(new FileInputStream("C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\" + rep.getPhoto()));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AllAnnonceRepController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -170,9 +170,11 @@ public class AllreparateursController implements Initializable {
     @FXML
     void Rechercher(KeyEvent event) {
         if (!rech.getText().equals("")) {
+            
             content_product.getChildren().remove(0, content_product.getChildren().size());
             afficherAll(Allreps.stream().filter(e -> e.getUsername().equals(rech.getText())).collect(Collectors.toCollection(FXCollections::observableArrayList)));
         } else {
+            content_product.getChildren().remove(0, content_product.getChildren().size());
             afficherAll(Allreps);
         }
 

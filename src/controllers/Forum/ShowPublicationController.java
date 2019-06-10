@@ -5,8 +5,6 @@
  */
 package controllers.Forum;
 
-import com.sun.javafx.scene.control.skin.TableColumnHeader;
-import entities.CategoriePub;
 import entities.CommentairePublication;
 import entities.PublicationForum;
 import java.net.URL;
@@ -19,15 +17,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.util.Callback;
-import services.CategoriePubService;
 import services.CommentairePublicationService;
 import services.PublicationForumService;
 

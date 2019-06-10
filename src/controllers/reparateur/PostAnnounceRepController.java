@@ -70,7 +70,7 @@ public class PostAnnounceRepController implements Initializable {
         rep.setUserId(idUser);
         rep.setUrlPhoto(txtAnnoncephoto.getText());
         //copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-        copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\annoncerep\\photos\\");
+        copyImages.deplacerVers(txtAnnoncephoto, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\annoncerep\\photos\\");
         AnnounceRepService.add(rep);
         Stage s = (Stage) a_titre.getScene().getWindow();
         s.close();
@@ -88,7 +88,7 @@ public class PostAnnounceRepController implements Initializable {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", "*.jpeg")
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
         );
         btn_photo_img.setOnAction(e -> {
             File choix = fileChooser.showOpenDialog(null);

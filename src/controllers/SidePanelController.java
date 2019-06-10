@@ -6,19 +6,20 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
+import entities.Session;
 import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import services.UserService;
 
 public class SidePanelController implements Initializable {
 
@@ -34,12 +35,17 @@ public class SidePanelController implements Initializable {
       @FXML
     private JFXButton b3111;
       
-      
+    @FXML
+    private Label user;
 
     private ChangeCallback callback;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          String nomUser=UserService.getTtUtilisateur().stream().filter(e -> e.getId() == Session.getCurrentSession()).findFirst().get().getUsername();
+       
+        user.setText("Utilisateur : "+ nomUser);
+
 
     }
 
@@ -91,5 +97,35 @@ public class SidePanelController implements Initializable {
         System.exit(0);
     }
     
-   
+     @FXML
+    // a mettre les SRC
+    private void deco(ActionEvent event) {
+                try
+        {
+            FXMLLoader Loader = new FXMLLoader();
+            Loader.setLocation(getClass().getResource("/gui/Login.fxml"));
+              Stage s = (Stage) b2.getScene().getWindow();
+            s.close();
+            
+
+            
+            try {
+                Loader.load();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            LoginController c = Loader.getController();
+            Parent p = Loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(p));
+            stage.show();
+            event.consume();
+            Session.setCurrentSessionToNull();
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+        }
+        
+    
+    } 
 }

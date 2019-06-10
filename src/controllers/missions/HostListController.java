@@ -87,6 +87,7 @@ public class HostListController implements Initializable {
         this.callback = callback;
     }
 
+ 
     private void InitiateGrid() {
         HostGrid.getChildren().clear();
 
@@ -160,6 +161,37 @@ public class HostListController implements Initializable {
             HostGrid.getChildren().add(HostButtonTemp);
 
         }
+        
+        //LOGIQUE RETOURN BUTTN
+                    JFXButton HostButtonTemprReturn = MakeGridButton("RETOURRNER AU MENU", "#008000");
+            //Setting Up the ID for later Use
+ 
+            GridPane.setConstraints(HostButtonTemprReturn, ColumnPicker, IndexPicker);
+
+            //Event handling 
+            HostButtonTemprReturn.onMouseReleasedProperty().set((event) -> {
+
+              FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/gui/mainuserscreen.fxml"));
+        /* 
+         * if "fx:controller" is not set in fxml
+         * fxmlLoader.setController(NewWindowController);
+         */
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+
+            Stage stage = new Stage();
+            MainuserscreenController controller = fxmlLoader.getController();
+
+            stage.setTitle("Main menu");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MainuserscreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             });
 
         //BECOME A HOST BUTTON CHECK
         if (HostVariableManager.getCurrentRole() == HostVariableManager.UserRole.Other) {

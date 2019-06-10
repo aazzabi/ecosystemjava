@@ -5,32 +5,17 @@
  */
 package controllers.Panier;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-
-import entities.Session;
 import entities.panier.Livraison;
 import java.net.URL;
-import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 import service.panier.LivraisonService;
 import iservices.panier.ILivraisonService;
 import service.panier.CommandeService;
 import iservices.panier.ICommandeService;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class

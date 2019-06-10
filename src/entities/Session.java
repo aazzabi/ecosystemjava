@@ -18,6 +18,12 @@ public class Session {
     public static void start(int currentUserID) {
         idUser = currentUserID;
     }
+    
+    public  static void setCurrentSessionToNull()
+    {
+        idUser=-1;
+    }
+    
 
     public static int getCurrentSession() {
         if (idUser != -1) {

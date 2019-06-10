@@ -5,7 +5,6 @@
  */
 package controllers.Forum;
 
-import entities.PublicationForum;
 import entities.SignalisationCommentaire;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,8 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import services.CommentairePublicationService;
-import services.PublicationForumService;
 import services.SignalisationCommentairePubService;
 
 /**

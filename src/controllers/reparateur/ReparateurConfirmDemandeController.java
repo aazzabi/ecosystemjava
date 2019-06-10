@@ -97,7 +97,7 @@ public class ReparateurConfirmDemandeController implements Initializable {
         date.setText(demande.getDateDemande());
         type.setText(demande.getStatut());
         id.setText(Integer.toString(demande.getId()));
-        File f = new File("C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\demandecompte\\photos\\" + demande.getUrlPhoto());
+        File f = new File("C:\\wamp\\www\\ecosystemweb\\web\\uploads\\demandecompte\\photos\\" + demande.getUrlPhoto());
         InputStream in = new FileInputStream(f);
 
         try {

@@ -28,11 +28,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import services.UserService;
-import utils.Notification;
 import tray.notification.TrayNotification;
-import static tray.notification.NotificationType.ERROR;
 import static tray.notification.NotificationType.SUCCESS;
 import utils.ControlleSaisie;
 import utils.copyImages;
@@ -195,7 +192,7 @@ public class InscriptionController implements Initializable {
             u.setDiscr("user");
             u.setRoles("a:0:{}");
             
-            //ena na5dem 3la dossier www/wamp/ enoutou peut etre wamp64 donc chouf badel selon l dossier ey ama famech dossier upload houni yetkayed fihN, yesn3ou ki yabda mafamech mech mochkol tkt :p okeythnxx  :* pas de quoi , nkhalik tjareb hedhi ba3ed ken famma haja on rreprend okiii
+            //ena na5dem 3la dossier www/wamp/ enoutou peut etre wamp donc chouf badel selon l dossier ey ama famech dossier upload houni yetkayed fihN, yesn3ou ki yabda mafamech mech mochkol tkt :p okeythnxx  :* pas de quoi , nkhalik tjareb hedhi ba3ed ken famma haja on rreprend okiii
             copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\ecosystemjava\\src\\res\\upload\\user\\");
             copyImages.deplacerVers(txtPhotoUser, absolutePathPhotoUser,"C:\\wamp\\www\\ecosystemweb\\web\\uploads\\user\\photo\\");
             
