@@ -87,7 +87,7 @@ public class SignalAnnonceService implements ISignalAnnonceService{
         Annonce a = as.getAnnonceById(id);
         Utilisateur u = us.findById(a.getUser_id());
            final String username = "anasbahri1928@gmail.com";
-                final String password = "BAHRIanas1995";
+                final String password = "*****************";
                 Properties props = new Properties();
                 props.put("mail.smtp.starttls.enable", "true");
                 props.put("mail.smtp.auth", "true");
